@@ -24,9 +24,10 @@ public class Grid : MonoBehaviour
 
     private void Start()
     {
-        GenerateGrid();
+        //GenerateGrid();
     }
 
+    [ContextMenu("GenerateGrid")]
     private void GenerateGrid()
     {
         tiles = new Tile[coloumns, rows];
@@ -36,7 +37,14 @@ public class Grid : MonoBehaviour
         MeshRenderer mr = temp.GetComponent<MeshRenderer>();
         float tileWidth = mr.bounds.size.x;
         float tileHeight = mr.bounds.size.z;
-        Destroy(temp);
+
+        bool destroyedInEditor = false;
+#if UNITY_EDITOR
+        DestroyImmediate(temp);
+        destroyedInEditor = true;
+#endif
+        if(!destroyedInEditor)
+            Destroy(temp);
 
         for (int x = 0; x < coloumns; x++)
         {
