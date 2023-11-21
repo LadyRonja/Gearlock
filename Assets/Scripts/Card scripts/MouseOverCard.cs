@@ -6,16 +6,18 @@ using UnityEngine.EventSystems;
 public class MouseOverCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     bool hovering = false;
-    Vector3 currentPosition;
+    float cardX, cardY;
 
     //Detect if the Cursor starts to pass over the GameObject
     public void OnPointerEnter(PointerEventData pointerEventData)
     {
+        cardX = transform.position.x;
+        cardY = transform.position.y;
         //Output to console the GameObject's name and the following message
         Debug.Log("Cursor Entering " + name + " GameObject");
         if (!hovering)
         {
-            transform.localPosition = new Vector3(0,50,0);
+            transform.position = new Vector3(cardX,cardY + 100,0);
             hovering = true;
         }
     }
@@ -27,7 +29,7 @@ public class MouseOverCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         Debug.Log("Cursor Exiting " + name + " GameObject");
         if (hovering)
         {
-            transform.localPosition = new Vector3(0, -50, 0);
+            transform.position = new Vector3(cardX, cardY, 0);
             hovering = false;
         }
     }
