@@ -11,6 +11,7 @@ public class Grid : MonoBehaviour
     [SerializeField] int coloumns;
 
     public Tile[,] tiles;
+    [SerializeField] List<Material> tileTextures;
 
     private void Awake()
     {
@@ -25,6 +26,8 @@ public class Grid : MonoBehaviour
     private void Start()
     {
         //GenerateGrid();
+        if(tiles == null)
+            FindGrid();
     }
 
     [ContextMenu("GenerateGrid")]
@@ -62,8 +65,8 @@ public class Grid : MonoBehaviour
 
                 GameObject tile = Instantiate(tilePrefab, tilePos, Quaternion.identity, this.transform);
                 Tile tileScr = tile.transform.GetComponent<Tile>();
-                tileScr.X = x;
-                tileScr.Y = y;
+                tileScr.x = x;
+                tileScr.y = y;
 
                 tile.transform.name = $"Square ({x}, {y})";
                 tiles[x, y] = tileScr;
@@ -79,31 +82,62 @@ public class Grid : MonoBehaviour
         foreach (Tile tile in tiles)
         {
             // West
-            if (tile.X != 0)
+            if (tile.x != 0)
             {
-                tile.NeighbourW = tiles[tile.X - 1, tile.Y];
-                tile.neighbours.Add(tile.NeighbourW);
+                tile.neighbourW = tiles[tile.x - 1, tile.y];
+                tile.neighbours.Add(tile.neighbourW);
             }
 
             // South
-            if (tile.Y != 0)
+            if (tile.y != 0)
             {
-                tile.NeighbourS = tiles[tile.X, tile.Y - 1];
-                tile.neighbours.Add(tile.NeighbourS);
+                tile.neighbourS = tiles[tile.x, tile.y - 1];
+                tile.neighbours.Add(tile.neighbourS);
             }
 
             // East
-            if (tile.X != tiles.GetLength(0) - 1)
+            if (tile.x != tiles.GetLength(0) - 1)
             {
-                tile.NeighbourE = tiles[tile.X + 1, tile.Y];
-                tile.neighbours.Add(tile.NeighbourE);
+                tile.neighbourE = tiles[tile.x + 1, tile.y];
+                tile.neighbours.Add(tile.neighbourE);
             }
 
             // North
-            if (tile.Y != tiles.GetLength(1) - 1)
+            if (tile.y != tiles.GetLength(1) - 1)
             {
-                tile.NeighbourN = tiles[tile.X, tile.Y + 1];
-                tile.neighbours.Add(tile.NeighbourN);
+                tile.neighbourN = tiles[tile.x, tile.y + 1];
+                tile.neighbours.Add(tile.neighbourN);
+            }
+        }
+    }
+
+    [ContextMenu("TextureGrid")]
+    private void RandomizeTextures()
+    {
+        if (tiles == null)
+            FindGrid();
+
+        foreach (Tile t in tiles)
+        {
+            int rand = Random.Range(0, tileTextures.Count);
+            t.transform.GetComponent<MeshRenderer>().material = tileTextures[rand];
+        }
+    }
+
+    private void FindGrid()
+    {
+        tiles = new Tile[coloumns, rows];
+        for (int x = 0; x < coloumns; x++)
+        {
+            for (int y = 0; y < rows; y++)
+            {
+                GameObject tile = GameObject.Find($"Square ({x}, {y})");
+                if (tile != null)
+                {
+                    Tile xy = tile.GetComponent<Tile>();
+                    if(xy != null)
+                        tiles[x, y] = xy;
+                }
             }
         }
     }
