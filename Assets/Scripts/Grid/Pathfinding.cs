@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
 using Unity.Mathematics;
 using UnityEngine;
 
 public class Pathfinding : MonoBehaviour
 {
-    public static List<Tile> FindPath(Tile start, Tile end)
+    public static List<Tile> FindPath(Tile start, Tile end, int range, bool ignoreBlocks)
     {
         // Keep list of tiles to search and tiles already searched
         List<Tile> toSearch = new List<Tile>() { start };
@@ -43,11 +44,27 @@ public class Pathfinding : MonoBehaviour
                 }
                 path.Add(start);
                 path.Reverse();
+
+                if(range >= 0)
+                {
+                    while(path.Count > range)
+                    {
+                        path.RemoveAt(path.Count - 1);
+                    }
+                }
+
                 return path;
             }
 
+            // Determine which neighbours to investigate
+            List<Tile> investigateNeighbours;
+            if(ignoreBlocks)
+                investigateNeighbours = current.neighbours.Where(t => !t.occupied && !processed.Contains(t)).ToList();
+            else
+                investigateNeighbours = current.neighbours.Where(t => !t.occupied && !processed.Contains(t) && !t.blocked).ToList();
+
             // Check each non-blocked neighbouring tile that has not already been processed
-            foreach (Tile neighbour in current.neighbours.Where(t => !t.blocked && !processed.Contains(t)))
+            foreach (Tile neighbour in investigateNeighbours)
             {
                 // Prephare to set cost of neighbour
                 bool inSearch = toSearch.Contains(neighbour);
@@ -72,6 +89,16 @@ public class Pathfinding : MonoBehaviour
 
         // No possible path, return null
         return null;
+    }
+
+    public static List<Tile> FindPath(Tile start, Tile end)
+    {
+        return FindPath(start, end, -1, false);
+    }
+
+    public static List<Tile> FindPath(Tile start, Tile end, int range)
+    {
+        return FindPath(start, end, range, false);
     }
 
     public static int GetDistance(Tile a, Tile b)

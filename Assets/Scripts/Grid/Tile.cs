@@ -16,11 +16,12 @@ public class Tile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
     public int X;
     public int Y;
 
-    //public Occupant Occupant;
+    public Unit Occupant;
 
     // Pathfinding
     public bool targetable = true;
     public bool blocked = false;
+    public bool occupied = false;
 
     public Tile cameFrom;
     public int G { get; set; }
@@ -32,7 +33,24 @@ public class Tile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
         myMR = GetComponent<MeshRenderer>();
     }
 
-    #region Debug
+    public void UpdateOccupant(Unit newOccupant)
+    {
+        Occupant = newOccupant;
+
+        if (newOccupant == null)
+        {
+            blocked = false;
+            occupied = false;
+            targetable = true;
+        }
+        else
+        {
+            blocked = true;
+            occupied = true;
+            targetable = false;
+        }
+    }
+
     public void OnPointerEnter(PointerEventData eventData)
     {
         if (!blocked)
@@ -61,6 +79,9 @@ public class Tile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
         {
             if (!targetable) return;
 
+            MovementManager.Instance.MoveUnit(MovementManager.Instance.debugUnitToMove, this);
+
+            /*
             List<Tile> path = Pathfinding.FindPath(Grid.Instance.tiles[0, 0], this);
             if (path != null)
             {
@@ -79,18 +100,7 @@ public class Tile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
                 Grid.Instance.tiles[0, 0].myMR.material.color = Color.yellow;
                 myMR.material.color = Color.yellow;
                 Invoke("ResetColor", 1f);
-            }
+            }*/
         }
     }
-
-    public void ResetColor()
-    {
-        Grid.Instance.tiles[0, 0].myMR.material.color = Color.white;
-
-        if (!blocked)
-            myMR.material.color = Color.white;
-        else
-            myMR.material.color = Color.black;
-    }
-    #endregion
 }

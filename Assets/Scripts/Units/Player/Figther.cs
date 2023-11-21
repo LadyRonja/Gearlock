@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Digger : Unit
+public class Figther : Unit
 {
 
 }
