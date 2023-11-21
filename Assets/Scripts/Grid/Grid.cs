@@ -11,6 +11,7 @@ public class Grid : MonoBehaviour
     [SerializeField] int coloumns;
 
     public Tile[,] tiles;
+    [SerializeField] List<Material> tileTextures;
 
     private void Awake()
     {
@@ -107,6 +108,19 @@ public class Grid : MonoBehaviour
                 tile.neighbourN = tiles[tile.x, tile.y + 1];
                 tile.neighbours.Add(tile.neighbourN);
             }
+        }
+    }
+
+    [ContextMenu("TextureGrid")]
+    private void RandomizeTextures()
+    {
+        if (tiles == null)
+            FindGrid();
+
+        foreach (Tile t in tiles)
+        {
+            int rand = Random.Range(0, tileTextures.Count);
+            t.transform.GetComponent<MeshRenderer>().material = tileTextures[rand];
         }
     }
 
