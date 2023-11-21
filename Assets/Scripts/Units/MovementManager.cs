@@ -23,7 +23,6 @@ public class MovementManager : MonoBehaviour
         if (!takingMoveAction) return;
         if (unit.movePointsCur <= 0) return;
 
-        // TODO: movepoints not applying movement restrictions correctly
         List<Tile> path = Pathfinding.FindPath(unit.standingOn, toTile, unit.movePointsCur);
         if (path == null) 
         {

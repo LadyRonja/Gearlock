@@ -46,7 +46,7 @@ public class Pathfinding : MonoBehaviour
 
                 if(range >= 0)
                 {
-                    while(path.Count > range + 1)
+                    while(path.Count > range)
                     {
                         path.RemoveAt(path.Count - 1);
                     }
