@@ -32,7 +32,9 @@ public class TurnManager : MonoBehaviour // classen blir en singleton
 
     public System.Collections.IEnumerator AITurn()
     {
-        yield return new WaitForSeconds(2.0f);
+        yield return new WaitForSeconds(2.0f); //justera sen 
+
+        //kalla på scriptet för AI movement 
 
         // Switch back to player's turn
         isPlayerTurn = true;
