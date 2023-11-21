@@ -25,6 +25,8 @@ public class Grid : MonoBehaviour
     private void Start()
     {
         //GenerateGrid();
+        if(tiles == null)
+            FindGrid();
     }
 
     [ContextMenu("GenerateGrid")]
@@ -104,6 +106,24 @@ public class Grid : MonoBehaviour
             {
                 tile.NeighbourN = tiles[tile.X, tile.Y + 1];
                 tile.neighbours.Add(tile.NeighbourN);
+            }
+        }
+    }
+
+    private void FindGrid()
+    {
+        tiles = new Tile[coloumns, rows];
+        for (int x = 0; x < coloumns; x++)
+        {
+            for (int y = 0; y < rows; y++)
+            {
+                GameObject tile = GameObject.Find($"Square ({x}, {y})");
+                if (tile != null)
+                {
+                    Tile xy = tile.GetComponent<Tile>();
+                    if(xy != null)
+                        tiles[x, y] = xy;
+                }
             }
         }
     }
