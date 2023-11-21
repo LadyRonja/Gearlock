@@ -7,16 +7,16 @@ public class Tile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
 {
     public MeshRenderer myMR;
 
-    public Tile NeighbourN;
-    public Tile NeighbourE;
-    public Tile NeighbourS;
-    public Tile NeighbourW;
+    public Tile neighbourN;
+    public Tile neighbourE;
+    public Tile neighbourS;
+    public Tile neighbourW;
     public List<Tile> neighbours = new List<Tile>();
 
-    public int X;
-    public int Y;
+    public int x;
+    public int y;
 
-    public Unit Occupant;
+    public Unit occupant;
 
     // Pathfinding
     public bool targetable = true;
@@ -35,7 +35,7 @@ public class Tile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
 
     public void UpdateOccupant(Unit newOccupant)
     {
-        Occupant = newOccupant;
+        occupant = newOccupant;
 
         if (newOccupant == null)
         {
@@ -75,11 +75,15 @@ public class Tile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
             else
                 myMR.material.color = Color.white;
         }
+        else if (Input.GetKey(KeyCode.LeftShift))
+        {
+            UnitSelector.Instance.UpdateSelectedUnit(occupant);
+        }
         else
         {
             if (!targetable) return;
 
-            MovementManager.Instance.MoveUnit(MovementManager.Instance.debugUnitToMove, this);
+            MovementManager.Instance.MoveUnit(UnitSelector.Instance.selectedUnit, this);
 
             /*
             List<Tile> path = Pathfinding.FindPath(Grid.Instance.tiles[0, 0], this);

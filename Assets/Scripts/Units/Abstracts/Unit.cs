@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,17 +6,22 @@ using UnityEngine.UI;
 
 public abstract class Unit : MonoBehaviour, IDamagable
 {
-    public bool PlayerBot = false;
+    [Header("Generics")]
+    public string unitName = "Unnamed Unit";
+    public bool playerBot = false;
 
-    public int HealthMax = 5;
-    public int HealthCur = 5;
-    public int MovePointsMax = 3;
-    public int MovePointsCur = 3;
-    public int Power = 1;
+    [Header("Stats")]
+    public int healthMax = 5;
+    public int healthCur = 5;
+    public int movePointsMax = 3;
+    public int movePointsCur = 3;
+    public int power = 1;
 
+    [Header("Movement")]
     public bool doneMoving = true;
     public Tile standingOn;
 
+    [Header("Components")]
     public Transform gfx;
     public SpriteRenderer mySR;
 
@@ -26,10 +32,10 @@ public abstract class Unit : MonoBehaviour, IDamagable
 
     public virtual void TakeDamage(int amount)
     {
-        HealthCur -= amount;
-        if (HealthCur < 0)
+        healthCur -= amount;
+        if (healthCur < 0)
         {
-            HealthCur = 0;
+            healthCur = 0;
             Die();
         }
     }
@@ -62,6 +68,7 @@ public abstract class Unit : MonoBehaviour, IDamagable
 
     private IEnumerator MoveStep(Tile toTile)
     {
+        movePointsCur--;
         Vector3 startPos = this.transform.position;
         Vector3 endPos = toTile.transform.position;
         endPos.y += mySR.bounds.size.y / 2f;
@@ -80,6 +87,7 @@ public abstract class Unit : MonoBehaviour, IDamagable
             gfx.localPosition = new Vector3(gfx.localPosition.x, yOffSet, gfx.localPosition.z);
 
             timePassed += Time.deltaTime;
+            UnitSelector.Instance.UpdateUI();
             yield return null;
         }
         standingOn.UpdateOccupant(null);

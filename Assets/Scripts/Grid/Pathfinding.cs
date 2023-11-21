@@ -46,7 +46,7 @@ public class Pathfinding : MonoBehaviour
 
                 if(range >= 0)
                 {
-                    while(path.Count > range)
+                    while(path.Count > range + 1)
                     {
                         path.RemoveAt(path.Count - 1);
                     }
@@ -102,7 +102,7 @@ public class Pathfinding : MonoBehaviour
 
     public static int GetDistance(Tile a, Tile b)
     {
-        Vector2 vec = new Vector2(a.X - b.X, a.Y - b.Y);
+        Vector2 vec = new Vector2(a.x - b.x, a.y - b.y);
         return Mathf.CeilToInt(Mathf.Max(math.abs(vec.x), math.abs(vec.y)));
     }
 }

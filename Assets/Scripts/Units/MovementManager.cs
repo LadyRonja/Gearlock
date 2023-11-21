@@ -5,7 +5,7 @@ using UnityEngine;
 public class MovementManager : MonoBehaviour
 {
     public static MovementManager Instance;
-    public Unit debugUnitToMove;
+    public bool takingMoveAction = true;
 
     private void Awake()
     {
@@ -19,7 +19,12 @@ public class MovementManager : MonoBehaviour
 
     public void MoveUnit(Unit unit, Tile toTile)
     {
-        List<Tile> path = Pathfinding.FindPath(unit.standingOn, toTile);
+        if (unit == null) return;
+        if (!takingMoveAction) return;
+        if (unit.movePointsCur <= 0) return;
+
+        // TODO: movepoints not applying movement restrictions correctly
+        List<Tile> path = Pathfinding.FindPath(unit.standingOn, toTile, unit.movePointsCur);
         if (path == null) 
         {
             // TODO: Indicate no available path
