@@ -55,7 +55,7 @@ public abstract class Unit : MonoBehaviour, IDamagable
         StartCoroutine(MovePath(path));
     }
 
-    private IEnumerator MovePath(List<Tile> path)
+    public IEnumerator MovePath(List<Tile> path)
     {
         for (int i = 0; i < path.Count; i++)
         {
@@ -95,5 +95,56 @@ public abstract class Unit : MonoBehaviour, IDamagable
         toTile.UpdateOccupant(this);
 
         yield return null;
+    }
+
+    public virtual Unit FindTargetUnit()
+    {
+        return FindNearestPlayerUnit(false);
+    }
+
+    protected Unit FindNearestPlayerUnit(bool ignoreWalls)
+    {
+        List<Unit> targets = UnitStorage.Instance.playerUnits;
+        if(targets.Count == 0)
+        {
+            Debug.LogError("Player has no units registered");
+            return null;
+        }
+
+        Unit nearestFoundUnit = targets[0];
+        // Ternary conditional operator:
+        // "condition ? (return if true) : (return if false)"
+        int nearestDistance = ignoreWalls ? Pathfinding.GetDistance(standingOn, nearestFoundUnit.standingOn) : Pathfinding.FindPath(standingOn, nearestFoundUnit.standingOn).Count;
+        for (int i = 1; i < targets.Count; i++)
+        {
+            int dist = ignoreWalls ? Pathfinding.GetDistance(standingOn, nearestFoundUnit.standingOn) : Pathfinding.FindPath(standingOn, nearestFoundUnit.standingOn).Count;
+            if (dist < nearestDistance)
+            {
+                nearestDistance = dist;
+                nearestFoundUnit = targets[i];
+            }
+            else if (dist == nearestDistance)
+            {
+                // Tie breaker currently often goes for lowest health, but sometimes for highest health
+                int rand = UnityEngine.Random.Range(0, 100);
+                int tieBreakerGoodLuckPercentage = 75;
+                if(rand <= tieBreakerGoodLuckPercentage)
+                    if (nearestFoundUnit.healthCur > targets[i].healthCur)
+                        nearestFoundUnit = targets[i];
+                else
+                    if (nearestFoundUnit.healthCur < targets[i].healthCur)
+                        nearestFoundUnit = targets[i];
+            }
+        }
+        return nearestFoundUnit;
+    }
+
+    public virtual List<Tile> CalculatePathToTarget(Tile targetTile)
+    {
+        List<Tile> output = Pathfinding.FindPath(standingOn, targetTile, movePointsCur);
+        if (output[output.Count - 1] == targetTile)
+            output.RemoveAt(output.Count - 1);
+
+        return output;
     }
 }
