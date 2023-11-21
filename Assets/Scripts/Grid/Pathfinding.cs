@@ -42,7 +42,6 @@ public class Pathfinding : MonoBehaviour
                     path.Add(currentPathTile);
                     currentPathTile = currentPathTile.cameFrom;
                 }
-                path.Add(start);
                 path.Reverse();
 
                 if(range >= 0)
