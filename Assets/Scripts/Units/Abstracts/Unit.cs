@@ -57,6 +57,12 @@ public abstract class Unit : MonoBehaviour, IDamagable
 
     public IEnumerator MovePath(List<Tile> path)
     {
+        if (path == null) 
+            yield break; 
+
+        if(path.Count == 0)
+            yield break;
+
         for (int i = 0; i < path.Count; i++)
         {
             yield return StartCoroutine(MoveStep(path[i]));
@@ -111,13 +117,37 @@ public abstract class Unit : MonoBehaviour, IDamagable
             return null;
         }
 
-        Unit nearestFoundUnit = targets[0];
+        Unit nearestFoundUnit = targets[0];/*
         // Ternary conditional operator:
         // "condition ? (return if true) : (return if false)"
         int nearestDistance = ignoreWalls ? Pathfinding.GetDistance(standingOn, nearestFoundUnit.standingOn) : Pathfinding.FindPath(standingOn, nearestFoundUnit.standingOn).Count;
+        */
+        int nearestDistance = int.MaxValue;
+        if (ignoreWalls)
+            nearestDistance = Pathfinding.GetDistance(standingOn, nearestFoundUnit.standingOn);
+        else
+        {
+            List<Tile> path = Pathfinding.FindPath(standingOn, nearestFoundUnit.standingOn);
+            if (path != null)
+                nearestDistance = path.Count;
+            else
+                nearestDistance = int.MaxValue;
+        }
+
+        
         for (int i = 1; i < targets.Count; i++)
         {
-            int dist = ignoreWalls ? Pathfinding.GetDistance(standingOn, nearestFoundUnit.standingOn) : Pathfinding.FindPath(standingOn, nearestFoundUnit.standingOn).Count;
+            int dist = int.MaxValue;
+            if (ignoreWalls)
+                dist = Pathfinding.GetDistance(standingOn, nearestFoundUnit.standingOn);
+            else
+            {
+                List<Tile> path = Pathfinding.FindPath(standingOn, nearestFoundUnit.standingOn);
+                if (path != null)
+                    dist = path.Count;
+                else
+                    dist = int.MaxValue;
+            }
             if (dist < nearestDistance)
             {
                 nearestDistance = dist;
@@ -135,6 +165,7 @@ public abstract class Unit : MonoBehaviour, IDamagable
                     if (nearestFoundUnit.healthCur < targets[i].healthCur)
                         nearestFoundUnit = targets[i];
             }
+
         }
         return nearestFoundUnit;
     }
@@ -142,8 +173,9 @@ public abstract class Unit : MonoBehaviour, IDamagable
     public virtual List<Tile> CalculatePathToTarget(Tile targetTile)
     {
         List<Tile> output = Pathfinding.FindPath(standingOn, targetTile, movePointsCur);
-        if (output[output.Count - 1] == targetTile)
-            output.RemoveAt(output.Count - 1);
+        if (output == null) return output;
+       /* if (output[output.Count - 1] == targetTile)
+            output.RemoveAt(output.Count - 1);*/
 
         return output;
     }

@@ -44,6 +44,10 @@ public class Pathfinding : MonoBehaviour
                 }
                 path.Reverse();
 
+                // AI will look for the tile the target is standing on, remove that
+                if (path[^1].occupied)
+                    path.RemoveAt(path.Count - 1);
+
                 if(range >= 0)
                 {
                     while(path.Count > range)
@@ -57,10 +61,30 @@ public class Pathfinding : MonoBehaviour
 
             // Determine which neighbours to investigate
             List<Tile> investigateNeighbours;
-            if(ignoreBlocks)
+            if (ignoreBlocks)
+            {
                 investigateNeighbours = current.neighbours.Where(t => !t.occupied && !processed.Contains(t)).ToList();
+                // AI will look for a path where a unit is standing, make sure to find that tile
+                foreach (Tile t in current.neighbours)
+                {
+                    if(t == end && !investigateNeighbours.Contains(t))
+                    {
+                        investigateNeighbours.Add(t);
+                    }
+                }
+            }
             else
+            {
                 investigateNeighbours = current.neighbours.Where(t => !t.occupied && !processed.Contains(t) && !t.blocked).ToList();
+                // AI will look for a path where a unit is standing, make sure to find that tile
+                foreach (Tile t in current.neighbours)
+                {
+                    if (t == end && !investigateNeighbours.Contains(t))
+                    {
+                        investigateNeighbours.Add(t);
+                    }
+                }
+            }
 
             // Check each non-blocked neighbouring tile that has not already been processed
             foreach (Tile neighbour in investigateNeighbours)

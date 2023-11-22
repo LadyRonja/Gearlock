@@ -8,6 +8,7 @@ public class UnitSelector : MonoBehaviour
 {
     public static UnitSelector Instance;
     public Unit selectedUnit;
+    public bool playerCanSelectNewUnit = true;
     public GameObject tempUIPanel;
     public TMP_Text tempNameText;
     public TMP_Text tempMovePointsText;
@@ -24,10 +25,18 @@ public class UnitSelector : MonoBehaviour
         UpdateUI();
     }
 
-    public void UpdateSelectedUnit(Unit unitToSelect)
+    public void UpdateSelectedUnit(Unit unitToSelect, bool calledByAI)
     {
+        if (!playerCanSelectNewUnit && !calledByAI)
+            return;
+
         selectedUnit = unitToSelect;
         UpdateUI();
+    }
+
+    public void UpdateSelectedUnit(Unit unitToSelect)
+    {
+        UpdateSelectedUnit(unitToSelect, false);
     }
 
     public void UpdateUI()

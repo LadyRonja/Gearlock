@@ -16,9 +16,14 @@ public class AIManager : MonoBehaviour
             Destroy(this.gameObject);
         #endregion
     }
+    
 
-    public void StartEnemeyTurn()
+    public void StartAITurn()
     {
+        foreach (Unit u in UnitStorage.Instance.enemyUnits)
+        {
+            u.movePointsCur = u.movePointsMax;
+        }
         StartCoroutine(TakeEnemyTurn());
     }
 
@@ -26,7 +31,9 @@ public class AIManager : MonoBehaviour
     {
         foreach (Unit u in UnitStorage.Instance.enemyUnits)
         {
+            UnitSelector.Instance.UpdateSelectedUnit(u, true);
             Unit enemyTarget = u.FindTargetUnit();
+            Debug.Log("enemy target found " + enemyTarget + " for " + u.unitName);
             List<Tile> path = u.CalculatePathToTarget(enemyTarget.standingOn);
             yield return StartCoroutine(u.MovePath(path));
 

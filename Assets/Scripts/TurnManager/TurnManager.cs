@@ -29,9 +29,10 @@ public class TurnManager : MonoBehaviour // classen blir en singleton
         {
             isPlayerTurn = false;
             MovementManager.Instance.takingMoveAction = false;
+            UnitSelector.Instance.playerCanSelectNewUnit = false;
 
             UpdateUI();
-            StartCoroutine(AITurn());//Ändra sen
+            AIManager.Instance.StartAITurn();
 
             //TODO disable player interaction
         }
@@ -48,6 +49,7 @@ public class TurnManager : MonoBehaviour // classen blir en singleton
 
         isPlayerTurn = true;
         MovementManager.Instance.takingMoveAction = true; // Change later
+        UnitSelector.Instance.playerCanSelectNewUnit = true;
         foreach (Unit u in UnitStorage.Instance.playerUnits)
         {
             u.movePointsCur = u.movePointsMax;
@@ -55,15 +57,6 @@ public class TurnManager : MonoBehaviour // classen blir en singleton
         UpdateUI();
     }
 
-    public System.Collections.IEnumerator AITurn()
-    {
-        yield return new WaitForSeconds(2.0f); //justera sen 
-
-        //kalla på scriptet för AI movement 
-
-        // Switch back to player's turn
-        GoToPlayerTurn();
-    }
 
     public void UpdateUI()
     {
