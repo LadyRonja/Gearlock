@@ -6,13 +6,13 @@ public class DigCard : PlayCard
 {
     public Animator digAnimation;
     
-    private Grid grid; // Reference to the Grid script
+    private GridManager grid; // Reference to the Grid script
     private Tile playerTile; // Reference to the player's current tile
     public LayerMask dirtLayer; // LayerMask for dirt sprites
 
     private void Start()
     {
-        grid = Grid.Instance;
+        grid = GridManager.Instance;
         if (grid != null)
         {
             // Assuming the player starts on the center tile (adjust as needed)

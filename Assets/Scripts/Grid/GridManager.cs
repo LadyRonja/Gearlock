@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Grid : MonoBehaviour
+public class GridManager : MonoBehaviour
 {
-    public static Grid Instance;
+    public static GridManager Instance;
 
     [SerializeField] GameObject tilePrefab;
     [SerializeField] int rows;

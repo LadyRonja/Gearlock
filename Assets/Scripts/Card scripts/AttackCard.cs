@@ -6,12 +6,12 @@ public class AttackCard : MonoBehaviour
 {
     public Animator shootAnimation; //skjuta eller slå?
 
-    private Grid grid; // Reference to the Grid script
+    private GridManager grid; // Reference to the Grid script
     private Tile playerTile; // Reference to the player's current tile
 
     private void Start()
     {
-        grid = Grid.Instance;
+        grid = GridManager.Instance;
         if (grid != null)
         {
             // Assuming the player starts on the center tile (adjust as needed)
