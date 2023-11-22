@@ -9,24 +9,22 @@ public class DigCard : PlayCard
 
     public void Dig()
     {
-        if (dirtPile != null)
+        if (dirtPile.containesDirt == true)
         {
             dirtPile.RemoveDirt();
-
-            //playerAnimator.SetTrigger("Digging");
-
         }
+        
+       //playerAnimator.SetTrigger("Digging"); 
     }
 
-
-
-
-
+    
 
 
 }
 
-    
+//om man kan klicka på tilen så kollar man efter  public bool containesDirt;
+
+
 
 
 

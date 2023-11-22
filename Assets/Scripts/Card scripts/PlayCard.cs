@@ -5,23 +5,29 @@ using UnityEngine;
 public abstract class PlayCard : MonoBehaviour
 {
     public bool selectCard;
+    public bool playCard;
 
-    private Tile playerTile; // Reference to the player's current tile
+    protected Tile playerTile; // Reference to the player's current tile
+    protected Tile clickedTile;
 
     protected virtual void Update()
     {
+        //TODO
+        //Check if card is selected
+        //if not activated (the card) return 
+        
         if (Input.GetMouseButtonDown(0))
         {
             // Get the mouse click position in world space
             Vector3 clickPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
             // Get the clicked tile
-            Tile clickedTile = GetClickedTile(clickPosition);
+           clickedTile = GetClickedTile(clickPosition);
 
             if (clickedTile != null)
             {
                 // Calculate the distance between the clicked tile and the player's tile
-                int dist = GetDistance(clickedTile, playerTile);
+                int dist = Pathfinding.GetDistance(clickedTile, playerTile);
                 Debug.Log("Distance to Player: " + dist);
             }
         }
@@ -34,18 +40,14 @@ public abstract class PlayCard : MonoBehaviour
 
         if (hit.collider != null)
         {
-            Tile clickedTile = hit.collider.GetComponent<Tile>();
-            return clickedTile;
+            Tile hitTile = hit.collider.GetComponent<Tile>();
+            return hitTile;
         }
 
         return null;
     }
 
-    protected virtual int GetDistance(Tile a, Tile b)
-    {
-        // Use the Pathfinding.GetDistance method to calculate distance
-        return Pathfinding.GetDistance(a, b);
-    }
+
 
 
     /*public virtual void Play()
@@ -53,7 +55,15 @@ public abstract class PlayCard : MonoBehaviour
         if (Input.GetMouseButtonDown(0)) //om man klickar på kortet väljs det
         {
             selectCard = true;
+            
+            if (Input.GetMouseButtonUp(0))
+            {
+                playCard = true;
+            }
+
+
         }
+        
     }*/
 
 
