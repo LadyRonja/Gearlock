@@ -4,15 +4,7 @@ using UnityEngine;
 
 public class DigCard : PlayCard
 {
-    public Animator digAnimation;
-    
-   
-    
-    private void Start()
-    {
-       
-    }
-
+  
     
 
     

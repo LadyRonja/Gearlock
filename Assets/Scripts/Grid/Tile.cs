@@ -17,6 +17,7 @@ public class Tile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
     public int y;
 
     public Unit occupant;
+    public bool containesDirt;
 
     // Pathfinding
     public bool targetable = true;
@@ -106,5 +107,14 @@ public class Tile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
                 Invoke("ResetColor", 1f);
             }*/
         }
+    }
+
+    public void RemoveDirt()
+    {
+        //TODO:
+        // check if covered in dirt
+        // set covered to false
+        // remove dirt block object
+        // spawn card/enemy
     }
 }
