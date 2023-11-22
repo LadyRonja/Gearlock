@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Xml.Linq;
 using Unity.VisualScripting;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -11,17 +12,19 @@ public class MouseOverCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     bool hovering = false;
     float cardX, cardY;
     bool isDragged = false;
-    Vector3 dragStartPos;
+    bool inHand = true;
     Vector3 dragPos;
-    public Transform discardPile;
+    //CardManager cardManager;
 
+    private void Start()
+    {
+        //cardManager = FindObjectOfType<CardManager>();
+
+        
+    }
 
     public void Update()
     {
-        if (Input.GetMouseButtonDown(0) && hovering)
-        {
-            dragStartPos = new Vector2(transform.localPosition.x, transform.localPosition.y);
-        }
 
         if (Input.GetMouseButton(0) && hovering)
         {
@@ -33,8 +36,8 @@ public class MouseOverCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
         if (Input.mousePosition.y > 300 && isDragged && !Input.GetMouseButton(0))
         {
-            Destroy(gameObject);
-            Instantiate(gameObject, new Vector3(80f, 50f, 0f), Quaternion.identity);
+            transform.parent = DiscardPile.Instance.transform;
+            inHand = false;
         }
 
         if (isDragged && !Input.GetMouseButton(0))
@@ -43,9 +46,6 @@ public class MouseOverCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
             hovering = false;
             isDragged = false;
         }
-
-
-        Debug.Log(Input.mousePosition.y);
     }
 
     //Detect if the Cursor starts to pass over the GameObject
@@ -59,7 +59,7 @@ public class MouseOverCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
         //Output to console the GameObject's name and the following message
         Debug.Log("Cursor Entering " + name + " GameObject");
-        if (!hovering)
+        if (!hovering && inHand)
         {
             transform.position = new Vector3(cardX,cardY + 100,0);
             hovering = true;

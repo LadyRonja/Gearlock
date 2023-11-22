@@ -8,10 +8,13 @@ public class AddCard : MonoBehaviour
     public List<GameObject> cards;
     int card;
 
+
     public void AddCardToHand()
     {
         card = Random.Range(0, cards.Count);
         Instantiate(cards[card], handParent.transform);
     }
+
+
 
 }
