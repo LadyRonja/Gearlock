@@ -111,7 +111,20 @@ public class Tile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
 
         if (Input.GetKey(KeyCode.Q))
         {
-
+            if (Input.GetKey(KeyCode.W))
+            {
+                Debug.Log("Setting start tile: " + name);
+                GridManager.Instance.startTile = this;
+            }
+            else if (Input.GetKey(KeyCode.E))
+            {
+                Debug.Log("Setting End tile: " + name);
+                GridManager.Instance.endTile = this;
+            }
+            else if (Input.GetKey(KeyCode.R))
+            {
+                Debug.Log($"Distance between start({GridManager.Instance.startTile}) and end({GridManager.Instance.endTile}): {Pathfinding.GetDistance(GridManager.Instance.startTile, GridManager.Instance.endTile)}");
+            }
         }
     }
 
