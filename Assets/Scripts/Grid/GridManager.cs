@@ -13,6 +13,10 @@ public class GridManager : MonoBehaviour
     public Tile[,] tiles;
     [SerializeField] List<Material> tileTextures;
 
+    //Debug
+    public Tile startTile;
+    public Tile endTile;
+
     private void Awake()
     {
         #region Singleton

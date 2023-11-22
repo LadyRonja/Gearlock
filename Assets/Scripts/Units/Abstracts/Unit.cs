@@ -110,6 +110,7 @@ public abstract class Unit : MonoBehaviour, IDamagable
 
     protected Unit FindNearestPlayerUnit(bool ignoreWalls)
     {
+        // Check all units the player has
         List<Unit> targets = UnitStorage.Instance.playerUnits;
         if(targets.Count == 0)
         {
@@ -117,11 +118,9 @@ public abstract class Unit : MonoBehaviour, IDamagable
             return null;
         }
 
-        Unit nearestFoundUnit = targets[0];/*
-        // Ternary conditional operator:
-        // "condition ? (return if true) : (return if false)"
-        int nearestDistance = ignoreWalls ? Pathfinding.GetDistance(standingOn, nearestFoundUnit.standingOn) : Pathfinding.FindPath(standingOn, nearestFoundUnit.standingOn).Count;
-        */
+        // See how far away the first one is, depending on if the unit can walk through walls or not
+        Unit nearestFoundUnit = targets[0];
+
         int nearestDistance = int.MaxValue;
         if (ignoreWalls)
             nearestDistance = Pathfinding.GetDistance(standingOn, nearestFoundUnit.standingOn);
@@ -132,9 +131,13 @@ public abstract class Unit : MonoBehaviour, IDamagable
                 nearestDistance = path.Count;
             else
                 nearestDistance = int.MaxValue;
+
+
+            Debug.Log($"{unitName} is {nearestDistance} tiles away from {nearestFoundUnit}");
         }
 
-        
+        // Compare the the currently closest unit to each other unit, if the distance to another unit is shorter,
+        // update which one is beign measured from
         for (int i = 1; i < targets.Count; i++)
         {
             int dist = int.MaxValue;
@@ -148,6 +151,9 @@ public abstract class Unit : MonoBehaviour, IDamagable
                 else
                     dist = int.MaxValue;
             }
+
+            Debug.Log($"{unitName} is {dist} tiles away from {targets[i].unitName}");
+            // If units are equally close, use a tiebreaker
             if (dist < nearestDistance)
             {
                 nearestDistance = dist;
@@ -158,14 +164,18 @@ public abstract class Unit : MonoBehaviour, IDamagable
                 // Tie breaker currently often goes for lowest health, but sometimes for highest health
                 int rand = UnityEngine.Random.Range(0, 100);
                 int tieBreakerGoodLuckPercentage = 75;
-                if(rand <= tieBreakerGoodLuckPercentage)
-                    if (nearestFoundUnit.healthCur > targets[i].healthCur)
+                if (rand <= tieBreakerGoodLuckPercentage)
+                    if (nearestFoundUnit.healthCur < targets[i].healthCur) { 
                         nearestFoundUnit = targets[i];
+                        Debug.Log($"Tiebreaker went for lower health target: " + rand);
+                    }
                 else
-                    if (nearestFoundUnit.healthCur < targets[i].healthCur)
+                    if (nearestFoundUnit.healthCur > targets[i].healthCur)
+                    {
                         nearestFoundUnit = targets[i];
+                        Debug.Log($"Tiebreaker went for higher health target: " + rand);
+                    }
             }
-
         }
         return nearestFoundUnit;
     }
@@ -173,9 +183,6 @@ public abstract class Unit : MonoBehaviour, IDamagable
     public virtual List<Tile> CalculatePathToTarget(Tile targetTile)
     {
         List<Tile> output = Pathfinding.FindPath(standingOn, targetTile, movePointsCur);
-        if (output == null) return output;
-       /* if (output[output.Count - 1] == targetTile)
-            output.RemoveAt(output.Count - 1);*/
 
         return output;
     }

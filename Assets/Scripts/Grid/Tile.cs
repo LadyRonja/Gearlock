@@ -29,6 +29,7 @@ public class Tile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
     public int H { get; set; }
     public int F { get => (G + H); }
 
+
     private void Start()
     {
         myMR = GetComponent<MeshRenderer>();
@@ -106,6 +107,11 @@ public class Tile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
                 myMR.material.color = Color.yellow;
                 Invoke("ResetColor", 1f);
             }*/
+        }
+
+        if (Input.GetKey(KeyCode.Q))
+        {
+
         }
     }
 
