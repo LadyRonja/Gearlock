@@ -44,16 +44,16 @@ public class AttackCard : MonoBehaviour
             if (IsNextToPlayer(clickedTile))
             {
                 // Check if there is a enemy sprite in the clicked tile
-                Collider2D enemyCollider = Physics2D.OverlapPoint(clickPosition, enemyLayer); //lägg enemy layer på enemy
+                //Collider2D enemyCollider = Physics2D.OverlapPoint(clickPosition, enemyLayer); //lägg enemy layer på enemy
 
-                if (enemyCollider != null)
+               // if (enemyCollider != null)
                 {
                     // Play shoot animation and Destroy the dirt sprite
 
                     //TODO Prata med Enemy health?
 
                     //playerAnimator.SetTrigger("Shooting");
-                    Destroy(enemyCollider.gameObject);
+                   // Destroy(enemyCollider.gameObject);
                     Debug.Log("Enemy hit!");
                 }
             }
