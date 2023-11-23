@@ -50,7 +50,7 @@ public abstract class PlayCard : MonoBehaviour
 
 
 
-    /*public virtual void Play()
+    public virtual void Play()
     {
         if (Input.GetMouseButtonDown(0)) //om man klickar på kortet väljs det
         {
@@ -64,7 +64,7 @@ public abstract class PlayCard : MonoBehaviour
 
         }
         
-    }*/
+    }
 
 
 

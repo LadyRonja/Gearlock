@@ -108,7 +108,14 @@ public class Tile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
 
         containesDirt = false;
         blocked = false;
-        Destroy(dirt.gameObject);
+        bool remoevedInEditor = false;
+#if UNITY_EDITOR
+        DestroyImmediate(dirt.gameObject);
+        remoevedInEditor = true;
+#endif
+        if (!remoevedInEditor)
+            Destroy(dirt.gameObject);
+
         dirt = null;
 
         // TODO
