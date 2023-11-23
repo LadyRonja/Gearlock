@@ -16,6 +16,7 @@ public abstract class Unit : MonoBehaviour, IDamagable
     public int movePointsMax = 3;
     public int movePointsCur = 3;
     public int power = 1;
+    public int attackRange = 1;
 
     [Header("Movement")]
     public bool doneMoving = true;
@@ -42,7 +43,14 @@ public abstract class Unit : MonoBehaviour, IDamagable
 
     public virtual void Die()
     {
-        Destroy(this.gameObject);
+        bool destroyedInEditor = false;
+#if UNITY_EDITOR
+        DestroyImmediate(this.gameObject);
+        destroyedInEditor = true;
+#endif
+
+        if(!destroyedInEditor)
+            Destroy(this.gameObject);
     }
 
     /// <summary>
@@ -149,7 +157,6 @@ public abstract class Unit : MonoBehaviour, IDamagable
                     dist = int.MaxValue;
             }
 
-            Debug.Log($"{unitName} is {dist} tiles away from {targets[i].unitName}");
             // If units are equally close, use a tiebreaker
             if (dist < nearestDistance)
             {
