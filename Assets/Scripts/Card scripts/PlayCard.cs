@@ -27,6 +27,7 @@ public abstract class PlayCard : MonoBehaviour
             if (clickedTile != null)
             {
                 // Calculate the distance between the clicked tile and the player's tile
+                //check if its clickable ie no dirt or occupied or too far from player
                 int dist = Pathfinding.GetDistance(clickedTile, playerTile);
                 Debug.Log("Distance to Player: " + dist);
             }
