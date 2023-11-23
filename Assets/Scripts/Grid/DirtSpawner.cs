@@ -31,7 +31,7 @@ public class DirtSpawner : MonoBehaviour
     {
         if (spawnOnLoad)
         {
-
+            SpawnFromList(spawnPositions);
         }
             
 
