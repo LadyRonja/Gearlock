@@ -11,6 +11,8 @@ public class UnitSelector : MonoBehaviour
     public bool playerCanSelectNewUnit = true;
     public GameObject tempUIPanel;
     public TMP_Text tempNameText;
+    public Image tempHealthFill;
+    public Image tempHealthFillWhite;
     public TMP_Text tempMovePointsText;
 
     private void Awake()
@@ -52,7 +54,13 @@ public class UnitSelector : MonoBehaviour
         {
             tempUIPanel.SetActive(true);
             tempNameText.text = selectedUnit.unitName;
+            //tempHealthFill.fillAmount = (float)selectedUnit.healthCur / (float)selectedUnit.healthMax;
             tempMovePointsText.text = $"MovementPoints: {selectedUnit.movePointsCur}/{selectedUnit.movePointsMax}";
         }
     }
+
+    /*private IEnumerator ReduceHealthbarOverTime(float seconds)
+    {
+
+    }*/
 }

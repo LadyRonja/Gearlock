@@ -16,6 +16,7 @@ public abstract class Unit : MonoBehaviour, IDamagable
     public int movePointsMax = 3;
     public int movePointsCur = 3;
     public int power = 1;
+    public int attackRange = 1;
 
     [Header("Movement")]
     public bool doneMoving = true;
