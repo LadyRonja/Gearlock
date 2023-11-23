@@ -6,10 +6,12 @@ public class DebugCardPlayer : MonoBehaviour
 {
     public GameObject cardPrefab;
     public PlayCard activeCard;
+   
 
     private void Start()
     {
         activeCard = Instantiate(cardPrefab).GetComponent<PlayCard>();
+        
     }
 
 
@@ -18,6 +20,7 @@ public class DebugCardPlayer : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.T))
         {
             activeCard.Play();
+            
         }
     }
 }

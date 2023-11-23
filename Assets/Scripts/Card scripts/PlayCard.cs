@@ -1,72 +1,144 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Device;
+using UnityEngine.UIElements;
 
-public abstract class PlayCard : MonoBehaviour
+public abstract class PlayCard : MonoBehaviour //lägg till abstract
 {
     public bool selectCard;
     public bool playCard;
+    public float distance;
+    public CardType currentCardType;
 
-    protected Tile playerTile; // Reference to the player's current tile
-    protected Tile clickedTile;
+
+    //protected Tile clickedTile;
+    protected UnitSelector chosenUnit;
+    protected AttackCard attackCard;
+    protected DigCard digCard;
+    
+
+    protected virtual void Start()
+    {
+        chosenUnit = GetComponent<UnitSelector>();
+    }
 
     protected virtual void Update()
     {
         //TODO
         //Check if card is selected
         //if not activated (the card) return 
-        
+
+        ClickOnUnit();
+
+
+    }
+
+    public enum CardType
+    {
+        Dig,
+        Attack
+    }
+
+    public void ClickOnUnit()
+    {
+        if (!selectCard)
+            return;
+
         if (Input.GetMouseButtonDown(0))
         {
-            // Get the mouse click position in world space
-            Vector3 clickPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            // Get the mouse position in screen coordinates
+            Vector3 mousePosition = Input.mousePosition;
 
-            // Get the clicked tile
-           clickedTile = GetClickedTile(clickPosition);
+            // Cast a ray from the camera to the mouse position
+            Ray ray = Camera.main.ScreenPointToRay(mousePosition);
 
-            if (clickedTile != null)
+            // Perform a raycast to check for objects at the click position
+            RaycastHit hit;
+
+            if (Physics.Raycast(ray, out hit))
             {
-                // Calculate the distance between the clicked tile and the player's tile
-                //check if its clickable ie no dirt or occupied or too far from player
-                int dist = Pathfinding.GetDistance(clickedTile, playerTile);
-                Debug.Log("Distance to Player: " + dist);
+                // Check if the clicked object has a Tile component
+                Tile clickedTile = hit.collider.GetComponent<Tile>();
+
+                if (clickedTile != null)
+                {
+                    // Use GridManager to find the player's unit
+                    Unit playerUnit = FindPlayerUnit();
+
+                    if (playerUnit != null)
+                    {
+                        // Calculate the distance between the player's unit and the clicked tile
+                        distance = Vector3.Distance(playerUnit.transform.position, clickedTile.transform.position);
+
+                        // Log the distance
+                        Debug.Log($"Distance to clicked tile: {distance}");
+                    }
+                    else
+                    {
+                        Debug.LogWarning("No player unit found.");
+                    }
+                }
+                
+                if (distance < 14) //om avståndet från player och clicked tile är mindre än 20 dvs 2 rutor
+                {
+                    playCard = true;
+                    Debug.Log("You can play this card");
+
+                    if(currentCardType == CardType.Attack)
+                    {
+                        attackCard.Attack();
+                    }
+
+                    if (currentCardType == CardType.Dig) 
+                    {
+                        
+                    }
+
+                }
+                else
+                {
+                    playCard = false;
+                    Debug.Log("You can NOT play this card");
+                }
             }
         }
     }
 
-    protected virtual Tile GetClickedTile(Vector3 clickPosition)
-    {
-        // Raycast to find the clicked tile
-        RaycastHit2D hit = Physics2D.Raycast(clickPosition, Vector2.zero);
 
-        if (hit.collider != null)
+    private Unit FindPlayerUnit()
+    {
+        
+        GridManager gridManager = GridManager.Instance;
+
+        if (gridManager != null && gridManager.tiles != null)
         {
-            Tile hitTile = hit.collider.GetComponent<Tile>();
-            return hitTile;
+            for (int x = 0; x < gridManager.tiles.GetLength(0); x++)
+            {
+                for (int y = 0; y < gridManager.tiles.GetLength(1); y++)
+                {
+                    Tile tile = gridManager.tiles[x, y];
+                    if (tile != null && tile.occupant != null && tile.occupant.playerBot)
+                    {
+                        return tile.occupant;
+                    }
+                }
+            }
         }
 
         return null;
     }
 
-
-
-
     public virtual void Play()
     {
-        if (Input.GetMouseButtonDown(0)) //om man klickar på kortet väljs det
-        {
-            selectCard = true;
-            
-            if (Input.GetMouseButtonUp(0))
-            {
-                playCard = true;
-            }
 
+        selectCard = true;
+        Debug.Log("you have selceted a card");
 
-        }
-        
     }
-
-
-
 }
+
+   
+

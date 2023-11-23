@@ -12,6 +12,7 @@ public class DigCard : PlayCard
         if (dirtPile.containesDirt == true)
         {
             dirtPile.RemoveDirt();
+            Debug.Log("You dig the dirt");
         }
         
        //playerAnimator.SetTrigger("Digging"); 
