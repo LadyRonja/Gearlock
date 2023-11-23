@@ -18,6 +18,7 @@ public class Tile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
 
     public Unit occupant;
     public bool containesDirt;
+    public Dirt dirt;
 
     // Pathfinding
     public bool targetable = true;

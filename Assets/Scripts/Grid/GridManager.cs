@@ -25,12 +25,8 @@ public class GridManager : MonoBehaviour
         else
             Destroy(this.gameObject);
         #endregion
-    }
 
-    private void Start()
-    {
-        //GenerateGrid();
-        if(tiles == null)
+        if (tiles == null)
             FindGrid();
 
         if (tiles[1, 1].x != 1)
@@ -38,6 +34,11 @@ public class GridManager : MonoBehaviour
             Debug.LogError("Grid Data Lost!");
             UpdateTileData();
         }
+    }
+
+    private void Start()
+    {
+        //GenerateGrid();
     }
 
     [ContextMenu("GenerateGrid")]
