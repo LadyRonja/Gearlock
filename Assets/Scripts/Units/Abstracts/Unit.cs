@@ -131,9 +131,6 @@ public abstract class Unit : MonoBehaviour, IDamagable
                 nearestDistance = path.Count;
             else
                 nearestDistance = int.MaxValue;
-
-
-            Debug.Log($"{unitName} is {nearestDistance} tiles away from {nearestFoundUnit}");
         }
 
         // Compare the the currently closest unit to each other unit, if the distance to another unit is shorter,
