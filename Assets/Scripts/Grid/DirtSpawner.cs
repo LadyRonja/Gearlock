@@ -63,9 +63,9 @@ public class DirtSpawner : MonoBehaviour
         int randFront = Random.Range(0, dirtSides.Count);
 
         dirt.top.material = dirtTops[randTop];
-        dirt.front.material = dirtTops[randSideLeft];
-        dirt.sideRight.material = dirtTops[randSideRight];
-        dirt.sideLeft.material = dirtTops[randFront];
+        dirt.front.material = dirtSides[randSideLeft];
+        dirt.sideRight.material = dirtSides[randSideRight];
+        dirt.sideLeft.material = dirtSides[randFront];
 
         // Set it's position properly
         Vector3 targetPos = onTile.transform.position;
