@@ -50,7 +50,7 @@ public class DirtSpawner : MonoBehaviour
     public void SpawnDirt(Tile onTile)
     {
         // Spawn a piece of dirt
-        GameObject dirtGameObject = Instantiate(dirtPrefab);
+        GameObject dirtGameObject = Instantiate(dirtPrefab, this.transform);
         Dirt dirt = dirtGameObject.GetComponent<Dirt>();
 
         // Randomize sides and top
@@ -79,7 +79,6 @@ public class DirtSpawner : MonoBehaviour
         onTile.occupied = false;
     }
 
-    [ContextMenu("Spawn Dirt From List")]
     private void SpawnFromList(List<Vector2Int> spawnOn)
     {
         if(GridManager.Instance.tiles == null)
@@ -99,13 +98,19 @@ public class DirtSpawner : MonoBehaviour
                         SpawnDirt(GridManager.Instance.tiles[x, y]);
                         break;
                     }
-                    else
+                    else if(GridManager.Instance.tiles[x, y].containesDirt)
                     {
                         GridManager.Instance.tiles[x, y].RemoveDirt();
                     }
                 }
             }
         }
+    }
 
+
+    [ContextMenu("Spawn Dirt From List")]
+    private void SpawnFromList()
+    {
+        SpawnFromList(spawnPositions);
     }
 }
