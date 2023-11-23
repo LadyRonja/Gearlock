@@ -126,7 +126,16 @@ public class Pathfinding : MonoBehaviour
 
     public static int GetDistance(Tile a, Tile b)
     {
-        Vector2 vec = new Vector2(a.x - b.x, a.y - b.y);
-        return Mathf.CeilToInt(Mathf.Max(math.abs(vec.x), math.abs(vec.y)));
+        int xDist = math.abs(a.x - b.x);
+        int yDist = math.abs(a.y - b.y);
+        int distTot = xDist + yDist;
+
+        return distTot;
+
+        #region Decripit
+        // Diagonal move allowed
+        /*Vector2 vec = new Vector2(a.x - b.x, a.y - b.y);
+        return Mathf.CeilToInt(Mathf.Max(math.abs(vec.x), math.abs(vec.y)));*/
+        #endregion
     }
 }
