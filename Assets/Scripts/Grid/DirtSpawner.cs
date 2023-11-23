@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class DirtSpawner : MonoBehaviour
@@ -15,6 +16,9 @@ public class DirtSpawner : MonoBehaviour
     [Header("Spawning on load")]
     [SerializeField] bool spawnOnLoad = true;
     [SerializeField] List<Vector2Int> spawnPositions;
+
+    [Header("Spawn in editor")]
+    [SerializeField] List<Tile> spawnOnTiles;
 
 
     private void Awake()
@@ -33,8 +37,7 @@ public class DirtSpawner : MonoBehaviour
         {
             SpawnFromList(spawnPositions);
         }
-            
-
+           
         #region Spawnrandom
         /*foreach (Tile t in GridManager.Instance.tiles)
         {
@@ -75,8 +78,18 @@ public class DirtSpawner : MonoBehaviour
         onTile.blocked = true;
         onTile.targetable = true;
         if(onTile.occupant != null)
-            onTile.occupant.Die();
+                onTile.occupant.Die();
         onTile.occupied = false;
+    }
+
+    [ContextMenu("Spawn Dirt On Selected Tiles")]
+    public void SpawnDirt()
+    {
+        foreach (Tile t in spawnOnTiles)
+        {
+            if(!t.containesDirt)
+                SpawnDirt(t);
+        }
     }
 
     private void SpawnFromList(List<Vector2Int> spawnOn)
@@ -107,10 +120,14 @@ public class DirtSpawner : MonoBehaviour
         }
     }
 
-
-    [ContextMenu("Spawn Dirt From List")]
-    private void SpawnFromList()
+    [ContextMenu("Destroy All Dirt")]
+    public void RemoveAllDirt()
     {
-        SpawnFromList(spawnPositions);
+        Object[] tiles = FindObjectsOfTypeAll(typeof(Tile));
+
+        foreach (Object o in tiles)
+        {
+            o.GetComponent<Tile>().RemoveDirt();
+        }
     }
 }
