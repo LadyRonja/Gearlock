@@ -6291,6 +6291,81 @@ Transform:
   m_Children: []
   m_Father: {fileID: 332265565}
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+--- !u!1 &1539765527
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1539765528}
+  - component: {fileID: 1539765530}
+  - component: {fileID: 1539765529}
+  m_Layer: 5
+  m_Name: HealthFillWhite
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1539765528
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1539765527}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1680020519595210727}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 295, y: 41}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1539765529
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1539765527}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: df38e80094796434da25895da8f90822, type: 3}
+  m_Type: 3
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 0
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1539765530
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1539765527}
+  m_CullTransparentMesh: 1
 --- !u!1 &1559258506
 GameObject:
   m_ObjectHideFlags: 0
@@ -8334,6 +8409,7 @@ MonoBehaviour:
   movePointsMax: 4
   movePointsCur: 4
   power: 1
+  attackRange: 1
   doneMoving: 1
   standingOn: {fileID: 6025241019568973945}
   gfx: {fileID: 8286238780360717869}
@@ -9007,7 +9083,6 @@ MonoBehaviour:
   - {fileID: 7892790244572466410}
   - {fileID: 8052507527482191947}
   enemyUnits:
-  - {fileID: 0}
   - {fileID: 110591869178335937}
 --- !u!114 &845250092591837314
 MonoBehaviour:
@@ -9705,6 +9780,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1276328032385758309}
+  - {fileID: 1539765528}
   - {fileID: 2653144017900397210}
   m_Father: {fileID: 2512992049330537956}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -14645,11 +14721,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 0
+  m_Sprite: {fileID: 21300000, guid: df38e80094796434da25895da8f90822, type: 3}
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
-  m_FillMethod: 4
+  m_FillMethod: 0
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
@@ -14780,6 +14856,7 @@ MonoBehaviour:
   movePointsMax: 3
   movePointsCur: 3
   power: 1
+  attackRange: 1
   doneMoving: 1
   standingOn: {fileID: 7580025418813234495}
   gfx: {fileID: 114602580636637657}
@@ -14838,6 +14915,8 @@ MonoBehaviour:
   playerCanSelectNewUnit: 1
   tempUIPanel: {fileID: 73941690853390849}
   tempNameText: {fileID: 845250092591837314}
+  healthFill: {fileID: 7751685447855940911}
+  healthFillWhite: {fileID: 0}
   tempMovePointsText: {fileID: 5479290609573738068}
 --- !u!114 &7992419455696041446
 MonoBehaviour:
@@ -14891,6 +14970,7 @@ MonoBehaviour:
   movePointsMax: 4
   movePointsCur: 4
   power: 3
+  attackRange: 1
   doneMoving: 1
   standingOn: {fileID: 2493595305341716067}
   gfx: {fileID: 666374150037296619}
