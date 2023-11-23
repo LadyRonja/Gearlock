@@ -33,7 +33,6 @@ public class AIManager : MonoBehaviour
         {
             UnitSelector.Instance.UpdateSelectedUnit(u, true);
             Unit enemyTarget = u.FindTargetUnit();
-            Debug.Log("enemy target found " + enemyTarget + " for " + u.unitName);
             List<Tile> path = u.CalculatePathToTarget(enemyTarget.standingOn);
             yield return StartCoroutine(u.MovePath(path));
 

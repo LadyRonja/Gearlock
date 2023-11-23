@@ -142,10 +142,10 @@ public abstract class Unit : MonoBehaviour, IDamagable
         {
             int dist = int.MaxValue;
             if (ignoreWalls)
-                dist = Pathfinding.GetDistance(standingOn, nearestFoundUnit.standingOn);
+                dist = Pathfinding.GetDistance(standingOn, targets[i].standingOn);
             else
             {
-                List<Tile> path = Pathfinding.FindPath(standingOn, nearestFoundUnit.standingOn);
+                List<Tile> path = Pathfinding.FindPath(standingOn, targets[i].standingOn);
                 if (path != null)
                     dist = path.Count;
                 else

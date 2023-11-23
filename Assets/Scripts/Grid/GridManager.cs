@@ -13,10 +13,6 @@ public class GridManager : MonoBehaviour
     public Tile[,] tiles;
     [SerializeField] List<Material> tileTextures;
 
-    //Debug
-    public Tile startTile;
-    public Tile endTile;
-
     private void Awake()
     {
         #region Singleton
@@ -25,13 +21,20 @@ public class GridManager : MonoBehaviour
         else
             Destroy(this.gameObject);
         #endregion
+
+        if (tiles == null)
+            FindGrid();
+
+        if (tiles[1, 1].x != 1)
+        {
+            Debug.LogError("Grid Data Lost!");
+            UpdateTileData();
+        }
     }
 
     private void Start()
     {
         //GenerateGrid();
-        if(tiles == null)
-            FindGrid();
     }
 
     [ContextMenu("GenerateGrid")]
@@ -80,9 +83,32 @@ public class GridManager : MonoBehaviour
         CacheNeighbours();
     }
 
-    
+    [ContextMenu("Update Tile Data")]
+    private void UpdateTileData()
+    {
+        Debug.Log("Updating Tile Data");
+
+        if (tiles == null)
+            FindGrid();
+
+        for (int x = 0; x < tiles.GetLength(0); x++)
+        {
+            for (int y = 0; y < tiles.GetLength(1); y++)
+            {
+                tiles[x, y].x = x;
+                tiles[x, y].y = y;
+            }
+        }
+
+        CacheNeighbours();
+    }
+
+    [ContextMenu("Cache Neighbours")]
     private void CacheNeighbours()
     {
+        if (tiles == null)
+            FindGrid();
+
         foreach (Tile tile in tiles)
         {
             // West
