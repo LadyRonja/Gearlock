@@ -6,7 +6,7 @@ public class DirtSpawner : MonoBehaviour
 {
     public static DirtSpawner Instance;
 
-    [SerializeField] float yOffset = 0.5f;
+    [SerializeField] float yOffset = 4.5f;
 
     [SerializeField] GameObject dirtPrefab;
     [SerializeField] List<Material> dirtTops;
@@ -59,6 +59,7 @@ public class DirtSpawner : MonoBehaviour
 
         // Update the dirt covered tile
         onTile.dirt = dirt;
+        onTile.containesDirt = true;
         onTile.blocked = true;
         onTile.targetable = true;
         if(onTile.occupant != null)

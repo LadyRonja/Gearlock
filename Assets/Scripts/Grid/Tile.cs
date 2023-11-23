@@ -68,73 +68,50 @@ public class Tile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        if (Input.GetKey(KeyCode.LeftControl))
-        {
-            blocked = !blocked;
-            targetable = !targetable;
-
-            if (blocked)
-                myMR.material.color = Color.black;
-            else
-                myMR.material.color = Color.white;
-        }
-        else if (Input.GetKey(KeyCode.LeftShift))
+        // Select My Unit
+        if(occupant != null)
         {
             UnitSelector.Instance.UpdateSelectedUnit(occupant);
         }
-        else
+
+        // Toggle Blocked (Debug)
+        if (Input.GetKey(KeyCode.LeftControl))
+        {
+            TileClicker.Instance.ToggleBlockedDebug(this);
+        }
+
+        // Move Selected Unit Here
+        if (Input.GetKey(KeyCode.LeftShift))
         {
             if (!targetable) return;
-
-            MovementManager.Instance.MoveUnit(UnitSelector.Instance.selectedUnit, this);
-
-            /*
-            List<Tile> path = Pathfinding.FindPath(Grid.Instance.tiles[0, 0], this);
-            if (path != null)
-            {
-                Grid.Instance.tiles[0, 0].myMR.material.color = Color.blue;
-                Grid.Instance.tiles[0, 0].Invoke("ResetColor", 1f);
-                //Debug.DrawLine(HexGrid.Instance.tiles[new HexCoordinates(0, 0)].transform.position, path[0].transform.position, Color.green, 3f);
-                for (int i = 1; i < path.Count; i++)
-                {
-                    Debug.DrawLine(path[i - 1].transform.position, path[i].transform.position, Color.magenta, 3f);
-                    path[i].myMR.material.color = Color.blue;
-                    path[i].Invoke("ResetColor", 1f);
-                }
-            }
-            else
-            {
-                Grid.Instance.tiles[0, 0].myMR.material.color = Color.yellow;
-                myMR.material.color = Color.yellow;
-                Invoke("ResetColor", 1f);
-            }*/
+            TileClicker.Instance.MoveSelectedUnitHere(this);
         }
 
-        if (Input.GetKey(KeyCode.Q))
+        // Toggle Dirt Here
+        if (Input.GetKey(KeyCode.D))
         {
-            if (Input.GetKey(KeyCode.W))
-            {
-                Debug.Log("Setting start tile: " + name);
-                GridManager.Instance.startTile = this;
-            }
-            else if (Input.GetKey(KeyCode.E))
-            {
-                Debug.Log("Setting End tile: " + name);
-                GridManager.Instance.endTile = this;
-            }
-            else if (Input.GetKey(KeyCode.F))
-            {
-                Debug.Log($"Distance between start({GridManager.Instance.startTile}) and end({GridManager.Instance.endTile}): {Pathfinding.GetDistance(GridManager.Instance.startTile, GridManager.Instance.endTile)}");
-            }
+            if(!containesDirt)
+                TileClicker.Instance.SpawnDirt(this);
+            else
+                RemoveDirt();
         }
+
     }
 
     public void RemoveDirt()
     {
-        //TODO:
-        // check if covered in dirt
-        // set covered to false
-        // remove dirt block object
-        // spawn card/enemy
+        if(dirt == null)
+        {
+            Debug.Log("Attempted to remove non-existing dirt");
+            return;
+        }
+
+        containesDirt = false;
+        blocked = false;
+        Destroy(dirt.gameObject);
+        dirt = null;
+
+        // TODO
+        // Spawn item/enemy
     }
 }
