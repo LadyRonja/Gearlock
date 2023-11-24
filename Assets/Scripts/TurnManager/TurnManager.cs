@@ -8,6 +8,7 @@ public class TurnManager : MonoBehaviour // classen blir en singleton
 {
     public static TurnManager Instance;
     public bool isPlayerTurn = true;
+    CardManager cardManager;
 
     [SerializeField] TMP_Text tempTurnText;
 
@@ -28,11 +29,16 @@ public class TurnManager : MonoBehaviour // classen blir en singleton
         if (isPlayerTurn)
         {
             isPlayerTurn = false;
+
+            cardManager.EndTurnDiscardHand();
+
             MovementManager.Instance.takingMoveAction = false;
             UnitSelector.Instance.playerCanSelectNewUnit = false;
 
             UpdateUI();
             AIManager.Instance.StartAITurn();
+
+            cardManager.DealHand();
 
             //TODO disable player interaction
         }
@@ -46,6 +52,8 @@ public class TurnManager : MonoBehaviour // classen blir en singleton
             Debug.LogError("Something tried to pass to the player, during the players turn");
             return;
         }
+
+
 
         isPlayerTurn = true;
         MovementManager.Instance.takingMoveAction = true; // Change later

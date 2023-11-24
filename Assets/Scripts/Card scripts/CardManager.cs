@@ -17,8 +17,6 @@ public class CardManager : MonoBehaviour
     bool startingHand;
     public GameObject discardPileObject;
 
-
-
     public static CardManager Instance
     {
         get { return instance; }
