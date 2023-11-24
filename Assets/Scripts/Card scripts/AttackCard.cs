@@ -16,7 +16,7 @@ public class AttackCard : PlayCard
         //if targetable gör damage 
         if (enemyPlaced.targetable == true) //ref till Tile varibel occupied 
         {
-            Debug.Log("You hit an enemy!");
+           
             int botPower = hitPower.power; //ref to power variabel i Unit
             takeDamage.TakeDamage(botPower * multiplier); // ger damage = power, tex 5 power tar 5 hp av fienden
         }

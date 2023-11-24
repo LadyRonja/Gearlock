@@ -10,7 +10,7 @@ public abstract class PlayCard : MonoBehaviour //lägg till abstract
 {
     public bool selectCard;
     public bool playCard;
-    public float distance;
+    public int distance;
     public CardType currentCardType;
 
 
@@ -18,6 +18,7 @@ public abstract class PlayCard : MonoBehaviour //lägg till abstract
     protected UnitSelector chosenUnit;
     protected AttackCard attackCard;
     protected DigCard digCard;
+    protected Unit botName;
     
 
     protected virtual void Start()
@@ -30,17 +31,45 @@ public abstract class PlayCard : MonoBehaviour //lägg till abstract
         //TODO
         //Check if card is selected
         //if not activated (the card) return 
+        //bort med enum och switch
+        //lägg till enum och switch för att välja robot
 
         ClickOnUnit();
 
-
     }
+
 
     public enum CardType
     {
         Dig,
         Attack
     }
+
+    public void ChooseCard()
+    {
+        switch (currentCardType)
+        {
+            case CardType.Dig:
+                // Create and use DigCard
+                DigCard digCard = gameObject.AddComponent<DigCard>();
+                digCard.Dig();
+                Debug.Log("You dig the dirt");
+                break;
+
+            case CardType.Attack:
+                // Create and use AttackCard
+                AttackCard attackCard = gameObject.AddComponent<AttackCard>();
+                attackCard.Attack();
+                Debug.Log("You hit an enemy!");
+                break;
+
+            default:
+                Debug.LogError("Unknown card type");
+                break;
+        }
+    }
+
+
 
     public void ClickOnUnit()
     {
@@ -71,7 +100,8 @@ public abstract class PlayCard : MonoBehaviour //lägg till abstract
                     if (playerUnit != null)
                     {
                         // Calculate the distance between the player's unit and the clicked tile
-                        distance = Vector3.Distance(playerUnit.transform.position, clickedTile.transform.position);
+                        //distance = Vector3.Distance(playerUnit.transform.position, clickedTile.transform.position);
+                        distance = Pathfinding.GetDistance(playerUnit.standingOn, clickedTile);
 
                         // Log the distance
                         Debug.Log($"Distance to clicked tile: {distance}");
@@ -82,20 +112,57 @@ public abstract class PlayCard : MonoBehaviour //lägg till abstract
                     }
                 }
                 
-                if (distance < 14) //om avståndet från player och clicked tile är mindre än 20 dvs 2 rutor
+                if (distance == 1) //om avståndet från player och clicked tile är mindre än 20 dvs 2 rutor
                 {
                     playCard = true;
                     Debug.Log("You can play this card");
 
-                    if(currentCardType == CardType.Attack)
+                    if (playCard == true)
+                    {
+                        if (currentCardType == CardType.Attack)
+                        {
+                            //attackCard.Attack();
+                            Debug.Log("You are attacking");
+                        }
+
+                        else if (currentCardType == CardType.Dig)
+                        {
+                            if(botName.GetType() == typeof(Digger))
+                            {
+
+                            }
+
+                            /*if (botName.unitName != "Digger")
+                            {
+                                Debug.Log("This bot cannot dig");
+                            }
+                            else
+                            {
+                                //digCard.Dig();
+                                Debug.Log($"{botName.unitName} is digging");
+                            }*/
+                        }
+
+                    }
+
+
+                    /*if(currentCardType == CardType.Attack)
                     {
                         attackCard.Attack();
+
                     }
 
                     if (currentCardType == CardType.Dig) 
                     {
-                        
-                    }
+                        if (botName.unitName == "Digger")
+                        {
+                            digCard.Dig();
+                        }
+                        else
+                        {
+                            Debug.Log("This bot cannot dig");
+                        }
+                    }*/
 
                 }
                 else
@@ -131,12 +198,18 @@ public abstract class PlayCard : MonoBehaviour //lägg till abstract
         return null;
     }
 
+  
+
     public virtual void Play()
     {
 
         selectCard = true;
         Debug.Log("you have selceted a card");
 
+        ClickOnUnit();
+        ChooseCard();
+        
+    
     }
 }
 
