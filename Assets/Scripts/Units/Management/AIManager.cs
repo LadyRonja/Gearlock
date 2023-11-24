@@ -35,6 +35,8 @@ public class AIManager : MonoBehaviour
             UnitSelector.Instance.UpdateSelectedUnit(u, true);
             Unit enemyTarget = u.FindTargetUnit();
 
+            yield return new WaitForSeconds(1.5f); 
+
             // Move Towards Target
             List<Tile> path = u.CalculatePathToTarget(enemyTarget.standingOn);
             yield return StartCoroutine(u.MovePath(path));
@@ -47,8 +49,9 @@ public class AIManager : MonoBehaviour
             UnitSelector.Instance.UpdateSelectedUnit(enemyTarget, true);
             // TODO:    
             // Play Animation Here
-
+            yield return new WaitForSeconds(0.5f);
             enemyTarget.TakeDamage(u.power);
+            yield return new WaitForSeconds(2f);
 
         }
 

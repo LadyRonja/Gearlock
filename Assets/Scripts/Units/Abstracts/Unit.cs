@@ -33,7 +33,14 @@ public abstract class Unit : MonoBehaviour, IDamagable
 
     public virtual void TakeDamage(int amount)
     {
-        healthCur -= amount;
+        if(UnitSelector.Instance.selectedUnit == this)
+            UnitSelector.Instance.UpdateUI();
+
+        healthCur -= amount; 
+        
+        if (UnitSelector.Instance.selectedUnit == this)
+            UnitSelector.Instance.UpdateUI(true);
+
         if (healthCur < 0)
         {
             healthCur = 0;
@@ -63,6 +70,7 @@ public abstract class Unit : MonoBehaviour, IDamagable
         StartCoroutine(MovePath(path));
     }
 
+
     public IEnumerator MovePath(List<Tile> path)
     {
         if (path == null) 
@@ -80,7 +88,7 @@ public abstract class Unit : MonoBehaviour, IDamagable
         yield return null;
     }
 
-    private IEnumerator MoveStep(Tile toTile)
+    protected IEnumerator MoveStep(Tile toTile)
     {
         movePointsCur--;
         Vector3 startPos = this.transform.position;

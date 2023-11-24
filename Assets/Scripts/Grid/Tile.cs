@@ -42,7 +42,7 @@ public class Tile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
 
         if (newOccupant == null)
         {
-            blocked = false;
+            blocked = containesDirt;
             occupied = false;
             targetable = true;
         }
