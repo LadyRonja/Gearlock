@@ -47,6 +47,8 @@ public class Pathfinding : MonoBehaviour
                 // AI will look for the tile the target is standing on, remove that
                 if (path[^1].occupied)
                     path.RemoveAt(path.Count - 1);
+                else if (path[^1].blocked && !ignoreBlocks)
+                    path.RemoveAt(path.Count - 1);
 
                 if(range >= 0)
                 {

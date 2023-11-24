@@ -70,6 +70,7 @@ public abstract class Unit : MonoBehaviour, IDamagable
         StartCoroutine(MovePath(path));
     }
 
+
     public IEnumerator MovePath(List<Tile> path)
     {
         if (path == null) 
@@ -87,7 +88,7 @@ public abstract class Unit : MonoBehaviour, IDamagable
         yield return null;
     }
 
-    private IEnumerator MoveStep(Tile toTile)
+    protected IEnumerator MoveStep(Tile toTile)
     {
         movePointsCur--;
         Vector3 startPos = this.transform.position;
