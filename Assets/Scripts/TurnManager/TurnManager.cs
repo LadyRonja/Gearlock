@@ -8,7 +8,6 @@ public class TurnManager : MonoBehaviour // classen blir en singleton
 {
     public static TurnManager Instance;
     public bool isPlayerTurn = true;
-    CardManager cardManager;
 
     [SerializeField] TMP_Text tempTurnText;
 
@@ -30,7 +29,9 @@ public class TurnManager : MonoBehaviour // classen blir en singleton
         {
             isPlayerTurn = false;
 
-            cardManager.EndTurnDiscardHand();
+            // Hurts my soul to write a nullcheck on a singleton
+            if(CardManager.Instance != null)
+                CardManager.Instance.EndTurnDiscardHand();
 
             MovementManager.Instance.takingMoveAction = false;
             UnitSelector.Instance.playerCanSelectNewUnit = false;
@@ -38,7 +39,9 @@ public class TurnManager : MonoBehaviour // classen blir en singleton
             UpdateUI();
             AIManager.Instance.StartAITurn();
 
-            cardManager.DealHand();
+            // Hurts my soul to write a nullcheck on a singleton
+            if (CardManager.Instance != null)
+                CardManager.Instance.DealHand();
 
             //TODO disable player interaction
         }

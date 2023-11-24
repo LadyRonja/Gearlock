@@ -18,7 +18,6 @@ public class CardPickUp : MonoBehaviour
     void Update()
     {
         yOffSet = myCurve.Evaluate(Time.time % myCurve.length);
-        
         transform.position = new Vector3(startPos.x, startPos.y + yOffSet, startPos.z);
     }
 }

@@ -16,9 +16,11 @@ public class Tile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
     public int x;
     public int y;
 
+    // Contents
     public Unit occupant;
     public bool containesDirt;
     public Dirt dirt;
+    public CardPickUp myPickUp;
 
     // Pathfinding
     public bool targetable = true;
@@ -118,7 +120,8 @@ public class Tile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
 
         dirt = null;
 
-        // TODO
-        // Spawn item/enemy
+        // TODO: See item spawner todo
+        ItemSpawner.Instance.SpawnRandomItem(this);
+
     }
 }

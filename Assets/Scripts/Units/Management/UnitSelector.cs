@@ -11,6 +11,7 @@ public class UnitSelector : MonoBehaviour
     public bool playerCanSelectNewUnit = true;
     public GameObject tempUIPanel;
     public TMP_Text tempNameText;
+    public TMP_Text tempHealthText;
     public Image tempHealthFill;
     public Image tempHealthFillWhite;
     public TMP_Text tempMovePointsText;
@@ -54,13 +55,23 @@ public class UnitSelector : MonoBehaviour
         {
             tempUIPanel.SetActive(true);
             tempNameText.text = selectedUnit.unitName;
+            tempHealthText.text = $"HP: {selectedUnit.healthCur}/{selectedUnit.healthMax}";
             tempHealthFill.fillAmount = (float)selectedUnit.healthCur / (float)selectedUnit.healthMax;
             if(damageApplication)
                 StartCoroutine(ReduceHealthbarOverTime(0.5f, selectedUnit));
             else
                 tempHealthFillWhite.fillAmount = (float)selectedUnit.healthCur / (float)selectedUnit.healthMax;
 
-            tempMovePointsText.text = $"MovementPoints: {selectedUnit.movePointsCur}/{selectedUnit.movePointsMax}";
+            if(selectedUnit.movePointsCur < 0)
+            {
+                Debug.LogError("Units movepoint cur is negative, displaying as 0");
+                tempMovePointsText.text = $"MovementPoints: 0/{selectedUnit.movePointsMax}";
+            }
+            else
+            {
+                tempMovePointsText.text = $"MovementPoints: {selectedUnit.movePointsCur}/{selectedUnit.movePointsMax}";
+            }
+
         }
     }
 

@@ -14,7 +14,7 @@ public class DirtSpawner : MonoBehaviour
     [SerializeField] List<Material> dirtSides;
 
     [Header("Spawning on load")]
-    [SerializeField] bool spawnOnLoad = true;
+    [SerializeField] bool spawnOnLoad = false;
     [SerializeField] List<Vector2Int> spawnPositions;
 
     [Header("Spawn in editor")]
