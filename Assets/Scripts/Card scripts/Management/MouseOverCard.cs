@@ -14,14 +14,7 @@ public class MouseOverCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     bool isDragged = false;
     bool inHand = true;
     Vector3 dragPos;
-    //CardManager cardManager;
-
-    private void Start()
-    {
-        //cardManager = FindObjectOfType<CardManager>();
-
-        
-    }
+    DiscardShow discardShow;
 
     public void Update()
     {

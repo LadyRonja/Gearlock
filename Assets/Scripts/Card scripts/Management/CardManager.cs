@@ -14,8 +14,8 @@ public class CardManager : MonoBehaviour
     public GameObject diggerBot;
     public GameObject fighterBot;
     public GameObject handParent;
-    bool startingHand;
     public GameObject discardPileObject;
+    bool startingHand;
 
     public static CardManager Instance
     {
