@@ -6,19 +6,17 @@ using UnityEngine;
 public class DiscardShow : MonoBehaviour
 {
     public bool displayingDiscard;
+    public GameObject discardPile;
 
     // Start is called before the first frame update
 
-    public void MoveToScreen()
+    private void Start()
     {
-        transform.position = new Vector3(960, 540, 0);
-        displayingDiscard = true;
+        discardPile.SetActive(false);
     }
 
-    public void MoveOffScreen()
+    public void ToggleDisplay()
     {
-        transform.position = new Vector3(4000, 0, 0);
-        displayingDiscard = false;
+        discardPile.SetActive(!discardPile.activeSelf);
     }
-
 }

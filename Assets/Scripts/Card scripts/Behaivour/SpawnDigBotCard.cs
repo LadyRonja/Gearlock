@@ -13,6 +13,11 @@ public class SpawnDigBotCard : PlayCard
 
     private Tile placeDigBot;
 
+    public override void ExecuteBehaivour(Tile onTile, Unit byUnit)
+    {
+        Debug.LogError("Not implemented");
+    }
+
     public void PlacementDigBot()
     {
         if (placeDigBot.occupied == false)

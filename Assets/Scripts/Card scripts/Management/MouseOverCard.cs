@@ -29,6 +29,7 @@ public class MouseOverCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
         if (Input.mousePosition.y > 300 && isDragged && !Input.GetMouseButton(0))
         {
+            this.gameObject.GetComponent<PlayCard>().Play();
             transform.parent = DiscardPile.Instance.transform;
             inHand = false;
         }

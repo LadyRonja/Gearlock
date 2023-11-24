@@ -18,7 +18,10 @@ public class DigCard : PlayCard
        //playerAnimator.SetTrigger("Digging"); 
     }
 
-    
+    public override void ExecuteBehaivour(Tile onTile, Unit byUnit)
+    {
+        Debug.LogError("Not implemented");
+    }
 
 
 }

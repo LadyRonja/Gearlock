@@ -22,4 +22,12 @@ public class AttackCard : PlayCard
         }
 
     }
+
+    public override void ExecuteBehaivour(Tile onTile, Unit byUnit)
+    {
+        if(onTile.occupant != null)
+        {
+            onTile.occupant.TakeDamage(byUnit.power * multiplier);
+        }
+    }
 }

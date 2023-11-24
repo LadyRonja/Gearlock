@@ -13,6 +13,11 @@ public class SpawnFightBotCard : PlayCard
 
     private Tile placeFightBot;
 
+    public override void ExecuteBehaivour(Tile onTile, Unit byUnit)
+    {
+        Debug.LogError("Not implemented");
+    }
+
     public void PlacementFightBot()
     {
         if (placeFightBot.occupied == false)

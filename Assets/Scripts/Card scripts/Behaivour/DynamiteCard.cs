@@ -22,6 +22,10 @@ public class DynamiteCard : PlayCard
     private SpawnDigBotCard digBotPos;
     private SpawnFightBotCard fightBotPos;
 
+    public override void ExecuteBehaivour(Tile onTile, Unit byUnit)
+    {
+        Debug.LogError("Not implemented");
+    }
     public void PlacementDynamite()
     {
         if (placeDynamite.containesDirt == false) 
