@@ -121,7 +121,7 @@ public abstract class PlayCard : MonoBehaviour //lägg till abstract
                     {
                         if (currentCardType == CardType.Attack)
                         {
-                            //attackCard.Attack();
+                            attackCard.Attack();
                             Debug.Log("You are attacking");
                         }
 
@@ -129,7 +129,7 @@ public abstract class PlayCard : MonoBehaviour //lägg till abstract
                         {
                             if(botName.GetType() == typeof(Digger))
                             {
-
+                                digCard.Dig();
                             }
 
                             /*if (botName.unitName != "Digger")
