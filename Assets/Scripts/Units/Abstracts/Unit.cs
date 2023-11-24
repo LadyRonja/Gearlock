@@ -33,7 +33,14 @@ public abstract class Unit : MonoBehaviour, IDamagable
 
     public virtual void TakeDamage(int amount)
     {
-        healthCur -= amount;
+        if(UnitSelector.Instance.selectedUnit == this)
+            UnitSelector.Instance.UpdateUI();
+
+        healthCur -= amount; 
+        
+        if (UnitSelector.Instance.selectedUnit == this)
+            UnitSelector.Instance.UpdateUI(true);
+
         if (healthCur < 0)
         {
             healthCur = 0;

@@ -41,7 +41,7 @@ public class UnitSelector : MonoBehaviour
         UpdateSelectedUnit(unitToSelect, false);
     }
 
-    public void UpdateUI()
+    public void UpdateUI(bool damageApplication)
     {
         // TODO: Update UI properly
         if (tempUIPanel == null) return;
@@ -54,13 +54,37 @@ public class UnitSelector : MonoBehaviour
         {
             tempUIPanel.SetActive(true);
             tempNameText.text = selectedUnit.unitName;
-            //tempHealthFill.fillAmount = (float)selectedUnit.healthCur / (float)selectedUnit.healthMax;
+            tempHealthFill.fillAmount = (float)selectedUnit.healthCur / (float)selectedUnit.healthMax;
+            if(damageApplication)
+                StartCoroutine(ReduceHealthbarOverTime(0.5f, selectedUnit));
+            else
+                tempHealthFillWhite.fillAmount = (float)selectedUnit.healthCur / (float)selectedUnit.healthMax;
+
             tempMovePointsText.text = $"MovementPoints: {selectedUnit.movePointsCur}/{selectedUnit.movePointsMax}";
         }
     }
 
-    /*private IEnumerator ReduceHealthbarOverTime(float seconds)
+    public void UpdateUI()
     {
+        UpdateUI(false);
+    }
 
-    }*/
+    private IEnumerator ReduceHealthbarOverTime(float seconds, Unit healthOf)
+    {
+        float startValue = tempHealthFillWhite.fillAmount;
+        float endValue = (float)healthOf.healthCur/(float)healthOf.healthMax;
+
+        float timeToSet = 0.5f;
+        float timePassed = 0;
+
+        while (timePassed < timeToSet)
+        {
+            tempHealthFillWhite.fillAmount = Mathf.Lerp(startValue, endValue, (timePassed / timeToSet));
+
+            timePassed += Time.deltaTime;
+            yield return null;
+        }
+
+        yield return null;
+    }
 }
