@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class CardManager : MonoBehaviour
 {
-    [SerializeField] private static CardManager instance;
+    public static CardManager instance;
     public List<GameObject> discardPile;
     public List<GameObject> drawPile;
     public GameObject dig;
@@ -163,7 +163,6 @@ public class CardManager : MonoBehaviour
         }
     }
 
-
     public void ClearActiveCard()
     {
         for (int i = ActiveCard.Instance.transform.childCount - 1; i >= 0; i--)
@@ -183,6 +182,15 @@ public class CardManager : MonoBehaviour
             PlayedCard.transform.parent = DiscardPile.Instance.transform;
             PlayedCard.GetComponent<MouseOverCard>().isBeingPlayed = false;
         }
+
+    public void AddNewCard(PlayCard cardToAdd)
+    {
+        // TODO:
+        // Add a COPY of the card passed
+        // To the discard pile
+
+        Debug.Log("Adding card not implemented");
+
     }
 
 }

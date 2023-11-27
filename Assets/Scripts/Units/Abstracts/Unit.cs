@@ -4,11 +4,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+public enum BotSpecialization
+{
+    None,
+    Digger
+}
+
 public abstract class Unit : MonoBehaviour, IDamagable
 {
     [Header("Generics")]
     public string unitName = "Unnamed Unit";
     public bool playerBot = false;
+    public BotSpecialization mySpecialization = BotSpecialization.None;
 
     [Header("Stats")]
     public int healthMax = 5;

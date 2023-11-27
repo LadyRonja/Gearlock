@@ -53,6 +53,13 @@ public class Tile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
             blocked = true;
             occupied = true;
             targetable = false;
+
+            if (newOccupant.playerBot && myPickUp != null)
+            {
+                CardManager.instance.AddNewCard(myPickUp.cardToAdd);
+                Destroy(myPickUp);
+                myPickUp = null;
+            }
         }
     }
 

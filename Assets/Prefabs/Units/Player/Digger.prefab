@@ -45,15 +45,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3e5418047a230841a7c825c668f99f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerBot: 1
-  HealthMax: 5
-  HealthCur: 5
-  MovePointsMax: 3
-  MovePointsCur: 3
-  Power: 1
+  unitName: Unnamed Unit
+  playerBot: 1
+  mySpecialization: 1
+  healthMax: 5
+  healthCur: 5
+  movePointsMax: 3
+  movePointsCur: 3
+  power: 1
+  attackRange: 1
   doneMoving: 1
   standingOn: {fileID: 0}
-  gfx: {fileID: 2123404906236411084}
+  gfx: {fileID: 6819292618928897335}
   mySR: {fileID: 0}
 --- !u!1 &2123404906236411084
 GameObject:
