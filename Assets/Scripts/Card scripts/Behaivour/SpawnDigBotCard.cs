@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpawnDigBotCard : PlayCard
+public class SpawnDigBotCard : MonoBehaviour
 {
     //placera dig bot 
     //inte på dirt
@@ -13,20 +13,34 @@ public class SpawnDigBotCard : PlayCard
 
     private Tile placeDigBot;
 
-    public override void ExecuteBehaivour(Tile onTile, Unit byUnit)
+    /*public override void ExecuteBehaivour(Tile onTile, Unit byUnit)
     {
         Debug.LogError("Not implemented");
+    }*/
+
+    public void Update()
+    {
+        PlacementDigBot();
     }
 
     public void PlacementDigBot()
-    {
-        if (placeDigBot.occupied == false)
+    {   if (Input.GetMouseButtonDown(0))
         {
-            GameObject newDigBot = Instantiate(digBot);
-            newDigBot.transform.position = placeDigBot.transform.position;
-            newDigBot.transform.rotation = Quaternion.identity;
+            // Get the mouse position in screen coordinates
+            Vector3 mousePosition = Input.mousePosition;
 
-            placeDigBot.occupied = true;
+            //if (placeDigBot.occupied == false)
+            //  {
+            GameObject newDigBot = Instantiate(digBot, mousePosition, Quaternion.identity);
+                //newDigBot.transform.position = placeDigBot.transform.position;
+                //newDigBot.transform.rotation = Quaternion.identity;
+
+                //placeDigBot.occupied = true;
+
+                Debug.Log("Placed Digbot");
+           // }
+
         }
+            
     }
 }
