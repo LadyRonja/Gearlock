@@ -32,7 +32,7 @@ public class MouseOverCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         if (Input.mousePosition.y > 300 && isDragged && !Input.GetMouseButton(0))
         {
             CardManager.Instance.ClearActiveCard();
-            //this.gameObject.GetComponent<PlayCard>().Play();
+            this.gameObject.GetComponent<PlayCard>().Play();
             transform.parent = ActiveCard.Instance.transform;
             inHand = false;
             isBeingPlayed = true;

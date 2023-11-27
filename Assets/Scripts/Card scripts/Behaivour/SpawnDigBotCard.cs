@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpawnDigBotCard : MonoBehaviour
+public class SpawnDigBotCard : PlayCard
 {
     //placera dig bot 
     //inte på dirt
@@ -42,5 +42,10 @@ public class SpawnDigBotCard : MonoBehaviour
 
         }
             
+    }
+
+    public override void ExecuteBehaivour(Tile onTile, Unit byUnit)
+    {
+        throw new System.NotImplementedException();
     }
 }
