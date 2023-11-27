@@ -58,12 +58,12 @@ public class CardManager : MonoBehaviour
 
     private void Update()
     {
-        // Displays the amount of cards in draw pile
-        DrawAmount.text = drawPile.Count.ToString();
-
         // Temporary code to "play" card with space, until card plays completely with code
         if (Input.GetKeyDown(KeyCode.Space))
             CardEffectComplete();
+
+        if(DrawAmount!= null)
+            DrawAmount.text = drawPile.Count.ToString();
     }
     public void DealHand()
     {
@@ -88,6 +88,8 @@ public class CardManager : MonoBehaviour
         // Any other hand drawn after the start hand just draws the 5 top cards.
         else
         {
+            EndTurnDiscardHand();
+
             for (int i = 0; i < 5; i++)
             {
                 if (drawPile.Count < 1)
@@ -95,11 +97,8 @@ public class CardManager : MonoBehaviour
 
                 Instantiate(drawPile[0], handParent.transform);
                 drawPile.RemoveAt(0);
-
-
             }
         }
-
     }
 
 
@@ -197,9 +196,10 @@ public class CardManager : MonoBehaviour
     public void AddNewCard(PlayCard cardToAdd)
     {
         // TODO:
-        // Add a COPY of the card passed
-        // To the discard pile
+        // Add a COPY of the card passed to the discard pile
+        //Instantiate(cardToAdd, DiscardPile.Instance.transform);
 
+        Debug.Log(cardToAdd.ToString());
         Debug.Log("Adding card not implemented");
 
     }
