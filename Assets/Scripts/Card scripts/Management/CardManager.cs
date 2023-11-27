@@ -58,12 +58,17 @@ public class CardManager : MonoBehaviour
 
     private void Update()
     {
+<<<<<<< HEAD
         // Displays the amount of cards in draw pile
         DrawAmount.text = drawPile.Count.ToString();
 
         // Temporary code to "play" card with space, until card plays completely with code
         if (Input.GetKeyDown(KeyCode.Space))
             CardEffectComplete();
+=======
+        if(DrawAmount!= null)
+            DrawAmount.text = drawPile.Count.ToString();
+>>>>>>> 79a3991 (digger sprite)
     }
     public void DealHand()
     {
