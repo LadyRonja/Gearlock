@@ -644,7 +644,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4962f08def51a27458ac2bf27f614c57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  testPrefab: {fileID: 0}
+  testPrefab: {fileID: 3622372463891804503}
+  testTransform: {fileID: 185936053}
 --- !u!1 &1747834094
 GameObject:
   m_ObjectHideFlags: 0
@@ -676,13 +677,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c677a045f8711845b817585246f896c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myState: 0
+  range: 1
   requiredSpecialization: 0
+  canTargetDirtTiles: 0
+  myState: 0
   selectedTile: {fileID: 0}
   selectedUnit: {fileID: 0}
-  selectCard: 0
-  playCard: 0
-  distance: 0
   digAnimation: {fileID: 0}
 --- !u!212 &1747834096
 SpriteRenderer:
@@ -763,14 +763,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afe0b735ee4893c408425d9b39e8ebb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myState: 0
+  range: 1
   requiredSpecialization: 0
+  canTargetDirtTiles: 0
+  myState: 0
   selectedTile: {fileID: 0}
   selectedUnit: {fileID: 0}
-  selectCard: 0
-  playCard: 0
-  distance: 0
   digBot: {fileID: 3622372463891804503}
+  spawnPosition: {fileID: 0}
 --- !u!33 &24644963316702279
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -2700,6 +2700,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   takingMoveAction: 1
+  tempDebugMoveText: {fileID: 0}
 --- !u!1 &2193699279219688316
 GameObject:
   m_ObjectHideFlags: 0
