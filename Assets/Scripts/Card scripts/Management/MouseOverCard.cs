@@ -6,19 +6,20 @@ using Unity.VisualScripting;
 using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.XR;
 
 public class MouseOverCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     bool hovering = false;
     float cardX, cardY;
     bool isDragged = false;
-    bool inHand = true;
+    public bool inHand = true;
+    public bool isBeingPlayed = false;
     Vector3 dragPos;
-    DiscardShow discardShow;
+    //DiscardShow discardShow;
 
     public void Update()
     {
-
         if (Input.GetMouseButton(0) && hovering)
         {
             isDragged = true;
@@ -29,9 +30,11 @@ public class MouseOverCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
         if (Input.mousePosition.y > 300 && isDragged && !Input.GetMouseButton(0))
         {
+            CardManager.Instance.ClearActiveCard();
             this.gameObject.GetComponent<PlayCard>().Play();
-            transform.parent = DiscardPile.Instance.transform;
+            transform.parent = ActiveCard.Instance.transform;
             inHand = false;
+            isBeingPlayed = true;
         }
 
         if (isDragged && !Input.GetMouseButton(0))
@@ -39,6 +42,17 @@ public class MouseOverCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
             transform.position = new Vector3(cardX, cardY, 0);
             hovering = false;
             isDragged = false;
+        }
+
+        if (isBeingPlayed)
+        {
+            if (Input.GetMouseButtonDown(1))
+            {
+                transform.parent = HandPanel.Instance.transform;
+                transform.position = new Vector3(cardX, cardY, 0);
+                inHand = true;
+                isBeingPlayed= false;
+            }
         }
     }
 

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -16,6 +17,7 @@ public class CardManager : MonoBehaviour
     public GameObject handParent;
     public GameObject discardPileObject;
     bool startingHand;
+    public TextMeshProUGUI DrawAmount;
 
     public static CardManager Instance
     {
@@ -51,7 +53,10 @@ public class CardManager : MonoBehaviour
         drawPile.Add(diggerBot);
         drawPile.Add(fighterBot);
     }
-
+    private void Update()
+    {
+        DrawAmount.text = drawPile.Count.ToString();
+    }
     public void DealHand()
     {
         if (startingHand)
@@ -155,6 +160,28 @@ public class CardManager : MonoBehaviour
         {
             GameObject CardInHand = handParent.transform.GetChild(i).gameObject;
             CardInHand.transform.parent = DiscardPile.Instance.transform;
+        }
+    }
+
+
+    public void ClearActiveCard()
+    {
+        for (int i = ActiveCard.Instance.transform.childCount - 1; i >= 0; i--)
+        {
+            GameObject CardBeingPlayed = ActiveCard.Instance.transform.GetChild(i).gameObject;
+            CardBeingPlayed.transform.parent = HandPanel.Instance.transform;
+            CardBeingPlayed.GetComponent<MouseOverCard>().inHand = true;
+            CardBeingPlayed.GetComponent<MouseOverCard>().isBeingPlayed = false;
+        }
+    }
+
+    public void CardEffectComplete()
+    {
+        for (int i = ActiveCard.Instance.transform.childCount - 1; i >= 0; i--)
+        {
+            GameObject PlayedCard = ActiveCard.Instance.transform.GetChild(i).gameObject;
+            PlayedCard.transform.parent = DiscardPile.Instance.transform;
+            PlayedCard.GetComponent<MouseOverCard>().isBeingPlayed = false;
         }
     }
 
