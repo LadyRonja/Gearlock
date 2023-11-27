@@ -14,38 +14,37 @@ public class DynamiteCard : PlayCard
     public Animator explosion;
 
     [SerializeField]
-    private int multiplier = 1;
-
-    private Unit hitPower;
-    private Unit takeDamage;
+    private int multiplier = 4;
     private Tile placeDynamite;
-    private SpawnDigBotCard digBotPos;
-    private SpawnFightBotCard fightBotPos;
+    private int explosionRange;
+    
 
     public override void ExecuteBehaivour(Tile onTile, Unit byUnit)
     {
-        Debug.LogError("Not implemented");
-    }
-    public void PlacementDynamite()
-    {
-        if (placeDynamite.containesDirt == false) 
-        {
-            GameObject newDynamite = Instantiate(dynamite);
-            newDynamite.transform.position = placeDynamite.transform.position;
-            newDynamite.transform.rotation = Quaternion.identity;
 
-            //playerAnimator.SetTrigger("Exploding"); 
+                GameObject newDynamite = Instantiate(dynamite);
+                newDynamite.transform.position = placeDynamite.transform.position;
+                newDynamite.transform.rotation = Quaternion.identity;
 
-            int dynamitePower = hitPower.power; //ref to power variabel i Unit
-            takeDamage.TakeDamage(dynamitePower * multiplier * 4); // power x4
+                //playerAnimator.SetTrigger("Exploding"); 
 
-            // Apply damage to units in a 2-tile radius
-           
+                if (onTile.occupant != null)
+                {
+                    onTile.occupant.TakeDamage(byUnit.power * multiplier);
 
-        }
+                    //onTile.occupant.TakeDamage(byUnit.attackRange  ); //2 rutor åt alla håll
+
+                    //kolla grannar och lägg till i listan i alla fyra håll, for loop med dig eller damge
+                    //den kan INTE hamna på dirt men kan pränga dirt
+                }
+
+
+                // Apply damage to units in a 2-tile radius
+            
+
         
-        
     }
+   
 
 
 }

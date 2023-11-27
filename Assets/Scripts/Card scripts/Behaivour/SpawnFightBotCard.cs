@@ -10,15 +10,15 @@ public class SpawnFightBotCard : PlayCard
     //inte på upptagen ruta
 
     public GameObject fightBot;
-
-    private Tile placeFightBot;
+    public Transform spawnPosition;
 
     public override void ExecuteBehaivour(Tile onTile, Unit byUnit)
     {
-        Debug.LogError("Not implemented");
+        
+        Instantiate(fightBot, spawnPosition.position, Quaternion.identity);
     }
 
-    public void PlacementFightBot()
+    /*public void PlacementFightBot()
     {
         if (placeFightBot.occupied == false)
         {
@@ -28,5 +28,5 @@ public class SpawnFightBotCard : PlayCard
 
             placeFightBot.occupied = true;
         }
-    }
+    }*/
 }
