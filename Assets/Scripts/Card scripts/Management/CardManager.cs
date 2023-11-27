@@ -58,9 +58,6 @@ public class CardManager : MonoBehaviour
 
     private void Update()
     {
-        // Displays the amount of cards in draw pile
-        DrawAmount.text = drawPile.Count.ToString();
-
         // Temporary code to "play" card with space, until card plays completely with code
         if (Input.GetKeyDown(KeyCode.Space))
             CardEffectComplete();
