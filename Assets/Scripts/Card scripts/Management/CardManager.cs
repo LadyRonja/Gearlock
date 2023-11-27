@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class CardManager : MonoBehaviour
 {
-    [SerializeField] private static CardManager instance;
+    public static CardManager instance;
     public List<GameObject> discardPile;
     public List<GameObject> drawPile;
     public GameObject dig;
@@ -156,6 +156,15 @@ public class CardManager : MonoBehaviour
             GameObject CardInHand = handParent.transform.GetChild(i).gameObject;
             CardInHand.transform.parent = DiscardPile.Instance.transform;
         }
+    }
+
+    public void AddNewCard(PlayCard cardToAdd)
+    {
+        // TODO:
+        // Add a COPY of the card passed
+        // To the discard pile
+
+        Debug.Log("Adding card not implemented");
     }
 
 }
