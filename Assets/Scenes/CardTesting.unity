@@ -474,13 +474,14 @@ GameObject:
   - component: {fileID: 1747834097}
   - component: {fileID: 1747834096}
   - component: {fileID: 1747834095}
+  - component: {fileID: 1747834098}
   m_Layer: 0
   m_Name: Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1747834095
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -493,10 +494,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c677a045f8711845b817585246f896c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myState: 0
+  requiredSpecialization: 0
+  selectedTile: {fileID: 0}
+  selectedUnit: {fileID: 0}
   selectCard: 0
   playCard: 0
   distance: 0
-  currentCardType: 0
   digAnimation: {fileID: 0}
 --- !u!212 &1747834096
 SpriteRenderer:
@@ -565,6 +569,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1747834098
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1747834094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afe0b735ee4893c408425d9b39e8ebb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  digBot: {fileID: 3622372463891804503}
 --- !u!33 &24644963316702279
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -662,6 +679,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unitName: Ghost
   playerBot: 0
+  mySpecialization: 0
   healthMax: 5
   healthCur: 5
   movePointsMax: 4
@@ -828,6 +846,7 @@ MonoBehaviour:
   occupant: {fileID: 0}
   containesDirt: 0
   dirt: {fileID: 0}
+  myPickUp: {fileID: 0}
   targetable: 1
   blocked: 0
   occupied: 0
@@ -974,6 +993,7 @@ MonoBehaviour:
   occupant: {fileID: 0}
   containesDirt: 0
   dirt: {fileID: 0}
+  myPickUp: {fileID: 0}
   targetable: 1
   blocked: 0
   occupied: 0
@@ -1827,6 +1847,7 @@ MonoBehaviour:
   occupant: {fileID: 0}
   containesDirt: 0
   dirt: {fileID: 0}
+  myPickUp: {fileID: 0}
   targetable: 1
   blocked: 0
   occupied: 0
@@ -1925,6 +1946,7 @@ MonoBehaviour:
   occupant: {fileID: 0}
   containesDirt: 0
   dirt: {fileID: 0}
+  myPickUp: {fileID: 0}
   targetable: 1
   blocked: 0
   occupied: 0
@@ -2034,6 +2056,7 @@ MonoBehaviour:
   occupant: {fileID: 0}
   containesDirt: 0
   dirt: {fileID: 0}
+  myPickUp: {fileID: 0}
   targetable: 1
   blocked: 0
   occupied: 0
@@ -2142,6 +2165,7 @@ MonoBehaviour:
   occupant: {fileID: 0}
   containesDirt: 0
   dirt: {fileID: 0}
+  myPickUp: {fileID: 0}
   targetable: 1
   blocked: 0
   occupied: 0
@@ -2362,6 +2386,7 @@ MonoBehaviour:
   occupant: {fileID: 0}
   containesDirt: 0
   dirt: {fileID: 0}
+  myPickUp: {fileID: 0}
   targetable: 1
   blocked: 0
   occupied: 0
@@ -2564,6 +2589,7 @@ MonoBehaviour:
   occupant: {fileID: 0}
   containesDirt: 0
   dirt: {fileID: 0}
+  myPickUp: {fileID: 0}
   targetable: 1
   blocked: 0
   occupied: 0
@@ -2705,6 +2731,7 @@ MonoBehaviour:
   occupant: {fileID: 0}
   containesDirt: 0
   dirt: {fileID: 0}
+  myPickUp: {fileID: 0}
   targetable: 1
   blocked: 0
   occupied: 0
@@ -2738,6 +2765,7 @@ MonoBehaviour:
   occupant: {fileID: 8052507527482191947}
   containesDirt: 0
   dirt: {fileID: 0}
+  myPickUp: {fileID: 0}
   targetable: 1
   blocked: 1
   occupied: 1
@@ -2773,6 +2801,7 @@ MonoBehaviour:
   occupant: {fileID: 0}
   containesDirt: 0
   dirt: {fileID: 0}
+  myPickUp: {fileID: 0}
   targetable: 1
   blocked: 0
   occupied: 0
@@ -2907,6 +2936,7 @@ MonoBehaviour:
   occupant: {fileID: 0}
   containesDirt: 0
   dirt: {fileID: 0}
+  myPickUp: {fileID: 0}
   targetable: 1
   blocked: 0
   occupied: 0
@@ -2974,6 +3004,7 @@ MonoBehaviour:
   occupant: {fileID: 0}
   containesDirt: 0
   dirt: {fileID: 0}
+  myPickUp: {fileID: 0}
   targetable: 1
   blocked: 0
   occupied: 0
@@ -3327,6 +3358,7 @@ MonoBehaviour:
   occupant: {fileID: 0}
   containesDirt: 0
   dirt: {fileID: 0}
+  myPickUp: {fileID: 0}
   targetable: 1
   blocked: 0
   occupied: 0
@@ -3550,6 +3582,7 @@ MonoBehaviour:
   occupant: {fileID: 0}
   containesDirt: 0
   dirt: {fileID: 0}
+  myPickUp: {fileID: 0}
   targetable: 1
   blocked: 0
   occupied: 0
@@ -4239,6 +4272,7 @@ MonoBehaviour:
   occupant: {fileID: 5191317621487327246}
   containesDirt: 0
   dirt: {fileID: 0}
+  myPickUp: {fileID: 0}
   targetable: 1
   blocked: 1
   occupied: 1
@@ -4755,6 +4789,7 @@ MonoBehaviour:
   occupant: {fileID: 0}
   containesDirt: 0
   dirt: {fileID: 0}
+  myPickUp: {fileID: 0}
   targetable: 1
   blocked: 0
   occupied: 0
@@ -4829,6 +4864,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unitName: Big Bot
   playerBot: 0
+  mySpecialization: 0
   healthMax: 5
   healthCur: 5
   movePointsMax: 2
@@ -4920,6 +4956,7 @@ MonoBehaviour:
   occupant: {fileID: 0}
   containesDirt: 0
   dirt: {fileID: 0}
+  myPickUp: {fileID: 0}
   targetable: 1
   blocked: 0
   occupied: 0
@@ -5291,6 +5328,7 @@ MonoBehaviour:
   occupant: {fileID: 0}
   containesDirt: 0
   dirt: {fileID: 0}
+  myPickUp: {fileID: 0}
   targetable: 1
   blocked: 0
   occupied: 0
@@ -5415,6 +5453,7 @@ MonoBehaviour:
   occupant: {fileID: 0}
   containesDirt: 0
   dirt: {fileID: 0}
+  myPickUp: {fileID: 0}
   targetable: 1
   blocked: 0
   occupied: 0
@@ -5534,6 +5573,7 @@ MonoBehaviour:
   occupant: {fileID: 110591869178335937}
   containesDirt: 0
   dirt: {fileID: 0}
+  myPickUp: {fileID: 0}
   targetable: 1
   blocked: 1
   occupied: 1
@@ -5828,6 +5868,7 @@ MonoBehaviour:
   occupant: {fileID: 0}
   containesDirt: 0
   dirt: {fileID: 0}
+  myPickUp: {fileID: 0}
   targetable: 1
   blocked: 0
   occupied: 0
@@ -5997,6 +6038,7 @@ MonoBehaviour:
   occupant: {fileID: 0}
   containesDirt: 0
   dirt: {fileID: 0}
+  myPickUp: {fileID: 0}
   targetable: 1
   blocked: 0
   occupied: 0
@@ -6090,6 +6132,7 @@ MonoBehaviour:
   occupant: {fileID: 0}
   containesDirt: 0
   dirt: {fileID: 0}
+  myPickUp: {fileID: 0}
   targetable: 1
   blocked: 0
   occupied: 0
@@ -6285,6 +6328,7 @@ MonoBehaviour:
   occupant: {fileID: 0}
   containesDirt: 0
   dirt: {fileID: 0}
+  myPickUp: {fileID: 0}
   targetable: 1
   blocked: 0
   occupied: 0
@@ -6595,6 +6639,7 @@ MonoBehaviour:
   occupant: {fileID: 0}
   containesDirt: 0
   dirt: {fileID: 0}
+  myPickUp: {fileID: 0}
   targetable: 1
   blocked: 0
   occupied: 0
@@ -6682,6 +6727,7 @@ MonoBehaviour:
   occupant: {fileID: 0}
   containesDirt: 0
   dirt: {fileID: 0}
+  myPickUp: {fileID: 0}
   targetable: 1
   blocked: 0
   occupied: 0
@@ -6759,6 +6805,7 @@ MonoBehaviour:
   occupant: {fileID: 0}
   containesDirt: 0
   dirt: {fileID: 0}
+  myPickUp: {fileID: 0}
   targetable: 1
   blocked: 0
   occupied: 0
@@ -6970,6 +7017,7 @@ MonoBehaviour:
   occupant: {fileID: 7892790244572466410}
   containesDirt: 0
   dirt: {fileID: 0}
+  myPickUp: {fileID: 0}
   targetable: 1
   blocked: 1
   occupied: 1
@@ -7171,6 +7219,7 @@ MonoBehaviour:
   occupant: {fileID: 0}
   containesDirt: 0
   dirt: {fileID: 0}
+  myPickUp: {fileID: 0}
   targetable: 1
   blocked: 0
   occupied: 0
@@ -7197,6 +7246,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unitName: Digger
   playerBot: 1
+  mySpecialization: 0
   healthMax: 4
   healthCur: 4
   movePointsMax: 3
@@ -7261,6 +7311,7 @@ MonoBehaviour:
   playerCanSelectNewUnit: 1
   tempUIPanel: {fileID: 73941690853390849}
   tempNameText: {fileID: 845250092591837314}
+  tempHealthText: {fileID: 0}
   tempHealthFill: {fileID: 0}
   tempHealthFillWhite: {fileID: 0}
   tempMovePointsText: {fileID: 5479290609573738068}
@@ -7293,6 +7344,7 @@ MonoBehaviour:
   occupant: {fileID: 0}
   containesDirt: 0
   dirt: {fileID: 0}
+  myPickUp: {fileID: 0}
   targetable: 1
   blocked: 0
   occupied: 0
@@ -7311,6 +7363,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unitName: Figther
   playerBot: 1
+  mySpecialization: 0
   healthMax: 5
   healthCur: 5
   movePointsMax: 4
@@ -7458,6 +7511,7 @@ MonoBehaviour:
   occupant: {fileID: 0}
   containesDirt: 0
   dirt: {fileID: 0}
+  myPickUp: {fileID: 0}
   targetable: 1
   blocked: 0
   occupied: 0
@@ -7786,6 +7840,7 @@ MonoBehaviour:
   occupant: {fileID: 0}
   containesDirt: 0
   dirt: {fileID: 0}
+  myPickUp: {fileID: 0}
   targetable: 1
   blocked: 0
   occupied: 0
@@ -7869,6 +7924,7 @@ MonoBehaviour:
   occupant: {fileID: 0}
   containesDirt: 0
   dirt: {fileID: 0}
+  myPickUp: {fileID: 0}
   targetable: 1
   blocked: 0
   occupied: 0
@@ -8034,6 +8090,7 @@ MonoBehaviour:
   occupant: {fileID: 0}
   containesDirt: 0
   dirt: {fileID: 0}
+  myPickUp: {fileID: 0}
   targetable: 1
   blocked: 0
   occupied: 0
@@ -8139,6 +8196,7 @@ MonoBehaviour:
   occupant: {fileID: 0}
   containesDirt: 0
   dirt: {fileID: 0}
+  myPickUp: {fileID: 0}
   targetable: 1
   blocked: 0
   occupied: 0
