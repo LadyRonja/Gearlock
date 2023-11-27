@@ -9,11 +9,8 @@ using UnityEngine.UIElements;
 
 public abstract class PlayCard : MonoBehaviour //lägg till abstract
 {
-    //TODO
-    //Check if card is selected
-    //if not activated (the card) return 
-    //bort med enum och switch
-    //lägg till enum och switch för att välja robot
+    
+   
 
     // Raycast
     // if a tile was found
@@ -21,6 +18,8 @@ public abstract class PlayCard : MonoBehaviour //lägg till abstract
     // set selectedUnit to tile.occupant
     // go to unit verification
     // if no unit was selected, keep looking
+
+    //CardEffectComplete(); call this function when the card is used
 
     public enum CardState
     {
@@ -34,8 +33,11 @@ public abstract class PlayCard : MonoBehaviour //lägg till abstract
     }
 
     public CardState myState = CardState.Inactive;
-    public Unit selectedUnit = null;
+    public BotSpecialization requiredSpecialization = BotSpecialization.None;
     public Tile selectedTile = null;
+    public Unit selectedUnit = null;
+
+    
 
     public bool selectCard;
     public bool playCard;
@@ -56,23 +58,29 @@ public abstract class PlayCard : MonoBehaviour //lägg till abstract
         switch (myState)
         {
             case CardState.Inactive:
-                // do nothing
+                selectedTile = null;
+                selectedUnit = UnitSelector.Instance.selectedUnit;
                 break;
             case CardState.VerifyUnitSelection:
                 VerifyUnitSelection();
+                //Can the selected bot play this
                 break;
             case CardState.SelectingUnit:
                 SelectUnit();
+                //choose a bot
                 break;
             case CardState.VerifyTileSelection:
                 // Same as unit verification but for tiles
+                //is the tile next to player RAYCAST
+                VerifyTileSelection();
                 break;
             case CardState.SelectTile:
                 // Same as unit selection but for tiles
+                //select a tile that the bot will excecute its behaviour 
                 break;
             case CardState.Executing:
 
-                //PlayCard();
+                //PlayCard(); // excecute the thing on the card
                 myState = CardState.Finished;
 
                 break;
@@ -93,20 +101,95 @@ public abstract class PlayCard : MonoBehaviour //lägg till abstract
         // Verify that there is a selected unit, and that it's legal
         // Use UnitSelectior.Instance
 
-        // If valid
-        myState = CardState.VerifyTileSelection;
-        // else
-        myState = CardState.SelectingUnit;
+        //can Player bot play this card 
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            // Get the mouse position in screen coordinates
+            Vector3 mousePosition = Input.mousePosition;
+
+            // Cast a ray from the camera to the mouse position
+            Ray ray = Camera.main.ScreenPointToRay(mousePosition);
+
+            // Perform a raycast to check for objects at the click position
+            RaycastHit hit;
+
+            if (Physics.Raycast(ray, out hit))
+            {
+                // Check if the clicked object has a Unit component
+                Unit clickedUnit = hit.collider.GetComponent<Unit>();
+                Debug.Log("Unit clicked");
+
+                if (clickedUnit != null)
+                {
+                    // Update the selected unit in UnitSelector
+                    UnitSelector.Instance.UpdateSelectedUnit(clickedUnit);
+                    // Change state to verify tile selection
+                    myState = CardState.VerifyTileSelection;
+                }
+
+                else
+                {
+                    myState = CardState.SelectingUnit;
+                }
+            }
+
+            // If valid
+            //myState = CardState.VerifyTileSelection;
+            // else
+            //myState = CardState.SelectingUnit;
+        }
     }
 
     protected virtual void SelectUnit()
     {
-        // Have the player select a unit 
+        // Have the player select a unit/ bot
         // Remember to update the UnitSelector.Instance.UpdateSelectedUnit()
         // Once a unit is selcted, set myState to verify it.
+       
+       
+
     }
 
-    
+    protected virtual void VerifyTileSelection()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            // Get the mouse position in screen coordinates
+            Vector3 mousePosition = Input.mousePosition;
+
+            // Cast a ray from the camera to the mouse position
+            Ray ray = Camera.main.ScreenPointToRay(mousePosition);
+
+            // Perform a raycast to check for objects at the click position
+            RaycastHit hit;
+
+            if (Physics.Raycast(ray, out hit))
+            {
+                // Check if the clicked object has a Tile component
+                Tile clickedTile = hit.collider.GetComponent<Tile>();
+                Debug.Log("Tile clicked");
+
+                if (clickedTile != null)
+                {
+                    //verifiedUnit = VerifyUnitSelection;
+                }
+            }
+        }
+
+
+            // if valid 
+            myState = CardState.VerifyTileSelection;
+        //else
+        myState = CardState.SelectTile;
+    }
+
+    protected virtual void SelectTile()
+    {
+
+    }
+
+
 
 
 
