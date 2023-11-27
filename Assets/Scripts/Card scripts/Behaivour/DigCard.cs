@@ -7,20 +7,15 @@ public class DigCard : PlayCard
   public Animator digAnimation;
   private Tile dirtPile;
 
-    public void Dig()
+    
+
+    public override void ExecuteBehaivour(Tile onTile, Unit byUnit)
     {
         if (dirtPile.containesDirt == true)
         {
             dirtPile.RemoveDirt();
-            
-        }
-        
-       //playerAnimator.SetTrigger("Digging"); 
-    }
 
-    public override void ExecuteBehaivour(Tile onTile, Unit byUnit)
-    {
-        Debug.LogError("Not implemented");
+        }
     }
 
 
