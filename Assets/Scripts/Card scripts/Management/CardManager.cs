@@ -103,7 +103,7 @@ public class CardManager : MonoBehaviour
     }
 
 
-    public void ClearDiscard() // removes all cards from discard, and adds them to draw pile. Shuffles draw pile
+    public void ClearDiscard() // removes all cards from discard, and adds them to draw pile. Shuffles draw pile.
     {
         if (discardPileObject != null)
         {
@@ -148,7 +148,7 @@ public class CardManager : MonoBehaviour
     }
 
 
-    public void ShuffleDrawPile() // Shuffles draw pile by going randomly switching each card with another
+    public void ShuffleDrawPile() // Shuffles draw pile by going randomly switching each card with another.
     {
         System.Random random = new System.Random();
 
@@ -163,7 +163,7 @@ public class CardManager : MonoBehaviour
         }
     }
 
-    public void EndTurnDiscardHand() // When the player ends their turn, any remaining cards in hand is discarded
+    public void EndTurnDiscardHand() // When the player ends their turn, any remaining cards in hand is discarded.
     {
         for (int i = handParent.transform.childCount - 1; i >= 0; i--)
         {
@@ -173,7 +173,7 @@ public class CardManager : MonoBehaviour
         }
     }
 
-    public void ClearActiveCard() // Any card that was being played is returned to hand
+    public void ClearActiveCard() // Any card that was being played is returned to hand.
     {
         for (int i = ActiveCard.Instance.transform.childCount - 1; i >= 0; i--)
         {
@@ -184,7 +184,7 @@ public class CardManager : MonoBehaviour
         }
     }
 
-    public void CardEffectComplete()
+    public void CardEffectComplete() // After the card effects have happened, discard the card.
     {
         for (int i = ActiveCard.Instance.transform.childCount - 1; i >= 0; i--)
         {

@@ -20,7 +20,7 @@ public class SpawnDigBotCard : MonoBehaviour
 
     public void Update()
     {
-        PlacementDigBot();
+        //PlacementDigBot();
     }
 
     public void PlacementDigBot()
