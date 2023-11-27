@@ -89,6 +89,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afce2c616f584c44a934696dede7f961, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inHand: 1
+  isBeingPlayed: 0
 --- !u!114 &8714510075339303856
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -101,8 +103,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afe0b735ee4893c408425d9b39e8ebb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectCard: 0
-  playCard: 0
-  distance: 1
-  currentCardType: 0
-  digBot: {fileID: 0}
+  digBot: {fileID: 1374234919581383479, guid: 949c3eda2038ccf498670240b968df58, type: 3}

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -16,6 +17,7 @@ public class CardManager : MonoBehaviour
     public GameObject handParent;
     public GameObject discardPileObject;
     bool startingHand;
+    public TextMeshProUGUI DrawAmount;
 
     public static CardManager Instance
     {
@@ -39,6 +41,7 @@ public class CardManager : MonoBehaviour
 
     void Start()
     {
+        // The starting deck is added to the draw pile
         startingHand = true;
         drawPile.Add(dig);
         drawPile.Add(dig);
@@ -52,8 +55,19 @@ public class CardManager : MonoBehaviour
         drawPile.Add(fighterBot);
     }
 
+
+    private void Update()
+    {
+        // Displays the amount of cards in draw pile
+        DrawAmount.text = drawPile.Count.ToString();
+
+        // Temporary code to "play" card with space, until card plays completely with code
+        if (Input.GetKeyDown(KeyCode.Space))
+            CardEffectComplete();
+    }
     public void DealHand()
     {
+        // Gives player start hand, 1 digger and 1 dig + 3 random cards.
         if (startingHand)
         {
             drawPile.Remove(dig);
@@ -71,6 +85,7 @@ public class CardManager : MonoBehaviour
             startingHand = false;
         }
 
+        // Any other hand drawn after the start hand just draws the 5 top cards.
         else
         {
             for (int i = 0; i < 5; i++)
@@ -88,9 +103,8 @@ public class CardManager : MonoBehaviour
     }
 
 
-    public void ClearDiscard()
+    public void ClearDiscard() // removes all cards from discard, and adds them to draw pile. Shuffles draw pile.
     {
-
         if (discardPileObject != null)
         {
             List<GameObject> cardsToAddToDrawPile = new List<GameObject>();
@@ -134,7 +148,7 @@ public class CardManager : MonoBehaviour
     }
 
 
-    public void ShuffleDrawPile()
+    public void ShuffleDrawPile() // Shuffles draw pile by going randomly switching each card with another.
     {
         System.Random random = new System.Random();
 
@@ -149,12 +163,34 @@ public class CardManager : MonoBehaviour
         }
     }
 
-    public void EndTurnDiscardHand()
+    public void EndTurnDiscardHand() // When the player ends their turn, any remaining cards in hand is discarded.
     {
         for (int i = handParent.transform.childCount - 1; i >= 0; i--)
         {
             GameObject CardInHand = handParent.transform.GetChild(i).gameObject;
             CardInHand.transform.parent = DiscardPile.Instance.transform;
+            CardInHand.GetComponent<MouseOverCard>().inHand = false;
+        }
+    }
+
+    public void ClearActiveCard() // Any card that was being played is returned to hand.
+    {
+        for (int i = ActiveCard.Instance.transform.childCount - 1; i >= 0; i--)
+        {
+            GameObject CardBeingPlayed = ActiveCard.Instance.transform.GetChild(i).gameObject;
+            CardBeingPlayed.transform.parent = HandPanel.Instance.transform;
+            CardBeingPlayed.GetComponent<MouseOverCard>().inHand = true;
+            CardBeingPlayed.GetComponent<MouseOverCard>().isBeingPlayed = false;
+        }
+    }
+
+    public void CardEffectComplete() // After the card effects have happened, discard the card.
+    {
+        for (int i = ActiveCard.Instance.transform.childCount - 1; i >= 0; i--)
+        {
+            GameObject PlayedCard = ActiveCard.Instance.transform.GetChild(i).gameObject;
+            PlayedCard.transform.parent = DiscardPile.Instance.transform;
+            PlayedCard.GetComponent<MouseOverCard>().isBeingPlayed = false;
         }
     }
 
@@ -165,6 +201,7 @@ public class CardManager : MonoBehaviour
         // To the discard pile
 
         Debug.Log("Adding card not implemented");
+
     }
 
 }
