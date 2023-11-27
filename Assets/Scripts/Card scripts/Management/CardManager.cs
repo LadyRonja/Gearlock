@@ -58,12 +58,12 @@ public class CardManager : MonoBehaviour
 
     private void Update()
     {
-        // Displays the amount of cards in draw pile
-        DrawAmount.text = drawPile.Count.ToString();
-
         // Temporary code to "play" card with space, until card plays completely with code
         if (Input.GetKeyDown(KeyCode.Space))
             CardEffectComplete();
+
+        if(DrawAmount!= null)
+            DrawAmount.text = drawPile.Count.ToString();
     }
     public void DealHand()
     {
@@ -88,6 +88,8 @@ public class CardManager : MonoBehaviour
         // Any other hand drawn after the start hand just draws the 5 top cards.
         else
         {
+            EndTurnDiscardHand();
+
             for (int i = 0; i < 5; i++)
             {
                 if (drawPile.Count < 1)
@@ -95,15 +97,12 @@ public class CardManager : MonoBehaviour
 
                 Instantiate(drawPile[0], handParent.transform);
                 drawPile.RemoveAt(0);
-
-
             }
         }
-
     }
 
 
-    public void ClearDiscard() // removes all cards from discard, and adds them to draw pile. Shuffles draw pile
+    public void ClearDiscard() // removes all cards from discard, and adds them to draw pile. Shuffles draw pile.
     {
         if (discardPileObject != null)
         {
@@ -148,7 +147,7 @@ public class CardManager : MonoBehaviour
     }
 
 
-    public void ShuffleDrawPile() // Shuffles draw pile by going randomly switching each card with another
+    public void ShuffleDrawPile() // Shuffles draw pile by going randomly switching each card with another.
     {
         System.Random random = new System.Random();
 
@@ -163,7 +162,7 @@ public class CardManager : MonoBehaviour
         }
     }
 
-    public void EndTurnDiscardHand() // When the player ends their turn, any remaining cards in hand is discarded
+    public void EndTurnDiscardHand() // When the player ends their turn, any remaining cards in hand is discarded.
     {
         for (int i = handParent.transform.childCount - 1; i >= 0; i--)
         {
@@ -173,7 +172,7 @@ public class CardManager : MonoBehaviour
         }
     }
 
-    public void ClearActiveCard() // Any card that was being played is returned to hand
+    public void ClearActiveCard() // Any card that was being played is returned to hand.
     {
         for (int i = ActiveCard.Instance.transform.childCount - 1; i >= 0; i--)
         {
@@ -184,7 +183,7 @@ public class CardManager : MonoBehaviour
         }
     }
 
-    public void CardEffectComplete()
+    public void CardEffectComplete() // After the card effects have happened, discard the card.
     {
         for (int i = ActiveCard.Instance.transform.childCount - 1; i >= 0; i--)
         {
@@ -197,9 +196,10 @@ public class CardManager : MonoBehaviour
     public void AddNewCard(PlayCard cardToAdd)
     {
         // TODO:
-        // Add a COPY of the card passed
-        // To the discard pile
+        // Add a COPY of the card passed to the discard pile
+        //Instantiate(cardToAdd, DiscardPile.Instance.transform);
 
+        Debug.Log(cardToAdd.ToString());
         Debug.Log("Adding card not implemented");
 
     }

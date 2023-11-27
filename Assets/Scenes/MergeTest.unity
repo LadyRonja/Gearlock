@@ -8694,6 +8694,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unitName: Ghost
   playerBot: 0
+  mySpecialization: 0
   healthMax: 5
   healthCur: 5
   movePointsMax: 4
@@ -9696,7 +9697,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: cb1769d3a3b5a8c4686ff92cbc76a622, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e7ba8894375206f40aa83f46c3d838a4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -10392,6 +10393,7 @@ MonoBehaviour:
   fighterBot: {fileID: 6682251750555184848, guid: c038fbcf0bd8a9e4fb7745c3b1697af5, type: 3}
   handParent: {fileID: 6922175672839037179}
   discardPileObject: {fileID: 5748640038334510853}
+  DrawAmount: {fileID: 0}
 --- !u!1 &1713682485971117879
 GameObject:
   m_ObjectHideFlags: 0
@@ -10910,6 +10912,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   takingMoveAction: 1
+  tempDebugMoveText: {fileID: 0}
 --- !u!1 &2193699279219688316
 GameObject:
   m_ObjectHideFlags: 0
@@ -16484,7 +16487,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unitName: Digger
-  playerBot: 0
+  playerBot: 1
+  mySpecialization: 0
   healthMax: 4
   healthCur: 4
   movePointsMax: 3
@@ -16601,6 +16605,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unitName: Figther
   playerBot: 1
+  mySpecialization: 0
   healthMax: 5
   healthCur: 5
   movePointsMax: 4

@@ -56,6 +56,7 @@ public class Tile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
 
             if (newOccupant.playerBot && myPickUp != null)
             {
+                Debug.Log("Stepped on pickup");
                 CardManager.instance.AddNewCard(myPickUp.cardToAdd);
                 Destroy(myPickUp);
                 myPickUp = null;

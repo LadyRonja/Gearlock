@@ -55,6 +55,10 @@ public abstract class Unit : MonoBehaviour, IDamagable
         }
     }
 
+    //TODO:
+    // Remove from UnitStorage
+    // If playerbot, spawn scrap on the ground
+    // That needs to be picked up in order to add the unit back into the discard pile
     public virtual void Die()
     {
         bool destroyedInEditor = false;
