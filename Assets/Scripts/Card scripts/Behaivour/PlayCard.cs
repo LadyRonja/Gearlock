@@ -1,289 +1,208 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Device;
-using UnityEngine.UI;
-using UnityEngine.UIElements;
-
-public abstract class PlayCard : MonoBehaviour //lägg till abstract
+public enum CardState
 {
-    
-   
+    Inactive,
+    VerifyUnitSelection,
+    SelectingUnit,
+    SelectingTile,
+    VerifyTileSelection,
+    Executing,
+    Finished
+}
 
-    // Raycast
-    // if a tile was found
-    // see if tile.occupant != null
-    // set selectedUnit to tile.occupant
-    // go to unit verification
-    // if no unit was selected, keep looking
-
-    //CardEffectComplete(); call this function when the card is used
-
-    public enum CardState
-    {
-        Inactive,
-        VerifyUnitSelection,
-        SelectingUnit,
-        VerifyTileSelection,
-        SelectTile,
-        Executing,
-        Finished
-    }
-
-    public CardState myState = CardState.Inactive;
+public abstract class PlayCard : MonoBehaviour
+{
+    public int range = 1;
+    [Space]
     public BotSpecialization requiredSpecialization = BotSpecialization.None;
-    public Tile selectedTile = null;
-    public Unit selectedUnit = null;
+    public bool canTargetDirtTiles = false;
 
-    
-
-    public bool selectCard;
-    public bool playCard;
-    public int distance;
-
-    //protected Tile clickedTile;
-    protected AttackCard attackCard;
-    protected DigCard digCard;
-    protected Unit unitToExecuteCardBehaviour;
+    [HideInInspector] public CardState myState = CardState.Inactive;
+    [HideInInspector] public Tile selectedTile = null;
+    [HideInInspector] public Unit selectedUnit = null;
 
     protected virtual void Start()
     {
-
+        myState = CardState.Inactive;
     }
 
     protected virtual void Update()
     {
+        // Depending on the state of the card, determine behaivor
         switch (myState)
         {
             case CardState.Inactive:
+                // Essentially do nothing.
                 selectedTile = null;
                 selectedUnit = UnitSelector.Instance.selectedUnit;
+
                 break;
             case CardState.VerifyUnitSelection:
+                // Verify if the selected unit is legal
                 VerifyUnitSelection();
-                //Can the selected bot play this
+
                 break;
             case CardState.SelectingUnit:
+                // Select a new unit
+                // This state is only entered after a failed verification
                 SelectUnit();
-                //choose a bot
+
+                break;
+            case CardState.SelectingTile:
+                // Select a tile to attempt to use the card on
+                SelectTile();
+
                 break;
             case CardState.VerifyTileSelection:
-                // Same as unit verification but for tiles
-                //is the tile next to player RAYCAST
+                // Verify if the selected tile is legal
                 VerifyTileSelection();
-                break;
-            case CardState.SelectTile:
-                // Same as unit selection but for tiles
-                //select a tile that the bot will excecute its behaviour 
+
                 break;
             case CardState.Executing:
-
-                //PlayCard(); // excecute the thing on the card
+                // Execute the cards behaivour
+                ExecuteBehaivour(selectedTile, selectedUnit);
                 myState = CardState.Finished;
 
                 break;
             case CardState.Finished:
                 // Let the card manager know the card is finished and can go to discard
+                CardManager.Instance.CardEffectComplete();
+                myState = CardState.Inactive;
+
                 break;
             default:
-                // Error - Reached default of switch-state-machine
-                // Go inactive
+                Debug.LogError("Reached end of state-machine, new case not added to switch?");
+                Debug.Log("Going inactive");
+                myState = CardState.Inactive;
+
                 break;
         }
-
-
     }
 
     protected virtual void VerifyUnitSelection()
     {
-        // Verify that there is a selected unit, and that it's legal
-        // Use UnitSelectior.Instance
-
-        //can Player bot play this card 
-
-        if (Input.GetMouseButtonDown(0))
+        // If no unit is selected - go to select unit.
+        if(selectedUnit == null)
         {
-            // Get the mouse position in screen coordinates
-            Vector3 mousePosition = Input.mousePosition;
-
-            // Cast a ray from the camera to the mouse position
-            Ray ray = Camera.main.ScreenPointToRay(mousePosition);
-
-            // Perform a raycast to check for objects at the click position
-            RaycastHit hit;
-
-            if (Physics.Raycast(ray, out hit))
-            {
-                // Check if the clicked object has a Unit component
-                Unit clickedUnit = hit.collider.GetComponent<Unit>();
-                Debug.Log("Unit clicked");
-
-                if (clickedUnit != null)
-                {
-                    // Update the selected unit in UnitSelector
-                    UnitSelector.Instance.UpdateSelectedUnit(clickedUnit);
-                    // Change state to verify tile selection
-                    myState = CardState.VerifyTileSelection;
-                }
-
-                else
-                {
-                    myState = CardState.SelectingUnit;
-                }
-            }
-
-            // If valid
-            //myState = CardState.VerifyTileSelection;
-            // else
-            //myState = CardState.SelectingUnit;
+            Debug.Log("No unit selected, please select a unit");
+            myState = CardState.SelectingUnit;
+            return;
         }
+
+        // Player can only play cards on player-cntrolled units
+        if(selectedUnit.playerBot == false)
+        {
+            Debug.Log("Selected unit is not controlled by the player");
+            selectedUnit = null;
+            myState= CardState.SelectingUnit;
+            return;
+        }
+
+        // If the card has a special requirment, make sure the selected bot clears that requirment
+        if(requiredSpecialization != BotSpecialization.None)
+        {
+            if(selectedUnit.mySpecialization != requiredSpecialization) 
+            {
+                Debug.Log("Selected unit does not match special requirment");
+                selectedUnit = null;
+                myState = CardState.SelectingUnit;
+                return;
+            }
+        }
+
+        // If reached this bit of the code, the bot is verified and get's to cast the card.
+        myState = CardState.SelectingTile;
     }
 
     protected virtual void SelectUnit()
     {
-        // Have the player select a unit/ bot
-        // Remember to update the UnitSelector.Instance.UpdateSelectedUnit()
-        // Once a unit is selcted, set myState to verify it.
-       
-       
-
-    }
-
-    protected virtual void VerifyTileSelection()
-    {
-        if (Input.GetMouseButtonDown(0))
+        // Click on a tile
+        // If it has an occupant
+        // That is now the selected unit
+        // Send to verify
+        if (Input.GetMouseButtonDown((int)MouseButton.Left))
         {
-            // Get the mouse position in screen coordinates
             Vector3 mousePosition = Input.mousePosition;
-
-            // Cast a ray from the camera to the mouse position
             Ray ray = Camera.main.ScreenPointToRay(mousePosition);
-
-            // Perform a raycast to check for objects at the click position
             RaycastHit hit;
 
             if (Physics.Raycast(ray, out hit))
             {
-                // Check if the clicked object has a Tile component
-                Tile clickedTile = hit.collider.GetComponent<Tile>();
-                Debug.Log("Tile clicked");
-
-                if (clickedTile != null)
+                if (hit.collider != null)
                 {
-                    //verifiedUnit = VerifyUnitSelection;
+                    if (hit.collider.gameObject.TryGetComponent<Tile>(out Tile clickedTile))
+                    {
+                        if(clickedTile.occupant != null)
+                        {
+                            selectedUnit = clickedTile.occupant;
+                            UnitSelector.Instance.UpdateSelectedUnit(selectedUnit);
+                            myState = CardState.VerifyUnitSelection;
+                            Debug.Log("New unit selected: " + selectedUnit.unitName);
+                            return;
+                        }
+                    }
                 }
             }
+            Debug.Log("No unit selected");
         }
-
-
-            // if valid 
-            myState = CardState.VerifyTileSelection;
-        //else
-        myState = CardState.SelectTile;
     }
+
 
     protected virtual void SelectTile()
     {
-
-    }
-
-
-
-
-
-    public void ClickOnTile()
+        // Click on a tile
+        // That is now the selected tile
+        // Send to verify
+        if (Input.GetMouseButtonDown((int)MouseButton.Left))
         {
-            if (!selectCard)
-                return;
+            Vector3 mousePosition = Input.mousePosition;
+            Ray ray = Camera.main.ScreenPointToRay(mousePosition);
+            RaycastHit hit;
 
-            if (Input.GetMouseButtonDown(0))
+            if (Physics.Raycast(ray, out hit))
             {
-                // Get the mouse position in screen coordinates
-                Vector3 mousePosition = Input.mousePosition;
-
-                // Cast a ray from the camera to the mouse position
-                Ray ray = Camera.main.ScreenPointToRay(mousePosition);
-
-                // Perform a raycast to check for objects at the click position
-                RaycastHit hit;
-
-                if (Physics.Raycast(ray, out hit))
+                if (hit.collider != null)
                 {
-                    // Check if the clicked object has a Tile component
-                    Tile clickedTile = hit.collider.GetComponent<Tile>();
-
-                    if (clickedTile != null)
+                    if (hit.collider.gameObject.TryGetComponent<Tile>(out Tile clickedTile))
                     {
-                        // Use GridManager to find the player's unit
-                        unitToExecuteCardBehaviour = FindPlayerUnit();
-
-                        if (unitToExecuteCardBehaviour != null)
-                        {
-                            // Calculate the distance between the player's unit and the clicked tile
-                            //distance = Vector3.Distance(playerUnit.transform.position, clickedTile.transform.position);
-                            distance = Pathfinding.GetDistance(unitToExecuteCardBehaviour.standingOn, clickedTile);
-
-                            // Log the distance
-                            Debug.Log($"Distance to clicked tile: {distance}");
-                        }
-                        else
-                        {
-                            Debug.LogWarning("No player unit found.");
-                        }
-                    }
-                
-                    if (distance == 1) //om avståndet från player och clicked tile är mindre än 20 dvs 2 rutor
-                    {
-                        playCard = true;
-                        Debug.Log("You can play this card");
-
-                        if (playCard == true)
-                        {
-                            ExecuteBehaivour(clickedTile, unitToExecuteCardBehaviour);
-                        }
-
-                    }
-                    else
-                    {
-                        playCard = false;
-                        Debug.Log("You can NOT play this card");
+                        selectedTile = clickedTile;
+                        myState = CardState.VerifyTileSelection;
+                        Debug.Log("New tile selected: " + selectedTile.transform.name);
+                        return;
                     }
                 }
             }
+            Debug.Log("No tile selected");
         }
+    }
 
-
-    protected Unit FindPlayerUnit()
+    protected virtual void VerifyTileSelection()
     {
-        
-        GridManager gridManager = GridManager.Instance;
+       // If no selected tile is passed
+       if(selectedTile == null)
+       {
+            Debug.LogError("No tile selected for verification - error in structure");
+            myState= CardState.SelectingTile;
+            return;
+       }
 
-        if (gridManager != null && gridManager.tiles != null)
-        {
-            for (int x = 0; x < gridManager.tiles.GetLength(0); x++)
-            {
-                for (int y = 0; y < gridManager.tiles.GetLength(1); y++)
-                {
-                    Tile tile = gridManager.tiles[x, y];
-                    if (tile != null && tile.occupant != null && tile.occupant.playerBot)
-                    {
-                        return tile.occupant;
-                    }
-                }
-            }
-        }
 
-        return null;
+       // TODO:
+       // Check if the tile is in range
+       // Check if the tile contains dirt
+
+
+        // If reached this bit of the code, the card is valid and can be executed
+        myState = CardState.VerifyTileSelection;
     }
-
-  
 
     public virtual void Play()
     {
-        selectCard = true;
-        Debug.Log("you have selceted a card: " + this.gameObject.name);
+        Debug.Log("card is being played:" + this.name);
+        // TODO
+        // Activate once the rest is done
+        //myState = CardState.VerifyUnitSelection;
     }
 
 
