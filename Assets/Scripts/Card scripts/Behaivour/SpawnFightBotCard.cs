@@ -15,10 +15,12 @@ public class SpawnFightBotCard : PlayCard
     public override void ExecuteBehaivour(Tile onTile, Unit byUnit)
     {
         Vector3 spawnpoint = onTile.transform.position;
+        spawnpoint.y += 3;
         GameObject botObject = Instantiate(fightBot, spawnpoint, Quaternion.identity);
         Unit botScript = botObject.GetComponent<Unit>();
         onTile.UpdateOccupant(botScript);
         botScript.standingOn = onTile;
+        UnitStorage.Instance.playerUnits.Add(botScript);
     }
 
    

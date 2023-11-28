@@ -15,28 +15,28 @@ public class DynamiteCard : PlayCard
 
     [SerializeField]
     private int multiplier = 4;
-    private Tile placeDynamite;
     private int explosionRange;
     
 
     public override void ExecuteBehaivour(Tile onTile, Unit byUnit)
     {
-
-                GameObject newDynamite = Instantiate(dynamite);
-                newDynamite.transform.position = placeDynamite.transform.position;
-                newDynamite.transform.rotation = Quaternion.identity;
-
                 //playerAnimator.SetTrigger("Exploding"); 
 
-                if (onTile.occupant != null)
-                {
-                    onTile.occupant.TakeDamage(byUnit.power * multiplier);
+         if (onTile.occupant != null)
+         {
+             Vector3 spawnpoint = onTile.transform.position;
+             GameObject newDynamite = Instantiate(dynamite, spawnpoint, Quaternion.identity);
+             Unit dynamiteScript = newDynamite.GetComponent<Unit>();
+             onTile.UpdateOccupant(dynamiteScript);
+             dynamiteScript.standingOn = onTile;
+
+             onTile.occupant.TakeDamage(byUnit.power * multiplier);
 
                     //onTile.occupant.TakeDamage(byUnit.attackRange  ); //2 rutor åt alla håll
 
                     //kolla grannar och lägg till i listan i alla fyra håll, for loop med dig eller damge
                     //den kan INTE hamna på dirt men kan pränga dirt
-                }
+         }
 
 
                 // Apply damage to units in a 2-tile radius
