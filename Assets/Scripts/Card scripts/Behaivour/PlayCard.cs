@@ -17,6 +17,8 @@ public abstract class PlayCard : MonoBehaviour
     [Space]
     public BotSpecialization requiredSpecialization = BotSpecialization.None;
     public bool canTargetDirtTiles = false;
+    public bool canTargetOccupiedTiles = true;
+    public bool goesToDiscardAfterPlay = true;
 
     [HideInInspector] public CardState myState = CardState.Inactive;
     [HideInInspector] public Tile selectedTile = null;
@@ -196,8 +198,16 @@ public abstract class PlayCard : MonoBehaviour
             return;
        }
 
-       // Check if the tile is in range
-       if(range > 0)
+        // Check if the tile contains a unit
+        if (!canTargetOccupiedTiles && selectedTile.occupant != null)
+        {
+            Debug.Log("Tile cannot contain a unit for this card");
+            myState = CardState.SelectingTile;
+            return;
+        }
+
+        // Check if the tile is in range
+        if (range > 0)
        {
             int dist = Pathfinding.GetDistance(selectedTile, selectedUnit.standingOn);
             

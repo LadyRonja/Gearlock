@@ -33,7 +33,11 @@ public class UnitSelector : MonoBehaviour
         if (!playerCanSelectNewUnit && !calledByAI)
             return;
 
+        if(selectedUnit != null)
+            selectedUnit.mySR.color = Color.white;
+
         selectedUnit = unitToSelect;
+        selectedUnit.mySR.color = Color.green;
         UpdateUI();
     }
 
