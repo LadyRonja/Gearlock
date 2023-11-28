@@ -65,6 +65,7 @@ public abstract class PlayCard : MonoBehaviour
                 // Execute the cards behaivour
                 ExecuteBehaivour(selectedTile, selectedUnit);
                 myState = CardState.Finished;
+                DEBUGCardStateUI.Instance.DEBUGUpdateUI(CardState.Executing, "Playing card!");
 
                 break;
             case CardState.Finished:
@@ -72,6 +73,7 @@ public abstract class PlayCard : MonoBehaviour
                 CardManager.Instance.CardEffectComplete();
                 MovementManager.Instance.takingMoveAction = true;
                 myState = CardState.Inactive;
+                DEBUGCardStateUI.Instance.DEBUGUpdateUI(CardState.Inactive, "--");
 
                 break;
             default:
@@ -90,6 +92,7 @@ public abstract class PlayCard : MonoBehaviour
         {
             Debug.Log("No unit selected, please select a unit");
             myState = CardState.SelectingUnit;
+            DEBUGCardStateUI.Instance.DEBUGUpdateUI(CardState.VerifyUnitSelection, "Select a Unit.");
             return;
         }
 
@@ -99,6 +102,7 @@ public abstract class PlayCard : MonoBehaviour
             Debug.Log("Selected unit is not controlled by the player");
             selectedUnit = null;
             myState= CardState.SelectingUnit;
+            DEBUGCardStateUI.Instance.DEBUGUpdateUI(CardState.VerifyUnitSelection, "Select a friendly Unit");
             return;
         }
 
@@ -110,12 +114,14 @@ public abstract class PlayCard : MonoBehaviour
                 Debug.Log("Selected unit does not match special requirment");
                 selectedUnit = null;
                 myState = CardState.SelectingUnit;
+                DEBUGCardStateUI.Instance.DEBUGUpdateUI(CardState.VerifyUnitSelection, "Select a unit that can use that card");
                 return;
             }
         }
 
         // If reached this bit of the code, the bot is verified and get's to cast the card.
         myState = CardState.SelectingTile;
+        DEBUGCardStateUI.Instance.DEBUGUpdateUI(CardState.SelectingTile, "Select a tile");
     }
 
     protected virtual void SelectUnit()
@@ -187,6 +193,7 @@ public abstract class PlayCard : MonoBehaviour
        {
             Debug.LogError("No tile selected for verification - error in structure");
             myState= CardState.SelectingTile;
+            DEBUGCardStateUI.Instance.DEBUGUpdateUI(CardState.VerifyTileSelection, "Contact a programmer, no tile selected");
             return;
        }
 
@@ -195,6 +202,7 @@ public abstract class PlayCard : MonoBehaviour
        {
             Debug.Log("Tile cannot contain dirt for this card");
             myState = CardState.SelectingTile;
+            DEBUGCardStateUI.Instance.DEBUGUpdateUI(CardState.VerifyTileSelection, "This card can't be played on a tile with dirt");
             return;
        }
 
@@ -203,6 +211,7 @@ public abstract class PlayCard : MonoBehaviour
         {
             Debug.Log("Tile cannot contain a unit for this card");
             myState = CardState.SelectingTile;
+            DEBUGCardStateUI.Instance.DEBUGUpdateUI(CardState.VerifyTileSelection, "This card can't be played on a tile with a unit");
             return;
         }
 
@@ -215,6 +224,7 @@ public abstract class PlayCard : MonoBehaviour
             if(!(dist <= range && dist != 0))
             {
                 Debug.Log("Tile is out of range, unless range is 0 it can not target the same tile as the user");
+                DEBUGCardStateUI.Instance.DEBUGUpdateUI(CardState.VerifyTileSelection, "Out of range, can't play on self");
                 myState = CardState.SelectingTile;
                 return;
             }
@@ -228,6 +238,7 @@ public abstract class PlayCard : MonoBehaviour
     {
         Debug.Log("card is being played:" + this.name);
         myState = CardState.VerifyUnitSelection;
+        DEBUGCardStateUI.Instance.DEBUGUpdateUI(CardState.SelectingUnit, "Select a unit");
         MovementManager.Instance.takingMoveAction = false;
     }
 
@@ -237,7 +248,8 @@ public abstract class PlayCard : MonoBehaviour
     public void CancelPlay()
     {
         Debug.Log("Card is returned to inactive play");
-        selectedTile= null;
+        DEBUGCardStateUI.Instance.DEBUGUpdateUI(CardState.Inactive, "--");
+        selectedTile = null;
         selectedUnit= null;
         myState = CardState.Inactive;
         MovementManager.Instance.takingMoveAction = true;
