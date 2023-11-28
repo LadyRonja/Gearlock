@@ -8757,10 +8757,14 @@ PrefabInstance:
     - target: {fileID: 8699633877159799071, guid: e5ab73d65876392488983ec86be9c290, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1693494652081514299}
+      objectReference: {fileID: 875088647954438121}
     - target: {fileID: 8699633877159799071, guid: e5ab73d65876392488983ec86be9c290, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: EndTurnDiscardHand
+      value: EndTurn
+      objectReference: {fileID: 0}
+    - target: {fileID: 8699633877159799071, guid: e5ab73d65876392488983ec86be9c290, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TurnManager, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 8764461584754888707, guid: e5ab73d65876392488983ec86be9c290, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -8775,6 +8779,9 @@ PrefabInstance:
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 3545115230597724448, guid: e5ab73d65876392488983ec86be9c290, type: 3}
       insertIndex: 0
+      addedObject: {fileID: 2541624681354190367}
+    - targetCorrespondingSourceObject: {fileID: 3545115230597724448, guid: e5ab73d65876392488983ec86be9c290, type: 3}
+      insertIndex: 1
       addedObject: {fileID: 2512992049330537956}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e5ab73d65876392488983ec86be9c290, type: 3}
@@ -9782,7 +9789,6 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 2541624681354190367}
   - {fileID: 5138523599536469115}
   - {fileID: 789979170472148203}
   - {fileID: 1964873127548184097}
@@ -11554,15 +11560,15 @@ RectTransform:
   m_GameObject: {fileID: 8586618469642448011}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8769667457062111198}
-  m_Father: {fileID: 796781179757863038}
+  m_Father: {fileID: 2102368920}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -38.300003}
+  m_AnchoredPosition: {x: -960, y: -1079.7697}
   m_SizeDelta: {x: 297.6, y: 76.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!64 &2558221733338873545
@@ -16788,7 +16794,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unitName: Digger
   playerBot: 1
-  mySpecialization: 0
+  mySpecialization: 1
   healthMax: 4
   healthCur: 4
   movePointsMax: 3
@@ -16903,9 +16909,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5034101d26564df43985363fefac77b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitName: Figther
+  unitName: Fighter
   playerBot: 1
-  mySpecialization: 0
+  mySpecialization: 1
   healthMax: 5
   healthCur: 5
   movePointsMax: 4

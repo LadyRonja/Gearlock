@@ -83,18 +83,12 @@ public class Tile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
         {
             UnitSelector.Instance.UpdateSelectedUnit(occupant);
         }
+        TileClicker.Instance.HandleMoveClick(this);
 
         // Toggle Blocked (Debug)
         if (Input.GetKey(KeyCode.LeftControl))
         {
             TileClicker.Instance.ToggleBlockedDebug(this);
-        }
-
-        // Move Selected Unit Here
-        if (Input.GetKey(KeyCode.LeftShift))
-        {
-            if (!targetable) return;
-            TileClicker.Instance.MoveSelectedUnitHere(this);
         }
 
         // Toggle Dirt Here

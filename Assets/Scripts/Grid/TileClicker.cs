@@ -41,8 +41,17 @@ public class TileClicker : MonoBehaviour
             UnitSelector.Instance.UpdateSelectedUnit(tile.occupant);
     }
 
-    public void MoveSelectedUnitHere(Tile tile)
+    public void HandleMoveClick(Tile tile)
     {
+        // Identify all the times movement can't occur
+        if (!tile.targetable) return;
+        if (UnitSelector.Instance.selectedUnit == null) return;
+        if (!UnitSelector.Instance.selectedUnit.playerBot) return;
+        if (!TurnManager.Instance.isPlayerTurn) return;
+        if (tile.occupant != null)
+            if (tile.occupant.playerBot) return;
+
+        // Move
         MovementManager.Instance.MoveUnit(UnitSelector.Instance.selectedUnit, tile);
     }
 }
