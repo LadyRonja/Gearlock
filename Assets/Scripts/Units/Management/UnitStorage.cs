@@ -18,4 +18,16 @@ public class UnitStorage : MonoBehaviour
             Destroy(this.gameObject);
         #endregion
     }
+
+    public void RemoveUnit(Unit unitToRemove)
+    {
+        if (playerUnits.Contains(unitToRemove))
+        {
+            playerUnits.Remove(unitToRemove);
+        }
+        else if (enemyUnits.Contains(unitToRemove))
+        {
+            enemyUnits.Remove(unitToRemove);
+        }
+    }
 }

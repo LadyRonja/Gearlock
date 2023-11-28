@@ -31,7 +31,11 @@ public class TurnManager : MonoBehaviour // classen blir en singleton
 
             // Hurts my soul to write a nullcheck on a singleton
             if(CardManager.Instance != null)
+            {
+                CardManager.Instance.ClearActiveCard();
                 CardManager.Instance.EndTurnDiscardHand();
+            }
+                
 
             MovementManager.Instance.takingMoveAction = false;
             UnitSelector.Instance.playerCanSelectNewUnit = false;

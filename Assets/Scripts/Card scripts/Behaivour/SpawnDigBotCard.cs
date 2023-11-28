@@ -17,13 +17,22 @@ public class SpawnDigBotCard : PlayCard
     public override void ExecuteBehaivour(Tile onTile, Unit byUnit)
     {
         Vector3 spawnpoint = onTile.transform.position;
-        spawnpoint.y += 3;
+        spawnpoint.y += 4;
         GameObject botObject = Instantiate(digBot, spawnpoint, Quaternion.identity);
         Unit botScript = botObject.GetComponent<Unit>();
+
+        // Set BotSpecialization to Digger
+        botScript.mySpecialization = BotSpecialization.Digger;
+
         onTile.UpdateOccupant(botScript);
         botScript.standingOn = onTile;
         UnitStorage.Instance.playerUnits.Add(botScript);
+        
+
 
         //offset so it does not spawn in the ground
     }
+
+    
 }
+
