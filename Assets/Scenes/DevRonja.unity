@@ -8636,6 +8636,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2881075710510722314, guid: e5ab73d65876392488983ec86be9c290, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1693494652081514299}
+    - target: {fileID: 2881075710510722314, guid: e5ab73d65876392488983ec86be9c290, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: CardEffectComplete
+      objectReference: {fileID: 0}
     - target: {fileID: 3545115230597724448, guid: e5ab73d65876392488983ec86be9c290, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -8720,6 +8728,38 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 8222038273358671777, guid: e5ab73d65876392488983ec86be9c290, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1693494652081514299}
+    - target: {fileID: 8222038273358671777, guid: e5ab73d65876392488983ec86be9c290, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ClearDiscard
+      objectReference: {fileID: 0}
+    - target: {fileID: 8577087194843470205, guid: e5ab73d65876392488983ec86be9c290, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1693494652081514299}
+    - target: {fileID: 8577087194843470205, guid: e5ab73d65876392488983ec86be9c290, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ShuffleDrawPile
+      objectReference: {fileID: 0}
+    - target: {fileID: 8699633877159799071, guid: e5ab73d65876392488983ec86be9c290, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1693494652081514299}
+    - target: {fileID: 8699633877159799071, guid: e5ab73d65876392488983ec86be9c290, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: EndTurnDiscardHand
+      objectReference: {fileID: 0}
+    - target: {fileID: 8764461584754888707, guid: e5ab73d65876392488983ec86be9c290, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1693494652081514299}
+    - target: {fileID: 8764461584754888707, guid: e5ab73d65876392488983ec86be9c290, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: DealHand
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -8733,6 +8773,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3545115230597724448, guid: e5ab73d65876392488983ec86be9c290, type: 3}
   m_PrefabInstance: {fileID: 2102368919}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2102368921 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4919351204547874106, guid: e5ab73d65876392488983ec86be9c290, type: 3}
+  m_PrefabInstance: {fileID: 2102368919}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2112349269
 GameObject:
   m_ObjectHideFlags: 0
@@ -10632,7 +10683,7 @@ MonoBehaviour:
   fighterBot: {fileID: 6682251750555184848, guid: c038fbcf0bd8a9e4fb7745c3b1697af5, type: 3}
   handParent: {fileID: 6922175672839037179}
   discardPileObject: {fileID: 5748640038334510853}
-  DrawAmount: {fileID: 0}
+  DrawAmount: {fileID: 2102368921}
 --- !u!1 &1713682485971117879
 GameObject:
   m_ObjectHideFlags: 0
