@@ -89,6 +89,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afce2c616f584c44a934696dede7f961, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inHand: 1
+  isBeingPlayed: 0
 --- !u!114 &-5488844725918372012
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -101,8 +103,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c677a045f8711845b817585246f896c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectCard: 0
-  playCard: 0
-  distance: 1
-  currentCardType: 0
+  range: 1
+  requiredSpecialization: 1
+  canTargetDirtTiles: 1
+  myState: 0
+  selectedTile: {fileID: 0}
+  selectedUnit: {fileID: 0}
   digAnimation: {fileID: 0}
