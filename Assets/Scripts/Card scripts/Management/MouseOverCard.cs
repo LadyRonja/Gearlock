@@ -53,7 +53,7 @@ public class MouseOverCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         {
             if (Input.GetMouseButtonDown(1))
             {
-                card.CancelPlay();
+                this.gameObject.GetComponent<PlayCard>().CancelPlay();
                 transform.parent = HandPanel.Instance.transform;
                 transform.position = new Vector3(cardX, cardY, 0);
                 inHand = true;
