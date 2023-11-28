@@ -40,8 +40,7 @@ public class TurnManager : MonoBehaviour // classen blir en singleton
             AIManager.Instance.StartAITurn();
 
             // Hurts my soul to write a nullcheck on a singleton
-            if (CardManager.Instance != null)
-                CardManager.Instance.DealHand();
+;
 
             //TODO disable player interaction
         }
@@ -57,6 +56,7 @@ public class TurnManager : MonoBehaviour // classen blir en singleton
         }
 
 
+        CardManager.Instance.DealHand();
 
         isPlayerTurn = true;
         MovementManager.Instance.takingMoveAction = true; // Change later
