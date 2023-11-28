@@ -10,23 +10,16 @@ public class SpawnFightBotCard : PlayCard
     //inte på upptagen ruta
 
     public GameObject fightBot;
-    public Transform spawnPosition;
+  
 
     public override void ExecuteBehaivour(Tile onTile, Unit byUnit)
     {
-        
-        Instantiate(fightBot, spawnPosition.position, Quaternion.identity);
+        Vector3 spawnpoint = onTile.transform.position;
+        GameObject botObject = Instantiate(fightBot, spawnpoint, Quaternion.identity);
+        Unit botScript = botObject.GetComponent<Unit>();
+        onTile.UpdateOccupant(botScript);
+        botScript.standingOn = onTile;
     }
 
-    /*public void PlacementFightBot()
-    {
-        if (placeFightBot.occupied == false)
-        {
-            GameObject newFightBot = Instantiate(fightBot);
-            newFightBot.transform.position = placeFightBot.transform.position;
-            newFightBot.transform.rotation = Quaternion.identity;
-
-            placeFightBot.occupied = true;
-        }
-    }*/
+   
 }

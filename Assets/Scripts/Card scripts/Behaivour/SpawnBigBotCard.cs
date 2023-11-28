@@ -8,6 +8,11 @@ public class SpawnBigBotCard : PlayCard
 
     public override void ExecuteBehaivour(Tile onTile, Unit byUnit)
     {
-        Debug.LogError("Not implemented");
+        Vector3 spawnpoint = onTile.transform.position;
+        GameObject botObject = Instantiate(bigBot, spawnpoint, Quaternion.identity);
+        Unit botScript = botObject.GetComponent<Unit>();
+        onTile.UpdateOccupant(botScript);
+        botScript.standingOn = onTile;
+
     }
 }
