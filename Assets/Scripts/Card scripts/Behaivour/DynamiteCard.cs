@@ -32,6 +32,9 @@ public class DynamiteCard : PlayCard
 
              onTile.occupant.TakeDamage(byUnit.power * multiplier);
 
+
+            Destroy(dynamite);
+
                     //onTile.occupant.TakeDamage(byUnit.attackRange  ); //2 rutor åt alla håll
 
                     //kolla grannar och lägg till i listan i alla fyra håll, for loop med dig eller damge

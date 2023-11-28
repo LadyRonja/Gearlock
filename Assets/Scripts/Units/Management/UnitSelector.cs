@@ -14,6 +14,7 @@ public class UnitSelector : MonoBehaviour
     public TMP_Text tempHealthText;
     public Image tempHealthFill;
     public Image tempHealthFillWhite;
+    public TMP_Text tempPowerText; 
     public TMP_Text tempMovePointsText;
 
     private void Awake()
@@ -30,8 +31,17 @@ public class UnitSelector : MonoBehaviour
 
     public void UpdateSelectedUnit(Unit unitToSelect, bool calledByAI)
     {
+        // Determine if updating the selected units is legal
         if (!playerCanSelectNewUnit && !calledByAI)
             return;
+
+        // Reset the old selected unit's color
+        if(selectedUnit != null)
+            selectedUnit.mySR.color = Color.white;
+
+        // Update the new selected unit
+        if(unitToSelect != null)
+            unitToSelect.mySR.color = Color.green;
 
         selectedUnit = unitToSelect;
         UpdateUI();
@@ -55,6 +65,7 @@ public class UnitSelector : MonoBehaviour
         {
             tempUIPanel.SetActive(true);
             tempNameText.text = selectedUnit.unitName;
+            tempPowerText.text = $"Power: {selectedUnit.power}";
             tempHealthText.text = $"HP: {selectedUnit.healthCur}/{selectedUnit.healthMax}";
             tempHealthFill.fillAmount = (float)selectedUnit.healthCur / (float)selectedUnit.healthMax;
             if(damageApplication)

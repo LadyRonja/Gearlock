@@ -29,24 +29,18 @@ public class TurnManager : MonoBehaviour // classen blir en singleton
         {
             isPlayerTurn = false;
 
-            // Hurts my soul to write a nullcheck on a singleton
-            if(CardManager.Instance != null)
-            {
-                CardManager.Instance.ClearActiveCard();
-                CardManager.Instance.EndTurnDiscardHand();
-            }
-                
+            CardManager.Instance.ClearActiveCard();
+            CardManager.Instance.EndTurnDiscardHand();
 
             MovementManager.Instance.takingMoveAction = false;
             UnitSelector.Instance.playerCanSelectNewUnit = false;
 
             UpdateUI();
+
+            GameoverManager.Instance.CheckGameOver();
             AIManager.Instance.StartAITurn();
 
-            // Hurts my soul to write a nullcheck on a singleton
-;
 
-            //TODO disable player interaction
         }
         
     }
