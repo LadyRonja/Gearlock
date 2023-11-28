@@ -16,6 +16,8 @@ public class CardManager : MonoBehaviour
     public GameObject fighterBot;
     public GameObject handParent;
     public GameObject discardPileObject;
+    public GameObject brokenFighter;
+    public GameObject brokenDigger;
     bool startingHand;
     public TextMeshProUGUI DrawAmount;
 
@@ -192,8 +194,23 @@ public class CardManager : MonoBehaviour
         for (int i = ActiveCard.Instance.transform.childCount - 1; i >= 0; i--)
         {
             GameObject PlayedCard = ActiveCard.Instance.transform.GetChild(i).gameObject;
-            PlayedCard.transform.parent = DiscardPile.Instance.transform;
             PlayedCard.GetComponent<MouseOverCard>().isBeingPlayed = false;
+
+            if (PlayedCard.name == "Fighter(Clone)" || PlayedCard.name == "Digger(Clone)")
+            {
+
+                //if (PlayedCard.name == "Fighter(Clone)")
+                //    Instantiate(brokenFighter, pos);
+
+                //else if (PlayedCard.name == "Digger(Clone)")
+                //    Instantiate(brokenDigger, pos);
+
+                Destroy(PlayedCard);
+            }
+            else
+                PlayedCard.transform.parent = DiscardPile.Instance.transform;
+
+            Debug.Log(PlayedCard);
         }
     }
 
