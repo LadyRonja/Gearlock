@@ -18,6 +18,7 @@ public abstract class PlayCard : MonoBehaviour
     public BotSpecialization requiredSpecialization = BotSpecialization.None;
     public bool canTargetDirtTiles = false;
     public bool canTargetOccupiedTiles = true;
+    public bool goesToDiscardAfterPlay = true;
 
     [HideInInspector] public CardState myState = CardState.Inactive;
     [HideInInspector] public Tile selectedTile = null;
