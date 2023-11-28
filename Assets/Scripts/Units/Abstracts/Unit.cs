@@ -123,6 +123,7 @@ public abstract class Unit : MonoBehaviour, IDamagable
             UnitSelector.Instance.UpdateUI();
             yield return null;
         }
+        gfx.position = transform.position;
         standingOn.UpdateOccupant(null);
         standingOn = toTile;
         toTile.UpdateOccupant(this);
