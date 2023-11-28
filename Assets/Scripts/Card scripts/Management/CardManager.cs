@@ -53,6 +53,10 @@ public class CardManager : MonoBehaviour
         drawPile.Add(diggerBot);
         drawPile.Add(diggerBot);
         drawPile.Add(fighterBot);
+
+
+        DealHand();
+
     }
 
 
