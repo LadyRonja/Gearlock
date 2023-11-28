@@ -1461,7 +1461,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: fc4c999c560cbda40b94ef1824b34287, type: 2}
+  - {fileID: 2100000, guid: b0573c6fd779211469bcb138afba1f80, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3400,6 +3400,8 @@ MonoBehaviour:
   fighterBot: {fileID: 6682251750555184848, guid: c038fbcf0bd8a9e4fb7745c3b1697af5, type: 3}
   handParent: {fileID: 6922175672839037179}
   discardPileObject: {fileID: 5748640038334510853}
+  brokenFighter: {fileID: 0}
+  brokenDigger: {fileID: 0}
   DrawAmount: {fileID: 0}
 --- !u!1 &1713682485971117879
 GameObject:
@@ -9101,6 +9103,7 @@ MonoBehaviour:
   standingOn: {fileID: 0}
   gfx: {fileID: 114602580636637657}
   mySR: {fileID: 0}
+  brokenDigger: {fileID: 0}
 --- !u!114 &7909590848908899540
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9158,6 +9161,7 @@ MonoBehaviour:
   tempHealthText: {fileID: 129123861}
   tempHealthFill: {fileID: 7751685447855940911}
   tempHealthFillWhite: {fileID: 1539765529}
+  tempPowerText: {fileID: 0}
   tempMovePointsText: {fileID: 5479290609573738068}
 --- !u!114 &7992419455696041446
 MonoBehaviour:
@@ -9218,6 +9222,7 @@ MonoBehaviour:
   standingOn: {fileID: 2493595305341716067}
   gfx: {fileID: 666374150037296619}
   mySR: {fileID: 0}
+  brokenFighter: {fileID: 0}
 --- !u!4 &8126368467769436310
 Transform:
   m_ObjectHideFlags: 0
