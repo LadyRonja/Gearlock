@@ -8738,6 +8738,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 7225114008092852319, guid: e5ab73d65876392488983ec86be9c290, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8222038273358671777, guid: e5ab73d65876392488983ec86be9c290, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -8949,7 +8953,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &78188055309189966
 GameObject:
   m_ObjectHideFlags: 0
@@ -9029,7 +9033,7 @@ Transform:
   m_GameObject: {fileID: 2193699279219688316}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 1.97, z: 1.98}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -9602,7 +9606,7 @@ Transform:
   m_GameObject: {fileID: 7609238827418102204}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 2.89}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -16821,6 +16825,7 @@ MonoBehaviour:
   standingOn: {fileID: 7580025418813234495}
   gfx: {fileID: 114602580636637657}
   mySR: {fileID: 0}
+  brokenDigger: {fileID: 0}
 --- !u!114 &7909590848908899540
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16878,6 +16883,7 @@ MonoBehaviour:
   tempHealthText: {fileID: 129123861}
   tempHealthFill: {fileID: 7751685447855940911}
   tempHealthFillWhite: {fileID: 1539765529}
+  tempPowerText: {fileID: 0}
   tempMovePointsText: {fileID: 5479290609573738068}
 --- !u!114 &7992419455696041446
 MonoBehaviour:
@@ -16938,6 +16944,7 @@ MonoBehaviour:
   standingOn: {fileID: 2493595305341716067}
   gfx: {fileID: 666374150037296619}
   mySR: {fileID: 0}
+  brokenFighter: {fileID: 0}
 --- !u!4 &8126368467769436310
 Transform:
   m_ObjectHideFlags: 0
