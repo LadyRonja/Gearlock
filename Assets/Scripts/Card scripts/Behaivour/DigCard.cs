@@ -5,15 +5,14 @@ using UnityEngine;
 public class DigCard : PlayCard
 {
   public Animator digAnimation;
-  private Tile dirtPile;
 
     
 
     public override void ExecuteBehaivour(Tile onTile, Unit byUnit)
     {
-        if (dirtPile.containesDirt == true)
+        if (onTile.containesDirt == true)
         {
-            dirtPile.RemoveDirt();
+            onTile.RemoveDirt();
 
         }
     }
