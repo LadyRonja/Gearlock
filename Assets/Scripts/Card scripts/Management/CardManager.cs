@@ -66,7 +66,7 @@ public class CardManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
             CardEffectComplete();
 
-        if(DrawAmount!= null)
+        if (DrawAmount != null)
             DrawAmount.text = drawPile.Count.ToString();
     }
     public void DealHand()
@@ -81,7 +81,7 @@ public class CardManager : MonoBehaviour
 
             ShuffleDrawPile();
 
-            for (int i  = 0; i < 3; i++)
+            for (int i = 0; i < 3; i++)
             {
                 Instantiate(drawPile[0], handParent.transform);
                 drawPile.RemoveAt(0);
