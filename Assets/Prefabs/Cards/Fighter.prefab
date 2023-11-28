@@ -103,11 +103,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccd357eef17fe644c89fd1ca858c28bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  range: 1
+  requiredSpecialization: 1
+  canTargetDirtTiles: 0
   myState: 0
-  requiredSpecialization: 0
   selectedTile: {fileID: 0}
   selectedUnit: {fileID: 0}
-  selectCard: 0
-  playCard: 0
-  distance: 1
   fightBot: {fileID: 7606916860535154931, guid: 4616440f96a366e41be3341e56abf57a, type: 3}
