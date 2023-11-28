@@ -68,6 +68,7 @@ public abstract class PlayCard : MonoBehaviour
             case CardState.Finished:
                 // Let the card manager know the card is finished and can go to discard
                 CardManager.Instance.CardEffectComplete();
+                MovementManager.Instance.takingMoveAction = true;
                 myState = CardState.Inactive;
 
                 break;
@@ -217,6 +218,7 @@ public abstract class PlayCard : MonoBehaviour
     {
         Debug.Log("card is being played:" + this.name);
         myState = CardState.VerifyUnitSelection;
+        MovementManager.Instance.takingMoveAction = false;
     }
 
 
@@ -228,6 +230,7 @@ public abstract class PlayCard : MonoBehaviour
         selectedTile= null;
         selectedUnit= null;
         myState = CardState.Inactive;
+        MovementManager.Instance.takingMoveAction = true;
     } 
 }
 
