@@ -58,7 +58,7 @@ public class Tile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
             {
                 Debug.Log("Stepped on pickup");
                 CardManager.instance.AddNewCard(myPickUp.cardToAdd);
-                Destroy(myPickUp);
+                Destroy(myPickUp.gameObject);
                 myPickUp = null;
             }
         }
