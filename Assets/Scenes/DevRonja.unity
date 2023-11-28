@@ -9602,7 +9602,7 @@ Transform:
   m_GameObject: {fileID: 7609238827418102204}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 3.04}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -10699,6 +10699,8 @@ MonoBehaviour:
   fighterBot: {fileID: 6682251750555184848, guid: c038fbcf0bd8a9e4fb7745c3b1697af5, type: 3}
   handParent: {fileID: 1411200924}
   discardPileObject: {fileID: 1780038060}
+  brokenFighter: {fileID: 0}
+  brokenDigger: {fileID: 0}
   DrawAmount: {fileID: 2102368921}
 --- !u!1 &1713682485971117879
 GameObject:
@@ -13733,8 +13735,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 8770554184435589152}
   - {fileID: 9004414092980472851}
+  - {fileID: 8770554184435589152}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &5044564184700783921
@@ -16819,6 +16821,7 @@ MonoBehaviour:
   standingOn: {fileID: 7580025418813234495}
   gfx: {fileID: 114602580636637657}
   mySR: {fileID: 0}
+  brokenDigger: {fileID: 1387611179076426880, guid: d532bd26be33c284297d583c1446e12a, type: 3}
 --- !u!114 &7909590848908899540
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16936,6 +16939,7 @@ MonoBehaviour:
   standingOn: {fileID: 2493595305341716067}
   gfx: {fileID: 666374150037296619}
   mySR: {fileID: 0}
+  brokenFighter: {fileID: 3141665598236762354, guid: a01b1ee6048250e4595d21ee65596a4d, type: 3}
 --- !u!4 &8126368467769436310
 Transform:
   m_ObjectHideFlags: 0
@@ -17673,8 +17677,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3622372463891804503}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 20.37, y: 186.1, z: -296.27}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 20.370003, y: 187.73, z: -293.71}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

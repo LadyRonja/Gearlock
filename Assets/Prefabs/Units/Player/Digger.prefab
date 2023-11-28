@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3e5418047a230841a7c825c668f99f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitName: Unnamed Unit
+  unitName: Digger
   playerBot: 1
   mySpecialization: 1
   healthMax: 5
@@ -58,6 +58,7 @@ MonoBehaviour:
   standingOn: {fileID: 0}
   gfx: {fileID: 6819292618928897335}
   mySR: {fileID: 0}
+  brokenDigger: {fileID: 1387611179076426880, guid: d532bd26be33c284297d583c1446e12a, type: 3}
 --- !u!1 &2123404906236411084
 GameObject:
   m_ObjectHideFlags: 0

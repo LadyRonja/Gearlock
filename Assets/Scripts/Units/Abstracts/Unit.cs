@@ -61,7 +61,13 @@ public abstract class Unit : MonoBehaviour, IDamagable
     public virtual void Die()
     {
         UnitStorage.Instance.RemoveUnit(this);
+        UnitSelector.Instance.UpdateSelectedUnit(null, true);
         standingOn.UpdateOccupant(null);
+        if (playerBot)
+        {
+            GameoverManager.Instance.CheckGameOver();
+        }
+
         Destroy(this.gameObject);
     }
 
