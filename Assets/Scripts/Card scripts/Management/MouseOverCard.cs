@@ -16,6 +16,7 @@ public class MouseOverCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     public bool inHand = true;
     public bool isBeingPlayed = false;
     Vector3 dragPos;
+    PlayCard card;
 
     public void Update()
     {
@@ -52,6 +53,7 @@ public class MouseOverCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         {
             if (Input.GetMouseButtonDown(1))
             {
+                card.CancelPlay();
                 transform.parent = HandPanel.Instance.transform;
                 transform.position = new Vector3(cardX, cardY, 0);
                 inHand = true;
