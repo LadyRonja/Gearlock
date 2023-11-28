@@ -48,7 +48,7 @@ public abstract class Unit : MonoBehaviour, IDamagable
         if (UnitSelector.Instance.selectedUnit == this)
             UnitSelector.Instance.UpdateUI(true);
 
-        if (healthCur < 0)
+        if (healthCur <= 0)
         {
             healthCur = 0;
             Die();
@@ -60,18 +60,15 @@ public abstract class Unit : MonoBehaviour, IDamagable
     // That needs to be picked up in order to add the unit back into the discard pile
     public virtual void Die()
     {
-        bool destroyedInEditor = false;
-#if UNITY_EDITOR
         UnitStorage.Instance.RemoveUnit(this);
-        DestroyImmediate(this.gameObject);
-        destroyedInEditor = true;
-#endif
-
-        if (!destroyedInEditor)
+        UnitSelector.Instance.UpdateSelectedUnit(null, true);
+        standingOn.UpdateOccupant(null);
+        if (playerBot)
         {
-            UnitStorage.Instance.RemoveUnit(this);
-            Destroy(this.gameObject);
+            GameoverManager.Instance.CheckGameOver();
         }
+
+        Destroy(this.gameObject);
     }
 
     /// <summary>
