@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class CardPickUp : MonoBehaviour
 {
-    public PlayCard cardToAdd;
+    public GameObject cardToAdd;
     public AnimationCurve myCurve;
     float yOffSet = 0f;
     Vector3 startPos;

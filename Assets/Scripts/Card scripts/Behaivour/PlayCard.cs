@@ -187,26 +187,48 @@ public abstract class PlayCard : MonoBehaviour
             return;
        }
 
-
-       // TODO:
-       // Check if the tile is in range
        // Check if the tile contains dirt
+       if(!canTargetDirtTiles && selectedTile.containesDirt)
+       {
+            Debug.Log("Tile cannot contain dirt for this card");
+            myState = CardState.SelectingTile;
+            return;
+       }
 
+       // Check if the tile is in range
+       if(range > 0)
+       {
+            int dist = Pathfinding.GetDistance(selectedTile, selectedUnit.standingOn);
+            
+            // Unless range is 0, cannot target own tile
+            if(!(dist <= range && dist != 0))
+            {
+                Debug.Log("Tile is out of range, unless range is 0 it can not target the same tile as the user");
+                myState = CardState.SelectingTile;
+                return;
+            }
+       }
 
         // If reached this bit of the code, the card is valid and can be executed
-        myState = CardState.VerifyTileSelection;
+        myState = CardState.Executing;
     }
 
     public virtual void Play()
     {
         Debug.Log("card is being played:" + this.name);
-        // TODO
-        // Activate once the rest is done
-        //myState = CardState.VerifyUnitSelection;
+        myState = CardState.VerifyUnitSelection;
     }
 
 
     public abstract void ExecuteBehaivour(Tile onTile, Unit byUnit);
+
+    public void CancelPlay()
+    {
+        Debug.Log("Card is returned to inactive play");
+        selectedTile= null;
+        selectedUnit= null;
+        myState = CardState.Inactive;
+    } 
 }
 
    

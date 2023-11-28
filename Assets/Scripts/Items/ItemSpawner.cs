@@ -9,7 +9,7 @@ public class ItemSpawner : MonoBehaviour
     public static ItemSpawner Instance;
     [SerializeField] float spawnYOffset = 3f;
     [SerializeField] GameObject pickupPrefab;
-    [SerializeField] List<PlayCard> spawnableCards = new();
+    [SerializeField] List<GameObject> spawnableCards = new();
 
     //TODO:
     // Spawn enemies sometimes

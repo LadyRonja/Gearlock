@@ -193,15 +193,10 @@ public class CardManager : MonoBehaviour
         }
     }
 
-    public void AddNewCard(PlayCard cardToAdd)
+    public void AddNewCard(GameObject cardToAdd)
     {
-        // TODO:
-        // Add a COPY of the card passed to the discard pile
-        //Instantiate(cardToAdd, DiscardPile.Instance.transform);
-
-        Debug.Log(cardToAdd.ToString());
-        Debug.Log("Adding card not implemented");
-
+        GameObject newCard = Instantiate(cardToAdd, discardPileObject.transform);
+        newCard.GetComponent<MouseOverCard>().inHand = false;
     }
 
 }
