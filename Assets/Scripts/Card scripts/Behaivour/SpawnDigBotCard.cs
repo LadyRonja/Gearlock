@@ -12,14 +12,14 @@ public class SpawnDigBotCard : PlayCard
     //is spawnTile (tile verification)
 
     public GameObject digBot;
-    public Transform spawnPosition; 
+    
 
     public override void ExecuteBehaivour(Tile onTile, Unit byUnit)
     {
-        //throw new System.NotImplementedException();
-        //is spawnTile (tile verification)
-
-        Instantiate(digBot, spawnPosition.position, Quaternion.identity);
-
+        Vector3 spawnpoint = onTile.transform.position;
+        GameObject botObject = Instantiate(digBot, spawnpoint, Quaternion.identity);
+        Unit botScript = botObject.GetComponent<Unit>();
+        onTile.UpdateOccupant(botScript);
+        botScript.standingOn = onTile;
     }
 }
