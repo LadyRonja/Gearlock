@@ -9,8 +9,9 @@ public class Digger : Unit
     {
         if (brokenDigger != null)
         {
-            Vector3 position = new Vector3(transform.position.x, transform.position.y - 4, transform.position.z);
-            GameObject instantiatedObject = Instantiate(brokenDigger, position, transform.rotation);
+            Vector3 breakPosition = new Vector3(transform.position.x, transform.position.y - 4, transform.position.z);
+            GameObject deadRobot = Instantiate(brokenDigger, breakPosition, transform.rotation);
+            CardPickUp cardPickUpScript = deadRobot.GetComponent<CardPickUp>();
         }
         else
         {
