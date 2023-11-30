@@ -22,30 +22,32 @@ public class DynamiteCard : PlayCard
     {
                 //playerAnimator.SetTrigger("Exploding"); 
 
-         if (onTile.occupant != null)
-         {
+        
              Vector3 spawnpoint = onTile.transform.position;
-             GameObject newDynamite = Instantiate(dynamite, spawnpoint, Quaternion.identity);
-             Unit dynamiteScript = newDynamite.GetComponent<Unit>();
+             spawnpoint.y += 3;
+              GameObject dynamiteObject = Instantiate(dynamite, spawnpoint, Quaternion.identity);
+             
+             Unit dynamiteScript = dynamiteObject.GetComponent<Unit>();
              onTile.UpdateOccupant(dynamiteScript);
              dynamiteScript.standingOn = onTile;
+            UnitStorage.Instance.playerUnits.Add(dynamiteScript);
+            onTile.occupant.TakeDamage(byUnit.power * multiplier);
 
-             onTile.occupant.TakeDamage(byUnit.power * multiplier);
+
+            
+
+           // ApplyDamageRadius(onTile, byUnit);
+           // Destroy(dynamite);
+
+        //kolla grannar och lägg till i listan i alla fyra håll, for loop med dig eller damge
+        //den kan INTE hamna på dirt men kan pränga dirt
 
 
-            Destroy(dynamite);
-
-            ApplyDamageRadius(onTile, byUnit);       
-
-                    //kolla grannar och lägg till i listan i alla fyra håll, for loop med dig eller damge
-                    //den kan INTE hamna på dirt men kan pränga dirt
-         }
-
-                // Apply damage to units in a 2-tile radius
+        // Apply damage to units in a 2-tile radius
     }
 
 
-    public void ApplyDamageRadius(Tile centerTile, Unit byUnit)
+   /* public void ApplyDamageRadius(Tile centerTile, Unit byUnit)
     {
         Tile[] allTiles = FindObjectsOfType<Tile>();
 
@@ -75,8 +77,10 @@ public class DynamiteCard : PlayCard
                     // Apply damage to the unit on the neighboring tile
                     otherTile.occupant.TakeDamage(byUnit.power * multiplier);
                 }
+
+                
             }
         }
 
-    }
+    }*/
 }
