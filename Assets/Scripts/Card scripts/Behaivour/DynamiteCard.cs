@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DynamiteCard : PlayCard
+public class DynamiteCard : PlayCard 
 {
     //kolla vart robortarna är 
     //Man kan inte targeta dirt
@@ -16,28 +16,27 @@ public class DynamiteCard : PlayCard
     [SerializeField]
     private int multiplier = 4;
     private int explosionRange = 2;
-    
 
+   
     public override void ExecuteBehaivour(Tile onTile, Unit byUnit)
     {
                 //playerAnimator.SetTrigger("Exploding"); 
 
-        
-             Vector3 spawnpoint = onTile.transform.position;
-             spawnpoint.y += 3;
-              GameObject dynamiteObject = Instantiate(dynamite, spawnpoint, Quaternion.identity);
+         Vector3 spawnpoint = onTile.transform.position;
+         spawnpoint.y += 3;
+         GameObject dynamiteObject = Instantiate(dynamite, spawnpoint, Quaternion.identity);
              
-             Unit dynamiteScript = dynamiteObject.GetComponent<Unit>();
-             onTile.UpdateOccupant(dynamiteScript);
-             dynamiteScript.standingOn = onTile;
-            UnitStorage.Instance.playerUnits.Add(dynamiteScript);
-            onTile.occupant.TakeDamage(byUnit.power * multiplier);
-
+         Unit dynamiteScript = dynamiteObject.GetComponent<Unit>();
+         onTile.UpdateOccupant(dynamiteScript);
+         dynamiteScript.standingOn = onTile;
+         UnitStorage.Instance.playerUnits.Add(dynamiteScript);
+         onTile.occupant.TakeDamage(byUnit.power * multiplier);
+         Debug.Log("spawned dynamite");
 
             
 
-           // ApplyDamageRadius(onTile, byUnit);
-           // Destroy(dynamite);
+            ApplyDamageRadius(onTile, byUnit);
+            Destroy(dynamite);
 
         //kolla grannar och lägg till i listan i alla fyra håll, for loop med dig eller damge
         //den kan INTE hamna på dirt men kan pränga dirt
@@ -47,8 +46,10 @@ public class DynamiteCard : PlayCard
     }
 
 
-   /* public void ApplyDamageRadius(Tile centerTile, Unit byUnit)
+   public void ApplyDamageRadius(Tile centerTile, Unit byUnit)
     {
+        
+        
         Tile[] allTiles = FindObjectsOfType<Tile>();
 
         // Loop through all tiles to find neighbors within the explosion radius
@@ -82,5 +83,5 @@ public class DynamiteCard : PlayCard
             }
         }
 
-    }*/
+    }
 }

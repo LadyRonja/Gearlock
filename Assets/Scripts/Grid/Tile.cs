@@ -32,6 +32,9 @@ public class Tile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
     public int H { get; set; }
     public int F { get => (G + H); }
 
+    //test Elin 
+    private bool isClicked = false;
+
 
     private void Start()
     {
@@ -64,6 +67,9 @@ public class Tile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
         }
     }
 
+    
+    
+
     public void OnPointerEnter(PointerEventData eventData)
     {
         if (!blocked)
@@ -76,31 +82,42 @@ public class Tile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
             myMR.material.color = Color.white;
     }
 
+    //TEST ELIN when you click the tile becomes blue
     public void OnPointerDown(PointerEventData eventData)
-    {
+     {
+       
+        if (!blocked)
+        {
+            myMR.material.color = Color.blue;
+            isClicked = true;
+            HighlightNeighbours();
+
+        }
+            
+
         // Select My Unit
-        if(occupant != null)
-        {
-            UnitSelector.Instance.UpdateSelectedUnit(occupant);
-        }
-        TileClicker.Instance.HandleMoveClick(this);
+        if (occupant != null)
+         {
+             UnitSelector.Instance.UpdateSelectedUnit(occupant);
+         }
+         TileClicker.Instance.HandleMoveClick(this);
 
-        // Toggle Blocked (Debug)
-        if (Input.GetKey(KeyCode.LeftControl))
-        {
-            TileClicker.Instance.ToggleBlockedDebug(this);
-        }
+         // Toggle Blocked (Debug)
+         if (Input.GetKey(KeyCode.LeftControl))
+         {
+             TileClicker.Instance.ToggleBlockedDebug(this);
+         }
 
-        // Toggle Dirt Here
-        if (Input.GetKey(KeyCode.D))
-        {
-            if(!containesDirt)
-                TileClicker.Instance.SpawnDirt(this);
-            else
-                RemoveDirt();
-        }
+         // Toggle Dirt Here
+         if (Input.GetKey(KeyCode.D))
+         {
+             if(!containesDirt)
+                 TileClicker.Instance.SpawnDirt(this);
+             else
+                 RemoveDirt();
+         }
 
-    }
+     }
 
     public void RemoveDirt()
     {
@@ -125,5 +142,51 @@ public class Tile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
         // TODO: See item spawner todo
         ItemSpawner.Instance.SpawnRandomItem(this);
 
+    }
+
+    //TEST ELIN when you click on a tile the neighbors gets blue
+    private void HighlightNeighbours()
+    {
+       if (isClicked ==  true)
+       {
+            if (neighbourN != null)
+                neighbourN.myMR.material.color = Color.blue;
+
+            if (neighbourE != null)
+                neighbourE.myMR.material.color = Color.blue;
+
+            if (neighbourS != null)
+                neighbourS.myMR.material.color = Color.blue;
+
+            if (neighbourW != null)
+                neighbourW.myMR.material.color = Color.blue;
+       }
+       else
+       {
+            if (neighbourN != null)
+                neighbourN.myMR.material.color = Color.white;
+
+            if (neighbourE != null)
+                neighbourE.myMR.material.color = Color.white;
+
+            if (neighbourS != null)
+                neighbourS.myMR.material.color = Color.white;
+
+            if (neighbourW != null)
+                neighbourW.myMR.material.color = Color.white;
+        }
+        
+    }
+
+    public void OnPointerUp(PointerEventData eventData)
+    {
+        if (!blocked)
+        {
+            myMR.material.color = Color.white;
+            isClicked = false;
+            HighlightNeighbours();
+        }
+            
+        
     }
 }
