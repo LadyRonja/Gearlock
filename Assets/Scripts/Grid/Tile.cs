@@ -87,8 +87,8 @@ public class Tile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
         if (occupant != null && occupant.playerBot)
         {
             myMR.material.color = Color.blue;
-            
 
+            HighlightNeighbours();
         }
             
 
@@ -150,8 +150,8 @@ public class Tile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
     {
        
         myMR.material.color = Color.white;
-           
-        
+
+        ResetNeighboursColor();
 
 
     }
@@ -160,16 +160,16 @@ public class Tile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
         if (occupant != null && occupant.playerBot)
         {
             if (neighbourN != null)
-                neighbourN.myMR.material.color = Color.blue;
+                neighbourN.myMR.material.color = Color.green;
 
             if (neighbourE != null)
-                neighbourE.myMR.material.color = Color.blue;
+                neighbourE.myMR.material.color = Color.green;
 
             if (neighbourS != null)
-                neighbourS.myMR.material.color = Color.blue;
+                neighbourS.myMR.material.color = Color.green;
 
             if (neighbourW != null)
-                neighbourW.myMR.material.color = Color.blue;
+                neighbourW.myMR.material.color = Color.green;
         }
 
     }
