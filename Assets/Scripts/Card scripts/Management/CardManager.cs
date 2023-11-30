@@ -18,6 +18,7 @@ public class CardManager : MonoBehaviour
     public GameObject discardPileObject;
     public GameObject brokenFighter;
     public GameObject brokenDigger;
+    public GameObject dynamite;
     bool startingHand;
     public TextMeshProUGUI DrawAmount;
 
@@ -147,6 +148,11 @@ public class CardManager : MonoBehaviour
                 {
                     Destroy(card);
                     cardsToAddToDrawPile.Add(fighterBot);
+                }
+                else if (card.name == "Dynamite(Clone)")
+                {
+                    Destroy(card);
+                    cardsToAddToDrawPile.Add(dynamite);
                 }
             }
 

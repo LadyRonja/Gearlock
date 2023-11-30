@@ -58,8 +58,4 @@ public class ItemSpawner : MonoBehaviour
         cardPickUpScript.cardToAdd = spawnableCards[rand];
         onTile.myPickUp = cardPickUpScript;
     }
-
-    // new function to spawn pickup for dead robots here?
-
-
 }
