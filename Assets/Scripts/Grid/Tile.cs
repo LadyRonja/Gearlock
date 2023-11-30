@@ -32,8 +32,6 @@ public class Tile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
     public int H { get; set; }
     public int F { get => (G + H); }
 
-    //test Elin 
-    private bool isClicked = false;
 
 
     private void Start()
@@ -82,15 +80,14 @@ public class Tile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
             myMR.material.color = Color.white;
     }
 
-    //TEST ELIN when you click the tile becomes blue
+    //TEST ELIN when you click the tile it becomes blue
     public void OnPointerDown(PointerEventData eventData)
      {
-       
-        if (!blocked)
+
+        if (occupant != null && occupant.playerBot)
         {
             myMR.material.color = Color.blue;
-            isClicked = true;
-            HighlightNeighbours();
+            
 
         }
             
@@ -144,11 +141,24 @@ public class Tile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
 
     }
 
+
+
+
     //TEST ELIN when you click on a tile the neighbors gets blue
+
+    public void OnPointerUp(PointerEventData eventData)
+    {
+       
+        myMR.material.color = Color.white;
+           
+        
+
+
+    }
     private void HighlightNeighbours()
     {
-       if (isClicked ==  true)
-       {
+        if (occupant != null && occupant.playerBot)
+        {
             if (neighbourN != null)
                 neighbourN.myMR.material.color = Color.blue;
 
@@ -160,33 +170,24 @@ public class Tile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
 
             if (neighbourW != null)
                 neighbourW.myMR.material.color = Color.blue;
-       }
-       else
-       {
-            if (neighbourN != null)
-                neighbourN.myMR.material.color = Color.white;
-
-            if (neighbourE != null)
-                neighbourE.myMR.material.color = Color.white;
-
-            if (neighbourS != null)
-                neighbourS.myMR.material.color = Color.white;
-
-            if (neighbourW != null)
-                neighbourW.myMR.material.color = Color.white;
         }
-        
+
     }
 
-    public void OnPointerUp(PointerEventData eventData)
+    private void ResetNeighboursColor()
     {
-        if (!blocked)
-        {
-            myMR.material.color = Color.white;
-            isClicked = false;
-            HighlightNeighbours();
-        }
-            
-        
+        if (neighbourN != null)
+            neighbourN.myMR.material.color = Color.white;
+
+        if (neighbourE != null)
+            neighbourE.myMR.material.color = Color.white;
+
+        if (neighbourS != null)
+            neighbourS.myMR.material.color = Color.white;
+
+        if (neighbourW != null)
+            neighbourW.myMR.material.color = Color.white;
     }
+
+    
 }
