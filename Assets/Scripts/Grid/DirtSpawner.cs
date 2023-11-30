@@ -74,7 +74,7 @@ public class DirtSpawner : MonoBehaviour
 
         // Update the dirt covered tile
         onTile.dirt = dirt;
-        onTile.containesDirt = true;
+        onTile.containsDirt = true;
         onTile.blocked = true;
         onTile.targetable = true;
         if(onTile.occupant != null)
@@ -87,7 +87,7 @@ public class DirtSpawner : MonoBehaviour
     {
         foreach (Tile t in spawnOnTiles)
         {
-            if(!t.containesDirt)
+            if(!t.containsDirt)
                 SpawnDirt(t);
         }
     }
@@ -111,7 +111,7 @@ public class DirtSpawner : MonoBehaviour
                         SpawnDirt(GridManager.Instance.tiles[x, y]);
                         break;
                     }
-                    else if(GridManager.Instance.tiles[x, y].containesDirt)
+                    else if(GridManager.Instance.tiles[x, y].containsDirt)
                     {
                         GridManager.Instance.tiles[x, y].RemoveDirt();
                     }

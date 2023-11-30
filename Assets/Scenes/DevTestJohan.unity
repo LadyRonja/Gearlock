@@ -3535,6 +3535,19 @@ MonoBehaviour:
   - {fileID: 1630343933089142510, guid: 7af164d16b7fbd24bb7902a08c9e8b92, type: 3}
   - {fileID: 1266056265273224499, guid: 14e01a4880c593c46a1c8cd5f4e34b72, type: 3}
   - {fileID: 6682251750555184848, guid: c038fbcf0bd8a9e4fb7745c3b1697af5, type: 3}
+  spawnableCardsFinite:
+  - {fileID: 1630343933089142510, guid: 7af164d16b7fbd24bb7902a08c9e8b92, type: 3}
+  - {fileID: 1630343933089142510, guid: 7af164d16b7fbd24bb7902a08c9e8b92, type: 3}
+  - {fileID: 3963082960214519832, guid: 3aaffcc8844838f449d18da50be82d69, type: 3}
+  - {fileID: 3963082960214519832, guid: 3aaffcc8844838f449d18da50be82d69, type: 3}
+  - {fileID: 3963082960214519832, guid: 3aaffcc8844838f449d18da50be82d69, type: 3}
+  - {fileID: 1266056265273224499, guid: 14e01a4880c593c46a1c8cd5f4e34b72, type: 3}
+  - {fileID: 6682251750555184848, guid: c038fbcf0bd8a9e4fb7745c3b1697af5, type: 3}
+  - {fileID: 3963082960214519832, guid: 3aaffcc8844838f449d18da50be82d69, type: 3}
+  - {fileID: 1266056265273224499, guid: 14e01a4880c593c46a1c8cd5f4e34b72, type: 3}
+  - {fileID: 6682251750555184848, guid: c038fbcf0bd8a9e4fb7745c3b1697af5, type: 3}
+  - {fileID: 835437463908304126, guid: 2442c37788637f643a58d71414bb0215, type: 3}
+  - {fileID: 835437463908304126, guid: 2442c37788637f643a58d71414bb0215, type: 3}
 --- !u!1 &817977823
 GameObject:
   m_ObjectHideFlags: 0
@@ -9508,7 +9521,7 @@ MonoBehaviour:
   x: 4
   y: 2
   occupant: {fileID: 0}
-  containesDirt: 1
+  containsDirt: 0
   dirt: {fileID: 1996317263}
   myPickUp: {fileID: 0}
   targetable: 1
@@ -9638,7 +9651,7 @@ MonoBehaviour:
   x: 2
   y: 5
   occupant: {fileID: 0}
-  containesDirt: 1
+  containsDirt: 0
   dirt: {fileID: 332265564}
   myPickUp: {fileID: 0}
   targetable: 1
@@ -10479,7 +10492,7 @@ MonoBehaviour:
   x: 3
   y: 3
   occupant: {fileID: 0}
-  containesDirt: 1
+  containsDirt: 0
   dirt: {fileID: 180390047}
   myPickUp: {fileID: 0}
   targetable: 1
@@ -10597,7 +10610,7 @@ MonoBehaviour:
   x: 2
   y: 2
   occupant: {fileID: 0}
-  containesDirt: 1
+  containsDirt: 0
   dirt: {fileID: 108478873}
   myPickUp: {fileID: 0}
   targetable: 1
@@ -10688,7 +10701,7 @@ MonoBehaviour:
   x: 5
   y: 1
   occupant: {fileID: 0}
-  containesDirt: 1
+  containsDirt: 0
   dirt: {fileID: 1051770488}
   myPickUp: {fileID: 0}
   targetable: 1
@@ -10809,7 +10822,7 @@ MonoBehaviour:
   x: 5
   y: 3
   occupant: {fileID: 0}
-  containesDirt: 0
+  containsDirt: 0
   dirt: {fileID: 0}
   myPickUp: {fileID: 0}
   targetable: 1
@@ -11060,7 +11073,7 @@ MonoBehaviour:
   x: 0
   y: 1
   occupant: {fileID: 0}
-  containesDirt: 0
+  containsDirt: 0
   dirt: {fileID: 0}
   myPickUp: {fileID: 0}
   targetable: 1
@@ -11324,7 +11337,7 @@ MonoBehaviour:
   x: 2
   y: 3
   occupant: {fileID: 0}
-  containesDirt: 0
+  containsDirt: 0
   dirt: {fileID: 0}
   myPickUp: {fileID: 0}
   targetable: 1
@@ -11424,7 +11437,7 @@ MonoBehaviour:
   x: 5
   y: 2
   occupant: {fileID: 0}
-  containesDirt: 1
+  containsDirt: 0
   dirt: {fileID: 1197048400}
   myPickUp: {fileID: 0}
   targetable: 1
@@ -11458,7 +11471,7 @@ MonoBehaviour:
   x: 4
   y: 0
   occupant: {fileID: 0}
-  containesDirt: 0
+  containsDirt: 0
   dirt: {fileID: 0}
   myPickUp: {fileID: 0}
   targetable: 1
@@ -11494,7 +11507,7 @@ MonoBehaviour:
   x: 3
   y: 2
   occupant: {fileID: 0}
-  containesDirt: 1
+  containsDirt: 0
   dirt: {fileID: 1092001016}
   myPickUp: {fileID: 0}
   targetable: 1
@@ -11595,7 +11608,7 @@ MonoBehaviour:
   x: 4
   y: 1
   occupant: {fileID: 0}
-  containesDirt: 1
+  containsDirt: 0
   dirt: {fileID: 1791037609}
   myPickUp: {fileID: 0}
   targetable: 1
@@ -11693,7 +11706,7 @@ MonoBehaviour:
   x: 4
   y: 5
   occupant: {fileID: 0}
-  containesDirt: 1
+  containsDirt: 0
   dirt: {fileID: 2089340663}
   myPickUp: {fileID: 0}
   targetable: 1
@@ -12217,7 +12230,7 @@ MonoBehaviour:
   x: 3
   y: 4
   occupant: {fileID: 0}
-  containesDirt: 1
+  containsDirt: 0
   dirt: {fileID: 21873872}
   myPickUp: {fileID: 0}
   targetable: 1
@@ -12437,7 +12450,7 @@ MonoBehaviour:
   x: 4
   y: 3
   occupant: {fileID: 0}
-  containesDirt: 0
+  containsDirt: 0
   dirt: {fileID: 0}
   myPickUp: {fileID: 0}
   targetable: 1
@@ -13127,7 +13140,7 @@ MonoBehaviour:
   x: 1
   y: 3
   occupant: {fileID: 0}
-  containesDirt: 1
+  containsDirt: 0
   dirt: {fileID: 2080862912}
   myPickUp: {fileID: 0}
   targetable: 1
@@ -13692,7 +13705,7 @@ MonoBehaviour:
   x: 1
   y: 2
   occupant: {fileID: 0}
-  containesDirt: 1
+  containsDirt: 0
   dirt: {fileID: 366955074}
   myPickUp: {fileID: 0}
   targetable: 1
@@ -13847,7 +13860,7 @@ MonoBehaviour:
   x: 0
   y: 5
   occupant: {fileID: 0}
-  containesDirt: 0
+  containsDirt: 0
   dirt: {fileID: 0}
   myPickUp: {fileID: 0}
   targetable: 1
@@ -14252,7 +14265,7 @@ MonoBehaviour:
   x: 3
   y: 5
   occupant: {fileID: 0}
-  containesDirt: 1
+  containsDirt: 0
   dirt: {fileID: 1086219261}
   myPickUp: {fileID: 0}
   targetable: 1
@@ -14397,7 +14410,7 @@ MonoBehaviour:
   x: 0
   y: 0
   occupant: {fileID: 0}
-  containesDirt: 1
+  containsDirt: 0
   dirt: {fileID: 1081222752}
   myPickUp: {fileID: 0}
   targetable: 1
@@ -14525,7 +14538,7 @@ MonoBehaviour:
   x: 0
   y: 3
   occupant: {fileID: 110591869178335937}
-  containesDirt: 0
+  containsDirt: 0
   dirt: {fileID: 0}
   myPickUp: {fileID: 0}
   targetable: 1
@@ -14901,7 +14914,7 @@ MonoBehaviour:
   x: 2
   y: 1
   occupant: {fileID: 0}
-  containesDirt: 1
+  containsDirt: 0
   dirt: {fileID: 373487924}
   myPickUp: {fileID: 0}
   targetable: 1
@@ -15091,7 +15104,7 @@ MonoBehaviour:
   x: 2
   y: 4
   occupant: {fileID: 0}
-  containesDirt: 1
+  containsDirt: 0
   dirt: {fileID: 1839988418}
   myPickUp: {fileID: 0}
   targetable: 1
@@ -15185,7 +15198,7 @@ MonoBehaviour:
   x: 5
   y: 5
   occupant: {fileID: 0}
-  containesDirt: 0
+  containsDirt: 0
   dirt: {fileID: 0}
   myPickUp: {fileID: 0}
   targetable: 1
@@ -15391,7 +15404,7 @@ MonoBehaviour:
   x: 4
   y: 4
   occupant: {fileID: 0}
-  containesDirt: 0
+  containsDirt: 0
   dirt: {fileID: 0}
   myPickUp: {fileID: 0}
   targetable: 1
@@ -15713,7 +15726,7 @@ MonoBehaviour:
   x: 0
   y: 4
   occupant: {fileID: 0}
-  containesDirt: 1
+  containsDirt: 0
   dirt: {fileID: 1838610644}
   myPickUp: {fileID: 0}
   targetable: 1
@@ -15749,7 +15762,7 @@ MonoBehaviour:
   x: 1
   y: 1
   occupant: {fileID: 0}
-  containesDirt: 1
+  containsDirt: 0
   dirt: {fileID: 915070623}
   myPickUp: {fileID: 0}
   targetable: 1
@@ -15827,7 +15840,7 @@ MonoBehaviour:
   x: 1
   y: 4
   occupant: {fileID: 0}
-  containesDirt: 1
+  containsDirt: 0
   dirt: {fileID: 1857918187}
   myPickUp: {fileID: 0}
   targetable: 1
@@ -16045,7 +16058,7 @@ MonoBehaviour:
   x: 5
   y: 0
   occupant: {fileID: 1530277194}
-  containesDirt: 0
+  containsDirt: 0
   dirt: {fileID: 0}
   myPickUp: {fileID: 0}
   targetable: 1
@@ -16228,7 +16241,7 @@ MonoBehaviour:
   x: 1
   y: 0
   occupant: {fileID: 0}
-  containesDirt: 1
+  containsDirt: 0
   dirt: {fileID: 338173597}
   myPickUp: {fileID: 0}
   targetable: 1
@@ -16318,7 +16331,7 @@ MonoBehaviour:
   x: 1
   y: 5
   occupant: {fileID: 0}
-  containesDirt: 0
+  containsDirt: 0
   dirt: {fileID: 0}
   myPickUp: {fileID: 0}
   targetable: 1
@@ -16438,7 +16451,7 @@ MonoBehaviour:
   x: 3
   y: 0
   occupant: {fileID: 0}
-  containesDirt: 0
+  containsDirt: 0
   dirt: {fileID: 0}
   myPickUp: {fileID: 0}
   targetable: 1
@@ -16785,7 +16798,7 @@ MonoBehaviour:
   x: 5
   y: 4
   occupant: {fileID: 0}
-  containesDirt: 1
+  containsDirt: 0
   dirt: {fileID: 1116131867}
   myPickUp: {fileID: 0}
   targetable: 1
@@ -16881,7 +16894,7 @@ MonoBehaviour:
   x: 2
   y: 0
   occupant: {fileID: 0}
-  containesDirt: 0
+  containsDirt: 0
   dirt: {fileID: 0}
   myPickUp: {fileID: 0}
   targetable: 1
@@ -17097,7 +17110,7 @@ MonoBehaviour:
   x: 3
   y: 1
   occupant: {fileID: 0}
-  containesDirt: 0
+  containsDirt: 0
   dirt: {fileID: 0}
   myPickUp: {fileID: 0}
   targetable: 1
@@ -17203,7 +17216,7 @@ MonoBehaviour:
   x: 0
   y: 2
   occupant: {fileID: 0}
-  containesDirt: 0
+  containsDirt: 0
   dirt: {fileID: 0}
   myPickUp: {fileID: 0}
   targetable: 1
