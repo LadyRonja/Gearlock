@@ -18,7 +18,7 @@ public class Tile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
 
     // Contents
     public Unit occupant;
-    public bool containesDirt;
+    public bool containsDirt;
     public Dirt dirt;
     public CardPickUp myPickUp;
 
@@ -47,7 +47,7 @@ public class Tile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
 
         if (newOccupant == null)
         {
-            blocked = containesDirt;
+            blocked = containsDirt;
             occupied = false;
             targetable = true;
         }
@@ -111,7 +111,7 @@ public class Tile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
          // Toggle Dirt Here
          if (Input.GetKey(KeyCode.D))
          {
-             if(!containesDirt)
+             if(!containsDirt)
                  TileClicker.Instance.SpawnDirt(this);
              else
                  RemoveDirt();
@@ -127,7 +127,7 @@ public class Tile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
             return;
         }
 
-        containesDirt = false;
+        containsDirt = false;
         blocked = false;
         bool remoevedInEditor = false;
 #if UNITY_EDITOR
