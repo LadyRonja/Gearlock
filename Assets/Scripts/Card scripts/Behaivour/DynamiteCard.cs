@@ -63,6 +63,12 @@ public class DynamiteCard : PlayCard
             // Check if the otherTile is within the explosion radius
             if (distanceX <= explosionRange && distanceY <= explosionRange)
             {
+                // Store the original color of the tiles
+                Color originalColor = otherTile.myMR.material.color;
+
+                // Change neighbouring tiles to the color to blue
+                otherTile.myMR.material.color = Color.blue;
+
                 // Check if there is an occupant on the neighboring tile
                 if (otherTile.occupant != null)
                 {
