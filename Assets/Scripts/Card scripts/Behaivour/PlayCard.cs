@@ -198,7 +198,7 @@ public abstract class PlayCard : MonoBehaviour
        }
 
        // Check if the tile contains dirt
-       if(!canTargetDirtTiles && selectedTile.containesDirt)
+       if(!canTargetDirtTiles && selectedTile.containsDirt)
        {
             Debug.Log("Tile cannot contain dirt for this card");
             myState = CardState.SelectingTile;

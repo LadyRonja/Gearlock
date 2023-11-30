@@ -10,10 +10,9 @@ public class DigCard : PlayCard
 
     public override void ExecuteBehaivour(Tile onTile, Unit byUnit)
     {
-        if (onTile.containesDirt == true)
+        if (onTile.containsDirt == true)
         {
             onTile.RemoveDirt();
-
         }
     }
 

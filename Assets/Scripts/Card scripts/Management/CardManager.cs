@@ -46,13 +46,13 @@ public class CardManager : MonoBehaviour
     {
         // The starting deck is added to the draw pile
 
-        startingHand = false; //changed from TRUE
+        startingHand = true; //changed from TRUE
         drawPile.Add(dig);
         drawPile.Add(dig);
         drawPile.Add(dig);
         //drawPile.Add(dig);
-        drawPile.Add(attack);
-        drawPile.Add(attack);
+        //drawPile.Add(attack);
+        //drawPile.Add(attack);
 
         //drawPile.Add(attack2x);
 
@@ -82,12 +82,12 @@ public class CardManager : MonoBehaviour
         // Gives player start hand, 1 digger and 1 dig + 3 random cards.
         if (startingHand)
         {
-            drawPile.Remove(dig);
-            drawPile.Remove(diggerBot);
-            Instantiate(dig, handParent.transform);
-            Instantiate(diggerBot, handParent.transform);
+            //drawPile.Remove(dig);
+            //drawPile.Remove(diggerBot);
+            //Instantiate(dig, handParent.transform);
+            //Instantiate(diggerBot, handParent.transform);
 
-            ShuffleDrawPile();
+            //ShuffleDrawPile();
 
             for (int i = 0; i < 3; i++)
             {
