@@ -9,8 +9,10 @@ public class Fighter : Unit
     {
         if (brokenFighter != null)
         {
-            Vector3 position = new Vector3(transform.position.x, transform.position.y - 2, transform.position.z);
-            GameObject instantiatedObject = Instantiate(brokenFighter, position, transform.rotation);
+            Vector3 breakPosition = new Vector3(transform.position.x, transform.position.y - 2, transform.position.z);
+            GameObject deadFighter = Instantiate(brokenFighter, breakPosition, transform.rotation);
+            CardPickUp cardPickUpScript = deadFighter.GetComponent<CardPickUp>();
+            standingOn.myPickUp = cardPickUpScript;
         }
         else
         {

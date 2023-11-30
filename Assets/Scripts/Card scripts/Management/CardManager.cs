@@ -44,17 +44,22 @@ public class CardManager : MonoBehaviour
     void Start()
     {
         // The starting deck is added to the draw pile
-        startingHand = true;
+
+        startingHand = false; //changed from TRUE
         drawPile.Add(dig);
         drawPile.Add(dig);
         drawPile.Add(dig);
-        drawPile.Add(dig);
+        //drawPile.Add(dig);
         drawPile.Add(attack);
         drawPile.Add(attack);
-        drawPile.Add(attack2x);
-        drawPile.Add(diggerBot);
-        drawPile.Add(diggerBot);
-        drawPile.Add(fighterBot);
+
+        //drawPile.Add(attack2x);
+
+
+        //drawPile.Add(diggerBot);
+        //drawPile.Add(diggerBot);
+        //drawPile.Add(fighterBot);
+
 
 
         DealHand();
