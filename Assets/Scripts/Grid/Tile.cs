@@ -137,8 +137,8 @@ public class Tile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
         dirt = null;
 
         // TODO: See item spawner todo
-        ItemSpawner.Instance.SpawnRandomItem(this);
-
+        //ItemSpawner.Instance.SpawnRandomItem(this);
+        ItemSpawner.Instance.SpawnRandomCardDelete(this);
     }
 
 

@@ -48,6 +48,7 @@ public class MouseOverCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
             transform.parent = ActiveCard.Instance.transform;
             inHand = false;
             isBeingPlayed = true;
+            Debug.Log("card was played");
         }
 
         // If card is dragged and dropped in the outside the play area, the card returns to hand

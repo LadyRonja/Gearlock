@@ -65,6 +65,7 @@ public abstract class PlayCard : MonoBehaviour
                 // Execute the cards behaivour
                 ExecuteBehaivour(selectedTile, selectedUnit);
                 myState = CardState.Finished;
+                Debug.Log("card executed");
                 DEBUGCardStateUI.Instance.DEBUGUpdateUI(CardState.Executing, "Playing card!");
 
                 break;
@@ -215,6 +216,14 @@ public abstract class PlayCard : MonoBehaviour
             return;
         }
 
+        if (canTargetDirtTiles && !selectedTile.containsDirt)
+        {
+            Debug.Log("Tile must contain dirt for this card");
+            myState = CardState.SelectingTile;
+            DEBUGCardStateUI.Instance.DEBUGUpdateUI(CardState.VerifyTileSelection, "This card must be played on a tile with dirt");
+            return;
+        }
+
         // Check if the tile is in range
         if (range > 0)
        {
@@ -224,7 +233,7 @@ public abstract class PlayCard : MonoBehaviour
             if(!(dist <= range && dist != 0))
             {
                 Debug.Log("Tile is out of range, unless range is 0 it can not target the same tile as the user");
-                DEBUGCardStateUI.Instance.DEBUGUpdateUI(CardState.VerifyTileSelection, "Out of range, can't play on self");
+                DEBUGCardStateUI.Instance.DEBUGUpdateUI(CardState.VerifyTileSelection, "Tile selected was not within card range");
                 myState = CardState.SelectingTile;
                 return;
             }
