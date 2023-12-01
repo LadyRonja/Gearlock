@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 
 public class TileBecomesBlue : MonoBehaviour
 {
-    public MeshRenderer myMR;
+  /*  public MeshRenderer myMR;
     public Color highlightColor = Color.blue;
     public int highlightRadius = 2;
     private int x;
@@ -64,5 +64,5 @@ public class TileBecomesBlue : MonoBehaviour
         if (!tile || !tile.myMR) return;
 
         tile.myMR.material.color = highlightColor;
-    }
+    }*/
 }

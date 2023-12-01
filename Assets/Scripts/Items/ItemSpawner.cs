@@ -71,6 +71,10 @@ public class ItemSpawner : MonoBehaviour
             return;
         }
 
+        //int randomCheck = Random.Range(0, 3);
+        //if (randomCheck != 2)
+        //    return;
+
         if (onTile.myPickUp != null)
         {
             Destroy(onTile.myPickUp);

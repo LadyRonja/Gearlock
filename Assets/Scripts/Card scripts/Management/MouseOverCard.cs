@@ -17,16 +17,27 @@ public class MouseOverCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     public bool isBeingPlayed = false;
     Vector3 dragPos;
     PlayCard card;
+    bool canDrag;
 
     public void Update()
     {
         // If left mouse button is held when above a card in hand, the card is then dragged, following the mouse cursor.
-        if (Input.GetMouseButton(0) && hovering)
+        if (Input.GetMouseButtonDown(0) && hovering)
+        {
+            canDrag = true; // Start dragging only when the mouse button is pressed
+        }
+
+        if (Input.GetMouseButton(0) && canDrag)
         {
             isDragged = true;
             dragPos.x = Input.mousePosition.x;
             dragPos.y = Input.mousePosition.y - 50;
             transform.position = dragPos;
+        }
+
+        if (Input.GetMouseButtonUp(0))
+        {
+            canDrag = false; // Stop dragging when the mouse button is released
         }
 
         // If card is dropped in the play area, it is set as active. Any other card that was active returns to hand
@@ -37,6 +48,7 @@ public class MouseOverCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
             transform.parent = ActiveCard.Instance.transform;
             inHand = false;
             isBeingPlayed = true;
+            Debug.Log("card was played");
         }
 
         // If card is dragged and dropped in the outside the play area, the card returns to hand

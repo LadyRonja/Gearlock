@@ -101,20 +101,18 @@ public class CardManager : MonoBehaviour
 
         // NEEDS FIXING
 
-        //else if (drawPile.Count < 5)
-        //{
-        //    ClearDiscard();
-        //    if (drawPile.Count < 5)
-        //    {
-        //        for (int i = 0; i < drawPile.Count +1; i++)
-        //        {
-
-
-        //            Instantiate(drawPile[0], handParent.transform);
-        //            drawPile.RemoveAt(0);
-        //        }
-        //    } 
-        //}
+        else if (drawPile.Count < 5)
+        {
+            ClearDiscard();
+            if (drawPile.Count < 5)
+            {
+                for (int i = 0; i <= drawPile.Count + 1; i++)
+                {
+                    Instantiate(drawPile[0], handParent.transform);
+                    drawPile.RemoveAt(0);
+                }
+            }
+        }
 
         // Any other hand drawn after the start hand just draws the 5 top cards.
         else
