@@ -33,8 +33,8 @@ public class DynamiteCard : PlayCard
          onTile.occupant.TakeDamage(byUnit.power * multiplier);
          Debug.Log("spawned dynamite");
 
-            
 
+            //Tile.HighlightNeighbours();
             ApplyDamageRadius(onTile, byUnit);
             Destroy(dynamite);
 
