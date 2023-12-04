@@ -8,6 +8,8 @@ public class TurnManager : MonoBehaviour // classen blir en singleton
 {
     public static TurnManager Instance;
     public bool isPlayerTurn = true;
+    public bool TurnEnd = false;
+    public GameObject KeepCardScreen;
 
     [SerializeField] TMP_Text tempTurnText;
 
@@ -74,4 +76,24 @@ public class TurnManager : MonoBehaviour // classen blir en singleton
         if (isPlayerTurn) tempTurnText.text = "Player Turn";
         else tempTurnText.text = "AI Turn";
     }
+
+
+    public void toggleEnd()
+    {
+        if (TurnEnd)
+        {
+            KeepCardScreen.SetActive(!KeepCardScreen.activeSelf);
+            EndTurn();
+            CardManager.Instance.RetrieveKeptCards();
+        }
+
+        else
+        {
+            TurnEnd = !TurnEnd;
+            KeepCardScreen.SetActive(!KeepCardScreen.activeSelf);
+        }
+    }   
+
+
+
 }
