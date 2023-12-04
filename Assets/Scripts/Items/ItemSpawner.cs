@@ -72,8 +72,8 @@ public class ItemSpawner : MonoBehaviour
         }
 
         //int randomCheck = Random.Range(0, 3);
-        //if (randomCheck != 2)
-        //    return;
+        //if (randomCheck < 2)
+         
 
         if (onTile.myPickUp != null)
         {
