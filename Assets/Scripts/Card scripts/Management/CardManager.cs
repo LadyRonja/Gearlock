@@ -80,85 +80,41 @@ public class CardManager : MonoBehaviour
     public void DealHand()
     {
         // Gives player start hand, 1 digger and 1 dig + 3 random cards.
-        if (startingHand)
+        //if (startingHand)
+        //{
+        //    //drawPile.Remove(dig);
+        //    //drawPile.Remove(diggerBot);
+        //    //Instantiate(dig, handParent.transform);
+        //    //Instantiate(diggerBot, handParent.transform);
+
+        //    //ShuffleDrawPile();
+
+        //    for (int i = 0; i < 3; i++)
+        //    {
+        //        Instantiate(drawPile[0], handParent.transform);
+        //        drawPile.RemoveAt(0);
+        //    }
+        //    startingHand = false;
+        //}
+
+        for (int i = 0; handParent.transform.childCount < 5 && i < 5; i++)
         {
-            //drawPile.Remove(dig);
-            //drawPile.Remove(diggerBot);
-            //Instantiate(dig, handParent.transform);
-            //Instantiate(diggerBot, handParent.transform);
 
-            //ShuffleDrawPile();
+            if (drawPile.Count == 0 && discardPileObject.transform.childCount != 0)
+            {
+                Debug.Log("Clearing discard pile: " + i);
+                ClearDiscard();
+                Debug.Log("Discard cleared: new child count: " + discardPileObject.transform.childCount);
 
-            for (int i = 0; i < 3; i++)
+            }
+
+            if (drawPile.Count >= 1)
             {
                 Instantiate(drawPile[0], handParent.transform);
                 drawPile.RemoveAt(0);
             }
-            startingHand = false;
         }
 
-
-
-        // NEEDS FIXING
-
-        //else if (drawPile.Count < 5)
-        //{
-        //    ClearDiscard();
-        //    if (drawPile.Count < 5)
-        //    {
-        //        for (int i = 0; i <= drawPile.Count + 1; i++)
-        //        {
-        //            Instantiate(drawPile[0], handParent.transform);
-        //            drawPile.RemoveAt(0);
-        //        }
-        //    }
-        //}
-
-        // Any other hand drawn after the start hand just draws the 5 top cards.
-        else
-        {
-            if (drawPile.Count < 5)
-            {
-                ClearDiscard();
-                if (drawPile.Count < 5)
-                {
-                    for (int i = 0; i <= drawPile.Count + 1; i++)
-                    {
-                        Instantiate(drawPile[0], handParent.transform);
-                        drawPile.RemoveAt(0);
-                    }
-                }
-                else
-                {
-                    EndTurnDiscardHand();
-
-                    for (int i = 0; i < 5; i++)
-                    {
-                        if (drawPile.Count < 1)
-                            ClearDiscard();
-
-                        Instantiate(drawPile[0], handParent.transform);
-                        drawPile.RemoveAt(0);
-                    }
-
-                }
-            }
-            else
-            {
-                EndTurnDiscardHand();
-
-                for (int i = 0; i < 5; i++)
-                {
-                    if (drawPile.Count < 1)
-                        ClearDiscard();
-
-                    Instantiate(drawPile[0], handParent.transform);
-                    drawPile.RemoveAt(0);
-                }
-
-            }
-
-        }
     }
 
 
@@ -167,14 +123,15 @@ public class CardManager : MonoBehaviour
         if (discardPileObject != null)
         {
             List<GameObject> cardsToAddToDrawPile = new List<GameObject>();
-
+            Debug.Log("discard script executed");
             for (int i = discardPileObject.transform.childCount - 1; i >= 0; i--)
             {
                 GameObject card = discardPileObject.transform.GetChild(i).gameObject;
 
                 if (card.name == "Dig(Clone)")
                 {
-                    Destroy(card);
+                    Debug.Log("discarded dig card");
+                    //Destroy(card.gameObject);
                     cardsToAddToDrawPile.Add(dig);
                 }
                 else if (card.name == "Attack(Clone)")
@@ -208,6 +165,7 @@ public class CardManager : MonoBehaviour
             drawPile.AddRange(cardsToAddToDrawPile);
 
             ShuffleDrawPile();
+            Debug.Log(discardPileObject.transform.childCount);
         }
     }
 

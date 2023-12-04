@@ -27,7 +27,12 @@ public class MouseOverCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         {
             canDrag = true; // Start dragging only when the mouse button is pressed
             clickedCard = true;
-            Invoke(""ResetBoolClick
+            Invoke("ResetBoolClick", 0.2f);
+        }
+
+        if (hovering && clickedCard && Input.GetMouseButtonUp(0)) 
+        {
+            SetActiveCard();
         }
 
         if (Input.GetMouseButton(0) && canDrag)
@@ -46,12 +51,7 @@ public class MouseOverCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         // If card is dropped in the play area, it is set as active. Any other card that was active returns to hand
         if (Input.mousePosition.y > 300 && isDragged && !Input.GetMouseButton(0))
         {
-            CardManager.Instance.ClearActiveCard();
-            this.gameObject.GetComponent<PlayCard>().Play();
-            transform.parent = ActiveCard.Instance.transform;
-            inHand = false;
-            isBeingPlayed = true;
-            Debug.Log("card was played");
+            SetActiveCard();
         }
 
         // If card is dragged and dropped in the outside the play area, the card returns to hand
@@ -75,6 +75,16 @@ public class MouseOverCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
                 isBeingPlayed= false;
             }
         }
+    }
+
+    private void SetActiveCard()
+    {
+        CardManager.Instance.ClearActiveCard();
+        this.gameObject.GetComponent<PlayCard>().Play();
+        transform.parent = ActiveCard.Instance.transform;
+        inHand = false;
+        isBeingPlayed = true;
+        Debug.Log("card was played");
     }
 
     //Detect if the Cursor starts to pass over the GameObject
@@ -110,7 +120,7 @@ public class MouseOverCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     void ResetBoolClick()
     {
-
+        clickedCard = false;
     }
 
 }
