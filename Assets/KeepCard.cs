@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DiscardPile : MonoBehaviour
+public class KeepCard : MonoBehaviour
 {
 
-    public static DiscardPile Instance;
+    public static KeepCard Instance;
 
     private void Awake()
     {
@@ -14,5 +14,4 @@ public class DiscardPile : MonoBehaviour
         else
             Destroy(this.gameObject);
     }
-
 }

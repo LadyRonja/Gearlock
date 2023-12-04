@@ -19,6 +19,7 @@ public class MouseOverCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     PlayCard card;
     bool canDrag;
     bool clickedCard;
+    public GameObject keepCard;
 
     public void Update()
     {
@@ -32,7 +33,11 @@ public class MouseOverCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
         if (hovering && clickedCard && Input.GetMouseButtonUp(0)) 
         {
-            SetActiveCard();
+            if (TurnManager.Instance.TurnEnd)
+                SetToKeep();
+            else
+                SetActiveCard();
+
         }
 
         if (Input.GetMouseButton(0) && canDrag)
@@ -51,7 +56,10 @@ public class MouseOverCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         // If card is dropped in the play area, it is set as active. Any other card that was active returns to hand
         if (Input.mousePosition.y > 300 && isDragged && !Input.GetMouseButton(0))
         {
-            SetActiveCard();
+            if (TurnManager.Instance.TurnEnd)
+                SetToKeep();
+            else
+                SetActiveCard();
         }
 
         // If card is dragged and dropped in the outside the play area, the card returns to hand
@@ -75,6 +83,11 @@ public class MouseOverCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
                 isBeingPlayed= false;
             }
         }
+    }
+
+    private void SetToKeep()
+    {
+        transform.parent = KeepCard.Instance.transform;
     }
 
     private void SetActiveCard()

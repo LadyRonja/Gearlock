@@ -102,10 +102,7 @@ public class CardManager : MonoBehaviour
 
             if (drawPile.Count == 0 && discardPileObject.transform.childCount != 0)
             {
-                Debug.Log("Clearing discard pile: " + i);
                 ClearDiscard();
-                Debug.Log("Discard cleared: new child count: " + discardPileObject.transform.childCount);
-
             }
 
             if (drawPile.Count >= 1)
@@ -130,33 +127,32 @@ public class CardManager : MonoBehaviour
 
                 if (card.name == "Dig(Clone)")
                 {
-                    Debug.Log("discarded dig card");
-                    //Destroy(card.gameObject);
+                    DestroyImmediate(card);
                     cardsToAddToDrawPile.Add(dig);
                 }
                 else if (card.name == "Attack(Clone)")
                 {
-                    Destroy(card);
+                    DestroyImmediate(card);
                     cardsToAddToDrawPile.Add(attack);
                 }
                 else if (card.name == "Attack2x(Clone)")
                 {
-                    Destroy(card);
+                    DestroyImmediate(card);
                     cardsToAddToDrawPile.Add(attack2x);
                 }
                 else if (card.name == "Digger(Clone)")
                 {
-                    Destroy(card);
+                    DestroyImmediate(card);
                     cardsToAddToDrawPile.Add(diggerBot);
                 }
                 else if (card.name == "Fighter(Clone)")
                 {
-                    Destroy(card);
+                    DestroyImmediate(card);
                     cardsToAddToDrawPile.Add(fighterBot);
                 }
                 else if (card.name == "Dynamite(Clone)")
                 {
-                    Destroy(card);
+                    DestroyImmediate(card);
                     cardsToAddToDrawPile.Add(dynamite);
                 }
             }
@@ -237,4 +233,13 @@ public class CardManager : MonoBehaviour
         newCard.GetComponent<MouseOverCard>().inHand = false;
     }
 
+    public void RetrieveKeptCards()
+    {
+        for (int i = KeepCard.Instance.transform.childCount - 1; i >= 0; i--)
+        {
+            GameObject keptCard = KeepCard.Instance.transform.GetChild(i).gameObject;
+            keptCard.transform.parent = HandPanel.Instance.transform;
+
+        }
+    }
 }
