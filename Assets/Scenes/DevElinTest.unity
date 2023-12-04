@@ -2171,8 +2171,8 @@ Transform:
   m_GameObject: {fileID: 466626131}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.09, y: -6.25, z: 2.03}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -3.5767, y: -6.4054, z: 2.03}
+  m_LocalScale: {x: 0.5636, y: 0.5636, z: 0.5636}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1530277193}
@@ -6033,7 +6033,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1309975055
 Transform:
   m_ObjectHideFlags: 0
@@ -9137,7 +9137,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2001150043
 Transform:
   m_ObjectHideFlags: 0
@@ -10781,6 +10781,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPlayerTurn: 1
+  TurnEnd: 0
+  KeepCardScreen: {fileID: 0}
   tempTurnText: {fileID: 221802866}
 --- !u!4 &883605068537394148
 Transform:
