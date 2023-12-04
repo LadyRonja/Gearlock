@@ -17,6 +17,8 @@ public class DynamiteCard : PlayCard
     private int multiplier = 4;
     private int explosionRange = 2;
 
+    private Tile tile;
+
    
     public override void ExecuteBehaivour(Tile onTile, Unit byUnit)
     {
@@ -28,13 +30,13 @@ public class DynamiteCard : PlayCard
              
          Unit dynamiteScript = dynamiteObject.GetComponent<Unit>();
          onTile.UpdateOccupant(dynamiteScript);
-         dynamiteScript.standingOn = onTile;
+        dynamiteScript.standingOn = onTile;
          UnitStorage.Instance.playerUnits.Add(dynamiteScript);
          onTile.occupant.TakeDamage(byUnit.power * multiplier);
          Debug.Log("spawned dynamite");
 
 
-            //Tile.HighlightNeighbours();
+            
             ApplyDamageRadius(onTile, byUnit);
             Destroy(dynamite);
 
@@ -66,11 +68,13 @@ public class DynamiteCard : PlayCard
             // Check if the otherTile is within the explosion radius
             if (distanceX <= explosionRange && distanceY <= explosionRange)
             {
+                
+
                 // Store the original color of the tiles
-                Color originalColor = otherTile.myMR.material.color;
+                // Color originalColor = otherTile.myMR.material.color;
 
                 // Change neighbouring tiles to the color to blue
-                otherTile.myMR.material.color = Color.blue;
+                //otherTile.myMR.material.color = Color.blue;
 
                 // Check if there is an occupant on the neighboring tile
                 if (otherTile.occupant != null)

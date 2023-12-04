@@ -84,12 +84,12 @@ public class Tile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
     public void OnPointerDown(PointerEventData eventData)
      {
 
-       /* if (occupant != null && occupant.playerBot)
+        if (occupant != null && occupant.playerBot)
         {
             myMR.material.color = Color.blue;
 
             HighlightNeighbours();
-        }*/
+        }
             
 
         // Select My Unit
@@ -146,7 +146,7 @@ public class Tile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
 
     //TEST ELIN when you click on a tile the neighbors gets blue
 
-   /* public void OnPointerUp(PointerEventData eventData)
+   public void OnPointerUp(PointerEventData eventData)
     {
        
         myMR.material.color = Color.white;
@@ -155,7 +155,7 @@ public class Tile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
 
 
     }
-    private void HighlightNeighbours()
+    public void HighlightNeighbours()
     {
         if (occupant != null && occupant.playerBot)
         {
@@ -174,7 +174,7 @@ public class Tile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
 
     }
 
-    private void ResetNeighboursColor()
+    public void ResetNeighboursColor()
     {
         if (neighbourN != null)
             neighbourN.myMR.material.color = Color.white;
@@ -187,7 +187,7 @@ public class Tile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
 
         if (neighbourW != null)
             neighbourW.myMR.material.color = Color.white;
-    }*/
+    }
 
     
 }
