@@ -36,12 +36,12 @@ public class UnitSelector : MonoBehaviour
             return;
 
         // Reset the old selected unit's color
-        if(selectedUnit != null)
-            selectedUnit.mySR.color = Color.white;
+       // if(selectedUnit != null)
+           // selectedUnit.mySR.color = Color.white;
 
         // Update the new selected unit
-        if(unitToSelect != null)
-            unitToSelect.mySR.color = Color.green;
+       // if(unitToSelect != null)
+        //    unitToSelect.mySR.color = Color.green;
 
         selectedUnit = unitToSelect;
         UpdateUI();

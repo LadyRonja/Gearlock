@@ -1,3 +1,4 @@
+using Spine.Unity;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -31,11 +32,13 @@ public abstract class Unit : MonoBehaviour, IDamagable
 
     [Header("Components")]
     public Transform gfx;
-    public SpriteRenderer mySR;
+    public MeshRenderer myMR;
+    
 
     private void Start()
     {
-        mySR = gfx.GetComponent<SpriteRenderer>();
+        myMR = gfx.GetComponent<MeshRenderer>();
+        
     }
 
     public virtual void TakeDamage(int amount)
@@ -104,7 +107,7 @@ public abstract class Unit : MonoBehaviour, IDamagable
         movePointsCur--;
         Vector3 startPos = this.transform.position;
         Vector3 endPos = toTile.transform.position;
-        endPos.y += mySR.bounds.size.y / 2f;
+        endPos.y += (myMR.bounds.size.y / 2f) * 0.1f;
 
         float timeToMove = 0.5f;
         float timePassed = 0;
