@@ -6811,11 +6811,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5684602004955715023, guid: 949c3eda2038ccf498670240b968df58, type: 3}
       propertyPath: healthCur
-      value: 3
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 5684602004955715023, guid: 949c3eda2038ccf498670240b968df58, type: 3}
       propertyPath: healthMax
-      value: 3
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 5684602004955715023, guid: 949c3eda2038ccf498670240b968df58, type: 3}
       propertyPath: standingOn
@@ -14502,7 +14502,7 @@ MonoBehaviour:
   myPickUp: {fileID: 0}
   targetable: 0
   blocked: 0
-  occupied: 1
+  occupied: 0
   cameFrom: {fileID: 0}
 --- !u!64 &6051104834233947050
 MeshCollider:

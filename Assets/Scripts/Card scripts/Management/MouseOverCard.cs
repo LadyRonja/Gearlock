@@ -18,6 +18,7 @@ public class MouseOverCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     Vector3 dragPos;
     PlayCard card;
     bool canDrag;
+    bool clickedCard;
 
     public void Update()
     {
@@ -25,6 +26,8 @@ public class MouseOverCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         if (Input.GetMouseButtonDown(0) && hovering)
         {
             canDrag = true; // Start dragging only when the mouse button is pressed
+            clickedCard = true;
+            Invoke(""ResetBoolClick
         }
 
         if (Input.GetMouseButton(0) && canDrag)
@@ -102,6 +105,11 @@ public class MouseOverCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
             hovering = false;
         }
 
+
+    }
+
+    void ResetBoolClick()
+    {
 
     }
 
