@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 public enum CardState
@@ -20,6 +22,9 @@ public abstract class PlayCard : MonoBehaviour
     public bool canTargetOccupiedTiles = true;
     public bool goesToDiscardAfterPlay = true;
 
+    private bool unitsHighligthed = false;
+    private bool tilesHighligthed = false;
+
     [HideInInspector] public CardState myState = CardState.Inactive;
     [HideInInspector] public Tile selectedTile = null;
     [HideInInspector] public Unit selectedUnit = null;
@@ -38,6 +43,8 @@ public abstract class PlayCard : MonoBehaviour
                 // Essentially do nothing.
                 selectedTile = null;
                 selectedUnit = UnitSelector.Instance.selectedUnit;
+                unitsHighligthed = false;
+                tilesHighligthed = false;
 
                 break;
             case CardState.VerifyUnitSelection:
@@ -48,6 +55,11 @@ public abstract class PlayCard : MonoBehaviour
             case CardState.SelectingUnit:
                 // Select a new unit
                 // This state is only entered after a failed verification
+                if(!unitsHighligthed)
+                {
+                    HighlightUnits();
+                    unitsHighligthed = true;
+                }
                 SelectUnit();
 
                 break;
@@ -91,19 +103,18 @@ public abstract class PlayCard : MonoBehaviour
         // If no unit is selected - go to select unit.
         if(selectedUnit == null)
         {
-            Debug.Log("No unit selected, please select a unit");
-            myState = CardState.SelectingUnit;
-            DEBUGCardStateUI.Instance.DEBUGUpdateUI(CardState.VerifyUnitSelection, "Select a Unit.");
+            HandleIllegalSelection("No unit selected, please select a unit",
+                                    "Select a Unit.");
+
             return;
         }
 
         // Player can only play cards on player-cntrolled units
         if(selectedUnit.playerBot == false)
         {
-            Debug.Log("Selected unit is not controlled by the player");
-            selectedUnit = null;
-            myState= CardState.SelectingUnit;
-            DEBUGCardStateUI.Instance.DEBUGUpdateUI(CardState.VerifyUnitSelection, "Select a friendly Unit");
+            HandleIllegalSelection("Selected unit is not controlled by the player",
+                                    "Select a friendly Unit");
+
             return;
         }
 
@@ -112,10 +123,8 @@ public abstract class PlayCard : MonoBehaviour
         {
             if(selectedUnit.mySpecialization != requiredSpecialization) 
             {
-                Debug.Log("Selected unit does not match special requirment");
-                selectedUnit = null;
-                myState = CardState.SelectingUnit;
-                DEBUGCardStateUI.Instance.DEBUGUpdateUI(CardState.VerifyUnitSelection, "Select a unit that can use that card");
+                HandleIllegalSelection("Selected unit does not match special requirment",
+                                        "Select a unit that can use that card");
                 return;
             }
         }
@@ -123,6 +132,15 @@ public abstract class PlayCard : MonoBehaviour
         // If reached this bit of the code, the bot is verified and get's to cast the card.
         myState = CardState.SelectingTile;
         DEBUGCardStateUI.Instance.DEBUGUpdateUI(CardState.SelectingTile, "Select a tile");
+
+        void HandleIllegalSelection(string errorMessage, string cardStateText)
+        {
+            Debug.Log(errorMessage);
+            selectedUnit = null;
+            myState = CardState.SelectingUnit;
+            DEBUGCardStateUI.Instance.DEBUGUpdateUI(CardState.VerifyUnitSelection, cardStateText);
+            GridManager.Instance.UnhighlightAll();
+        }
     }
 
     protected virtual void SelectUnit()
@@ -155,6 +173,24 @@ public abstract class PlayCard : MonoBehaviour
                 }
             }
             Debug.Log("No unit selected");
+        }
+    }
+
+    protected virtual void HighlightUnits()
+    {
+        // Highlight legal units
+        List<Unit> legalUnits = UnitStorage.Instance.playerUnits.Where(u => u.mySpecialization == requiredSpecialization).ToList();
+        if (legalUnits.Count == 0)
+        {
+            Debug.Log("No legal unit found, removing card from played");
+            CancelPlay();
+            CardManager.instance.ClearActiveCard();
+            return;
+        }
+
+        foreach (Unit u in legalUnits)
+        {
+            u.standingOn.Highlight();
         }
     }
 

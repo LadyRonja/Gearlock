@@ -171,4 +171,12 @@ public class GridManager : MonoBehaviour
             }
         }
     }
+
+    public void UnhighlightAll()
+    {
+        foreach (Tile t in tiles)
+        {
+            t.UnHighlight();
+        }
+    }
 }
