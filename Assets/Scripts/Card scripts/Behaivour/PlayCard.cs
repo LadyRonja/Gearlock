@@ -23,7 +23,7 @@ public abstract class PlayCard : MonoBehaviour
     public string cardName = "--";
     public Sprite cardFrame;
     public Sprite illustration;
-    [TextArea(1, 6)] 
+    [TextArea(6, 6)] 
     public string cardDescription;
     public int range = 1;
 

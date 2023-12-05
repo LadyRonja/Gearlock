@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &3006387229587943668
+--- !u!1001 &5160265021543707868
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2724537674535312955, guid: 95bb9cd62ecb8fb4aa7c6e5eed002318, type: 3}
       propertyPath: m_Name
-      value: Attack
+      value: Figther Bot
       objectReference: {fileID: 0}
     - target: {fileID: 6478808464158835852, guid: 95bb9cd62ecb8fb4aa7c6e5eed002318, type: 3}
       propertyPath: m_Pivot.x
@@ -98,37 +98,37 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 2724537674535312955, guid: 95bb9cd62ecb8fb4aa7c6e5eed002318, type: 3}
       insertIndex: -1
-      addedObject: {fileID: -8972881668364327208}
+      addedObject: {fileID: 9133187286715995516}
   m_SourcePrefab: {fileID: 100100000, guid: 95bb9cd62ecb8fb4aa7c6e5eed002318, type: 3}
---- !u!1 &898281027607506639 stripped
+--- !u!1 &7085131046943255271 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2724537674535312955, guid: 95bb9cd62ecb8fb4aa7c6e5eed002318, type: 3}
-  m_PrefabInstance: {fileID: 3006387229587943668}
+  m_PrefabInstance: {fileID: 5160265021543707868}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &-8972881668364327208
+--- !u!114 &9133187286715995516
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 898281027607506639}
+  m_GameObject: {fileID: 7085131046943255271}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4d912b9aa9a6854abeddd0415081f90, type: 3}
+  m_Script: {fileID: 11500000, guid: ccd357eef17fe644c89fd1ca858c28bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardName: Attack!
+  cardName: Assemble Figther Bot
   cardFrame: {fileID: 21300000, guid: 1f90e061c7373fe44b81f1fcc379996a, type: 3}
-  illustration: {fileID: 21300000, guid: 17d11b44bd8447e4087e7c7548176875, type: 3}
-  cardDescription: Selected Robot deals damage equal to its Power to another unit.
+  illustration: {fileID: 21300000, guid: 664317fcd2e632741af5ae4f4b63f2f5, type: 3}
+  cardDescription: Assemble a Figther Bot!
   range: 1
-  requiredSpecialization: 0
+  requiredSpecialization: 1
   hasToTargetDirtTiles: 0
   canNotTargetDirtTiles: 1
-  hasToTargetOccupiedTiles: 1
-  canNotTargetOccupiedTiles: 0
-  goesToDiscardAfterPlay: 1
+  hasToTargetOccupiedTiles: 0
+  canNotTargetOccupiedTiles: 1
+  goesToDiscardAfterPlay: 0
   myState: 0
   selectedTile: {fileID: 0}
   selectedUnit: {fileID: 0}
-  multiplier: 1
+  fightBot: {fileID: 7606916860535154931, guid: 4616440f96a366e41be3341e56abf57a, type: 3}
