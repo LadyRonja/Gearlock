@@ -14,10 +14,13 @@ public class MouseOverCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 {
     [Header("Regions for display")]
     public TMP_Text nameRegion;
+    public TMP_Text nameRegionShadow;
     public Image frameImage;
     public Image illustrationImage;
     public TMP_Text descriptionRegion;
+    public TMP_Text descriptionShadow;
     public TMP_Text rangeRegion;
+    public TMP_Text rangeRegionShadow;
 
     [Header("Card Manipulation")]
     bool hovering = false;
