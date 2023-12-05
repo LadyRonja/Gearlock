@@ -1714,13 +1714,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1175627427}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.486692, y: 0.44185215, z: -0.18066034, w: 0.7316143}
-  m_LocalPosition: {x: 18.95, y: -18.3, z: 22.7}
+  m_LocalRotation: {x: 0.35557258, y: 0.24100201, z: -0.22907315, w: 0.8735054}
+  m_LocalPosition: {x: 19.54, y: -18.3, z: -16.43}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 60.668, y: 73.907, z: 19.776}
+  m_LocalEulerAnglesHint: {x: 47.021, y: 22.249, z: -19.611}
 --- !u!1 &1194191450
 GameObject:
   m_ObjectHideFlags: 0
@@ -2881,6 +2881,7 @@ MonoBehaviour:
   doneMoving: 1
   standingOn: {fileID: 6025241019568973945}
   gfx: {fileID: 8286238780360717869}
+  myMR: {fileID: 0}
   mySR: {fileID: 0}
 --- !u!222 &114341890472274327
 CanvasRenderer:
@@ -3356,6 +3357,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPlayerTurn: 1
+  TurnEnd: 0
+  KeepCardScreen: {fileID: 0}
   tempTurnText: {fileID: 7301554765260689521}
 --- !u!212 &915661768587442722
 SpriteRenderer:
@@ -6659,6 +6662,7 @@ MonoBehaviour:
   doneMoving: 1
   standingOn: {fileID: 0}
   gfx: {fileID: 114602580636637657}
+  myMR: {fileID: 0}
   mySR: {fileID: 0}
   brokenDigger: {fileID: 0}
 --- !u!114 &7909590848908899540
@@ -6736,6 +6740,7 @@ MonoBehaviour:
   doneMoving: 1
   standingOn: {fileID: 2493595305341716067}
   gfx: {fileID: 666374150037296619}
+  myMR: {fileID: 0}
   mySR: {fileID: 0}
   brokenFighter: {fileID: 0}
 --- !u!4 &8126368467769436310
