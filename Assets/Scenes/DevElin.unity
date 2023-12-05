@@ -138,6 +138,7 @@ GameObject:
   m_Component:
   - component: {fileID: 51686513}
   - component: {fileID: 51686512}
+  - component: {fileID: 51686514}
   m_Layer: 0
   m_Name: Dirt(Clone)
   m_TagString: Untagged
@@ -174,6 +175,27 @@ Transform:
   - {fileID: 1529491192}
   m_Father: {fileID: 666007072471186165}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &51686514
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 51686511}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 11.288269, y: 10.89705, z: 1}
+  m_Center: {x: 0.09080124, y: 0.08050203, z: 0}
 --- !u!1 &63466507
 GameObject:
   m_ObjectHideFlags: 0
@@ -184,6 +206,7 @@ GameObject:
   m_Component:
   - component: {fileID: 63466509}
   - component: {fileID: 63466508}
+  - component: {fileID: 63466510}
   m_Layer: 0
   m_Name: Dirt(Clone)
   m_TagString: Untagged
@@ -220,6 +243,27 @@ Transform:
   - {fileID: 1838051313}
   m_Father: {fileID: 666007072471186165}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &63466510
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 63466507}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 11.288269, y: 10.89705, z: 1}
+  m_Center: {x: 0.09080124, y: 0.08050203, z: 0}
 --- !u!1 &78392740 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2287729383318959771, guid: e5ab73d65876392488983ec86be9c290, type: 3}
@@ -542,6 +586,7 @@ GameObject:
   m_Component:
   - component: {fileID: 244906448}
   - component: {fileID: 244906447}
+  - component: {fileID: 244906449}
   m_Layer: 0
   m_Name: Dirt(Clone)
   m_TagString: Untagged
@@ -578,6 +623,27 @@ Transform:
   - {fileID: 451002992}
   m_Father: {fileID: 666007072471186165}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &244906449
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 244906446}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 11.288269, y: 10.89705, z: 1}
+  m_Center: {x: 0.09080124, y: 0.08050203, z: 0}
 --- !u!114 &263892692 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6868295659131162748, guid: e5ab73d65876392488983ec86be9c290, type: 3}
@@ -895,6 +961,7 @@ GameObject:
   m_Component:
   - component: {fileID: 325041891}
   - component: {fileID: 325041890}
+  - component: {fileID: 325041892}
   m_Layer: 0
   m_Name: Dirt(Clone)
   m_TagString: Untagged
@@ -931,6 +998,27 @@ Transform:
   - {fileID: 790462779}
   m_Father: {fileID: 666007072471186165}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &325041892
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 325041889}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 11.288269, y: 10.89705, z: 1}
+  m_Center: {x: 0.09080124, y: 0.08050203, z: 0}
 --- !u!1 &335547819
 GameObject:
   m_ObjectHideFlags: 0
@@ -941,6 +1029,7 @@ GameObject:
   m_Component:
   - component: {fileID: 335547821}
   - component: {fileID: 335547820}
+  - component: {fileID: 335547822}
   m_Layer: 0
   m_Name: Dirt(Clone)
   m_TagString: Untagged
@@ -977,6 +1066,27 @@ Transform:
   - {fileID: 1367346212}
   m_Father: {fileID: 666007072471186165}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &335547822
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 335547819}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 11.288269, y: 10.89705, z: 1}
+  m_Center: {x: 0.09080124, y: 0.08050203, z: 0}
 --- !u!1 &353788110
 GameObject:
   m_ObjectHideFlags: 0
@@ -1790,6 +1900,7 @@ GameObject:
   m_Component:
   - component: {fileID: 615907797}
   - component: {fileID: 615907796}
+  - component: {fileID: 615907798}
   m_Layer: 0
   m_Name: Dirt(Clone)
   m_TagString: Untagged
@@ -1826,6 +1937,27 @@ Transform:
   - {fileID: 166989548}
   m_Father: {fileID: 666007072471186165}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &615907798
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 615907795}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 11.288269, y: 10.89705, z: 1}
+  m_Center: {x: 0.09080124, y: 0.08050203, z: 0}
 --- !u!1 &628471964
 GameObject:
   m_ObjectHideFlags: 0
@@ -1920,6 +2052,7 @@ GameObject:
   m_Component:
   - component: {fileID: 682007998}
   - component: {fileID: 682007997}
+  - component: {fileID: 682007999}
   m_Layer: 0
   m_Name: Dirt(Clone)
   m_TagString: Untagged
@@ -1956,6 +2089,27 @@ Transform:
   - {fileID: 1749945486}
   m_Father: {fileID: 666007072471186165}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &682007999
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 682007996}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 11.288269, y: 10.89705, z: 1}
+  m_Center: {x: 0.09080124, y: 0.08050203, z: 0}
 --- !u!1 &707028997
 GameObject:
   m_ObjectHideFlags: 0
@@ -2343,6 +2497,7 @@ GameObject:
   m_Component:
   - component: {fileID: 785995578}
   - component: {fileID: 785995577}
+  - component: {fileID: 785995579}
   m_Layer: 0
   m_Name: Dirt(Clone)
   m_TagString: Untagged
@@ -2379,6 +2534,27 @@ Transform:
   - {fileID: 989163824}
   m_Father: {fileID: 666007072471186165}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &785995579
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 785995576}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 11.288269, y: 10.89705, z: 1}
+  m_Center: {x: 0.09080124, y: 0.08050203, z: 0}
 --- !u!1 &790462775
 GameObject:
   m_ObjectHideFlags: 0
@@ -2495,6 +2671,7 @@ GameObject:
   m_Component:
   - component: {fileID: 794841590}
   - component: {fileID: 794841589}
+  - component: {fileID: 794841591}
   m_Layer: 0
   m_Name: Dirt(Clone)
   m_TagString: Untagged
@@ -2531,6 +2708,27 @@ Transform:
   - {fileID: 1833093764}
   m_Father: {fileID: 666007072471186165}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &794841591
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 794841588}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 11.288269, y: 10.89705, z: 1}
+  m_Center: {x: 0.09080124, y: 0.08050203, z: 0}
 --- !u!1 &816315979
 GameObject:
   m_ObjectHideFlags: 0
@@ -3495,6 +3693,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1086930306}
   - component: {fileID: 1086930305}
+  - component: {fileID: 1086930307}
   m_Layer: 0
   m_Name: Dirt(Clone)
   m_TagString: Untagged
@@ -3531,6 +3730,27 @@ Transform:
   - {fileID: 240631467}
   m_Father: {fileID: 666007072471186165}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1086930307
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1086930304}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 11.288269, y: 10.89705, z: 1}
+  m_Center: {x: 0.09080124, y: 0.08050203, z: 0}
 --- !u!1 &1100171232
 GameObject:
   m_ObjectHideFlags: 0
@@ -3541,6 +3761,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1100171234}
   - component: {fileID: 1100171233}
+  - component: {fileID: 1100171235}
   m_Layer: 0
   m_Name: Dirt(Clone)
   m_TagString: Untagged
@@ -3577,6 +3798,27 @@ Transform:
   - {fileID: 1060828951}
   m_Father: {fileID: 666007072471186165}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1100171235
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1100171232}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 11.288269, y: 10.89705, z: 1}
+  m_Center: {x: 0.09080124, y: 0.08050203, z: 0}
 --- !u!1 &1102361519
 GameObject:
   m_ObjectHideFlags: 0
@@ -4029,6 +4271,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1272002108}
   - component: {fileID: 1272002107}
+  - component: {fileID: 1272002109}
   m_Layer: 0
   m_Name: Dirt(Clone)
   m_TagString: Untagged
@@ -4065,6 +4308,27 @@ Transform:
   - {fileID: 1323678618}
   m_Father: {fileID: 666007072471186165}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1272002109
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1272002106}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 11.288269, y: 10.89705, z: 1}
+  m_Center: {x: 0.09080124, y: 0.08050203, z: 0}
 --- !u!1 &1309975054
 GameObject:
   m_ObjectHideFlags: 0
@@ -4687,6 +4951,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1458730727}
   - component: {fileID: 1458730726}
+  - component: {fileID: 1458730728}
   m_Layer: 0
   m_Name: Dirt(Clone)
   m_TagString: Untagged
@@ -4723,6 +4988,27 @@ Transform:
   - {fileID: 1600026039}
   m_Father: {fileID: 666007072471186165}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1458730728
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1458730725}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 11.288269, y: 10.89705, z: 1}
+  m_Center: {x: 0.09080124, y: 0.08050203, z: 0}
 --- !u!1 &1484162064
 GameObject:
   m_ObjectHideFlags: 0
@@ -5191,6 +5477,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1575458970}
   - component: {fileID: 1575458969}
+  - component: {fileID: 1575458971}
   m_Layer: 0
   m_Name: Dirt(Clone)
   m_TagString: Untagged
@@ -5227,6 +5514,27 @@ Transform:
   - {fileID: 1753531450}
   m_Father: {fileID: 666007072471186165}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1575458971
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1575458968}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 11.288269, y: 10.89705, z: 1}
+  m_Center: {x: 0.09080124, y: 0.08050203, z: 0}
 --- !u!114 &1577058551 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1985456478184971373, guid: e5ab73d65876392488983ec86be9c290, type: 3}
@@ -6432,6 +6740,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1808669882}
   - component: {fileID: 1808669881}
+  - component: {fileID: 1808669883}
   m_Layer: 0
   m_Name: Dirt(Clone)
   m_TagString: Untagged
@@ -6468,6 +6777,27 @@ Transform:
   - {fileID: 305385122}
   m_Father: {fileID: 666007072471186165}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1808669883
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1808669880}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 11.288269, y: 10.89705, z: 1}
+  m_Center: {x: 0.09080124, y: 0.08050203, z: 0}
 --- !u!1 &1810250550
 GameObject:
   m_ObjectHideFlags: 0
@@ -6585,6 +6915,7 @@ GameObject:
   - component: {fileID: 1817140253}
   - component: {fileID: 1817140252}
   - component: {fileID: 1817140254}
+  - component: {fileID: 1817140255}
   m_Layer: 0
   m_Name: Dirt(Clone)
   m_TagString: Untagged
@@ -6622,6 +6953,27 @@ Transform:
   m_Father: {fileID: 666007072471186165}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1817140254
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1817140251}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 11.288269, y: 10.89705, z: 1}
+  m_Center: {x: 0.09080124, y: 0.08050203, z: 0}
+--- !u!65 &1817140255
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -6953,6 +7305,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1873502123}
   - component: {fileID: 1873502122}
+  - component: {fileID: 1873502124}
   m_Layer: 0
   m_Name: Dirt(Clone)
   m_TagString: Untagged
@@ -6989,6 +7342,27 @@ Transform:
   - {fileID: 1945921307}
   m_Father: {fileID: 666007072471186165}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1873502124
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1873502121}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 11.288269, y: 10.89705, z: 1}
+  m_Center: {x: 0.09080124, y: 0.08050203, z: 0}
 --- !u!1 &1914297569
 GameObject:
   m_ObjectHideFlags: 0
@@ -6999,6 +7373,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1914297571}
   - component: {fileID: 1914297570}
+  - component: {fileID: 1914297572}
   m_Layer: 0
   m_Name: Dirt(Clone)
   m_TagString: Untagged
@@ -7035,6 +7410,27 @@ Transform:
   - {fileID: 998642906}
   m_Father: {fileID: 666007072471186165}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1914297572
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1914297569}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 11.288269, y: 10.89705, z: 1}
+  m_Center: {x: 0.09080124, y: 0.08050203, z: 0}
 --- !u!1 &1923408549
 GameObject:
   m_ObjectHideFlags: 0
@@ -7498,6 +7894,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1981932710}
   - component: {fileID: 1981932709}
+  - component: {fileID: 1981932711}
   m_Layer: 0
   m_Name: Dirt(Clone)
   m_TagString: Untagged
@@ -7534,6 +7931,27 @@ Transform:
   - {fileID: 304415059}
   m_Father: {fileID: 666007072471186165}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1981932711
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1981932708}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 11.288269, y: 10.89705, z: 1}
+  m_Center: {x: 0.09080124, y: 0.08050203, z: 0}
 --- !u!1 &2001150042
 GameObject:
   m_ObjectHideFlags: 0
@@ -7625,6 +8043,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2026950886}
   - component: {fileID: 2026950885}
+  - component: {fileID: 2026950887}
   m_Layer: 0
   m_Name: Dirt(Clone)
   m_TagString: Untagged
@@ -7661,6 +8080,27 @@ Transform:
   - {fileID: 1675635712}
   m_Father: {fileID: 666007072471186165}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &2026950887
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2026950884}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 11.288269, y: 10.89705, z: 1}
+  m_Center: {x: 0.09080124, y: 0.08050203, z: 0}
 --- !u!1 &2065203119
 GameObject:
   m_ObjectHideFlags: 0
@@ -8148,6 +8588,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2103381463}
   - component: {fileID: 2103381462}
+  - component: {fileID: 2103381464}
   m_Layer: 0
   m_Name: Dirt(Clone)
   m_TagString: Untagged
@@ -8184,6 +8625,27 @@ Transform:
   - {fileID: 1810250554}
   m_Father: {fileID: 666007072471186165}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &2103381464
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2103381461}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 11.288269, y: 10.89705, z: 1}
+  m_Center: {x: 0.09080124, y: 0.08050203, z: 0}
 --- !u!224 &5215992793681674
 RectTransform:
   m_ObjectHideFlags: 0
