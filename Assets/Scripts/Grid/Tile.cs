@@ -145,6 +145,7 @@ public class Tile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
             { }// Do nothings
             else if (!blocked)
                 Highlight();
+            
             else
                 Highlight(Color.red);
         }
@@ -191,6 +192,9 @@ public class Tile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
     public void Highlight()
     {
         Highlight(Color.white);
+        
+        //test elins mouse cursor
+        MouseControl.instance.Walk();
     }
 
     public void UnHighlight()
@@ -203,5 +207,8 @@ public class Tile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
 
         myHighligther.color = Color.white;
         myHighligther.gameObject.SetActive(false);
+
+        //test elins mouse cursor
+        MouseControl.instance.Default();
     }
 }
