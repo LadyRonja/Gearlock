@@ -130,7 +130,8 @@ public class Tile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
 
         // TODO: See item spawner todo
         //ItemSpawner.Instance.SpawnRandomItem(this);
-        ItemSpawner.Instance.SpawnRandomCardDelete(this);
+        if(ItemSpawner.Instance != null)
+            ItemSpawner.Instance.SpawnRandomCardDelete(this);
     }
 
     private void HighlightHoverEnterManager()

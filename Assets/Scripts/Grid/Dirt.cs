@@ -4,8 +4,5 @@ using UnityEngine;
 
 public class Dirt : MonoBehaviour
 {
-    public MeshRenderer top;
-    public MeshRenderer front;
-    public MeshRenderer sideRight;
-    public MeshRenderer sideLeft;
+    public MeshRenderer gfx;
 }
