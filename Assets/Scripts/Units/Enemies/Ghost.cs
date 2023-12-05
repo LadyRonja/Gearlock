@@ -34,11 +34,19 @@ public class Ghost : Unit
 
     public void OnMouseEnter()
     {
-      
-           // if (card.myState == CardState.SelectingTile)
-            //{
+        PlayCard currentCard = ActiveCard.Instance.transform.GetComponentInChildren<PlayCard>();
+
+        if (currentCard != null)
+        {
+            if (currentCard.GetType().Equals(typeof(AttackCard)))
+            {
                 MouseControl.instance.Fight();
                 Debug.Log("Changing cursor to Fight");
+            }
+        }
+        // if (card.myState == CardState.SelectingTile)
+        //{
+        
            // }
         
 
