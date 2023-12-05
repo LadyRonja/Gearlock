@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6192385722215035667}
   - component: {fileID: 5860811044621624104}
+  - component: {fileID: 3816823125945134330}
   m_Layer: 0
   m_Name: BigBot
   m_TagString: Untagged
@@ -52,12 +53,34 @@ MonoBehaviour:
   healthCur: 5
   movePointsMax: 2
   movePointsCur: 2
-  power: 1
+  power: 3
   attackRange: 1
   doneMoving: 1
   standingOn: {fileID: 0}
   gfx: {fileID: 7305389757509687328}
+  myMR: {fileID: 0}
   mySR: {fileID: 7947304137012301238}
+--- !u!65 &3816823125945134330
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4581099838743149793}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 3.1670551, y: 6.979244, z: 0.28192234}
+  m_Center: {x: 0.0026445389, y: -0.016153336, z: -0.03343916}
 --- !u!1 &8191952803846920161
 GameObject:
   m_ObjectHideFlags: 0
