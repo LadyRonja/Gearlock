@@ -2,14 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Xml.Linq;
+using TMPro;
 using Unity.VisualScripting;
 //using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 using UnityEngine.XR;
 
 public class MouseOverCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
+    [Header("Regions for display")]
+    public TMP_Text nameRegion;
+    public Image frameImage;
+    public Image illustrationImage;
+    public TMP_Text descriptionRegion;
+    public TMP_Text rangeRegion;
+
+    [Header("Card Manipulation")]
     bool hovering = false;
     float cardX, cardY;
     bool isDragged = false;

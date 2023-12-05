@@ -1,8 +1,11 @@
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEditor.U2D.Aseprite;
 using UnityEngine;
+using UnityEngine.UI;
+
 public enum CardState
 {
     Inactive,
@@ -16,10 +19,15 @@ public enum CardState
 
 public abstract class PlayCard : MonoBehaviour
 {
+    [Header("Info displayed to player")]
     public string cardName = "--";
-
+    public Sprite cardFrame;
+    public Sprite illustration;
+    [TextArea(1, 6)] 
+    public string cardDescription;
     public int range = 1;
-    [Space]
+
+    [Header("Card restrictions")]
     public BotSpecialization requiredSpecialization = BotSpecialization.None;
     public bool hasToTargetDirtTiles = true;
     public bool canNotTargetDirtTiles = false;
@@ -29,6 +37,7 @@ public abstract class PlayCard : MonoBehaviour
 
     private bool unitsHighligthed = false;
     private bool tilesHighligthed = false;
+
 
     [HideInInspector] public CardState myState = CardState.Inactive;
     [HideInInspector] public Tile selectedTile = null;
@@ -42,6 +51,8 @@ public abstract class PlayCard : MonoBehaviour
             Debug.LogError($"WARNING: {cardName} both has to and is unable to target occupied Tiles!" );
         if (canNotTargetDirtTiles && hasToTargetDirtTiles)
             Debug.LogError($"WARNING: {cardName} both has to and is unable to target dirt covered Tiles!");
+
+        
     }
 
     protected virtual void Update()
@@ -117,6 +128,11 @@ public abstract class PlayCard : MonoBehaviour
 
                 break;
         }
+    }
+
+    public void SetUpApperance()
+    {
+
     }
 
     protected virtual void VerifyUnitSelection()
