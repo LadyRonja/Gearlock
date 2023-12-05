@@ -7497,6 +7497,7 @@ MonoBehaviour:
   doneMoving: 1
   standingOn: {fileID: 6795926666492340888}
   gfx: {fileID: 353788111}
+  myMR: {fileID: 0}
   mySR: {fileID: 0}
 --- !u!4 &1310518417 stripped
 Transform:
@@ -11934,6 +11935,7 @@ MonoBehaviour:
   doneMoving: 1
   standingOn: {fileID: 5302379851731915168}
   gfx: {fileID: 112221408}
+  myMR: {fileID: 0}
   mySR: {fileID: 0}
 --- !u!1 &2012710835
 GameObject:
@@ -12225,7 +12227,8 @@ MonoBehaviour:
   doneMoving: 1
   standingOn: {fileID: 2493595305341716067}
   gfx: {fileID: 1102361521}
-  mySR: {fileID: 1102361520}
+  myMR: {fileID: 0}
+  mySR: {fileID: 0}
   brokenFighter: {fileID: 3141665598236762354, guid: a01b1ee6048250e4595d21ee65596a4d, type: 3}
 --- !u!4 &2065203121
 Transform:
@@ -19092,7 +19095,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: ab255a76c57619247af4b0a69da3ffec, type: 2}
+  - {fileID: 2100000, guid: d93b610477649504cb4bb51d714d1cbe, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
