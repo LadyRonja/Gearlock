@@ -3274,11 +3274,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e2b739a40151904f982dfaee5aeed54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultCursor: {fileID: 2800000, guid: 120951b3f84142943b80ccca8a3eb4b2, type: 3}
-  walkCursor: {fileID: 2800000, guid: 1f8aaa77925d75f49bca79e94c15f972, type: 3}
-  digCursor: {fileID: 2800000, guid: 7222bd300f186d040bb63235d7e84fa8, type: 3}
-  fightCursor: {fileID: 2800000, guid: 2fa3b31e690dfdf46979dc9c38396c76, type: 3}
-  pickupCursor: {fileID: 2800000, guid: f35e572301449444bb1f9c571f8650dd, type: 3}
+  defaultCursor: {fileID: 2800000, guid: b20a686c293767544af84d5cb82937d1, type: 3}
+  walkCursor: {fileID: 2800000, guid: a626562a86ac7264daf36a3d4cde0de3, type: 3}
+  digCursor: {fileID: 2800000, guid: c33e301bdc491974480e9193a5e30e84, type: 3}
+  fightCursor: {fileID: 2800000, guid: e36d7e7d454eb6645830658aee962495, type: 3}
+  pickupCursor: {fileID: 2800000, guid: 8eef6b2fe762c27419d883660109f8fc, type: 3}
 --- !u!4 &640231497
 Transform:
   m_ObjectHideFlags: 0
@@ -6076,13 +6076,14 @@ GameObject:
   m_Component:
   - component: {fileID: 1309975055}
   - component: {fileID: 1309975056}
+  - component: {fileID: 1309975057}
   m_Layer: 0
   m_Name: Ghost
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1309975055
 Transform:
   m_ObjectHideFlags: 0
@@ -6124,6 +6125,28 @@ MonoBehaviour:
   standingOn: {fileID: 6795926666492340888}
   gfx: {fileID: 353788111}
   myMR: {fileID: 0}
+  mySR: {fileID: 0}
+--- !u!65 &1309975057
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1309975054}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 3.2308922, y: 7.8256416, z: 1}
+  m_Center: {x: 0.060129166, y: -0.4501953, z: 0}
 --- !u!4 &1310518417 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6192385722215035667, guid: f82e24dd0a9ffb44b98002e7118aa8ff, type: 3}
@@ -6134,7 +6157,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5860811044621624104, guid: f82e24dd0a9ffb44b98002e7118aa8ff, type: 3}
   m_PrefabInstance: {fileID: 1530441370}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1871004380}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bda4cc166fae37849b1b2549156f1f35, type: 3}
@@ -7501,7 +7524,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4581099838743149793, guid: f82e24dd0a9ffb44b98002e7118aa8ff, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1871004381}
   m_SourcePrefab: {fileID: 100100000, guid: f82e24dd0a9ffb44b98002e7118aa8ff, type: 3}
 --- !u!1 &1559258506
 GameObject:
@@ -9024,6 +9050,32 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1092001017}
   m_LocalEulerAnglesHint: {x: -90, y: -90, z: 0}
+--- !u!1 &1871004380 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4581099838743149793, guid: f82e24dd0a9ffb44b98002e7118aa8ff, type: 3}
+  m_PrefabInstance: {fileID: 1530441370}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &1871004381
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1871004380}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 3.5881984, y: 8.4427, z: 1}
+  m_Center: {x: -0.00581038, y: -0.48001814, z: 0}
 --- !u!1 &1903436432
 GameObject:
   m_ObjectHideFlags: 0
@@ -9180,13 +9232,14 @@ GameObject:
   m_Component:
   - component: {fileID: 2001150043}
   - component: {fileID: 2001150044}
+  - component: {fileID: 2001150045}
   m_Layer: 0
   m_Name: Ghost
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2001150043
 Transform:
   m_ObjectHideFlags: 0
@@ -9228,6 +9281,28 @@ MonoBehaviour:
   standingOn: {fileID: 5302379851731915168}
   gfx: {fileID: 112221408}
   myMR: {fileID: 0}
+  mySR: {fileID: 0}
+--- !u!65 &2001150045
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2001150042}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 3.1741123, y: 7.7837067, z: 1}
+  m_Center: {x: -0.004869461, y: -0.34422874, z: 0}
 --- !u!1 &2012710835
 GameObject:
   m_ObjectHideFlags: 0

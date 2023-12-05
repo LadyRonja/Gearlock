@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 542810630522656257}
   - component: {fileID: 2181621927098659884}
   - component: {fileID: 6477095674664280984}
+  - component: {fileID: -5406044226485652222}
   m_Layer: 0
   m_Name: Card Pickup
   m_TagString: Untagged
@@ -131,3 +132,24 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 1
     m_RotationOrder: 4
+--- !u!65 &-5406044226485652222
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5432796132586583990}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2.0984688, y: 5.514206, z: 0.2}
+  m_Center: {x: -0.017747879, y: -1.4016075, z: 0}

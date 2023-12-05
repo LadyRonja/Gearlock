@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BigBot : Unit
+public class TestMouseCursorObject : MonoBehaviour
 {
     public void OnMouseEnter()
     {
@@ -13,5 +13,4 @@ public class BigBot : Unit
     {
         MouseControl.instance.Default();
     }
-
 }

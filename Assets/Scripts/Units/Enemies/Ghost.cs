@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Ghost : Unit
-{
+{   
+    private PlayCard card;
+    private AttackCard attackCard;
+
     public override Unit FindTargetUnit()
     {
         return FindNearestPlayerUnit(true);
@@ -27,5 +30,24 @@ public class Ghost : Unit
             output.RemoveAt(output.Count - 1);
 
         return output;
+    }
+
+    public void OnMouseEnter()
+    {
+      
+           // if (card.myState == CardState.SelectingTile)
+            //{
+                MouseControl.instance.Fight();
+                Debug.Log("Changing cursor to Fight");
+           // }
+        
+
+
+
+    }
+
+    public void OnMouseExit()
+    {
+        MouseControl.instance.Default();
     }
 }
