@@ -134,6 +134,8 @@ public class Tile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
 
     private void HighlightHoverEnterManager()
     {
+        // If a card is not being played
+        // Highlight white or red depending on blocked status
         if (ActiveCard.Instance.transform.childCount == 0)
         {
             if (!blocked)
@@ -143,19 +145,29 @@ public class Tile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
         }
         else if (myHighligther.gameObject.activeSelf == true)
         {
-            Highlight(Color.green);
+            // If a card is being played, highlight as green if it's not on the selected unit
+
+            if(myHighligther.color != Color.blue)
+                Highlight(Color.green);
         }
     }
 
     private void HighlightHoverExitManager()
     {
+        // If a card is not being played
+        // Remove highlight
         if (ActiveCard.Instance.transform.childCount == 0)
         {
             UnHighlight();
         }
         else if (myHighligther.gameObject.activeSelf == true)
         {
-            Highlight();
+            // If a card is being played
+            // Keep it highligthed
+            // Keep it blue for the selected unit
+
+            if(myHighligther.color != Color.blue)
+                Highlight();
         }
     }
 

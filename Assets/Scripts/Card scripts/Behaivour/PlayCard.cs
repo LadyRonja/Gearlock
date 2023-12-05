@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Unity.VisualScripting;
+using UnityEditor.U2D.Aseprite;
 using UnityEngine;
 public enum CardState
 {
@@ -15,11 +16,15 @@ public enum CardState
 
 public abstract class PlayCard : MonoBehaviour
 {
+    public string cardName = "--";
+
     public int range = 1;
     [Space]
     public BotSpecialization requiredSpecialization = BotSpecialization.None;
-    public bool canTargetDirtTiles = false;
-    public bool canTargetOccupiedTiles = true;
+    public bool hasToTargetDirtTiles = true;
+    public bool canNotTargetDirtTiles = false;
+    public bool hasToTargetOccupiedTiles = true;
+    public bool canNotTargetOccupiedTiles = false;
     public bool goesToDiscardAfterPlay = true;
 
     private bool unitsHighligthed = false;
@@ -32,6 +37,11 @@ public abstract class PlayCard : MonoBehaviour
     protected virtual void Start()
     {
         myState = CardState.Inactive;
+
+        if(canNotTargetOccupiedTiles && hasToTargetOccupiedTiles)
+            Debug.LogError($"WARNING: {cardName} both has to and is unable to target occupied Tiles!" );
+        if (canNotTargetDirtTiles && hasToTargetDirtTiles)
+            Debug.LogError($"WARNING: {cardName} both has to and is unable to target dirt covered Tiles!");
     }
 
     protected virtual void Update()
@@ -65,6 +75,13 @@ public abstract class PlayCard : MonoBehaviour
                 break;
             case CardState.SelectingTile:
                 // Select a tile to attempt to use the card on
+                if(!tilesHighligthed)
+                {
+                    GridManager.Instance.UnhighlightAll();
+                    selectedUnit.standingOn.Highlight(Color.blue);
+                    HighlightTiles();
+                    tilesHighligthed = true;
+                }
                 SelectTile();
 
                 break;
@@ -77,7 +94,6 @@ public abstract class PlayCard : MonoBehaviour
                 // Execute the cards behaivour
                 ExecuteBehaivour(selectedTile, selectedUnit);
                 myState = CardState.Finished;
-                Debug.Log("card executed");
                 DEBUGCardStateUI.Instance.DEBUGUpdateUI(CardState.Executing, "Playing card!");
 
                 break;
@@ -86,6 +102,9 @@ public abstract class PlayCard : MonoBehaviour
                 CardManager.Instance.CardEffectComplete();
                 MovementManager.Instance.takingMoveAction = true;
                 myState = CardState.Inactive;
+                GridManager.Instance.UnhighlightAll();
+                tilesHighligthed = false; 
+                unitsHighligthed = false;
                 DEBUGCardStateUI.Instance.DEBUGUpdateUI(CardState.Inactive, "--");
 
                 break;
@@ -140,6 +159,7 @@ public abstract class PlayCard : MonoBehaviour
             myState = CardState.SelectingUnit;
             DEBUGCardStateUI.Instance.DEBUGUpdateUI(CardState.VerifyUnitSelection, cardStateText);
             GridManager.Instance.UnhighlightAll();
+            unitsHighligthed = false;
         }
     }
 
@@ -178,8 +198,14 @@ public abstract class PlayCard : MonoBehaviour
 
     protected virtual void HighlightUnits()
     {
-        // Highlight legal units
-        List<Unit> legalUnits = UnitStorage.Instance.playerUnits.Where(u => u.mySpecialization == requiredSpecialization).ToList();
+        // Find legal units
+        List<Unit> legalUnits = new();
+        if (requiredSpecialization != BotSpecialization.None)
+            legalUnits = UnitStorage.Instance.playerUnits.Where(u => u.mySpecialization == requiredSpecialization).ToList();
+        else
+            legalUnits = UnitStorage.Instance.playerUnits;
+
+        // If no legal units, put card back in hand
         if (legalUnits.Count == 0)
         {
             Debug.Log("No legal unit found, removing card from played");
@@ -188,12 +214,109 @@ public abstract class PlayCard : MonoBehaviour
             return;
         }
 
+        // Highlight the units
         foreach (Unit u in legalUnits)
         {
             u.standingOn.Highlight();
         }
     }
 
+    protected virtual void HighlightTiles()
+    {
+        // Find legal tiles
+        List<Tile> legalTiles = new();
+        /*List<Tile> allTiles = new();
+
+        foreach (Tile t in GridManager.Instance.tiles)
+            allTiles.Add(t);*/
+
+        legalTiles.AddRange(GridManager.Instance.tiles);
+        List<Tile> tilesToRemove = new();
+        // Remove illegal tiles
+        foreach(Tile t in legalTiles)
+        {
+            // Dirt Check
+            if(hasToTargetDirtTiles && !t.containsDirt)
+                tilesToRemove.Add(t);
+
+            if(canNotTargetDirtTiles && t.containsDirt) 
+                tilesToRemove.Add(t);
+
+            // Unit Check
+            if(hasToTargetOccupiedTiles && !t.occupied)
+                tilesToRemove.Add(t);
+
+            if(canNotTargetOccupiedTiles && t.occupied)
+                tilesToRemove.Add(t);
+
+            // Range check
+            if (Pathfinding.GetDistance(t, selectedUnit.standingOn) > range || Pathfinding.GetDistance(t, selectedUnit.standingOn) == 0)
+                tilesToRemove.Add(t);
+        }
+
+        foreach (Tile t in tilesToRemove)
+        {
+            if(legalTiles.Contains(t))
+                legalTiles.Remove(t);
+        }
+
+        /*
+        if(canTargetDirtTiles)
+        {
+            List<Tile> tilesToAdd = allTiles.Where( t => t.containsDirt 
+                                                    && Pathfinding.GetDistance(t, selectedUnit.standingOn) <= range 
+                                                    && t.occupant != selectedUnit).ToList();
+
+            legalTiles.AddRange(tilesToAdd);
+        }
+
+        if(canTargetOccupiedTiles)
+        {
+            List<Tile> tilesToAdd = allTiles.Where(t => t.occupied
+                                                    && Pathfinding.GetDistance(t, selectedUnit.standingOn) <= range
+                                                    && t.occupant != selectedUnit).ToList();
+
+            legalTiles.AddRange(tilesToAdd);
+        }
+        else
+        {
+            List<Tile> tilesToAdd = allTiles.Where(t => !t.occupied
+                                                    && Pathfinding.GetDistance(t, selectedUnit.standingOn) <= range).ToList();
+
+            legalTiles.AddRange(tilesToAdd);
+        }
+
+        // Remove illegal tiles
+        List<Tile> tilesToRemove = new();
+        foreach(Tile t in legalTiles)
+        {
+            if(!canTargetDirtTiles && t.containsDirt)
+            {
+                tilesToRemove.Add(t);
+            }
+            
+            if(canTargetDirtTiles && !t.containsDirt)
+            {
+                tilesToRemove.Add(t);
+            }
+        
+        }*/
+
+        // If no legal tiles, put card back in hand
+        if(legalTiles.Count == 0)
+        {
+            Debug.Log("No legal tile found, removing card from played");
+            CancelPlay();
+            CardManager.instance.ClearActiveCard();
+            return;
+        }
+
+        // Highlight the tiles
+        foreach (Tile t in legalTiles)
+        {
+            t.Highlight();
+        }
+    }
 
     protected virtual void SelectTile()
     {
@@ -227,56 +350,68 @@ public abstract class PlayCard : MonoBehaviour
     {
        // If no selected tile is passed
        if(selectedTile == null)
-       {
-            Debug.LogError("No tile selected for verification - error in structure");
-            myState= CardState.SelectingTile;
-            DEBUGCardStateUI.Instance.DEBUGUpdateUI(CardState.VerifyTileSelection, "Contact a programmer, no tile selected");
+        {
+            HandleIllegalSelection("No tile selected for verification - error in structure",
+                                    "Contact a programmer, no tile selected");
             return;
        }
 
        // Check if the tile contains dirt
-       if(!canTargetDirtTiles && selectedTile.containsDirt)
+       if(hasToTargetDirtTiles && !selectedTile.containsDirt)
        {
-            Debug.Log("Tile cannot contain dirt for this card");
-            myState = CardState.SelectingTile;
-            DEBUGCardStateUI.Instance.DEBUGUpdateUI(CardState.VerifyTileSelection, "This card can't be played on a tile with dirt");
+            HandleIllegalSelection("Tile must contain dirt for this card",
+                                    "This card must be played on a tile with dirt");
+            return;
+       }
+
+       if(canNotTargetDirtTiles && selectedTile.containsDirt)
+       {
+            HandleIllegalSelection("Tile cannot contain dirt for this card",
+                                    "This card can not be played on a tile with dirt");
             return;
        }
 
         // Check if the tile contains a unit
-        if (!canTargetOccupiedTiles && selectedTile.occupant != null)
+        if (hasToTargetOccupiedTiles && !selectedTile.occupied)
         {
-            Debug.Log("Tile cannot contain a unit for this card");
-            myState = CardState.SelectingTile;
-            DEBUGCardStateUI.Instance.DEBUGUpdateUI(CardState.VerifyTileSelection, "This card can't be played on a tile with a unit");
+            HandleIllegalSelection("Tile must contain a unit for this card",
+                                    "This card has to be played on a tile with a unit on it");
             return;
         }
 
-        if (canTargetDirtTiles && !selectedTile.containsDirt)
+        if(canNotTargetOccupiedTiles && selectedTile.occupied)
         {
-            Debug.Log("Tile must contain dirt for this card");
-            myState = CardState.SelectingTile;
-            DEBUGCardStateUI.Instance.DEBUGUpdateUI(CardState.VerifyTileSelection, "This card must be played on a tile with dirt");
+            HandleIllegalSelection("Tile can not contain a unit for this card",
+                                    "This card has to be played on a tile without a unit on it");
             return;
         }
+
 
         // Check if the tile is in range
         if (range > 0)
-       {
+        {
             int dist = Pathfinding.GetDistance(selectedTile, selectedUnit.standingOn);
             
             // Unless range is 0, cannot target own tile
             if(!(dist <= range && dist != 0))
             {
-                Debug.Log("Tile is out of range, unless range is 0 it can not target the same tile as the user");
-                DEBUGCardStateUI.Instance.DEBUGUpdateUI(CardState.VerifyTileSelection, "Tile selected was not within card range");
-                myState = CardState.SelectingTile;
+                HandleIllegalSelection("Tile is out of range, unless range is 0 it can not target the same tile as the user",
+                                        "Tile selected was not within card range");
                 return;
             }
        }
 
         // If reached this bit of the code, the card is valid and can be executed
         myState = CardState.Executing;
+
+        void HandleIllegalSelection(string errorMessage, string cardStateText)
+        {
+            Debug.Log(errorMessage);
+            DEBUGCardStateUI.Instance.DEBUGUpdateUI(CardState.VerifyTileSelection, cardStateText);
+            myState = CardState.SelectingTile;
+            GridManager.Instance.UnhighlightAll();
+            tilesHighligthed = false;
+        }
     }
 
     public virtual void Play()
@@ -298,6 +433,7 @@ public abstract class PlayCard : MonoBehaviour
         selectedUnit= null;
         myState = CardState.Inactive;
         MovementManager.Instance.takingMoveAction = true;
+        GridManager.Instance.UnhighlightAll();
     } 
 }
 

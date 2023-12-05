@@ -91,6 +91,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inHand: 1
   isBeingPlayed: 0
+  keepCard: {fileID: 0}
 --- !u!114 &8714510075339303856
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -103,10 +104,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afe0b735ee4893c408425d9b39e8ebb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cardName: Assemble Dig Bot
   range: 1
   requiredSpecialization: 1
-  canTargetDirtTiles: 0
-  canTargetOccupiedTiles: 0
+  hasToTargetDirtTiles: 0
+  canNotTargetDirtTiles: 1
+  hasToTargetOccupiedTiles: 0
+  canNotTargetOccupiedTiles: 1
   goesToDiscardAfterPlay: 0
   myState: 0
   selectedTile: {fileID: 0}

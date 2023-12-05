@@ -91,6 +91,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inHand: 1
   isBeingPlayed: 0
+  keepCard: {fileID: 0}
 --- !u!114 &7881258524785918322
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -103,10 +104,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccd357eef17fe644c89fd1ca858c28bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cardName: Assemble Figther Bot
   range: 1
   requiredSpecialization: 1
-  canTargetDirtTiles: 0
-  canTargetOccupiedTiles: 0
+  hasToTargetDirtTiles: 0
+  canNotTargetDirtTiles: 1
+  hasToTargetOccupiedTiles: 0
+  canNotTargetOccupiedTiles: 1
   goesToDiscardAfterPlay: 0
   myState: 0
   selectedTile: {fileID: 0}

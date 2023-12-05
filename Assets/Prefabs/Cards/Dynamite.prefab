@@ -91,6 +91,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inHand: 1
   isBeingPlayed: 0
+  keepCard: {fileID: 0}
 --- !u!114 &302536706598423599
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -105,8 +106,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   range: 1
   requiredSpecialization: 0
-  canTargetDirtTiles: 0
-  canTargetOccupiedTiles: 1
+  canNotTargetDirtTiles: 1
+  canOnlyTargetDirtTiles: 0
+  canOnlyTargetOccupiedTiles: 0
+  canNotTargetOccupiedTiles: 0
   goesToDiscardAfterPlay: 1
   myState: 0
   selectedTile: {fileID: 0}

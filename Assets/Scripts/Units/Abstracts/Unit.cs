@@ -33,11 +33,14 @@ public abstract class Unit : MonoBehaviour, IDamagable
     [Header("Components")]
     public Transform gfx;
     public MeshRenderer myMR;
-    
+    public SpriteRenderer mySR;
+
 
     private void Start()
     {
         myMR = gfx.GetComponent<MeshRenderer>();
+        if(myMR == null)
+            mySR = gfx.GetComponent<SpriteRenderer>();
         
     }
 
@@ -107,7 +110,10 @@ public abstract class Unit : MonoBehaviour, IDamagable
         movePointsCur--;
         Vector3 startPos = this.transform.position;
         Vector3 endPos = toTile.transform.position;
-        endPos.y += (myMR.bounds.size.y / 2f) * 0.1f;
+        if (myMR != null)
+            endPos.y += (myMR.bounds.size.y / 2f) * 0.1f;
+        else
+            endPos.y += mySR.bounds.size.y / 2f;
 
         float timeToMove = 0.5f;
         float timePassed = 0;

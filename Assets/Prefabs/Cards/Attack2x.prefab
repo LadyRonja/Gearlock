@@ -89,6 +89,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afce2c616f584c44a934696dede7f961, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inHand: 1
+  isBeingPlayed: 0
+  keepCard: {fileID: 0}
 --- !u!114 &-4878256292501716161
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -101,8 +104,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4d912b9aa9a6854abeddd0415081f90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectCard: 0
-  playCard: 0
-  distance: 1
-  currentCardType: 0
+  cardName: Attack! x2
+  range: 1
+  requiredSpecialization: 0
+  hasToTargetDirtTiles: 0
+  canNotTargetDirtTiles: 1
+  hasToTargetOccupiedTiles: 1
+  canNotTargetOccupiedTiles: 0
+  goesToDiscardAfterPlay: 1
+  myState: 0
+  selectedTile: {fileID: 0}
+  selectedUnit: {fileID: 0}
   multiplier: 2

@@ -91,6 +91,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inHand: 1
   isBeingPlayed: 0
+  keepCard: {fileID: 0}
 --- !u!114 &-5488844725918372012
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -103,9 +104,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c677a045f8711845b817585246f896c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cardName: Dig!
   range: 1
   requiredSpecialization: 1
-  canTargetDirtTiles: 1
+  hasToTargetDirtTiles: 1
+  canNotTargetDirtTiles: 0
+  hasToTargetOccupiedTiles: 0
+  canNotTargetOccupiedTiles: 0
+  goesToDiscardAfterPlay: 1
   myState: 0
   selectedTile: {fileID: 0}
   selectedUnit: {fileID: 0}

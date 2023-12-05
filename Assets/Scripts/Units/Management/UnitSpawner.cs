@@ -38,7 +38,10 @@ public class UnitSpawner : MonoBehaviour
 
         // Set Position
         Vector3 spawnPos = tileToSpawnOn.transform.position;
-        spawnPos.y += (unitScript.myMR.bounds.size.y / 2f) * 0.85f;
+        if (unitScript.myMR != null)
+            spawnPos.y += (unitScript.myMR.bounds.size.y / 2f) * 0.01f;
+        else
+            spawnPos.y += (unitScript.mySR.bounds.size.y / 2f) * 0.85f;
         unitObject.transform.position = spawnPos;
 
         // Set Parent
