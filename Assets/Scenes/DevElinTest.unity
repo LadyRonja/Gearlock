@@ -3245,6 +3245,55 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1839988419}
   m_LocalEulerAnglesHint: {x: -90, y: 90, z: 0}
+--- !u!1 &640231495
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 640231497}
+  - component: {fileID: 640231496}
+  m_Layer: 0
+  m_Name: MouseControl
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &640231496
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 640231495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e2b739a40151904f982dfaee5aeed54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultCursor: {fileID: 2800000, guid: 120951b3f84142943b80ccca8a3eb4b2, type: 3}
+  walkCursor: {fileID: 2800000, guid: 1f8aaa77925d75f49bca79e94c15f972, type: 3}
+  digCursor: {fileID: 2800000, guid: 7222bd300f186d040bb63235d7e84fa8, type: 3}
+  fightCursor: {fileID: 2800000, guid: 2fa3b31e690dfdf46979dc9c38396c76, type: 3}
+  pickupCursor: {fileID: 2800000, guid: f35e572301449444bb1f9c571f8650dd, type: 3}
+--- !u!4 &640231497
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 640231495}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 35.53605, y: -7.2445498, z: 5.870205}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &652141519
 GameObject:
   m_ObjectHideFlags: 0
@@ -10147,6 +10196,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myMR: {fileID: 0}
+  myHighligther: {fileID: 0}
   neighbourN: {fileID: 3768376687208267939}
   neighbourE: {fileID: 2453470662850626863}
   neighbourS: {fileID: 2641520444567201375}
@@ -10279,6 +10329,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myMR: {fileID: 0}
+  myHighligther: {fileID: 0}
   neighbourN: {fileID: 0}
   neighbourE: {fileID: 5670280812036503496}
   neighbourS: {fileID: 6597606564871663574}
@@ -11120,6 +11171,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myMR: {fileID: 0}
+  myHighligther: {fileID: 0}
   neighbourN: {fileID: 3328293534217257359}
   neighbourE: {fileID: 3768376687208267939}
   neighbourS: {fileID: 2495270383883785980}
@@ -11238,6 +11290,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myMR: {fileID: 0}
+  myHighligther: {fileID: 0}
   neighbourN: {fileID: 2269660461851504779}
   neighbourE: {fileID: 2495270383883785980}
   neighbourS: {fileID: 6437816511202206155}
@@ -11331,6 +11384,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myMR: {fileID: 0}
+  myHighligther: {fileID: 0}
   neighbourN: {fileID: 2453470662850626863}
   neighbourE: {fileID: 0}
   neighbourS: {fileID: 7580025418813234495}
@@ -11452,6 +11506,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myMR: {fileID: 0}
+  myHighligther: {fileID: 0}
   neighbourN: {fileID: 8636179353595106130}
   neighbourE: {fileID: 0}
   neighbourS: {fileID: 2453470662850626863}
@@ -11704,6 +11759,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myMR: {fileID: 0}
+  myHighligther: {fileID: 0}
   neighbourN: {fileID: 8997604407667670556}
   neighbourE: {fileID: 7338601059839571467}
   neighbourS: {fileID: 5769307682763150179}
@@ -11966,6 +12022,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myMR: {fileID: 0}
+  myHighligther: {fileID: 0}
   neighbourN: {fileID: 6597606564871663574}
   neighbourE: {fileID: 1366394439047209296}
   neighbourS: {fileID: 1443484397687942454}
@@ -12068,6 +12125,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myMR: {fileID: 0}
+  myHighligther: {fileID: 0}
   neighbourN: {fileID: 1770070396784505252}
   neighbourE: {fileID: 0}
   neighbourS: {fileID: 1563931011869745715}
@@ -12102,6 +12160,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myMR: {fileID: 0}
+  myHighligther: {fileID: 0}
   neighbourN: {fileID: 2641520444567201375}
   neighbourE: {fileID: 7580025418813234495}
   neighbourS: {fileID: 0}
@@ -12136,6 +12195,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myMR: {fileID: 0}
+  myHighligther: {fileID: 0}
   neighbourN: {fileID: 1366394439047209296}
   neighbourE: {fileID: 284818098967100619}
   neighbourS: {fileID: 8930467636780421907}
@@ -12237,6 +12297,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myMR: {fileID: 0}
+  myHighligther: {fileID: 0}
   neighbourN: {fileID: 284818098967100619}
   neighbourE: {fileID: 1563931011869745715}
   neighbourS: {fileID: 2493595305341716067}
@@ -12337,6 +12398,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myMR: {fileID: 0}
+  myHighligther: {fileID: 0}
   neighbourN: {fileID: 0}
   neighbourE: {fileID: 6795926666492340888}
   neighbourS: {fileID: 6918050072285048015}
@@ -12859,6 +12921,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myMR: {fileID: 0}
+  myHighligther: {fileID: 0}
   neighbourN: {fileID: 5670280812036503496}
   neighbourE: {fileID: 6918050072285048015}
   neighbourS: {fileID: 1366394439047209296}
@@ -13079,6 +13142,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myMR: {fileID: 0}
+  myHighligther: {fileID: 0}
   neighbourN: {fileID: 6918050072285048015}
   neighbourE: {fileID: 1770070396784505252}
   neighbourS: {fileID: 284818098967100619}
@@ -13736,6 +13800,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myMR: {fileID: 0}
+  myHighligther: {fileID: 0}
   neighbourN: {fileID: 7389297293007430559}
   neighbourE: {fileID: 2269660461851504779}
   neighbourS: {fileID: 5108885220810808871}
@@ -14249,6 +14314,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myMR: {fileID: 0}
+  myHighligther: {fileID: 0}
   neighbourN: {fileID: 4570398963101970897}
   neighbourE: {fileID: 1443484397687942454}
   neighbourS: {fileID: 7338601059839571467}
@@ -14408,6 +14474,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myMR: {fileID: 0}
+  myHighligther: {fileID: 0}
   neighbourN: {fileID: 0}
   neighbourE: {fileID: 7992419455696041446}
   neighbourS: {fileID: 7304095214633707530}
@@ -14811,6 +14878,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myMR: {fileID: 0}
+  myHighligther: {fileID: 0}
   neighbourN: {fileID: 0}
   neighbourE: {fileID: 2746268839919200068}
   neighbourS: {fileID: 3328293534217257359}
@@ -14958,6 +15026,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myMR: {fileID: 0}
+  myHighligther: {fileID: 0}
   neighbourN: {fileID: 2035617440052126264}
   neighbourE: {fileID: 7796904985782186140}
   neighbourS: {fileID: 0}
@@ -15067,6 +15136,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myMR: {fileID: 0}
+  myHighligther: {fileID: 0}
   neighbourN: {fileID: 7304095214633707530}
   neighbourE: {fileID: 4570398963101970897}
   neighbourS: {fileID: 8997604407667670556}
@@ -15441,6 +15511,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myMR: {fileID: 0}
+  myHighligther: {fileID: 0}
   neighbourN: {fileID: 1443484397687942454}
   neighbourE: {fileID: 8930467636780421907}
   neighbourS: {fileID: 8706688321079101334}
@@ -15631,6 +15702,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myMR: {fileID: 0}
+  myHighligther: {fileID: 0}
   neighbourN: {fileID: 465055839641552508}
   neighbourE: {fileID: 3328293534217257359}
   neighbourS: {fileID: 2269660461851504779}
@@ -15729,6 +15801,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myMR: {fileID: 0}
+  myHighligther: {fileID: 0}
   neighbourN: {fileID: 0}
   neighbourE: {fileID: 0}
   neighbourS: {fileID: 8636179353595106130}
@@ -15931,6 +16004,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myMR: {fileID: 0}
+  myHighligther: {fileID: 0}
   neighbourN: {fileID: 2746268839919200068}
   neighbourE: {fileID: 8636179353595106130}
   neighbourS: {fileID: 3768376687208267939}
@@ -16255,6 +16329,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myMR: {fileID: 0}
+  myHighligther: {fileID: 0}
   neighbourN: {fileID: 5302379851731915168}
   neighbourE: {fileID: 7389297293007430559}
   neighbourS: {fileID: 6025241019568973945}
@@ -16289,6 +16364,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myMR: {fileID: 0}
+  myHighligther: {fileID: 0}
   neighbourN: {fileID: 5108885220810808871}
   neighbourE: {fileID: 6437816511202206155}
   neighbourS: {fileID: 7796904985782186140}
@@ -16367,6 +16443,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myMR: {fileID: 0}
+  myHighligther: {fileID: 0}
   neighbourN: {fileID: 7992419455696041446}
   neighbourE: {fileID: 6597606564871663574}
   neighbourS: {fileID: 4570398963101970897}
@@ -16589,6 +16666,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myMR: {fileID: 0}
+  myHighligther: {fileID: 0}
   neighbourN: {fileID: 1563931011869745715}
   neighbourE: {fileID: 0}
   neighbourS: {fileID: 0}
@@ -16770,6 +16848,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myMR: {fileID: 0}
+  myHighligther: {fileID: 0}
   neighbourN: {fileID: 7338601059839571467}
   neighbourE: {fileID: 8706688321079101334}
   neighbourS: {fileID: 0}
@@ -16860,6 +16939,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myMR: {fileID: 0}
+  myHighligther: {fileID: 0}
   neighbourN: {fileID: 0}
   neighbourE: {fileID: 465055839641552508}
   neighbourS: {fileID: 7389297293007430559}
@@ -16980,6 +17060,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myMR: {fileID: 0}
+  myHighligther: {fileID: 0}
   neighbourN: {fileID: 8930467636780421907}
   neighbourE: {fileID: 2493595305341716067}
   neighbourS: {fileID: 0}
@@ -17312,6 +17393,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myMR: {fileID: 0}
+  myHighligther: {fileID: 0}
   neighbourN: {fileID: 6795926666492340888}
   neighbourE: {fileID: 0}
   neighbourS: {fileID: 1770070396784505252}
@@ -17408,6 +17490,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myMR: {fileID: 0}
+  myHighligther: {fileID: 0}
   neighbourN: {fileID: 6437816511202206155}
   neighbourE: {fileID: 8205907828530170943}
   neighbourS: {fileID: 0}
@@ -17622,6 +17705,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myMR: {fileID: 0}
+  myHighligther: {fileID: 0}
   neighbourN: {fileID: 2495270383883785980}
   neighbourE: {fileID: 2641520444567201375}
   neighbourS: {fileID: 8205907828530170943}
@@ -17730,6 +17814,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myMR: {fileID: 0}
+  myHighligther: {fileID: 0}
   neighbourN: {fileID: 6025241019568973945}
   neighbourE: {fileID: 5108885220810808871}
   neighbourS: {fileID: 2035617440052126264}
@@ -17827,3 +17912,4 @@ SceneRoots:
   - {fileID: 2070794506}
   - {fileID: 759354201}
   - {fileID: 475252077}
+  - {fileID: 640231497}

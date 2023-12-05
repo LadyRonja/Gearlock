@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MouseControl : MonoBehaviour
 {
-    public Texture2D defaultCursor, walkCursor, digCursor, fightCursor, forbiddenCursor;
+    public Texture2D defaultCursor, walkCursor, digCursor, fightCursor, pickupCursor;
 
     public static MouseControl instance;
 
@@ -19,6 +19,11 @@ public class MouseControl : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    public void Start()
+    {
+        Default();
     }
 
     public void Default()
@@ -40,8 +45,9 @@ public class MouseControl : MonoBehaviour
         Cursor.SetCursor(fightCursor, Vector2.zero, CursorMode.Auto);
     }
 
-    public void Forbidden()
+
+    public void Pickup()
     {
-        Cursor.SetCursor(forbiddenCursor, Vector2.zero, CursorMode.Auto);
+        Cursor.SetCursor(pickupCursor, Vector2.zero, CursorMode.Auto);
     }
 }
