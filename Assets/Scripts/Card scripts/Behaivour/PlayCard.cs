@@ -103,6 +103,8 @@ public abstract class PlayCard : MonoBehaviour
                 MovementManager.Instance.takingMoveAction = true;
                 myState = CardState.Inactive;
                 GridManager.Instance.UnhighlightAll();
+                if(UnitSelector.Instance.selectedUnit != null)
+                        UnitSelector.Instance.UpdateSelectedUnit(UnitSelector.Instance.selectedUnit);
                 tilesHighligthed = false; 
                 unitsHighligthed = false;
                 DEBUGCardStateUI.Instance.DEBUGUpdateUI(CardState.Inactive, "--");

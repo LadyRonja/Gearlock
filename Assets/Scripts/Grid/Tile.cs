@@ -4,6 +4,7 @@ using Unity.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
+
 public class Tile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler
 {
     public MeshRenderer myMR;
@@ -136,9 +137,12 @@ public class Tile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
     {
         // If a card is not being played
         // Highlight white or red depending on blocked status
+        // Yellow/blue takes higher priority for enemy/friendly units
         if (ActiveCard.Instance.transform.childCount == 0)
         {
-            if (!blocked)
+            if (myHighligther.color == Color.blue || myHighligther.color == Color.yellow)
+            { }// Do nothings
+            else if (!blocked)
                 Highlight();
             else
                 Highlight(Color.red);
@@ -158,7 +162,8 @@ public class Tile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
         // Remove highlight
         if (ActiveCard.Instance.transform.childCount == 0)
         {
-            UnHighlight();
+            if(myHighligther.color != Color.blue && myHighligther.color != Color.yellow)
+                UnHighlight();
         }
         else if (myHighligther.gameObject.activeSelf == true)
         {
@@ -195,6 +200,7 @@ public class Tile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
             return;
         }
 
+        myHighligther.color = Color.white;
         myHighligther.gameObject.SetActive(false);
     }
 }

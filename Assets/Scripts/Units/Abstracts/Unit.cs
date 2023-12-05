@@ -108,6 +108,7 @@ public abstract class Unit : MonoBehaviour, IDamagable
     protected IEnumerator MoveStep(Tile toTile)
     {
         movePointsCur--;
+
         Vector3 startPos = this.transform.position;
         Vector3 endPos = toTile.transform.position;
         if (myMR != null)
@@ -118,6 +119,7 @@ public abstract class Unit : MonoBehaviour, IDamagable
         float timeToMove = 0.5f;
         float timePassed = 0;
         float jumpHeight = 3f;
+        bool hasChangedHighlight = false;
 
         while (timePassed < timeToMove)
         {
@@ -127,6 +129,17 @@ public abstract class Unit : MonoBehaviour, IDamagable
             float yOffSet = gfx.localPosition.y;
             yOffSet = Mathf.Max(0, jumpHeight * Mathf.Sin(timePassed / timeToMove * Mathf.PI));
             gfx.localPosition = new Vector3(gfx.localPosition.x, yOffSet, gfx.localPosition.z);
+
+            if(!hasChangedHighlight && timePassed > timeToMove / 2f)
+            {
+                hasChangedHighlight = true;
+                if (UnitSelector.Instance.selectedUnit == this)
+                {
+                    Color currentColor = standingOn.myHighligther.color;
+                    toTile.Highlight(currentColor);
+                    standingOn.UnHighlight();
+                }            
+            }
 
             timePassed += Time.deltaTime;
             UnitSelector.Instance.UpdateUI();
