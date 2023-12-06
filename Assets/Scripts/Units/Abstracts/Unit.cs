@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public enum BotSpecialization
@@ -11,7 +12,7 @@ public enum BotSpecialization
     Digger
 }
 
-public abstract class Unit : MonoBehaviour, IDamagable
+public abstract class Unit : MonoBehaviour, IDamagable, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler
 {
     [Header("Generics")]
     public string unitName = "Unnamed Unit";
@@ -231,5 +232,20 @@ public abstract class Unit : MonoBehaviour, IDamagable
         List<Tile> output = Pathfinding.FindPath(standingOn, targetTile, movePointsCur);
 
         return output;
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        throw new NotImplementedException();
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        throw new NotImplementedException();
+    }
+
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        throw new NotImplementedException();
     }
 }
