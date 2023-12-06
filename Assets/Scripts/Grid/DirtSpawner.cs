@@ -66,6 +66,7 @@ public class DirtSpawner : MonoBehaviour
         dirtGameObject.transform.position = targetPos;
 
         // Update the dirt covered tile
+        dirt.myTile = onTile;
         onTile.dirt = dirt;
         onTile.containsDirt = true;
         onTile.blocked = true;

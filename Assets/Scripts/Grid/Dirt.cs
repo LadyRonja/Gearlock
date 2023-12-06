@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class Dirt : MonoBehaviour
+public class Dirt : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
+    public Tile myTile;
     public MeshRenderer gfx;
     public void OnMouseEnter()
     {
@@ -22,5 +24,15 @@ public class Dirt : MonoBehaviour
     public void OnMouseExit()
     {
         MouseControl.instance.Default();
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        HoverManager.HoverTileEnter(myTile);
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        HoverManager.HoverTileExit(myTile);
     }
 }

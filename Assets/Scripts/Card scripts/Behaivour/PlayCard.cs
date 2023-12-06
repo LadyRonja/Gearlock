@@ -50,9 +50,7 @@ public abstract class PlayCard : MonoBehaviour
         if(canNotTargetOccupiedTiles && hasToTargetOccupiedTiles)
             Debug.LogError($"WARNING: {cardName} both has to and is unable to target occupied Tiles!" );
         if (canNotTargetDirtTiles && hasToTargetDirtTiles)
-            Debug.LogError($"WARNING: {cardName} both has to and is unable to target dirt covered Tiles!");
-
-        
+            Debug.LogError($"WARNING: {cardName} both has to and is unable to target dirt covered Tiles!");       
     }
 
     protected virtual void Update()
@@ -130,11 +128,6 @@ public abstract class PlayCard : MonoBehaviour
         }
     }
 
-    public void SetUpApperance()
-    {
-
-    }
-
     protected virtual void VerifyUnitSelection()
     {
         // If no unit is selected - go to select unit.
@@ -197,19 +190,34 @@ public abstract class PlayCard : MonoBehaviour
             {
                 if (hit.collider != null)
                 {
-                    if (hit.collider.gameObject.TryGetComponent<Tile>(out Tile clickedTile))
+                    Tile clickedTile = null;
+
+                    if(hit.collider.gameObject.TryGetComponent<Unit>(out Unit clickedUnit)) 
+                    {
+                        clickedTile = clickedUnit.standingOn;
+                        PickUnit(clickedTile);
+                        return;
+                    }
+
+                    if (hit.collider.gameObject.TryGetComponent<Tile>(out clickedTile))
                     {
                         if(clickedTile.occupant != null)
                         {
-                            selectedUnit = clickedTile.occupant;
-                            UnitSelector.Instance.UpdateSelectedUnit(selectedUnit);
-                            myState = CardState.VerifyUnitSelection;
-                            Debug.Log("New unit selected: " + selectedUnit.unitName);
+                            PickUnit(clickedTile);
                             return;
                         }
                     }
                 }
             }
+
+            void PickUnit(Tile onTile)
+            {
+                selectedUnit = onTile.occupant;
+                UnitSelector.Instance.UpdateSelectedUnit(selectedUnit);
+                myState = CardState.VerifyUnitSelection;
+                Debug.Log("New unit selected: " + selectedUnit.unitName);
+            }
+
             Debug.Log("No unit selected");
         }
     }
@@ -351,14 +359,35 @@ public abstract class PlayCard : MonoBehaviour
             {
                 if (hit.collider != null)
                 {
-                    if (hit.collider.gameObject.TryGetComponent<Tile>(out Tile clickedTile))
+                    Tile clickedTile = null;
+
+                    if(hit.collider.gameObject.TryGetComponent<Dirt>(out Dirt clickedDirt))
                     {
-                        selectedTile = clickedTile;
-                        myState = CardState.VerifyTileSelection;
-                        Debug.Log("New tile selected: " + selectedTile.transform.name);
+                        clickedTile = clickedDirt.myTile;
+                        PickTile(clickedTile);
+                        return;
+                    }
+
+                    if (hit.collider.gameObject.TryGetComponent<Unit>(out Unit clickedUnit))
+                    {
+                        clickedTile = clickedUnit.standingOn;
+                        PickTile(clickedTile);
+                        return;
+                    }
+
+                    if (hit.collider.gameObject.TryGetComponent<Tile>(out clickedTile))
+                    {
+                        PickTile(clickedTile);
                         return;
                     }
                 }
+            }
+
+            void PickTile(Tile thisTile)
+            {
+                selectedTile = thisTile;
+                myState = CardState.VerifyTileSelection;
+                Debug.Log("New tile selected: " + selectedTile.transform.name);
             }
             Debug.Log("No tile selected");
         }
