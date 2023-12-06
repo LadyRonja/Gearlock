@@ -94,6 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6771566995864349572}
   - component: {fileID: 5847214564065355597}
+  - component: {fileID: 2154395432061465692}
   m_Layer: 0
   m_Name: Fighter
   m_TagString: Untagged
@@ -141,5 +142,27 @@ MonoBehaviour:
   doneMoving: 1
   standingOn: {fileID: 0}
   gfx: {fileID: 5933006638799041106}
+  myMR: {fileID: 0}
   mySR: {fileID: 3392602483477509401}
   brokenFighter: {fileID: 3141665598236762354, guid: a01b1ee6048250e4595d21ee65596a4d, type: 3}
+--- !u!65 &2154395432061465692
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7606916860535154931}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 3.2225914, y: 6.993347, z: 0.32669067}
+  m_Center: {x: 0.009061813, y: -0.03439331, z: -0.029067993}
