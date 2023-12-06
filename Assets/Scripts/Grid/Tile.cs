@@ -74,13 +74,11 @@ public class Tile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        //HighlightHoverEnterManager();
         HoverManager.HoverTileEnter(this);
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        //HighlightHoverExitManager();
         HoverManager.HoverTileExit(this);
     }
 
@@ -137,50 +135,6 @@ public class Tile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
             
         
             
-    }
-
-    private void HighlightHoverEnterManager()
-    {
-        // If a card is not being played
-        // Highlight white or red depending on blocked status
-        // Yellow/blue takes higher priority for enemy/friendly units
-        if (ActiveCard.Instance.transform.childCount == 0)
-        {
-            if (myHighligther.color == Color.blue || myHighligther.color == Color.yellow)
-            { }// Do nothings
-            else if (!blocked)
-                Highlight();
-            
-            else
-                Highlight(Color.red);
-        }
-        else if (myHighligther.gameObject.activeSelf == true)
-        {
-            // If a card is being played, highlight as green if it's not on the selected unit
-
-            if(myHighligther.color != Color.blue)
-                Highlight(Color.green);
-        }
-    }
-
-    private void HighlightHoverExitManager()
-    {
-        // If a card is not being played
-        // Remove highlight
-        if (ActiveCard.Instance.transform.childCount == 0)
-        {
-            if(myHighligther.color != Color.blue && myHighligther.color != Color.yellow)
-                UnHighlight();
-        }
-        else if (myHighligther.gameObject.activeSelf == true)
-        {
-            // If a card is being played
-            // Keep it highligthed
-            // Keep it blue for the selected unit
-
-            if(myHighligther.color != Color.blue)
-                Highlight();
-        }
     }
 
     public void Highlight(Color highlightColor)
