@@ -39,12 +39,12 @@ public class TurnManager : MonoBehaviour // classen blir en singleton
 
             UpdateUI();
 
+            CameraController.Instance.playerCanMove = false;
+            CameraController.Instance.playerHasMoved = false;
+
             GameoverManager.Instance.CheckGameOver();
             AIManager.Instance.StartAITurn();
-
-
-        }
-        
+        }      
     }
 
     public void GoToPlayerTurn()
@@ -61,6 +61,7 @@ public class TurnManager : MonoBehaviour // classen blir en singleton
         isPlayerTurn = true;
         MovementManager.Instance.takingMoveAction = true; // Change later
         UnitSelector.Instance.playerCanSelectNewUnit = true;
+        CameraController.Instance.playerCanMove = true;
         foreach (Unit u in UnitStorage.Instance.playerUnits)
         {
             u.movePointsCur = u.movePointsMax;
@@ -93,7 +94,4 @@ public class TurnManager : MonoBehaviour // classen blir en singleton
             KeepCardScreen.SetActive(!KeepCardScreen.activeSelf);
         }
     }   
-
-
-
 }

@@ -125,6 +125,8 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerEnterHandler, IP
         while (timePassed < timeToMove)
         {
             transform.position = Vector3.Lerp(startPos, endPos, (timePassed / timeToMove));
+
+            CameraController.Instance.MoveToTarget(this.transform.position, 0.01f);
             
             // Jumping
             float yOffSet = gfx.localPosition.y;

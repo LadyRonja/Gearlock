@@ -481,6 +481,7 @@ public abstract class PlayCard : MonoBehaviour
         myState = CardState.Inactive;
         MovementManager.Instance.takingMoveAction = true;
         GridManager.Instance.UnhighlightAll();
+        UnitSelector.Instance.UpdateSelectedUnit(UnitSelector.Instance.selectedUnit);
     } 
 }
 
