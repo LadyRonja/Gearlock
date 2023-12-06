@@ -236,16 +236,16 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerEnterHandler, IP
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        throw new NotImplementedException();
+        HoverManager.HoverTileEnter(standingOn);
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        throw new NotImplementedException();
+        HoverManager.HoverTileExit(standingOn);
     }
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        throw new NotImplementedException();
+        TileClicker.Instance.UpdateSelectedUnit(standingOn);
     }
 }

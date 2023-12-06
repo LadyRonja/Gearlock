@@ -74,12 +74,14 @@ public class Tile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        HighlightHoverEnterManager();
+        //HighlightHoverEnterManager();
+        HoverManager.HoverTileEnter(this);
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        HighlightHoverExitManager();
+        //HighlightHoverExitManager();
+        HoverManager.HoverTileExit(this);
     }
 
     public void OnPointerDown(PointerEventData eventData)
