@@ -131,7 +131,10 @@ public class Tile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
         // TODO: See item spawner todo
         //ItemSpawner.Instance.SpawnRandomItem(this);
         if(ItemSpawner.Instance != null)
-            ItemSpawner.Instance.SpawnRandomCardDelete(this);
+           ItemSpawner.Instance.SpawnRandomCardDelete(this);
+            
+        
+            
     }
 
     private void HighlightHoverEnterManager()
@@ -194,7 +197,18 @@ public class Tile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
         Highlight(Color.white);
         
         //test elins mouse cursor
-        MouseControl.instance.Walk();
+       
+
+        if (myPickUp != null)
+        {
+            MouseControl.instance.Pickup();
+        }
+       
+        else
+        {
+            MouseControl.instance.Walk();
+        }
+        
     }
 
     public void UnHighlight()
@@ -211,4 +225,6 @@ public class Tile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
         //test elins mouse cursor
         MouseControl.instance.Default();
     }
+
+    
 }

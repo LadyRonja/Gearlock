@@ -21,13 +21,5 @@ public class CardPickUp : MonoBehaviour
         transform.position = new Vector3(startPos.x, startPos.y + yOffSet, startPos.z);
     }
 
-    public void OnMouseEnter()
-    {
-        MouseControl.instance.Pickup();
-    }
-
-    public void OnMouseExit()
-    {
-        MouseControl.instance.Default();
-    }
+    
 }
