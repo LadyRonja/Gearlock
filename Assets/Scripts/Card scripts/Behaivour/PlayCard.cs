@@ -22,6 +22,7 @@ public abstract class PlayCard : MonoBehaviour
     [Header("Info displayed to player")]
     public string cardName = "--";
     public Sprite cardFrame;
+    public Color frameColor = Color.white;
     public Sprite illustration;
     [TextArea(6, 6)] 
     public string cardDescription;

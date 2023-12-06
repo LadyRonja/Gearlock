@@ -4,17 +4,7 @@ using UnityEngine;
 
 public class SpawnDigBotCard : PlayCard
 {
-    //placera dig bot 
-    //inte på dirt
-    //inte på obsticale
-    //inte på upptagen ruta
-
-    //is spawnTile (tile verification)
-
     public GameObject digBot;
-
-    private Unit nameBot;
-    
 
     public override void ExecuteBehaivour(Tile onTile, Unit byUnit)
     {
@@ -26,12 +16,9 @@ public class SpawnDigBotCard : PlayCard
         onTile.UpdateOccupant(botScript);
         botScript.standingOn = onTile;
         UnitStorage.Instance.playerUnits.Add(botScript);
+        UnitSelector.Instance.UpdateSelectedUnit(botScript);
         botScript.unitName = "Digger " + UnitStorage.Instance.playerUnits.Count;
-
-
         
-    }
-
-    
+    }   
 }
 
