@@ -210,6 +210,8 @@ public class CardManager : MonoBehaviour
         {
             GameObject PlayedCard = ActiveCard.Instance.transform.GetChild(i).gameObject;
             PlayedCard.GetComponent<MouseOverCard>().isBeingPlayed = false;
+            PlayedCard.transform.localScale = new Vector3(2, 2, 2);
+
 
             if (!ActiveCard.Instance.cardBeingPlayed.goesToDiscardAfterPlay)
             {
