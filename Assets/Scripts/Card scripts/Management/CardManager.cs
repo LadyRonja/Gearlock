@@ -135,7 +135,7 @@ public class CardManager : MonoBehaviour
                     DestroyImmediate(card);
                     cardsToAddToDrawPile.Add(attack);
                 }
-                else if (card.name == "Attack2x(Clone)")
+                else if (card.name == "Attack x2(Clone)")
                 {
                     DestroyImmediate(card);
                     cardsToAddToDrawPile.Add(attack2x);
