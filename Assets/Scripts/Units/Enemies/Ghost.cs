@@ -3,10 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Ghost : Unit
-{   
+{
+    public GameObject infoTextGhost;
+
     private PlayCard card;
     private AttackCard attackCard;
 
+    public void Start()
+    {
+        //infoTextGhost.SetActive(false);
+    }
     public override Unit FindTargetUnit()
     {
         return FindNearestPlayerUnit(true);
@@ -36,6 +42,8 @@ public class Ghost : Unit
     {
         PlayCard currentCard = ActiveCard.Instance.transform.GetComponentInChildren<PlayCard>();
 
+        //infoTextGhost.SetActive(true);
+
         if (currentCard != null)
         {
             if (currentCard.GetType().Equals(typeof(AttackCard)))
@@ -57,5 +65,6 @@ public class Ghost : Unit
     public void OnMouseExit()
     {
         MouseControl.instance.Default();
+        //infoTextGhost.SetActive(false);
     }
 }

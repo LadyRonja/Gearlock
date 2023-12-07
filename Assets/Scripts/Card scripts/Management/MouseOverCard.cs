@@ -115,6 +115,7 @@ public class MouseOverCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         nameRegion.text = cardInfo.cardName;
         nameShadow.text = cardInfo.cardName;
         frameImage.sprite = cardInfo.cardFrame;
+        frameImage.color = cardInfo.frameColor;
         illustrationImage.sprite = cardInfo.illustration;
         descriptionRegion.text = cardInfo.cardDescription;
         descriptionShadow.text = cardInfo.cardDescription;

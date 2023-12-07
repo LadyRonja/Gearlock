@@ -22,6 +22,7 @@ public abstract class PlayCard : MonoBehaviour
     [Header("Info displayed to player")]
     public string cardName = "--";
     public Sprite cardFrame;
+    public Color frameColor = Color.white;
     public Sprite illustration;
     [TextArea(6, 6)] 
     public string cardDescription;
@@ -481,6 +482,7 @@ public abstract class PlayCard : MonoBehaviour
         myState = CardState.Inactive;
         MovementManager.Instance.takingMoveAction = true;
         GridManager.Instance.UnhighlightAll();
+        UnitSelector.Instance.UpdateSelectedUnit(UnitSelector.Instance.selectedUnit);
     } 
 }
 

@@ -46,6 +46,8 @@ public class UnitSelector : MonoBehaviour
                 selectedUnit.standingOn.Highlight(Color.blue);
             else
                 selectedUnit.standingOn.Highlight(Color.yellow);
+
+            CameraController.Instance.MoveToTarget(selectedUnit.transform.position);
         }
         UpdateUI();
     }

@@ -5,6 +5,15 @@ using UnityEngine;
 public class Fighter : Unit
 {
     public GameObject brokenFighter;
+
+    public GameObject infoTextFighter;
+
+    public void Start()
+    {
+        //infoTextFighter.SetActive(false);
+    }
+
+
     public override void Die()
     {
         if (brokenFighter != null)
@@ -21,4 +30,15 @@ public class Fighter : Unit
 
         base.Die();
     }
+
+    public void OnMouseEnter()
+    {
+       // infoTextFighter.SetActive(true);
+    }
+
+    public void OnMouseExit()
+    {
+        //infoTextFighter.SetActive(false);
+    }
+
 }
