@@ -24,7 +24,7 @@ public class MouseOverCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     [Header("Card Manipulation")]
     bool hovering = false;
-    float cardX, cardY;
+    float anchoredX, anchoredY, cardX, cardY;
     bool isDragged = false;
     public bool inHand = true;
     public bool isBeingPlayed = false;
@@ -106,7 +106,7 @@ public class MouseOverCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
             {
                 this.gameObject.GetComponent<PlayCard>().CancelPlay();
                 transform.parent = HandPanel.Instance.transform;
-                transform.position = new Vector3(cardX, cardY, 0);
+                GetComponent<RectTransform>().anchoredPosition = new Vector3(anchoredX, anchoredY, 0);
                 transform.localScale = new Vector3(smallSize, smallSize, smallSize);
                 inHand = true;
                 isBeingPlayed= false;
@@ -159,8 +159,10 @@ public class MouseOverCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         //Saves the cards coordinates, to position it correctly when it is raised.
         if (!isDragged)
         {
-            cardX = GetComponent<RectTransform>().anchoredPosition.x;
-            cardY = GetComponent<RectTransform>().anchoredPosition.y;
+            cardX = transform.position.x;
+            cardY = transform.position.y;
+            anchoredX = GetComponent<RectTransform>().anchoredPosition.x;
+            anchoredY = GetComponent<RectTransform>().anchoredPosition.y;
         }
 
         // Raises the card to display it more clearly.
@@ -180,7 +182,7 @@ public class MouseOverCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
             Debug.Log("lowering card" + gameObject);
             GetComponent<RectTransform>().anchoredPosition -= new Vector2(0, offsetY);
             hovering = false;
-            if (GetComponent<RectTransform>().anchoredPosition.y < cardY)
+            if (GetComponent<RectTransform>().anchoredPosition.y < anchoredY)
             {
                 GetComponent<RectTransform>().anchoredPosition += new Vector2(0, offsetY);
                 Debug.Log("Prevented card setting position too low");
