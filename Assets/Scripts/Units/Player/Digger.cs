@@ -5,6 +5,13 @@ using UnityEngine;
 public class Digger : Unit
 {
     public GameObject brokenDigger;
+
+    public GameObject infoTextDigger;
+
+    public void Start()
+    {
+        //infoTextDigger.SetActive(false);
+    }
     public override void Die()
     {
         if (brokenDigger != null)
@@ -21,4 +28,15 @@ public class Digger : Unit
 
         base.Die();
     }
+
+    public void OnMouseEnter()
+    {
+        infoTextDigger.SetActive(true);
+    }
+
+    public void OnMouseExit()
+    {
+        infoTextDigger.SetActive(false);
+    }
+
 }

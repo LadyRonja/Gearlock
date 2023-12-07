@@ -94,6 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9072753375355720182}
   - component: {fileID: 4516431308885976132}
+  - component: {fileID: 1373531032291392053}
   m_Layer: 0
   m_Name: Ghost
   m_TagString: Untagged
@@ -132,13 +133,35 @@ MonoBehaviour:
   unitName: Ghost
   playerBot: 0
   mySpecialization: 0
-  healthMax: 5
-  healthCur: 5
-  movePointsMax: 4
-  movePointsCur: 4
+  healthMax: 3
+  healthCur: 3
+  movePointsMax: 1
+  movePointsCur: 1
   power: 1
   attackRange: 1
   doneMoving: 1
   standingOn: {fileID: 0}
   gfx: {fileID: 3790818731874437278}
+  myMR: {fileID: 0}
   mySR: {fileID: 6273315413307328805}
+--- !u!65 &1373531032291392053
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2276334545744438668}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 3.23246, y: 7.0101814, z: 0.1604023}
+  m_Center: {x: 0.0052375793, y: -0.014778137, z: 0.034999847}

@@ -8,10 +8,8 @@ public class DirtSpawner : MonoBehaviour
     public static DirtSpawner Instance;
 
     [Header("Generics")]
-    [SerializeField] float yOffset = 4.5f;
     [SerializeField] GameObject dirtPrefab;
-    [SerializeField] List<Material> dirtTops;
-    [SerializeField] List<Material> dirtSides;
+    [SerializeField] List<Material> boulderMaterial;
 
     [Header("Spawning on load")]
     [SerializeField] bool spawnOnLoad = false;
@@ -56,23 +54,19 @@ public class DirtSpawner : MonoBehaviour
         GameObject dirtGameObject = Instantiate(dirtPrefab, this.transform);
         Dirt dirt = dirtGameObject.GetComponent<Dirt>();
 
-        // Randomize sides and top
-        int randTop = Random.Range(0, dirtTops.Count);
-        int randSideLeft = Random.Range(0, dirtSides.Count);
-        int randSideRight = Random.Range(0, dirtSides.Count);
-        int randFront = Random.Range(0, dirtSides.Count);
+        // Randomize boulder
+        int rand = Random.Range(0, boulderMaterial.Count);
 
-        dirt.top.material = dirtTops[randTop];
-        dirt.front.material = dirtSides[randSideLeft];
-        dirt.sideRight.material = dirtSides[randSideRight];
-        dirt.sideLeft.material = dirtSides[randFront];
+        dirt.gfx.material = boulderMaterial[rand];
 
         // Set it's position properly
         Vector3 targetPos = onTile.transform.position;
-        targetPos.y += yOffset;
+        targetPos.y += dirt.gfx.bounds.size.y/2f;
+        targetPos.z += 0.3f;
         dirtGameObject.transform.position = targetPos;
 
         // Update the dirt covered tile
+        dirt.myTile = onTile;
         onTile.dirt = dirt;
         onTile.containsDirt = true;
         onTile.blocked = true;

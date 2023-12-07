@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -35,15 +36,19 @@ public class UnitSelector : MonoBehaviour
         if (!playerCanSelectNewUnit && !calledByAI)
             return;
 
-        // Reset the old selected unit's color
         if(selectedUnit != null)
-            selectedUnit.mySR.color = Color.white;
-
-        // Update the new selected unit
-        if(unitToSelect != null)
-            unitToSelect.mySR.color = Color.green;
+            selectedUnit.standingOn.UnHighlight();
 
         selectedUnit = unitToSelect;
+        if(selectedUnit != null)
+        {
+            if (selectedUnit.playerBot)
+                selectedUnit.standingOn.Highlight(Color.blue);
+            else
+                selectedUnit.standingOn.Highlight(Color.yellow);
+
+            CameraController.Instance.MoveToTarget(selectedUnit.transform.position);
+        }
         UpdateUI();
     }
 

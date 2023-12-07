@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
+
 
 public class Tile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler
 {
     public MeshRenderer myMR;
+    public SpriteRenderer myHighligther;
 
     public Tile neighbourN;
     public Tile neighbourE;
@@ -37,6 +40,11 @@ public class Tile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
     private void Start()
     {
         myMR = GetComponent<MeshRenderer>();
+        myHighligther = GetComponentInChildren<SpriteRenderer>();
+        if (myHighligther == null)
+            Debug.LogError("Tile Missing Hightligther: " + transform.name);
+        else
+            UnHighlight();
     }
 
     public void UpdateOccupant(Unit newOccupant)
@@ -57,7 +65,6 @@ public class Tile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
 
             if (newOccupant.playerBot && myPickUp != null)
             {
-                Debug.Log("Stepped on pickup");
                 CardManager.instance.AddNewCard(myPickUp.cardToAdd);
                 Destroy(myPickUp.gameObject);
                 myPickUp = null;
@@ -65,33 +72,18 @@ public class Tile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
         }
     }
 
-    
-    
-
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if (!blocked)
-            myMR.material.color = Color.red;
+        HoverManager.HoverTileEnter(this);
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        if (!blocked)
-            myMR.material.color = Color.white;
+        HoverManager.HoverTileExit(this);
     }
 
-    //TEST ELIN when you click the tile it becomes blue
     public void OnPointerDown(PointerEventData eventData)
      {
-
-        if (occupant != null && occupant.playerBot)
-        {
-            myMR.material.color = Color.blue;
-
-            HighlightNeighbours();
-        }
-            
-
         // Select My Unit
         if (occupant != null)
          {
@@ -138,55 +130,56 @@ public class Tile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
 
         // TODO: See item spawner todo
         //ItemSpawner.Instance.SpawnRandomItem(this);
-        ItemSpawner.Instance.SpawnRandomCardDelete(this);
+        if(ItemSpawner.Instance != null)
+           ItemSpawner.Instance.SpawnRandomCardDelete(this);
+            
+        
+            
     }
 
-
-
-
-    //TEST ELIN when you click on a tile the neighbors gets blue
-
-   public void OnPointerUp(PointerEventData eventData)
+    public void Highlight(Color highlightColor)
     {
-       
-        myMR.material.color = Color.white;
-
-        ResetNeighboursColor();
-
-
-    }
-    public void HighlightNeighbours()
-    {
-        if (occupant != null && occupant.playerBot)
+        if(myHighligther == null)
         {
-            if (neighbourN != null)
-                neighbourN.myMR.material.color = Color.green;
-
-            if (neighbourE != null)
-                neighbourE.myMR.material.color = Color.green;
-
-            if (neighbourS != null)
-                neighbourS.myMR.material.color = Color.green;
-
-            if (neighbourW != null)
-                neighbourW.myMR.material.color = Color.green;
+            Debug.LogError("Tile Missing Hightligther: " + transform.name);
+            return;
         }
 
+        myHighligther.gameObject.SetActive(true);
+        myHighligther.color = highlightColor;
+    }
+    public void Highlight()
+    {
+        Highlight(Color.white);
+        
+        //test elins mouse cursor
+       
+
+        if (myPickUp != null)
+        {
+            MouseControl.instance.Pickup();
+        }
+       
+        else
+        {
+            MouseControl.instance.Walk();
+        }
+        
     }
 
-    public void ResetNeighboursColor()
+    public void UnHighlight()
     {
-        if (neighbourN != null)
-            neighbourN.myMR.material.color = Color.white;
+        if (myHighligther == null)
+        {
+            Debug.LogError("Tile Missing Hightligther: " + transform.name);
+            return;
+        }
 
-        if (neighbourE != null)
-            neighbourE.myMR.material.color = Color.white;
+        myHighligther.color = Color.white;
+        myHighligther.gameObject.SetActive(false);
 
-        if (neighbourS != null)
-            neighbourS.myMR.material.color = Color.white;
-
-        if (neighbourW != null)
-            neighbourW.myMR.material.color = Color.white;
+        //test elins mouse cursor
+        MouseControl.instance.Default();
     }
 
     

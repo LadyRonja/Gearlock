@@ -4,6 +4,15 @@ using UnityEngine;
 
 public class Ghost : Unit
 {
+    public GameObject infoTextGhost;
+
+    private PlayCard card;
+    private AttackCard attackCard;
+
+    public void Start()
+    {
+        //infoTextGhost.SetActive(false);
+    }
     public override Unit FindTargetUnit()
     {
         return FindNearestPlayerUnit(true);
@@ -27,5 +36,35 @@ public class Ghost : Unit
             output.RemoveAt(output.Count - 1);
 
         return output;
+    }
+
+    public void OnMouseEnter()
+    {
+        PlayCard currentCard = ActiveCard.Instance.transform.GetComponentInChildren<PlayCard>();
+
+        infoTextGhost.SetActive(true);
+
+        if (currentCard != null)
+        {
+            if (currentCard.GetType().Equals(typeof(AttackCard)))
+            {
+                MouseControl.instance.Fight();
+                Debug.Log("Changing cursor to Fight");
+            }
+        }
+        // if (card.myState == CardState.SelectingTile)
+        //{
+        
+           // }
+        
+
+
+
+    }
+
+    public void OnMouseExit()
+    {
+        MouseControl.instance.Default();
+        infoTextGhost.SetActive(false);
     }
 }

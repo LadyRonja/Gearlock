@@ -1,7 +1,9 @@
+using Spine.Unity;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public enum BotSpecialization
@@ -10,7 +12,7 @@ public enum BotSpecialization
     Digger
 }
 
-public abstract class Unit : MonoBehaviour, IDamagable
+public abstract class Unit : MonoBehaviour, IDamagable, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler
 {
     [Header("Generics")]
     public string unitName = "Unnamed Unit";
@@ -31,11 +33,16 @@ public abstract class Unit : MonoBehaviour, IDamagable
 
     [Header("Components")]
     public Transform gfx;
+    public MeshRenderer myMR;
     public SpriteRenderer mySR;
+
 
     private void Start()
     {
-        mySR = gfx.GetComponent<SpriteRenderer>();
+        myMR = gfx.GetComponent<MeshRenderer>();
+        if(myMR == null)
+            mySR = gfx.GetComponent<SpriteRenderer>();
+        
     }
 
     public virtual void TakeDamage(int amount)
@@ -102,22 +109,40 @@ public abstract class Unit : MonoBehaviour, IDamagable
     protected IEnumerator MoveStep(Tile toTile)
     {
         movePointsCur--;
+
         Vector3 startPos = this.transform.position;
         Vector3 endPos = toTile.transform.position;
-        endPos.y += mySR.bounds.size.y / 2f;
+        if (myMR != null)
+            endPos.y += (myMR.bounds.size.y / 2f) * 0.1f;
+        else
+            endPos.y += mySR.bounds.size.y / 2f;
 
         float timeToMove = 0.5f;
         float timePassed = 0;
         float jumpHeight = 3f;
+        bool hasChangedHighlight = false;
 
         while (timePassed < timeToMove)
         {
             transform.position = Vector3.Lerp(startPos, endPos, (timePassed / timeToMove));
+
+            CameraController.Instance.MoveToTarget(this.transform.position, 0.01f);
             
             // Jumping
             float yOffSet = gfx.localPosition.y;
             yOffSet = Mathf.Max(0, jumpHeight * Mathf.Sin(timePassed / timeToMove * Mathf.PI));
             gfx.localPosition = new Vector3(gfx.localPosition.x, yOffSet, gfx.localPosition.z);
+
+            if(!hasChangedHighlight && timePassed > timeToMove / 2f)
+            {
+                hasChangedHighlight = true;
+                if (UnitSelector.Instance.selectedUnit == this)
+                {
+                    Color currentColor = standingOn.myHighligther.color;
+                    toTile.Highlight(currentColor);
+                    standingOn.UnHighlight();
+                }            
+            }
 
             timePassed += Time.deltaTime;
             UnitSelector.Instance.UpdateUI();
@@ -209,5 +234,20 @@ public abstract class Unit : MonoBehaviour, IDamagable
         List<Tile> output = Pathfinding.FindPath(standingOn, targetTile, movePointsCur);
 
         return output;
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        HoverManager.HoverTileEnter(standingOn);
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        HoverManager.HoverTileExit(standingOn);
+    }
+
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        TileClicker.Instance.UpdateSelectedUnit(standingOn);
     }
 }

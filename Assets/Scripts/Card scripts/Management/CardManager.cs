@@ -51,15 +51,15 @@ public class CardManager : MonoBehaviour
         drawPile.Add(dig);
         drawPile.Add(dig);
         //drawPile.Add(dig);
-        //drawPile.Add(attack);
+        drawPile.Add(attack);
         //drawPile.Add(attack);
 
         //drawPile.Add(attack2x);
 
 
         //drawPile.Add(diggerBot);
-        //drawPile.Add(diggerBot);
-        //drawPile.Add(fighterBot);
+        drawPile.Add(diggerBot);
+        drawPile.Add(fighterBot);
 
 
 

@@ -2,14 +2,27 @@ using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Xml.Linq;
+using TMPro;
 using Unity.VisualScripting;
 //using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 using UnityEngine.XR;
 
 public class MouseOverCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
+    [Header("Regions for display")]
+    public TMP_Text nameRegion;
+    public TMP_Text nameShadow;
+    public Image frameImage;
+    public Image illustrationImage;
+    public TMP_Text descriptionRegion;
+    public TMP_Text descriptionShadow;
+    public TMP_Text rangeRegion;
+    public TMP_Text rangeShadow;
+
+    [Header("Card Manipulation")]
     bool hovering = false;
     float cardX, cardY;
     bool isDragged = false;
@@ -20,6 +33,11 @@ public class MouseOverCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     bool canDrag;
     bool clickedCard;
     public GameObject keepCard;
+
+    private void Start()
+    {
+        SetUpCard();
+    }
 
     public void Update()
     {
@@ -83,6 +101,27 @@ public class MouseOverCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
                 isBeingPlayed= false;
             }
         }
+    }
+
+    private void SetUpCard()
+    {
+        PlayCard cardInfo = GetComponent<PlayCard>();
+        if(cardInfo == null) 
+        {
+            Debug.LogError("Card Missing Card Data");
+            return;
+        }
+
+        nameRegion.text = cardInfo.cardName;
+        nameShadow.text = cardInfo.cardName;
+        frameImage.sprite = cardInfo.cardFrame;
+        frameImage.color = cardInfo.frameColor;
+        illustrationImage.sprite = cardInfo.illustration;
+        descriptionRegion.text = cardInfo.cardDescription;
+        descriptionShadow.text = cardInfo.cardDescription;
+        rangeRegion.text = cardInfo.range.ToString();
+        rangeShadow.text = cardInfo.range.ToString();
+
     }
 
     private void SetToKeep()

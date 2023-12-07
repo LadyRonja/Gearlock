@@ -4,14 +4,8 @@ using UnityEngine;
 
 public class SpawnFightBotCard : PlayCard
 {
-    //placera fight bot 
-    //inte på dirt
-    //inte på obsticale
-    //inte på upptagen ruta
-
     public GameObject fightBot;
   
-
     public override void ExecuteBehaivour(Tile onTile, Unit byUnit)
     {
         Vector3 spawnpoint = onTile.transform.position;
@@ -21,9 +15,8 @@ public class SpawnFightBotCard : PlayCard
         onTile.UpdateOccupant(botScript);
         botScript.standingOn = onTile;
         UnitStorage.Instance.playerUnits.Add(botScript);
+        UnitSelector.Instance.UpdateSelectedUnit(botScript);
 
         botScript.unitName = "Fighter " + UnitStorage.Instance.playerUnits.Count;
     }
-
-   
 }
