@@ -15,8 +15,10 @@ public class DirtSpawner : MonoBehaviour
     [SerializeField] bool spawnOnLoad = false;
     [SerializeField] List<Vector2Int> spawnPositions;
 
-    [Header("Spawn in editor")]
+    [Header("Manage in editor")]
     [SerializeField] List<Tile> spawnOnTiles;
+    [SerializeField] Tile placeOnTile;
+    [SerializeField] Dirt toRemove;
 
 
     private void Awake()
@@ -123,5 +125,11 @@ public class DirtSpawner : MonoBehaviour
         {
             o.GetComponent<Tile>().RemoveDirt();
         }
+    }
+
+    [ContextMenu("Remove Selected Dirt")]
+    private void RemoveOnDirt()
+    {
+
     }
 }
