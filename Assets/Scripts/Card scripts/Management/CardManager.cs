@@ -251,11 +251,10 @@ public class CardManager : MonoBehaviour
     {
         if (KeepCard.Instance.transform.childCount > 0)
         {
-            for (int i = 0; i < KeepCard.Instance.transform.childCount -1; i++)
+            for (int i = 0; i < KeepCard.Instance.transform.childCount +1; i++)
             {
                 GameObject Keptcard = KeepCard.Instance.transform.GetChild(0).gameObject;
                 Keptcard.transform.parent = HandPanel.Instance.transform;
-                //Keptcard.GetComponent<MouseOverCard>().keeping = false;
                 Keptcard.GetComponent<MouseOverCard>().inHand = true;
             }
         }
