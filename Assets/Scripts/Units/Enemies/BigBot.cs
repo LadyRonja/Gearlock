@@ -8,7 +8,7 @@ public class BigBot : Unit
 
     public void Start()
     {
-        infoTextBigBot.SetActive(false);
+        //infoTextBigBot.SetActive(false);
     }
     public void OnMouseEnter()
     {

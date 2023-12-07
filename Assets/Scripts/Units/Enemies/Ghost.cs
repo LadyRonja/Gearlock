@@ -11,7 +11,7 @@ public class Ghost : Unit
 
     public void Start()
     {
-        infoTextGhost.SetActive(false);
+        //infoTextGhost.SetActive(false);
     }
     public override Unit FindTargetUnit()
     {
