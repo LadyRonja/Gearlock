@@ -211,7 +211,7 @@ public class CardManager : MonoBehaviour
             GameObject PlayedCard = ActiveCard.Instance.transform.GetChild(i).gameObject;
             PlayedCard.GetComponent<MouseOverCard>().isBeingPlayed = false;
 
-            if (PlayedCard.name == "Fighter(Clone)" || PlayedCard.name == "Digger(Clone)")
+            if (!ActiveCard.Instance.cardBeingPlayed.goesToDiscardAfterPlay)
             {
 
                 //if (PlayedCard.name == "Fighter(Clone)")
