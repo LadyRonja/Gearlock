@@ -241,7 +241,7 @@ public class CardManager : MonoBehaviour
         {
             GameObject keptCard = KeepCard.Instance.transform.GetChild(i).gameObject;
             keptCard.transform.parent = HandPanel.Instance.transform;
-
+            keptCard.GetComponent<MouseOverCard>().inHand = true;
         }
     }
 
