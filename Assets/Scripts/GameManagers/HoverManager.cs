@@ -7,7 +7,9 @@ public class HoverManager : MonoBehaviour
 {
     public static void HoverTileEnter(Tile tile)
     {
-        if (tile.myHighligther == null) return;
+        if (tile.myHighligther == null) 
+            return;
+
         // If a card is not being played
         // Highlight white or red depending on blocked status
         // Yellow/blue takes higher priority for enemy/friendly units
@@ -32,7 +34,9 @@ public class HoverManager : MonoBehaviour
 
     public static void HoverTileExit(Tile tile)
     {
-        if (tile.myHighligther == null) return;
+        if (tile.myHighligther == null) 
+            return;
+
         // If a card is not being played
         // Remove highlight
         if (ActiveCard.Instance.transform.childCount == 0)
