@@ -140,12 +140,12 @@ public class CardManager : MonoBehaviour
                     DestroyImmediate(card);
                     cardsToAddToDrawPile.Add(attack2x);
                 }
-                else if (card.name == "Digger(Clone)")
+                else if (card.name == "Digger Bot(Clone)")
                 {
                     DestroyImmediate(card);
                     cardsToAddToDrawPile.Add(diggerBot);
                 }
-                else if (card.name == "Fighter(Clone)")
+                else if (card.name == "Fighter Bot(Clone)")
                 {
                     DestroyImmediate(card);
                     cardsToAddToDrawPile.Add(fighterBot);
@@ -247,12 +247,15 @@ public class CardManager : MonoBehaviour
 
     public void ReturnKept()
     {
-        for (int i = 0; i < KeepCard.Instance.transform.childCount +1; i++)
+        if (KeepCard.Instance.transform.childCount > 0)
         {
-            GameObject Keptcard = KeepCard.Instance.transform.GetChild(0).gameObject;
-            Keptcard.transform.parent = HandPanel.Instance.transform;
-            //Keptcard.GetComponent<MouseOverCard>().keeping = false;
-            Keptcard.GetComponent<MouseOverCard>().inHand = true;
+            for (int i = 0; i < KeepCard.Instance.transform.childCount -1; i++)
+            {
+                GameObject Keptcard = KeepCard.Instance.transform.GetChild(0).gameObject;
+                Keptcard.transform.parent = HandPanel.Instance.transform;
+                //Keptcard.GetComponent<MouseOverCard>().keeping = false;
+                Keptcard.GetComponent<MouseOverCard>().inHand = true;
+            }
         }
     }
 }
