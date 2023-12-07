@@ -135,17 +135,17 @@ public class CardManager : MonoBehaviour
                     DestroyImmediate(card);
                     cardsToAddToDrawPile.Add(attack);
                 }
-                else if (card.name == "Attack2x(Clone)")
+                else if (card.name == "Attack x2(Clone)")
                 {
                     DestroyImmediate(card);
                     cardsToAddToDrawPile.Add(attack2x);
                 }
-                else if (card.name == "Digger(Clone)")
+                else if (card.name == "Digger Bot(Clone)")
                 {
                     DestroyImmediate(card);
                     cardsToAddToDrawPile.Add(diggerBot);
                 }
-                else if (card.name == "Fighter(Clone)")
+                else if (card.name == "Fighter Bot(Clone)")
                 {
                     DestroyImmediate(card);
                     cardsToAddToDrawPile.Add(fighterBot);
@@ -210,8 +210,10 @@ public class CardManager : MonoBehaviour
         {
             GameObject PlayedCard = ActiveCard.Instance.transform.GetChild(i).gameObject;
             PlayedCard.GetComponent<MouseOverCard>().isBeingPlayed = false;
+            PlayedCard.transform.localScale = new Vector3(2, 2, 2);
 
-            if (PlayedCard.name == "Fighter(Clone)" || PlayedCard.name == "Digger(Clone)")
+
+            if (!ActiveCard.Instance.cardBeingPlayed.goesToDiscardAfterPlay)
             {
 
                 //if (PlayedCard.name == "Fighter(Clone)")
@@ -241,18 +243,20 @@ public class CardManager : MonoBehaviour
         {
             GameObject keptCard = KeepCard.Instance.transform.GetChild(i).gameObject;
             keptCard.transform.parent = HandPanel.Instance.transform;
-
+            keptCard.GetComponent<MouseOverCard>().inHand = true;
         }
     }
 
     public void ReturnKept()
     {
-        for (int i = 0; i < KeepCard.Instance.transform.childCount +1; i++)
+        if (KeepCard.Instance.transform.childCount > 0)
         {
-            GameObject Keptcard = KeepCard.Instance.transform.GetChild(0).gameObject;
-            Keptcard.transform.parent = HandPanel.Instance.transform;
-            //Keptcard.GetComponent<MouseOverCard>().keeping = false;
-            Keptcard.GetComponent<MouseOverCard>().inHand = true;
+            for (int i = 0; i < KeepCard.Instance.transform.childCount +1; i++)
+            {
+                GameObject Keptcard = KeepCard.Instance.transform.GetChild(0).gameObject;
+                Keptcard.transform.parent = HandPanel.Instance.transform;
+                Keptcard.GetComponent<MouseOverCard>().inHand = true;
+            }
         }
     }
 }

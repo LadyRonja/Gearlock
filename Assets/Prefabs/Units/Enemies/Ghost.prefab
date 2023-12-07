@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: d696f9e22300a244bb3e018d3e3b6912, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.84313726}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -95,6 +95,7 @@ GameObject:
   - component: {fileID: 9072753375355720182}
   - component: {fileID: 4516431308885976132}
   - component: {fileID: 1373531032291392053}
+  - component: {fileID: 104370128874320105}
   m_Layer: 0
   m_Name: Ghost
   m_TagString: Untagged
@@ -135,8 +136,8 @@ MonoBehaviour:
   mySpecialization: 0
   healthMax: 3
   healthCur: 3
-  movePointsMax: 1
-  movePointsCur: 1
+  movePointsMax: 2
+  movePointsCur: 2
   power: 1
   attackRange: 1
   doneMoving: 1
@@ -164,5 +165,26 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 3.23246, y: 7.0101814, z: 0.1604023}
-  m_Center: {x: 0.0052375793, y: -0.014778137, z: 0.034999847}
+  m_Size: {x: 1.9043922, y: 6.3966026, z: 0.1604023}
+  m_Center: {x: -0.049863815, y: -0.32156754, z: 0.034999847}
+--- !u!65 &104370128874320105
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2276334545744438668}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.557106, y: 2.8733025, z: 0.18569851}
+  m_Center: {x: -0.88090897, y: 4.2594337, z: -0.024837017}

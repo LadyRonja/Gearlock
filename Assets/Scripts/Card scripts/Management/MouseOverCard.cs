@@ -57,7 +57,13 @@ public class MouseOverCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         if (hovering && clickedCard && Input.GetMouseButtonUp(0)) 
         {
             if (TurnManager.Instance.TurnEnd)
-                SetToKeep();
+            {
+                if (KeepCard.Instance.transform.childCount < 2)
+                    SetToKeep();
+                else
+                    return;
+            }
+
             else
                 SetActiveCard();
 
