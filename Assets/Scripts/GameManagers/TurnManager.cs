@@ -82,15 +82,22 @@ public class TurnManager : MonoBehaviour // classen blir en singleton
     {
         if (TurnEnd)
         {
-            KeepCardScreen.SetActive(!KeepCardScreen.activeSelf);
+            KeepCardScreen.SetActive(false);
             EndTurn();
             CardManager.Instance.RetrieveKeptCards();
+            TurnEnd = !TurnEnd;
         }
 
         else
         {
-            TurnEnd = !TurnEnd;
-            KeepCardScreen.SetActive(!KeepCardScreen.activeSelf);
+            if (HandPanel.Instance.transform.childCount > 0)
+            {
+                TurnEnd = !TurnEnd;
+                KeepCardScreen.SetActive(true);
+            }
+            else
+                EndTurn();
+            
         }
     }   
 
