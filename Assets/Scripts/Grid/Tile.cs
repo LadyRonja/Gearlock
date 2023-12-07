@@ -151,20 +151,6 @@ public class Tile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
     public void Highlight()
     {
         Highlight(Color.white);
-        
-        //test elins mouse cursor
-       
-
-        if (myPickUp != null)
-        {
-            MouseControl.instance.Pickup();
-        }
-       
-        else
-        {
-            MouseControl.instance.Walk();
-        }
-        
     }
 
     public void UnHighlight()
@@ -177,9 +163,6 @@ public class Tile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
 
         myHighligther.color = Color.white;
         myHighligther.gameObject.SetActive(false);
-
-        //test elins mouse cursor
-        MouseControl.instance.Default();
     }
 
     

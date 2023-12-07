@@ -7,7 +7,6 @@ public class MovementManager : MonoBehaviour
 {
     public static MovementManager Instance;
     public bool takingMoveAction = true;
-    public TMP_Text tempDebugMoveText; 
 
     private void Awake()
     {
