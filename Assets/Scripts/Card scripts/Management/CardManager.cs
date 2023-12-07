@@ -197,6 +197,7 @@ public class CardManager : MonoBehaviour
         {
             GameObject CardBeingPlayed = ActiveCard.Instance.transform.GetChild(i).gameObject;
             CardBeingPlayed.transform.parent = HandPanel.Instance.transform;
+            CardBeingPlayed.transform.localScale = new Vector3(2, 2, 2);
             CardBeingPlayed.GetComponent<MouseOverCard>().inHand = true;
             CardBeingPlayed.GetComponent<MouseOverCard>().isBeingPlayed = false;
         }

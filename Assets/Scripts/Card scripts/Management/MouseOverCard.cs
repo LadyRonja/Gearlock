@@ -33,6 +33,11 @@ public class MouseOverCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     bool canDrag;
     bool clickedCard;
     public GameObject keepCard;
+    float offsetY = 100;
+    bool raised = false;
+    float bigSize = 2.7f;
+    float smallSize = 2f;
+
 
     private void Start()
     {
@@ -75,7 +80,12 @@ public class MouseOverCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         if (Input.mousePosition.y > 300 && isDragged && !Input.GetMouseButton(0))
         {
             if (TurnManager.Instance.TurnEnd)
-                SetToKeep();
+            {
+                if (KeepCard.Instance.transform.childCount < 2)
+                    SetToKeep();
+                else
+                    return;
+            }
             else
                 SetActiveCard();
         }
@@ -97,6 +107,7 @@ public class MouseOverCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
                 this.gameObject.GetComponent<PlayCard>().CancelPlay();
                 transform.parent = HandPanel.Instance.transform;
                 transform.position = new Vector3(cardX, cardY, 0);
+                transform.localScale = new Vector3(smallSize, smallSize, smallSize);
                 inHand = true;
                 isBeingPlayed= false;
             }
@@ -127,6 +138,7 @@ public class MouseOverCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     private void SetToKeep()
     {
         transform.parent = KeepCard.Instance.transform;
+        inHand = false;
     }
 
     private void SetActiveCard()
@@ -134,6 +146,7 @@ public class MouseOverCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         CardManager.Instance.ClearActiveCard();
         this.gameObject.GetComponent<PlayCard>().Play();
         transform.parent = ActiveCard.Instance.transform;
+        transform.localScale = new Vector3(bigSize, bigSize, bigSize); 
         inHand = false;
         isBeingPlayed = true;
         Debug.Log("card was played");
@@ -142,17 +155,17 @@ public class MouseOverCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     //Detect if the Cursor starts to pass over the GameObject
     public void OnPointerEnter(PointerEventData pointerEventData)
     {
-        // Saves the cards coordinates, to position it correctly when it is raised.
+        //Saves the cards coordinates, to position it correctly when it is raised.
         if (!isDragged)
         {
-            cardX = transform.position.x;
-            cardY = transform.position.y;
+            cardX = GetComponent<RectTransform>().anchoredPosition.x;
+            cardY = GetComponent<RectTransform>().anchoredPosition.y;
         }
 
         // Raises the card to display it more clearly.
         if (!hovering && inHand)
         {
-            transform.position = new Vector3(cardX,cardY + 100,0);
+            GetComponent<RectTransform>().anchoredPosition += new Vector2(0, offsetY);
             hovering = true;
         }
     }
@@ -163,8 +176,14 @@ public class MouseOverCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         // returns the card to original position
         if (hovering && !isDragged)
         {
-            transform.position = new Vector3(cardX, cardY, 0);
+            Debug.Log("lowering card" + gameObject);
+            GetComponent<RectTransform>().anchoredPosition -= new Vector2(0, offsetY);
             hovering = false;
+            if (GetComponent<RectTransform>().anchoredPosition.y < cardY)
+            {
+                GetComponent<RectTransform>().anchoredPosition += new Vector2(0, offsetY);
+                Debug.Log("Prevented card setting position too low");
+            }
         }
 
 
