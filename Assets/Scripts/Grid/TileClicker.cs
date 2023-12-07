@@ -7,8 +7,6 @@ public class TileClicker : MonoBehaviour
 {
    public static TileClicker Instance;
 
-    public Tile debugInspectorTile;
-
     private void Awake()
     {
         #region Singleton
