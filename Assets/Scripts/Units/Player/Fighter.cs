@@ -10,7 +10,7 @@ public class Fighter : Unit
 
     public void Start()
     {
-        infoTextFighter.SetActive(false);
+        //infoTextFighter.SetActive(false);
     }
 
 
@@ -33,12 +33,12 @@ public class Fighter : Unit
 
     public void OnMouseEnter()
     {
-        infoTextFighter.SetActive(true);
+       // infoTextFighter.SetActive(true);
     }
 
     public void OnMouseExit()
     {
-        infoTextFighter.SetActive(false);
+        //infoTextFighter.SetActive(false);
     }
 
 }

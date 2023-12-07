@@ -42,7 +42,7 @@ public class Ghost : Unit
     {
         PlayCard currentCard = ActiveCard.Instance.transform.GetComponentInChildren<PlayCard>();
 
-        infoTextGhost.SetActive(true);
+        //infoTextGhost.SetActive(true);
 
         if (currentCard != null)
         {
@@ -65,6 +65,6 @@ public class Ghost : Unit
     public void OnMouseExit()
     {
         MouseControl.instance.Default();
-        infoTextGhost.SetActive(false);
+        //infoTextGhost.SetActive(false);
     }
 }

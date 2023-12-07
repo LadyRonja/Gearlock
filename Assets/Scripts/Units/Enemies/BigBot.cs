@@ -14,7 +14,7 @@ public class BigBot : Unit
     {
         PlayCard currentCard = ActiveCard.Instance.transform.GetComponentInChildren<PlayCard>();
 
-        infoTextBigBot.SetActive(true);
+        //infoTextBigBot.SetActive(true);
 
         if (currentCard != null)
         {
@@ -30,7 +30,7 @@ public class BigBot : Unit
     public void OnMouseExit()
     {
         MouseControl.instance.Default();
-        infoTextBigBot.SetActive(false);
+        //infoTextBigBot.SetActive(false);
     }
 }
 

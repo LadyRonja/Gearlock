@@ -31,12 +31,12 @@ public class Digger : Unit
 
     public void OnMouseEnter()
     {
-        infoTextDigger.SetActive(true);
+        //infoTextDigger.SetActive(true);
     }
 
     public void OnMouseExit()
     {
-        infoTextDigger.SetActive(false);
+        //infoTextDigger.SetActive(false);
     }
 
 }
