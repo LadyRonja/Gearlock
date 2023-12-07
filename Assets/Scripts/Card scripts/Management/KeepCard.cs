@@ -13,5 +13,7 @@ public class KeepCard : MonoBehaviour
             Instance = this;
         else
             Destroy(this.gameObject);
+
+        transform.parent.gameObject.SetActive(false);
     }
 }
