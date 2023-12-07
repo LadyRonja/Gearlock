@@ -4379,6 +4379,7 @@ MonoBehaviour:
   gfx: {fileID: 1337562334}
   myMR: {fileID: 0}
   mySR: {fileID: 1337562333}
+  infoTextGhost: {fileID: 0}
 --- !u!4 &1168254126
 Transform:
   m_ObjectHideFlags: 0
@@ -6027,6 +6028,7 @@ MonoBehaviour:
   gfx: {fileID: 1939594142}
   myMR: {fileID: 0}
   mySR: {fileID: 1939594143}
+  infoTextGhost: {fileID: 0}
 --- !u!1 &1634539128
 GameObject:
   m_ObjectHideFlags: 0
@@ -6240,6 +6242,7 @@ MonoBehaviour:
   myMR: {fileID: 0}
   mySR: {fileID: 36759386}
   brokenFighter: {fileID: 3141665598236762354, guid: a01b1ee6048250e4595d21ee65596a4d, type: 3}
+  infoTextFighter: {fileID: 0}
 --- !u!4 &1652492935
 Transform:
   m_ObjectHideFlags: 0
@@ -8346,6 +8349,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1985790269617892789}
     m_Modifications:
+    - target: {fileID: 73153763075979098, guid: d9e4763dad764b249801d067f5b41569, type: 3}
+      propertyPath: digCursorRed
+      value: 
+      objectReference: {fileID: 2800000, guid: 93d96a5fb983b9544a7d78d51ebe2475, type: 3}
+    - target: {fileID: 73153763075979098, guid: d9e4763dad764b249801d067f5b41569, type: 3}
+      propertyPath: walkCursorRed
+      value: 
+      objectReference: {fileID: 2800000, guid: 9ac4db55654231749944beba9e5107ac, type: 3}
+    - target: {fileID: 73153763075979098, guid: d9e4763dad764b249801d067f5b41569, type: 3}
+      propertyPath: fightCursorRed
+      value: 
+      objectReference: {fileID: 2800000, guid: a006066391b5329499b80d1df24fdc5a, type: 3}
+    - target: {fileID: 73153763075979098, guid: d9e4763dad764b249801d067f5b41569, type: 3}
+      propertyPath: pickupCursorRed
+      value: 
+      objectReference: {fileID: 2800000, guid: 9b35b0faba469d74a8cde524f4395f90, type: 3}
+    - target: {fileID: 73153763075979098, guid: d9e4763dad764b249801d067f5b41569, type: 3}
+      propertyPath: defaultCursorRed
+      value: 
+      objectReference: {fileID: 2800000, guid: 754735ad68605ac4182c5b94e57b5224, type: 3}
     - target: {fileID: 612141649987851052, guid: d9e4763dad764b249801d067f5b41569, type: 3}
       propertyPath: m_LocalPosition.x
       value: 35.53605
@@ -15321,7 +15344,7 @@ MonoBehaviour:
   camSpeed: 30
   xOffSet: 3
   yOffSet: 20
-  zOffSet: -25
+  zOffSet: -30
   playerCanMove: 1
   playerHasMoved: 0
   movingOnCoroutine: 0
