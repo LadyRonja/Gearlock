@@ -199,6 +199,7 @@ public class CardManager : MonoBehaviour
             CardBeingPlayed.transform.parent = HandPanel.Instance.transform;
             CardBeingPlayed.GetComponent<MouseOverCard>().inHand = true;
             CardBeingPlayed.GetComponent<MouseOverCard>().isBeingPlayed = false;
+            ActiveCard.Instance.cardBeingPlayed = null;
         }
     }
 
