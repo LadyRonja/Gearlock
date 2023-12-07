@@ -10,7 +10,7 @@ public class CameraController : MonoBehaviour
     public float camSpeed = 30f;
     public float xOffSet = 3;
     public float yOffSet = 20;
-    public float zOffSet = -25;
+    public float zOffSet = -30;
     public bool playerCanMove = true;
     public bool playerHasMoved = false;
     public bool movingOnCoroutine = false;

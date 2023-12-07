@@ -390,13 +390,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 325462291}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.42686683, y: 0.5868128, z: -0.40654778, w: 0.55511665}
-  m_LocalPosition: {x: -34.32348, y: -32.132362, z: -28.39}
+  m_LocalRotation: {x: 0.2862355, y: 0.7211714, z: -0.4684967, w: 0.42248318}
+  m_LocalPosition: {x: -33.88, y: -31.75, z: -29.87}
   m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1215213536}
-  m_LocalEulerAnglesHint: {x: 72, y: 99.9, z: 9.24}
+  m_LocalEulerAnglesHint: {x: 66.577, y: 120.882, z: 2.449}
 --- !u!64 &325462293
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -569,7 +569,7 @@ Transform:
   m_GameObject: {fileID: 332003064}
   serializedVersion: 2
   m_LocalRotation: {x: 0.07773364, y: 0.70282114, z: -0.70282114, w: 0.07773364}
-  m_LocalPosition: {x: -1.42, y: -67.7, z: -1.04}
+  m_LocalPosition: {x: -1.3999991, y: -68.7, z: 0.000000834465}
   m_LocalScale: {x: 1, y: 0.8, z: 0.8}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2382,13 +2382,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1460488205}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.021680577, y: 0.70677435, z: -0.70677435, w: 0.021680577}
-  m_LocalPosition: {x: 6.55, y: -67.7, z: -1.32}
+  m_LocalRotation: {x: 0.0018415338, y: 0.7071044, z: -0.70588785, w: 0.04150252}
+  m_LocalPosition: {x: 7.27, y: -68.7, z: 0.9387075}
   m_LocalScale: {x: 1, y: 0.8, z: 0.8}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 90, y: 180, z: 3.5140076}
+  m_LocalEulerAnglesHint: {x: 93.215, y: 270, z: 93.514}
 --- !u!1 &1510561626
 GameObject:
   m_ObjectHideFlags: 0
@@ -2883,6 +2883,7 @@ MonoBehaviour:
   gfx: {fileID: 8286238780360717869}
   myMR: {fileID: 0}
   mySR: {fileID: 0}
+  infoTextGhost: {fileID: 0}
 --- !u!222 &114341890472274327
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6657,6 +6658,7 @@ MonoBehaviour:
   myMR: {fileID: 0}
   mySR: {fileID: 0}
   brokenDigger: {fileID: 0}
+  infoTextDigger: {fileID: 0}
 --- !u!114 &7909590848908899540
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6735,6 +6737,7 @@ MonoBehaviour:
   myMR: {fileID: 0}
   mySR: {fileID: 0}
   brokenFighter: {fileID: 0}
+  infoTextFighter: {fileID: 0}
 --- !u!4 &8126368467769436310
 Transform:
   m_ObjectHideFlags: 0

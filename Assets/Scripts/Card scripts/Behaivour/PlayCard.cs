@@ -115,6 +115,7 @@ public abstract class PlayCard : MonoBehaviour
                 GridManager.Instance.UnhighlightAll();
                 if(UnitSelector.Instance.selectedUnit != null)
                         UnitSelector.Instance.UpdateSelectedUnit(UnitSelector.Instance.selectedUnit);
+                ActiveCard.Instance.cardBeingPlayed = null;
                 tilesHighligthed = false; 
                 unitsHighligthed = false;
                 DEBUGCardStateUI.Instance.DEBUGUpdateUI(CardState.Inactive, "--");
@@ -478,12 +479,14 @@ public abstract class PlayCard : MonoBehaviour
         Debug.Log("Card is returned to inactive play");
         DEBUGCardStateUI.Instance.DEBUGUpdateUI(CardState.Inactive, "--");
         selectedTile = null;
-        selectedUnit= null;
+        selectedUnit = null;
         myState = CardState.Inactive;
+        ActiveCard.Instance.cardBeingPlayed = null;
         MovementManager.Instance.takingMoveAction = true;
         GridManager.Instance.UnhighlightAll();
         UnitSelector.Instance.UpdateSelectedUnit(UnitSelector.Instance.selectedUnit);
-    } 
+        HoverManager.RepeatLastCursor();
+    }
 }
 
    

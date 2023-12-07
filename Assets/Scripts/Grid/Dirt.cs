@@ -9,21 +9,12 @@ public class Dirt : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     public MeshRenderer gfx;
     public void OnMouseEnter()
     {
-        PlayCard currentCard = ActiveCard.Instance.transform.GetComponentInChildren<PlayCard>();
-
-        if (currentCard != null)
-        {
-            if (currentCard.GetType().Equals(typeof(DigCard)))
-            {
-                MouseControl.instance.Dig();
-                Debug.Log("Changing cursor to Dig");
-            }
-        }
+        HoverManager.CursorManagerEnter(myTile);
     }
 
     public void OnMouseExit()
     {
-        MouseControl.instance.Default();
+        HoverManager.CursorManagerExit();
     }
 
     public void OnPointerEnter(PointerEventData eventData)

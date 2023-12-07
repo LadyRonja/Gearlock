@@ -6,11 +6,11 @@ public class TestMouseCursorObject : MonoBehaviour
 {
     public void OnMouseEnter()
     {
-        MouseControl.instance.Fight();
+        //HoverManager.CursorManagerEnter(//No Tile);
     }
 
     public void OnMouseExit()
     {
-        MouseControl.instance.Default();
+        //MouseControl.Instance.Default();
     }
 }

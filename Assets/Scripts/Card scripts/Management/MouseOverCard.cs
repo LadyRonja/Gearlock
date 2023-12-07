@@ -147,6 +147,7 @@ public class MouseOverCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         this.gameObject.GetComponent<PlayCard>().Play();
         transform.parent = ActiveCard.Instance.transform;
         transform.localScale = new Vector3(bigSize, bigSize, bigSize); 
+        ActiveCard.Instance.cardBeingPlayed = GetComponent<PlayCard>();
         inHand = false;
         isBeingPlayed = true;
         Debug.Log("card was played");
