@@ -46,6 +46,9 @@ public class MouseOverCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     public void Update()
     {
+        if (!TurnManager.Instance.isPlayerTurn)
+            return;
+
         // If left mouse button is held when above a card in hand, the card is then dragged, following the mouse cursor.
         if (Input.GetMouseButtonDown(0) && hovering)
         {

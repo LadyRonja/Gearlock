@@ -67,6 +67,9 @@ public class HoverManager : MonoBehaviour
         // Order of if statements matter a lot in this function!
         // Be very mindful of refactoring and additions
 
+        // TODO: 
+        // Use local functions to make this whole function more readable
+
         lastHit = tile;
 
         Unit selectedUnit = UnitSelector.Instance.selectedUnit;
@@ -173,7 +176,7 @@ public class HoverManager : MonoBehaviour
             }
 
         // Playerbot selected, construct card, over free space  - spanner (red if can't reach)
-        if (selectedCard.GetType() == typeof(SpawnBigBotCard) || selectedCard.GetType() == typeof(SpawnDigBotCard))
+        if (selectedCard.GetType() == typeof(SpawnFightBotCard) || selectedCard.GetType() == typeof(SpawnDigBotCard))
             if (!tile.blocked)
             {
                 if (Pathfinding.GetDistance(selectedUnit.standingOn, tile) <= selectedCard.range)
