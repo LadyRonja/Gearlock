@@ -17,6 +17,9 @@ public class UnitSelector : MonoBehaviour
     public Image tempHealthFillWhite;
     public TMP_Text tempPowerText; 
     public TMP_Text tempMovePointsText;
+    public List<GameObject> MovePointDark;
+    public List<GameObject> MovePointLight;
+    public Image portrait;
 
     private void Awake()
     {
@@ -59,6 +62,13 @@ public class UnitSelector : MonoBehaviour
 
     public void UpdateUI(bool damageApplication)
     {
+
+        for (int i = 0; i < 3;  i++)
+        {
+            MovePointDark[i].SetActive(false);
+            MovePointLight[i].SetActive(false);
+        }
+
         // TODO: Update UI properly
         if (tempUIPanel == null) return;
 
@@ -70,7 +80,7 @@ public class UnitSelector : MonoBehaviour
         {
             tempUIPanel.SetActive(true);
             tempNameText.text = selectedUnit.unitName;
-            tempPowerText.text = $"Power: {selectedUnit.power}";
+            tempPowerText.text = $": {selectedUnit.power}";
             tempHealthText.text = $"HP: {selectedUnit.healthCur}/{selectedUnit.healthMax}";
             tempHealthFill.fillAmount = (float)selectedUnit.healthCur / (float)selectedUnit.healthMax;
             if(damageApplication)
@@ -78,14 +88,29 @@ public class UnitSelector : MonoBehaviour
             else
                 tempHealthFillWhite.fillAmount = (float)selectedUnit.healthCur / (float)selectedUnit.healthMax;
 
-            if(selectedUnit.movePointsCur < 0)
+            portrait.sprite = selectedUnit.portrait;
+
+            for (int i = 0; i < selectedUnit.movePointsMax; i++)
+            {
+                MovePointDark[i].SetActive(true);
+            }
+
+            if (selectedUnit.movePointsCur < 0)
             {
                 Debug.LogError("Units movepoint cur is negative, displaying as 0");
                 tempMovePointsText.text = $"MovementPoints: 0/{selectedUnit.movePointsMax}";
+                for (int i = 0; i < selectedUnit.movePointsMax; i++)
+                {
+                    MovePointLight[i].SetActive(false);
+                }
             }
             else
             {
                 tempMovePointsText.text = $"MovementPoints: {selectedUnit.movePointsCur}/{selectedUnit.movePointsMax}";
+                for (int i = 0; i < selectedUnit.movePointsCur; i++)
+                {
+                    MovePointLight[i].SetActive(true);
+                }
             }
 
         }

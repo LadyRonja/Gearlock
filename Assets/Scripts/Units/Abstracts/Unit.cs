@@ -18,6 +18,7 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerEnterHandler, IP
     public string unitName = "Unnamed Unit";
     public bool playerBot = false;
     public BotSpecialization mySpecialization = BotSpecialization.None;
+    public Sprite portrait;
 
     [Header("Stats")]
     public int healthMax = 5;
