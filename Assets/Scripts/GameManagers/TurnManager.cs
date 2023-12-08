@@ -10,6 +10,7 @@ public class TurnManager : MonoBehaviour // classen blir en singleton
     public bool isPlayerTurn = true;
     public bool TurnEnd = false;
     public GameObject KeepCardScreen;
+    public TMP_Text endTurnText;
 
     [SerializeField] TMP_Text tempTurnText;
 
@@ -66,6 +67,7 @@ public class TurnManager : MonoBehaviour // classen blir en singleton
         {
             u.movePointsCur = u.movePointsMax;
         }
+        endTurnText.text = "End Turn";
         UpdateUI();
     }
 
@@ -87,14 +89,15 @@ public class TurnManager : MonoBehaviour // classen blir en singleton
             EndTurn();
             CardManager.Instance.RetrieveKeptCards();
             TurnEnd = !TurnEnd;
+            endTurnText.text = "--";
         }
-
         else
         {
             if (HandPanel.Instance.transform.childCount > 0)
             {
                 TurnEnd = !TurnEnd;
                 KeepCardScreen.SetActive(true);
+                endTurnText.text = "Confirm";
             }
             else
                 EndTurn();
