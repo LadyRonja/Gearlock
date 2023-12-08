@@ -96,16 +96,6 @@ public class Tile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
          {
              TileClicker.Instance.ToggleBlockedDebug(this);
          }
-
-         // Toggle Dirt Here
-         if (Input.GetKey(KeyCode.D))
-         {
-             if(!containsDirt)
-                 TileClicker.Instance.SpawnDirt(this);
-             else
-                 RemoveDirt();
-         }
-
      }
 
     public void RemoveDirt()
