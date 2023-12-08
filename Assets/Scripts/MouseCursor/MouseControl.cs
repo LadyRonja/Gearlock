@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.Contracts;
 using UnityEngine;
 
 public enum Cursors
@@ -8,12 +9,13 @@ public enum Cursors
     Walk,
     Dig,
     Fight,
-    Pickup
+    Pickup,
+    Construct
 }
 public class MouseControl : MonoBehaviour
 {
-    public Texture2D defaultCursor, walkCursor, digCursor, fightCursor, pickupCursor;
-    public Texture2D defaultCursorRed, walkCursorRed, digCursorRed, fightCursorRed, pickupCursorRed;
+    public Texture2D defaultCursor, walkCursor, digCursor, fightCursor, pickupCursor, constructCursor;
+    public Texture2D defaultCursorRed, walkCursorRed, digCursorRed, fightCursorRed, pickupCursorRed, constructCursorRed;
 
     public static MouseControl Instance;
 
@@ -66,6 +68,12 @@ public class MouseControl : MonoBehaviour
                     Cursor.SetCursor(pickupCursor, Vector2.zero, CursorMode.Auto);
                 else
                     Cursor.SetCursor(pickupCursorRed, Vector2.zero, CursorMode.Auto);
+                break;
+            case Cursors.Construct:
+                if (white)
+                    Cursor.SetCursor(constructCursor, Vector2.zero, CursorMode.Auto);
+                else
+                    Cursor.SetCursor(constructCursorRed, Vector2.zero, CursorMode.Auto);
                 break;
             default:
                 break;

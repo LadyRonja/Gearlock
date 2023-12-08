@@ -172,6 +172,17 @@ public class HoverManager : MonoBehaviour
                 return;
             }
 
+        // Playerbot selected, construct card, over free space  - spanner (red if can't reach)
+        if (selectedCard.GetType() == typeof(SpawnBigBotCard) || selectedCard.GetType() == typeof(SpawnDigBotCard))
+            if (!tile.blocked)
+            {
+                if (Pathfinding.GetDistance(selectedUnit.standingOn, tile) <= selectedCard.range)
+                    MouseControl.Instance.SetCursor(Cursors.Construct, true);
+                else
+                    MouseControl.Instance.SetCursor(Cursors.Construct, false);
+
+                return;
+            }
 
         MouseControl.Instance.SetCursor(Cursors.Default, false);
     }
