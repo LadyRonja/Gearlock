@@ -51,7 +51,8 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerEnterHandler, IP
         if(UnitSelector.Instance.selectedUnit == this)
             UnitSelector.Instance.UpdateUI();
 
-        healthCur -= amount; 
+        healthCur -= amount;
+        StartCoroutine(FlashDamage());
         
         if (UnitSelector.Instance.selectedUnit == this)
             UnitSelector.Instance.UpdateUI(true);
@@ -61,6 +62,28 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerEnterHandler, IP
             healthCur = 0;
             Die();
         }
+    }
+
+    protected IEnumerator FlashDamage()
+    {
+       /* if (myMR == null)
+            yield return null;*/
+
+        Color startColor = mySR.color;
+        mySR.color = Color.red;
+        float timePassed = 0;
+        float timeToFlash = 0.7f;
+
+        while (timePassed < timeToFlash)
+        {
+            mySR.color = Color.Lerp(Color.red, startColor, (timePassed / timeToFlash));
+
+            timePassed += Time.deltaTime;
+            yield return null;
+        }
+
+
+        yield return null;
     }
 
     //TODO:
