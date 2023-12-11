@@ -39,6 +39,7 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerEnterHandler, IP
     public SpriteRenderer mySR;
 
     private Vector3 originalPosition;
+
     private void Start()
     {
         infoTextUnit.SetActive(false);
@@ -99,6 +100,24 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerEnterHandler, IP
     //TODO:
     // If playerbot, spawn scrap on the ground
     // That needs to be picked up in order to add the unit back into the discard pile
+    
+    //test elin 
+    protected IEnumerator FadeAndDestroy(float fadeTime)
+    {
+        float timePassed = 0;
+        Color startColor = mySR.color;
+        Color endColor = new Color(startColor.r, startColor.g, startColor.b, 0);
+
+        while (timePassed < fadeTime)
+        {
+            mySR.color = Color.Lerp(startColor, endColor, timePassed / fadeTime);
+            timePassed += Time.deltaTime;
+            yield return null;
+        }
+
+        Destroy(this.gameObject);
+    }
+
     public virtual void Die()
     {
         UnitStorage.Instance.RemoveUnit(this);
@@ -108,8 +127,8 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerEnterHandler, IP
         {
             GameoverManager.Instance.CheckGameOver();
         }
-
-        Destroy(this.gameObject);
+        StartCoroutine(FadeAndDestroy(0.5f));
+        //Destroy(this.gameObject);
     }
 
     /// <summary>
