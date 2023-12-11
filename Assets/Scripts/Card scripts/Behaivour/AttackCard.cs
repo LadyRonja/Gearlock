@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,13 +9,19 @@ public class AttackCard : PlayCard
     [SerializeField]
     private int multiplier = 1;
 
-    //public GameObject verificationText;
+    public GameObject verificationText;
+
+    private Unit byUnit;
+    private Tile onTile;
     
 
-    /*public void Awake()
+    public void Awake()
     {
-        verificationText.gameObject.SetActive(false);
-    }*/
+        if (verificationText != null)
+            verificationText.SetActive(false);
+
+        
+    }
 
     public override void ExecuteBehaivour(Tile onTile, Unit byUnit)
     {
@@ -23,7 +30,8 @@ public class AttackCard : PlayCard
             if(byUnit.playerBot)
             {
                 Debug.LogError("do you want to hit your bot?");
-                //verificationText.gameObject.SetActive(true);
+                verificationText.SetActive(true);
+
                 //SetVerificationPanelActive(true);
             }
             else
@@ -35,8 +43,14 @@ public class AttackCard : PlayCard
         
     }
 
-    private void SetVerificationPanelActive(bool active)
+   /* public void ClickedYes()
     {
-        //verificationText.SetActive(active);
+        verificationText.SetActive(false);
+        onTile.occupant.TakeDamage(byUnit.power * multiplier);
     }
+
+    public void ClickedNo()
+    {
+        verificationText.SetActive(false);
+    }*/
 }

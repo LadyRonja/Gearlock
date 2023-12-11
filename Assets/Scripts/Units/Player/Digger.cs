@@ -8,10 +8,7 @@ public class Digger : Unit
 
     
 
-    public void Start()
-    {
-        //infoTextDigger.SetActive(false);
-    }
+   
     public override void Die()
     {
         if (brokenDigger != null)
