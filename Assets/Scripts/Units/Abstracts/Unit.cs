@@ -75,13 +75,13 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerEnterHandler, IP
             yield return null;*/
 
         Color startColor = mySR.color;
-        mySR.color = Color.red;
+        mySR.material.color = Color.red;
         float timePassed = 0;
         float timeToFlash = 0.7f;
 
         while (timePassed < timeToFlash)
         {
-            mySR.color = Color.Lerp(Color.red, startColor, (timePassed / timeToFlash));
+            mySR.material.color = Color.Lerp(Color.red, startColor, (timePassed / timeToFlash));
 
             timePassed += Time.deltaTime;
             yield return null;
