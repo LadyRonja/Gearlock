@@ -50,6 +50,7 @@ MonoBehaviour:
   playerBot: 1
   mySpecialization: 1
   portrait: {fileID: 21300000, guid: d7d0e67135b96e646b2608ef685b53de, type: 3}
+  infoTextUnit: {fileID: 0}
   healthMax: 3
   healthCur: 3
   movePointsMax: 3
@@ -62,7 +63,6 @@ MonoBehaviour:
   myMR: {fileID: 0}
   mySR: {fileID: 1813631389424071510}
   brokenDigger: {fileID: 1387611179076426880, guid: d532bd26be33c284297d583c1446e12a, type: 3}
-  infoTextDigger: {fileID: 0}
 --- !u!65 &5896766868822617361
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -136,7 +136,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 7ace8453fc16d2a48a26ead6976c75cd, type: 2}
+  - {fileID: 2100000, guid: 8d925c366c487d5418b345a38f57594e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
