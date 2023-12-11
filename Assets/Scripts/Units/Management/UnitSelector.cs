@@ -33,6 +33,12 @@ public class UnitSelector : MonoBehaviour
         UpdateUI();
     }
 
+    private void Update()
+    {
+        if(Input.GetMouseButtonDown((int)MouseButton.Right))
+            DeselectUnit();
+    }
+
     public void UpdateSelectedUnit(Unit unitToSelect, bool calledByAI)
     {
         // Determine if updating the selected units is legal
@@ -53,6 +59,14 @@ public class UnitSelector : MonoBehaviour
             CameraController.Instance.MoveToTarget(selectedUnit.transform.position);
         }
         UpdateUI();
+    }
+
+    public void DeselectUnit()
+    {
+        if (!TurnManager.Instance.isPlayerTurn) return;
+        if (ActiveCard.Instance.cardBeingPlayed != null) return;
+
+        UpdateSelectedUnit(null);
     }
 
     public void UpdateSelectedUnit(Unit unitToSelect)

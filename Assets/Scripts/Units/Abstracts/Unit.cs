@@ -42,7 +42,9 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerEnterHandler, IP
 
     private void Start()
     {
-        infoTextUnit.SetActive(false);
+        if(infoTextUnit!= null)
+            infoTextUnit.SetActive(false);
+
         myMR = gfx.GetComponent<MeshRenderer>();
         if(myMR == null)
             mySR = gfx.GetComponent<SpriteRenderer>();
@@ -306,14 +308,16 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerEnterHandler, IP
         TileClicker.Instance.UpdateSelectedUnit(standingOn);
     }
 
-    private void HoverTextUnit()
+    protected void HoverTextUnit()
     {
-        infoTextUnit.SetActive(true);
+        if (infoTextUnit != null)
+            infoTextUnit.SetActive(true);
     }
 
-    private void HoverTextUnitExit()
+    protected void HoverTextUnitExit()
     {
-        infoTextUnit.SetActive(false);
+        if (infoTextUnit != null)
+            infoTextUnit.SetActive(false);
     }
 
     private IEnumerator ShakeUnit(float duration, float magnitude)
