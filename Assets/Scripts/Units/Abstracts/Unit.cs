@@ -55,7 +55,7 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerEnterHandler, IP
         StartCoroutine(FlashDamage());
 
         // Shake the camera when taking damage
-        CameraShake.Instance.Shake(0.3f, 0.1f);
+        //CameraShake.Instance.Shake(0.3f, 0.1f);
 
         if (UnitSelector.Instance.selectedUnit == this)
             UnitSelector.Instance.UpdateUI(true);
@@ -64,6 +64,7 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerEnterHandler, IP
         {
             healthCur = 0;
             Die();
+            GameoverManager.Instance.CheckGameOver();
         }
     }
 
