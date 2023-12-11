@@ -235,7 +235,7 @@ public abstract class PlayCard : MonoBehaviour
         // If no legal units, put card back in hand
         if (legalUnits.Count == 0)
         {
-            Debug.Log("No legal unit found, removing card from played");
+            //Debug.Log("No legal unit found, removing card from played");
             CancelPlay();
             CardManager.instance.ClearActiveCard();
             return;
@@ -332,7 +332,7 @@ public abstract class PlayCard : MonoBehaviour
         // If no legal tiles, put card back in hand
         if(legalTiles.Count == 0)
         {
-            Debug.Log("No legal tile found, removing card from played");
+            //Debug.Log("No legal tile found, removing card from played");
             CancelPlay();
             CardManager.instance.ClearActiveCard();
             return;
@@ -388,9 +388,9 @@ public abstract class PlayCard : MonoBehaviour
             {
                 selectedTile = thisTile;
                 myState = CardState.VerifyTileSelection;
-                Debug.Log("New tile selected: " + selectedTile.transform.name);
+                //Debug.Log("New tile selected: " + selectedTile.transform.name);
             }
-            Debug.Log("No tile selected");
+            //Debug.Log("No tile selected");
         }
     }
 
@@ -464,7 +464,7 @@ public abstract class PlayCard : MonoBehaviour
 
     public virtual void Play()
     {
-        Debug.Log("card is being played:" + this.name);
+        //Debug.Log("card is being played:" + this.name);
         myState = CardState.VerifyUnitSelection;
         DEBUGCardStateUI.Instance.DEBUGUpdateUI(CardState.SelectingUnit, "Select a unit");
         MovementManager.Instance.takingMoveAction = false;
@@ -475,7 +475,7 @@ public abstract class PlayCard : MonoBehaviour
 
     public void CancelPlay()
     {
-        Debug.Log("Card is returned to inactive play");
+        //Debug.Log("Card is returned to inactive play");
         DEBUGCardStateUI.Instance.DEBUGUpdateUI(CardState.Inactive, "--");
         selectedTile = null;
         selectedUnit = null;

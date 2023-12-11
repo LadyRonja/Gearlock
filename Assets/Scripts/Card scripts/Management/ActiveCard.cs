@@ -16,12 +16,4 @@ public class ActiveCard : MonoBehaviour
         else
             Destroy(this.gameObject);
     }
-
-    private void Update()
-    {
-        if(cardBeingPlayed != null)
-        {
-            Debug.Log(cardBeingPlayed.cardName);
-        }
-    }
 }

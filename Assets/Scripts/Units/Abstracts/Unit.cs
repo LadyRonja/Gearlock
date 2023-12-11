@@ -38,7 +38,7 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerEnterHandler, IP
     public MeshRenderer myMR;
     public SpriteRenderer mySR;
 
-
+    private Vector3 originalPosition;
     private void Start()
     {
         infoTextUnit.SetActive(false);
@@ -53,10 +53,15 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerEnterHandler, IP
             UnitSelector.Instance.UpdateUI();
 
         healthCur -= amount;
-        StartCoroutine(FlashDamage());
+        StartCoroutine(FlashDamage(0.7f));
 
         // Shake the camera when taking damage
         //CameraShake.Instance.Shake(0.3f, 0.1f);
+
+        //shake unit on taking damage //test elin
+        //duration, magnitude
+        StartCoroutine(ShakeUnit(0.7f, 0.2f)); 
+
 
         if (UnitSelector.Instance.selectedUnit == this)
             UnitSelector.Instance.UpdateUI(true);
@@ -68,7 +73,7 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerEnterHandler, IP
         }
     }
 
-    protected IEnumerator FlashDamage()
+    protected IEnumerator FlashDamage(float time)
     {
        /* if (myMR == null)
             yield return null;*/
@@ -76,7 +81,7 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerEnterHandler, IP
         Color startColor = mySR.color;
         mySR.color = Color.red;
         float timePassed = 0;
-        float timeToFlash = 0.7f;
+        float timeToFlash = time;
 
         while (timePassed < timeToFlash)
         {
@@ -289,5 +294,24 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerEnterHandler, IP
     private void HoverTextUnitExit()
     {
         infoTextUnit.SetActive(false);
+    }
+
+    private IEnumerator ShakeUnit(float duration, float magnitude)
+    {
+        Vector3 originalPosition = transform.position;
+        float elapsed = 0.0f;
+
+        while (elapsed < duration)
+        {
+            float x = originalPosition.x + UnityEngine.Random.Range(-magnitude, magnitude);
+            float y = originalPosition.y + UnityEngine.Random.Range(-magnitude, magnitude);
+
+            transform.position = new Vector3(x, y, originalPosition.z);
+
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        transform.position = originalPosition;
     }
 }
