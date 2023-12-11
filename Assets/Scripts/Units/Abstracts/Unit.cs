@@ -19,6 +19,7 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerEnterHandler, IP
     public bool playerBot = false;
     public BotSpecialization mySpecialization = BotSpecialization.None;
     public Sprite portrait;
+    public GameObject infoTextUnit;
 
     [Header("Stats")]
     public int healthMax = 5;
@@ -40,10 +41,10 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerEnterHandler, IP
 
     private void Start()
     {
+        infoTextUnit.SetActive(false);
         myMR = gfx.GetComponent<MeshRenderer>();
         if(myMR == null)
             mySR = gfx.GetComponent<SpriteRenderer>();
-        
     }
 
     public virtual void TakeDamage(int amount)
@@ -55,7 +56,7 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerEnterHandler, IP
         StartCoroutine(FlashDamage());
 
         // Shake the camera when taking damage
-        CameraShake.Instance.Shake(0.3f, 0.1f);
+        //CameraShake.Instance.Shake(0.3f, 0.1f);
 
         if (UnitSelector.Instance.selectedUnit == this)
             UnitSelector.Instance.UpdateUI(true);
@@ -266,15 +267,27 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerEnterHandler, IP
     public void OnPointerEnter(PointerEventData eventData)
     {
         HoverManager.HoverTileEnter(standingOn);
+        HoverTextUnit();
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
         HoverManager.HoverTileExit(standingOn);
+        HoverTextUnitExit();
     }
 
     public void OnPointerDown(PointerEventData eventData)
     {
         TileClicker.Instance.UpdateSelectedUnit(standingOn);
+    }
+
+    private void HoverTextUnit()
+    {
+        infoTextUnit.SetActive(true);
+    }
+
+    private void HoverTextUnitExit()
+    {
+        infoTextUnit.SetActive(false);
     }
 }

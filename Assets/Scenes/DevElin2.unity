@@ -843,6 +843,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 813898667}
   m_LocalEulerAnglesHint: {x: 90, y: 180, z: 0}
+--- !u!1 &295638610 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8840410619965914029, guid: b9ac481b0f16a3a4a9e356798b603ea9, type: 3}
+  m_PrefabInstance: {fileID: 1880619225}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &306356092
 GameObject:
   m_ObjectHideFlags: 0
@@ -1297,6 +1302,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &462197766 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1366998739197677633, guid: 025ffccf94651f54e9438d092b91465c, type: 3}
+  m_PrefabInstance: {fileID: 746606929}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &471218693
 GameObject:
   m_ObjectHideFlags: 0
@@ -2165,6 +2175,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CanvasFighterTxt
       objectReference: {fileID: 0}
+    - target: {fileID: 1366998739197677633, guid: 025ffccf94651f54e9438d092b91465c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2380697558132961471, guid: 025ffccf94651f54e9438d092b91465c, type: 3}
       propertyPath: m_fontSize
       value: 7
@@ -2258,15 +2272,15 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 025ffccf94651f54e9438d092b91465c, type: 3}
---- !u!1 &746606930 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7428209272212316818, guid: 025ffccf94651f54e9438d092b91465c, type: 3}
-  m_PrefabInstance: {fileID: 746606929}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &746606931 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4176706153297629544, guid: 025ffccf94651f54e9438d092b91465c, type: 3}
   m_PrefabInstance: {fileID: 746606929}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &749387803 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5552112450033100371, guid: d3d0a924c780ea74ca64f1a0ab5559d7, type: 3}
+  m_PrefabInstance: {fileID: 2058063516}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &755007086
 GameObject:
@@ -4695,6 +4709,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CanvasGhostTxt2
       objectReference: {fileID: 0}
+    - target: {fileID: 9038449177972320457, guid: c17f15c480926b145af724894148cf75, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4779,6 +4797,11 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 9.424069, y: 9.694086, z: 0.5653987}
   m_Center: {x: 0.1440835, y: -0.11179638, z: 0.054629974}
+--- !u!1 &1164862306 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9038449177972320457, guid: c17f15c480926b145af724894148cf75, type: 3}
+  m_PrefabInstance: {fileID: 1144989954}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1168254124
 GameObject:
   m_ObjectHideFlags: 0
@@ -4813,6 +4836,7 @@ MonoBehaviour:
   playerBot: 0
   mySpecialization: 0
   portrait: {fileID: 0}
+  infoTextUnit: {fileID: 1164862306}
   healthMax: 5
   healthCur: 5
   movePointsMax: 4
@@ -5836,6 +5860,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1519665558 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9038449177972320457, guid: c17f15c480926b145af724894148cf75, type: 3}
+  m_PrefabInstance: {fileID: 1748727842}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1525431494
 GameObject:
   m_ObjectHideFlags: 0
@@ -5932,6 +5961,10 @@ PrefabInstance:
       propertyPath: standingOn
       value: 
       objectReference: {fileID: 7580025418813234495}
+    - target: {fileID: 5684602004955715023, guid: 949c3eda2038ccf498670240b968df58, type: 3}
+      propertyPath: infoTextUnit
+      value: 
+      objectReference: {fileID: 749387803}
     - target: {fileID: 5684602004955715023, guid: 949c3eda2038ccf498670240b968df58, type: 3}
       propertyPath: infoTextDigger
       value: 
@@ -6032,6 +6065,10 @@ PrefabInstance:
       propertyPath: standingOn
       value: 
       objectReference: {fileID: 2035617440052126264}
+    - target: {fileID: 5860811044621624104, guid: f82e24dd0a9ffb44b98002e7118aa8ff, type: 3}
+      propertyPath: infoTextUnit
+      value: 
+      objectReference: {fileID: 295638610}
     - target: {fileID: 5860811044621624104, guid: f82e24dd0a9ffb44b98002e7118aa8ff, type: 3}
       propertyPath: infoTextBigBot
       value: 
@@ -6483,6 +6520,7 @@ MonoBehaviour:
   playerBot: 0
   mySpecialization: 0
   portrait: {fileID: 0}
+  infoTextUnit: {fileID: 1519665558}
   healthMax: 5
   healthCur: 5
   movePointsMax: 4
@@ -6697,6 +6735,7 @@ MonoBehaviour:
   playerBot: 1
   mySpecialization: 0
   portrait: {fileID: 0}
+  infoTextUnit: {fileID: 462197766}
   healthMax: 5
   healthCur: 5
   movePointsMax: 2
@@ -6709,7 +6748,6 @@ MonoBehaviour:
   myMR: {fileID: 0}
   mySR: {fileID: 36759386}
   brokenFighter: {fileID: 3141665598236762354, guid: a01b1ee6048250e4595d21ee65596a4d, type: 3}
-  infoTextFighter: {fileID: 746606930}
 --- !u!4 &1652492935
 Transform:
   m_ObjectHideFlags: 0
@@ -7372,6 +7410,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CanvasGhostTxt
       objectReference: {fileID: 0}
+    - target: {fileID: 9038449177972320457, guid: c17f15c480926b145af724894148cf75, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 7836325735148673764, guid: c17f15c480926b145af724894148cf75, type: 3}
     m_RemovedGameObjects: []
@@ -7879,6 +7921,10 @@ PrefabInstance:
     - target: {fileID: 8840410619965914029, guid: b9ac481b0f16a3a4a9e356798b603ea9, type: 3}
       propertyPath: m_Name
       value: CanvasBigBotTxt
+      objectReference: {fileID: 0}
+    - target: {fileID: 8840410619965914029, guid: b9ac481b0f16a3a4a9e356798b603ea9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -9050,6 +9096,10 @@ PrefabInstance:
     - target: {fileID: 5552112450033100371, guid: d3d0a924c780ea74ca64f1a0ab5559d7, type: 3}
       propertyPath: m_Name
       value: CanvasDiggerTxt
+      objectReference: {fileID: 0}
+    - target: {fileID: 5552112450033100371, guid: d3d0a924c780ea74ca64f1a0ab5559d7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6553521347732276862, guid: d3d0a924c780ea74ca64f1a0ab5559d7, type: 3}
       propertyPath: m_fontSize
