@@ -4,12 +4,7 @@ using UnityEngine;
 
 public class Ghost : Unit
 {
-    public GameObject infoTextGhost;
-
-    public void Start()
-    {
-        //infoTextGhost.SetActive(false);
-    }
+    
     public override Unit FindTargetUnit()
     {
         return FindNearestPlayerUnit(true);
