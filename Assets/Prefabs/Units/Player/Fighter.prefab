@@ -52,7 +52,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 7ace8453fc16d2a48a26ead6976c75cd, type: 2}
+  - {fileID: 2100000, guid: 8d925c366c487d5418b345a38f57594e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -135,6 +135,7 @@ MonoBehaviour:
   playerBot: 1
   mySpecialization: 0
   portrait: {fileID: 21300000, guid: 68af3ca69100c4a4299a163ce0bfad41, type: 3}
+  infoTextUnit: {fileID: 0}
   healthMax: 5
   healthCur: 5
   movePointsMax: 2
@@ -147,7 +148,6 @@ MonoBehaviour:
   myMR: {fileID: 0}
   mySR: {fileID: 3392602483477509401}
   brokenFighter: {fileID: 3141665598236762354, guid: a01b1ee6048250e4595d21ee65596a4d, type: 3}
-  infoTextFighter: {fileID: 0}
 --- !u!65 &2958500509575897262
 BoxCollider:
   m_ObjectHideFlags: 0

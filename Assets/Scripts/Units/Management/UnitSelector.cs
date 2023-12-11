@@ -16,7 +16,6 @@ public class UnitSelector : MonoBehaviour
     public Image tempHealthFill;
     public Image tempHealthFillWhite;
     public TMP_Text tempPowerText; 
-    public TMP_Text tempMovePointsText;
     public List<GameObject> MovePointDark;
     public List<GameObject> MovePointLight;
     public Image portrait;
@@ -112,7 +111,6 @@ public class UnitSelector : MonoBehaviour
             if (selectedUnit.movePointsCur < 0)
             {
                 Debug.LogError("Units movepoint cur is negative, displaying as 0");
-                tempMovePointsText.text = $"MovementPoints: 0/{selectedUnit.movePointsMax}";
                 for (int i = 0; i < selectedUnit.movePointsMax; i++)
                 {
                     MovePointLight[i].SetActive(false);
@@ -120,7 +118,6 @@ public class UnitSelector : MonoBehaviour
             }
             else
             {
-                tempMovePointsText.text = $"MovementPoints: {selectedUnit.movePointsCur}/{selectedUnit.movePointsMax}";
                 for (int i = 0; i < selectedUnit.movePointsCur; i++)
                 {
                     MovePointLight[i].SetActive(true);
