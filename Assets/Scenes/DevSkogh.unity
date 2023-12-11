@@ -136,6 +136,7 @@ GameObject:
   - component: {fileID: 23355963}
   - component: {fileID: 23355962}
   - component: {fileID: 23355961}
+  - component: {fileID: 23355966}
   m_Layer: 0
   m_Name: Game Camera
   m_TagString: MainCamera
@@ -221,7 +222,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 0
-  orthographic size: 5
+  orthographic size: 25.91
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -253,6 +254,50 @@ Transform:
   - {fileID: 200669165}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 26.327, y: 0, z: 0}
+--- !u!114 &23355966
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 23355960}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_RenderShadows: 1
+  m_RequiresDepthTextureOption: 2
+  m_RequiresOpaqueTextureOption: 2
+  m_CameraType: 0
+  m_Cameras: []
+  m_RendererIndex: 0
+  m_VolumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  m_VolumeTrigger: {fileID: 0}
+  m_VolumeFrameworkUpdateModeOption: 2
+  m_RenderPostProcessing: 0
+  m_Antialiasing: 0
+  m_AntialiasingQuality: 2
+  m_StopNaN: 0
+  m_Dithering: 0
+  m_ClearDepth: 1
+  m_AllowXRRendering: 1
+  m_AllowHDROutput: 1
+  m_UseScreenCoordOverride: 0
+  m_ScreenSizeOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_ScreenCoordScaleBias: {x: 0, y: 0, z: 0, w: 0}
+  m_RequiresDepthTexture: 0
+  m_RequiresColorTexture: 0
+  m_Version: 2
+  m_TaaSettings:
+    quality: 3
+    frameInfluence: 0.1
+    jitterScale: 1
+    mipBias: 0
+    varianceClampScale: 0.9
+    contrastAdaptiveSharpening: 0
 --- !u!1 &79632157
 GameObject:
   m_ObjectHideFlags: 0
@@ -3253,6 +3298,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4594800886658141610, guid: 2010c000fcb7832419b3f8e016e62284, type: 3}
+      propertyPath: orthographic
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4594800886658141610, guid: 2010c000fcb7832419b3f8e016e62284, type: 3}
+      propertyPath: orthographic size
+      value: 25.91
+      objectReference: {fileID: 0}
+    - target: {fileID: 4594800886658141610, guid: 2010c000fcb7832419b3f8e016e62284, type: 3}
+      propertyPath: m_OcclusionCulling
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6014082716424758449, guid: 2010c000fcb7832419b3f8e016e62284, type: 3}
       propertyPath: m_Name
       value: Game Camera
@@ -6796,6 +6853,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlaneFrame
       objectReference: {fileID: 0}
+    - target: {fileID: 1207913924213874897, guid: 6ae2f976404af2a43addc3ebeee80fda, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -5.61
+      objectReference: {fileID: 0}
     - target: {fileID: 3010830031419744343, guid: 6ae2f976404af2a43addc3ebeee80fda, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -6865,16 +6926,20 @@ PrefabInstance:
       value: 10.36
       objectReference: {fileID: 0}
     - target: {fileID: 7655472806033013334, guid: 6ae2f976404af2a43addc3ebeee80fda, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -7.82
+      objectReference: {fileID: 0}
+    - target: {fileID: 7655472806033013334, guid: 6ae2f976404af2a43addc3ebeee80fda, type: 3}
       propertyPath: m_LocalPosition.y
       value: 20.7
       objectReference: {fileID: 0}
     - target: {fileID: 7731310753777697961, guid: 6ae2f976404af2a43addc3ebeee80fda, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.383444
+      value: -5.726
       objectReference: {fileID: 0}
     - target: {fileID: 7731310753777697961, guid: 6ae2f976404af2a43addc3ebeee80fda, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 29.39
+      value: 30.68
       objectReference: {fileID: 0}
     - target: {fileID: 7731310753777697961, guid: 6ae2f976404af2a43addc3ebeee80fda, type: 3}
       propertyPath: m_LocalPosition.z
