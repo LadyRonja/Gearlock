@@ -19,6 +19,7 @@ public class UnitSelector : MonoBehaviour
     public List<GameObject> MovePointDark;
     public List<GameObject> MovePointLight;
     public Image portrait;
+    int maxMovePoints = 4;
 
     private void Awake()
     {
@@ -76,7 +77,7 @@ public class UnitSelector : MonoBehaviour
     public void UpdateUI(bool damageApplication)
     {
 
-        for (int i = 0; i < 3;  i++)
+        for (int i = 0; i < maxMovePoints;  i++)
         {
             MovePointDark[i].SetActive(false);
             MovePointLight[i].SetActive(false);

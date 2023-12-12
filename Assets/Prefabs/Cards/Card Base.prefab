@@ -365,6 +365,7 @@ GameObject:
   - component: {fileID: 6478808464158835852}
   - component: {fileID: 642243466355530599}
   - component: {fileID: 3772451795709631944}
+  - component: {fileID: 2351823502198394553}
   m_Layer: 5
   m_Name: Card Base
   m_TagString: Untagged
@@ -405,7 +406,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2724537674535312955}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: afce2c616f584c44a934696dede7f961, type: 3}
   m_Name: 
@@ -429,6 +430,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2724537674535312955}
   m_CullTransparentMesh: 1
+--- !u!114 &2351823502198394553
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2724537674535312955}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5ff853e276d8bc4d812879fee80b336, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameRegion: {fileID: 7888673132189346745}
+  nameShadow: {fileID: 5726710236668880110}
+  frameImage: {fileID: 7057266409879942146}
+  illustrationImage: {fileID: 1686042891551491018}
+  descriptionRegion: {fileID: 7198785286453947943}
+  descriptionShadow: {fileID: 2343865356045567554}
+  rangeRegion: {fileID: 6038880176104288748}
+  rangeShadow: {fileID: 3737711266454897238}
 --- !u!1 &3049048519933717426
 GameObject:
   m_ObjectHideFlags: 0
