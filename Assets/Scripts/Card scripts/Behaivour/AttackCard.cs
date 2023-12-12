@@ -27,7 +27,9 @@ public class AttackCard : PlayCard
     {
         if(onTile.occupant != null)
         {
-            if(byUnit.playerBot)
+            onTile.occupant.TakeDamage(byUnit.power * multiplier);
+
+            if (byUnit.playerBot)
             {
                 Debug.LogError("do you want to hit your bot?");
                 verificationText.SetActive(true);
@@ -36,7 +38,7 @@ public class AttackCard : PlayCard
             }
             else
             {
-                onTile.occupant.TakeDamage(byUnit.power * multiplier);
+                
             }
         }
 

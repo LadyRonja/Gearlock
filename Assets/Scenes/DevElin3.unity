@@ -615,6 +615,7 @@ MonoBehaviour:
   gfx: {fileID: 840327518}
   myMR: {fileID: 0}
   mySR: {fileID: 840327519}
+  currentEase: 0
 --- !u!1 &247181633
 GameObject:
   m_ObjectHideFlags: 0
@@ -2399,6 +2400,7 @@ MonoBehaviour:
   gfx: {fileID: 1284964942}
   myMR: {fileID: 0}
   mySR: {fileID: 1284964941}
+  currentEase: 0
 --- !u!4 &672333018
 Transform:
   m_ObjectHideFlags: 0
@@ -5378,6 +5380,7 @@ MonoBehaviour:
   gfx: {fileID: 1448536944}
   myMR: {fileID: 0}
   mySR: {fileID: 1448536943}
+  currentEase: 0
 --- !u!4 &1205755848
 Transform:
   m_ObjectHideFlags: 0
@@ -7108,6 +7111,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 7580025418813234495}
     - target: {fileID: 5684602004955715023, guid: 949c3eda2038ccf498670240b968df58, type: 3}
+      propertyPath: currentEase
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 5684602004955715023, guid: 949c3eda2038ccf498670240b968df58, type: 3}
       propertyPath: infoTextUnit
       value: 
       objectReference: {fileID: 694649927}
@@ -7447,6 +7454,7 @@ MonoBehaviour:
   gfx: {fileID: 278322629}
   myMR: {fileID: 0}
   mySR: {fileID: 278322628}
+  currentEase: 20
   brokenFighter: {fileID: 3141665598236762354, guid: a01b1ee6048250e4595d21ee65596a4d, type: 3}
 --- !u!4 &1605080590
 Transform:
@@ -14706,7 +14714,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3006889387212382674, guid: f23e564feee750e49956ddab80e8d61b, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4504344275245421133, guid: f23e564feee750e49956ddab80e8d61b, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -21717,7 +21725,6 @@ MonoBehaviour:
   tempHealthFill: {fileID: 7917435806235403165}
   tempHealthFillWhite: {fileID: 6525379374278535081}
   tempPowerText: {fileID: 7499759528809398030}
-  tempMovePointsText: {fileID: 7624882167744983545}
   MovePointDark:
   - {fileID: 1160618011}
   - {fileID: 1199454148}

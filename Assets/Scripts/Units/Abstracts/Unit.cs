@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using DG.Tweening;
+using Unity.VisualScripting;
 
 public enum BotSpecialization
 {
@@ -38,7 +40,9 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerEnterHandler, IP
     public MeshRenderer myMR;
     public SpriteRenderer mySR;
 
-    private Vector3 originalPosition;
+    [Header("DoTween")]
+    public Ease currentEase;
+    private Vector3 startPos;
 
     private void Start()
     {
@@ -58,12 +62,8 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerEnterHandler, IP
         healthCur -= amount;
         StartCoroutine(FlashDamage(0.7f));
 
-        // Shake the camera when taking damage
-        //CameraShake.Instance.Shake(0.3f, 0.1f);
-
-        //shake unit on taking damage //test elin
-        //duration, magnitude
-        StartCoroutine(ShakeUnit(0.7f, 0.2f)); 
+        //test DoTween 
+        ShakeUnit();
 
 
         if (UnitSelector.Instance.selectedUnit == this)
@@ -320,24 +320,17 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerEnterHandler, IP
             infoTextUnit.SetActive(false);
     }
 
-    private IEnumerator ShakeUnit(float duration, float magnitude)
+    //test elin DoTween shake unit
+    public void ShakeUnit()
     {
-        Vector3 originalPosition = transform.position;
-        float elapsed = 0.0f;
-
-        while (elapsed < duration)
-        {
-            float x = originalPosition.x + UnityEngine.Random.Range(-magnitude, magnitude);
-            float y = originalPosition.y + UnityEngine.Random.Range(-magnitude, magnitude);
-
-            transform.position = new Vector3(x, y, originalPosition.z);
-
-            elapsed += Time.deltaTime;
-            yield return null;
-        }
-
-        transform.position = originalPosition;
+        
+        transform.DOShakePosition(duration: 0.5f, strength: new Vector3(2f, 0f, 0f), vibrato: 10, randomness: 0, fadeOut: false);
+        
+    }
+    public void OnDisable()
+    {
+        transform.DOKill();
     }
 
-   
+ 
 }
