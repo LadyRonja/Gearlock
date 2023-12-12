@@ -98,14 +98,14 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 2724537674535312955, guid: 95bb9cd62ecb8fb4aa7c6e5eed002318, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 8740234581713185217}
+      addedObject: {fileID: 2754888901624481015}
   m_SourcePrefab: {fileID: 100100000, guid: 95bb9cd62ecb8fb4aa7c6e5eed002318, type: 3}
 --- !u!1 &5112470102642997458 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2724537674535312955, guid: 95bb9cd62ecb8fb4aa7c6e5eed002318, type: 3}
   m_PrefabInstance: {fileID: 7150771645149325033}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &8740234581713185217
+--- !u!114 &2754888901624481015
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -114,7 +114,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5112470102642997458}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: afe0b735ee4893c408425d9b39e8ebb1, type: 3}
+  m_Script: {fileID: 11500000, guid: 6107766f3bd5c1d4ab9fb45fed26e24b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   cardName: Assemble Dig Bot
@@ -132,4 +132,4 @@ MonoBehaviour:
   myState: 0
   selectedTile: {fileID: 0}
   selectedUnit: {fileID: 0}
-  digBot: {fileID: 1374234919581383479, guid: 949c3eda2038ccf498670240b968df58, type: 3}
+  unitPrefabToSpawn: {fileID: 1374234919581383479, guid: 949c3eda2038ccf498670240b968df58, type: 3}

@@ -69,6 +69,9 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerEnterHandler, IP
         if (UnitSelector.Instance.selectedUnit == this)
             UnitSelector.Instance.UpdateUI(true);
 
+        if(playerBot)
+            UnitSelector.Instance.UpdatePlayerUnitUI();
+
         if (healthCur <= 0)
         {
             healthCur = 0;
@@ -128,6 +131,7 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerEnterHandler, IP
         if (playerBot)
         {
             GameoverManager.Instance.CheckGameOver();
+            UnitSelector.Instance.UpdatePlayerUnitUI();
         }
         StartCoroutine(FadeAndDestroy(0.5f));
         //Destroy(this.gameObject);

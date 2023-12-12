@@ -10,6 +10,8 @@ public class UnitSelector : MonoBehaviour
     public static UnitSelector Instance;
     public Unit selectedUnit;
     public bool playerCanSelectNewUnit = true;
+
+    [Header("Selected Unit")]
     public GameObject tempUIPanel;
     public TMP_Text tempNameText;
     public TMP_Text tempHealthText;
@@ -21,6 +23,10 @@ public class UnitSelector : MonoBehaviour
     public Image portrait;
     int maxMovePoints = 4;
 
+    [Header("All player Units")]
+    public Transform gridParent;
+    public GameObject displayPrefab;
+
     private void Awake()
     {
         #region Singleton
@@ -31,6 +37,7 @@ public class UnitSelector : MonoBehaviour
         #endregion
 
         UpdateUI();
+        UpdatePlayerUnitUI();
     }
 
     private void Update()
@@ -94,7 +101,7 @@ public class UnitSelector : MonoBehaviour
         {
             tempUIPanel.SetActive(true);
             tempNameText.text = selectedUnit.unitName;
-            tempPowerText.text = $": {selectedUnit.power}";
+            tempPowerText.text = $"{selectedUnit.power}";
             tempHealthText.text = $"HP: {selectedUnit.healthCur}/{selectedUnit.healthMax}";
             tempHealthFill.fillAmount = (float)selectedUnit.healthCur / (float)selectedUnit.healthMax;
             if(damageApplication)
@@ -131,6 +138,21 @@ public class UnitSelector : MonoBehaviour
     public void UpdateUI()
     {
         UpdateUI(false);
+    }
+
+    // Inefficent way, but much easier to write and keep track of.
+    public void UpdatePlayerUnitUI()
+    {
+        foreach (Transform child in gridParent)
+        {
+            Destroy(child.gameObject);
+        }
+
+        foreach (Unit u in UnitStorage.Instance.playerUnits)
+        {
+            GameObject unitMiniPanel = Instantiate(displayPrefab, gridParent);
+            unitMiniPanel.GetComponent<UnitMiniPanel>().SetInfo(u);
+        }
     }
 
     private IEnumerator ReduceHealthbarOverTime(float seconds, Unit healthOf)

@@ -98,14 +98,14 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 2724537674535312955, guid: 95bb9cd62ecb8fb4aa7c6e5eed002318, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 9133187286715995516}
+      addedObject: {fileID: 3043521892616196516}
   m_SourcePrefab: {fileID: 100100000, guid: 95bb9cd62ecb8fb4aa7c6e5eed002318, type: 3}
 --- !u!1 &7085131046943255271 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2724537674535312955, guid: 95bb9cd62ecb8fb4aa7c6e5eed002318, type: 3}
   m_PrefabInstance: {fileID: 5160265021543707868}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &9133187286715995516
+--- !u!114 &3043521892616196516
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -114,7 +114,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7085131046943255271}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ccd357eef17fe644c89fd1ca858c28bf, type: 3}
+  m_Script: {fileID: 11500000, guid: 6107766f3bd5c1d4ab9fb45fed26e24b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   cardName: Assemble Fighter Bot
@@ -132,4 +132,4 @@ MonoBehaviour:
   myState: 0
   selectedTile: {fileID: 0}
   selectedUnit: {fileID: 0}
-  fightBot: {fileID: 7606916860535154931, guid: 4616440f96a366e41be3341e56abf57a, type: 3}
+  unitPrefabToSpawn: {fileID: 7606916860535154931, guid: 4616440f96a366e41be3341e56abf57a, type: 3}

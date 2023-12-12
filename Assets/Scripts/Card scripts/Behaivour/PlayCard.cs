@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using Unity.VisualScripting;
+using UnityEditor.PackageManager;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -166,7 +167,7 @@ public abstract class PlayCard : MonoBehaviour
 
         void HandleIllegalSelection(string errorMessage, string cardStateText)
         {
-            Debug.Log(errorMessage);
+            //Debug.Log(errorMessage);
             selectedUnit = null;
             myState = CardState.SelectingUnit;
             DEBUGCardStateUI.Instance.DEBUGUpdateUI(CardState.VerifyUnitSelection, cardStateText);
@@ -208,6 +209,14 @@ public abstract class PlayCard : MonoBehaviour
                             return;
                         }
                     }
+
+                    if (hit.collider.gameObject.TryGetComponent<UnitMiniPanel>(out UnitMiniPanel miniPanel))
+                    {
+                        Debug.Log("Unit Panel Hit");
+                        clickedTile = miniPanel.myUnit.standingOn;
+                        PickUnit(clickedTile);
+                        return;
+                    }
                 }
             }
 
@@ -216,10 +225,10 @@ public abstract class PlayCard : MonoBehaviour
                 selectedUnit = onTile.occupant;
                 UnitSelector.Instance.UpdateSelectedUnit(selectedUnit);
                 myState = CardState.VerifyUnitSelection;
-                Debug.Log("New unit selected: " + selectedUnit.unitName);
+                //Debug.Log("New unit selected: " + selectedUnit.unitName);
             }
 
-            Debug.Log("No unit selected");
+            //Debug.Log("No unit selected");
         }
     }
 
@@ -287,48 +296,6 @@ public abstract class PlayCard : MonoBehaviour
                 legalTiles.Remove(t);
         }
 
-        /*
-        if(canTargetDirtTiles)
-        {
-            List<Tile> tilesToAdd = allTiles.Where( t => t.containsDirt 
-                                                    && Pathfinding.GetDistance(t, selectedUnit.standingOn) <= range 
-                                                    && t.occupant != selectedUnit).ToList();
-
-            legalTiles.AddRange(tilesToAdd);
-        }
-
-        if(canTargetOccupiedTiles)
-        {
-            List<Tile> tilesToAdd = allTiles.Where(t => t.occupied
-                                                    && Pathfinding.GetDistance(t, selectedUnit.standingOn) <= range
-                                                    && t.occupant != selectedUnit).ToList();
-
-            legalTiles.AddRange(tilesToAdd);
-        }
-        else
-        {
-            List<Tile> tilesToAdd = allTiles.Where(t => !t.occupied
-                                                    && Pathfinding.GetDistance(t, selectedUnit.standingOn) <= range).ToList();
-
-            legalTiles.AddRange(tilesToAdd);
-        }
-
-        // Remove illegal tiles
-        List<Tile> tilesToRemove = new();
-        foreach(Tile t in legalTiles)
-        {
-            if(!canTargetDirtTiles && t.containsDirt)
-            {
-                tilesToRemove.Add(t);
-            }
-            
-            if(canTargetDirtTiles && !t.containsDirt)
-            {
-                tilesToRemove.Add(t);
-            }
-        
-        }*/
-
         // If no legal tiles, put card back in hand
         if(legalTiles.Count == 0)
         {
@@ -355,8 +322,9 @@ public abstract class PlayCard : MonoBehaviour
             Vector3 mousePosition = Input.mousePosition;
             Ray ray = Camera.main.ScreenPointToRay(mousePosition);
             RaycastHit hit;
+            //LayerMask ignoreOnUnit = LayerMask.GetMask("UI", "dirtLayer");
 
-            if (Physics.Raycast(ray, out hit))
+            if (Physics.Raycast(ray, out hit/*, float.MaxValue, ignoreOnUnit*/))
             {
                 if (hit.collider != null)
                 {

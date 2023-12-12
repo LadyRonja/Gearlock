@@ -25,7 +25,7 @@ public class AttackCard : PlayCard
 
     public override void ExecuteBehaivour(Tile onTile, Unit byUnit)
     {
-        if(onTile.occupant != null)
+        /*if(onTile.occupant != null)
         {
             onTile.occupant.TakeDamage(byUnit.power * multiplier);
 
@@ -40,9 +40,9 @@ public class AttackCard : PlayCard
             {
                 
             }
-        }
+        }*/
+        onTile.occupant.TakeDamage(byUnit.power * multiplier);
 
-        
     }
 
    /* public void ClickedYes()

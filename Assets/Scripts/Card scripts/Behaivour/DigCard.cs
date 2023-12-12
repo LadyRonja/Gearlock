@@ -4,18 +4,8 @@ using UnityEngine;
 
 public class DigCard : PlayCard
 {
-  public Animator digAnimation;
-
-    
-
     public override void ExecuteBehaivour(Tile onTile, Unit byUnit)
     {
-        Debug.Log("reached removal of dirt script");
-        if (onTile.containsDirt == true)
-        {
-            onTile.RemoveDirt();
-            Debug.Log("removed dirt");
-        }
         onTile.RemoveDirt();
     }
 

@@ -86,9 +86,9 @@ public class Tile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
      {
         // Select My Unit
         if (occupant != null)
-         {
-             UnitSelector.Instance.UpdateSelectedUnit(occupant);
-         }
+        {
+            UnitSelector.Instance.UpdateSelectedUnit(occupant);
+        }
          TileClicker.Instance.HandleMoveClick(this);
 
          // Toggle Blocked (Debug)

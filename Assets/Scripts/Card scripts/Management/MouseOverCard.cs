@@ -159,7 +159,7 @@ public class MouseOverCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         ActiveCard.Instance.cardBeingPlayed = GetComponent<PlayCard>();
         inHand = false;
         isBeingPlayed = true;
-        Debug.Log("card was played");
+        //Debug.Log("card was played");
     }
 
     //Detect if the Cursor starts to pass over the GameObject
@@ -188,13 +188,13 @@ public class MouseOverCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         // returns the card to original position
         if (hovering && !isDragged)
         {
-            Debug.Log("lowering card" + gameObject);
+            //Debug.Log("lowering card" + gameObject);
             GetComponent<RectTransform>().anchoredPosition -= new Vector2(0, offsetY);
             hovering = false;
             if (GetComponent<RectTransform>().anchoredPosition.y < anchoredY)
             {
                 GetComponent<RectTransform>().anchoredPosition += new Vector2(0, offsetY);
-                Debug.Log("Prevented card setting position too low");
+                //Debug.Log("Prevented card setting position too low");
             }
         }
 

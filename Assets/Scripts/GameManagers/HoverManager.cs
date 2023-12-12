@@ -176,7 +176,7 @@ public class HoverManager : MonoBehaviour
             }
 
         // Playerbot selected, construct card, over free space  - spanner (red if can't reach)
-        if (selectedCard.GetType() == typeof(SpawnFightBotCard) || selectedCard.GetType() == typeof(SpawnDigBotCard))
+        if (selectedCard.GetType() == typeof(SpawnUnitCard))
             if (!tile.blocked)
             {
                 if (Pathfinding.GetDistance(selectedUnit.standingOn, tile) <= selectedCard.range)

@@ -227,7 +227,7 @@ public class CardManager : MonoBehaviour
             else
                 PlayedCard.transform.parent = DiscardPile.Instance.transform;
 
-            Debug.Log(PlayedCard);
+            //Debug.Log(PlayedCard);
         }
     }
 
