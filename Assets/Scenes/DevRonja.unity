@@ -908,6 +908,7 @@ MonoBehaviour:
   gfx: {fileID: 840327518}
   myMR: {fileID: 0}
   mySR: {fileID: 840327519}
+  currentEase: 0
 --- !u!1 &213174841
 GameObject:
   m_ObjectHideFlags: 0
@@ -2435,6 +2436,7 @@ MonoBehaviour:
   gfx: {fileID: 1284964942}
   myMR: {fileID: 0}
   mySR: {fileID: 1284964941}
+  currentEase: 0
 --- !u!4 &672333018
 Transform:
   m_ObjectHideFlags: 0
@@ -5191,6 +5193,7 @@ MonoBehaviour:
   gfx: {fileID: 1448536944}
   myMR: {fileID: 0}
   mySR: {fileID: 1448536943}
+  currentEase: 0
 --- !u!4 &1205755848
 Transform:
   m_ObjectHideFlags: 0
@@ -6859,6 +6862,7 @@ MonoBehaviour:
   gfx: {fileID: 278322629}
   myMR: {fileID: 0}
   mySR: {fileID: 278322628}
+  currentEase: 0
   brokenFighter: {fileID: 3141665598236762354, guid: a01b1ee6048250e4595d21ee65596a4d, type: 3}
 --- !u!4 &1605080590
 Transform:
@@ -13649,6 +13653,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8657458881909334870, guid: 57ca9bb72f2aadd4abfb595c43fd95fd, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: ceb338441b477084c88b9428ae5385be, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
