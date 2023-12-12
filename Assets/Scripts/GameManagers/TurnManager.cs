@@ -1,8 +1,13 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Device;
 using UnityEngine.UI;
+using UnityEngine.UIElements;
+
 
 public class TurnManager : MonoBehaviour // classen blir en singleton
 {
@@ -11,6 +16,9 @@ public class TurnManager : MonoBehaviour // classen blir en singleton
     public bool TurnEnd = false;
     public GameObject KeepCardScreen;
     public TMP_Text endTurnText;
+
+    public Ease currentEase;
+    Vector3 startPos;
 
     [SerializeField] TMP_Text tempTurnText;
 
@@ -26,6 +34,8 @@ public class TurnManager : MonoBehaviour // classen blir en singleton
         UpdateUI();
 
     }
+
+    
     public void EndTurn() //when clicked on End Turn Button
     {
         if (isPlayerTurn)
@@ -74,10 +84,23 @@ public class TurnManager : MonoBehaviour // classen blir en singleton
 
     public void UpdateUI()
     {
+        
+
         if (tempTurnText == null) return;
 
-        if (isPlayerTurn) tempTurnText.text = "Player Turn";
-        else tempTurnText.text = "AI Turn";
+        if (isPlayerTurn)
+        {
+            tempTurnText.text = "Player Turn";
+            TextAnimationTurn();
+        }
+        else 
+        {
+            tempTurnText.text = "AI Turn";
+            TextAnimationTurn();
+        }
+        
+            
+            
     }
 
 
@@ -106,4 +129,16 @@ public class TurnManager : MonoBehaviour // classen blir en singleton
             
         }
     }   
+
+    public void TextAnimationTurn()
+    {
+        
+        tempTurnText.rectTransform.anchoredPosition = new Vector2(1430, 0);
+        tempTurnText.transform.DOMoveX(600, 0.5f).SetEase(currentEase);
+    }
+
+    public void OnDisable()
+    {
+        transform.DOKill();
+    }
 }
