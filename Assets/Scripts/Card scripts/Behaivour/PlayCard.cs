@@ -249,14 +249,16 @@ public abstract class PlayCard : MonoBehaviour
         else
             legalUnits = UnitStorage.Instance.playerUnits;
 
+        #region No legal targets behaivour
         // If no legal units, put card back in hand
-        if (legalUnits.Count == 0)
+        /*if (legalUnits.Count == 0)
         {
             //Debug.Log("No legal unit found, removing card from played");
             CancelPlay();
             CardManager.instance.ClearActiveCard();
             return;
-        }
+        }*/
+        #endregion
 
         // Highlight the units
         foreach (Unit u in legalUnits)
@@ -269,10 +271,6 @@ public abstract class PlayCard : MonoBehaviour
     {
         // Find legal tiles
         List<Tile> legalTiles = new();
-        /*List<Tile> allTiles = new();
-
-        foreach (Tile t in GridManager.Instance.tiles)
-            allTiles.Add(t);*/
 
         legalTiles.AddRange(GridManager.Instance.tiles);
         List<Tile> tilesToRemove = new();
@@ -304,14 +302,16 @@ public abstract class PlayCard : MonoBehaviour
                 legalTiles.Remove(t);
         }
 
+        #region No legal targets behaivour
         // If no legal tiles, put card back in hand
-        if(legalTiles.Count == 0)
+        /*if (legalTiles.Count == 0)
         {
             //Debug.Log("No legal tile found, removing card from played");
             CancelPlay();
             CardManager.instance.ClearActiveCard();
             return;
-        }
+        }*/
+        #endregion
 
         // Highlight the tiles
         foreach (Tile t in legalTiles)

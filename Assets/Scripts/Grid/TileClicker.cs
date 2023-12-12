@@ -35,7 +35,7 @@ public class TileClicker : MonoBehaviour
 
     public void UpdateSelectedUnit(Tile tile) 
     { 
-        if(tile.occupant != null)
+        if(tile.occupant != null && ActiveCard.Instance.cardBeingPlayed == null)
             UnitSelector.Instance.UpdateSelectedUnit(tile.occupant);
     }
 

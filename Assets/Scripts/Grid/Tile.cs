@@ -87,7 +87,7 @@ public class Tile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
         // Select My Unit
         if (occupant != null)
         {
-            UnitSelector.Instance.UpdateSelectedUnit(occupant);
+            TileClicker.Instance.UpdateSelectedUnit(this);
         }
          TileClicker.Instance.HandleMoveClick(this);
 
