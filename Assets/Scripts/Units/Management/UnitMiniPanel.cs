@@ -24,7 +24,8 @@ public class UnitMiniPanel : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        UnitSelector.Instance.UpdateSelectedUnit(myUnit);
+        if(ActiveCard.Instance == null)
+            UnitSelector.Instance.UpdateSelectedUnit(myUnit);
     }
 
     public void OnPointerEnter(PointerEventData eventData)

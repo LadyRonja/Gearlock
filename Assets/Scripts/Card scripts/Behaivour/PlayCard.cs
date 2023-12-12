@@ -3,6 +3,7 @@ using System.Linq;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEditor.PackageManager;
+using UnityEngine.EventSystems;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -176,6 +177,7 @@ public abstract class PlayCard : MonoBehaviour
         }
     }
 
+
     protected virtual void SelectUnit()
     {
         // Click on a tile
@@ -209,14 +211,20 @@ public abstract class PlayCard : MonoBehaviour
                             return;
                         }
                     }
+                }
+            }
 
-                    if (hit.collider.gameObject.TryGetComponent<UnitMiniPanel>(out UnitMiniPanel miniPanel))
-                    {
-                        Debug.Log("Unit Panel Hit");
-                        clickedTile = miniPanel.myUnit.standingOn;
-                        PickUnit(clickedTile);
-                        return;
-                    }
+            // Also check UI elements for the mini potraits
+            PointerEventData ped = new PointerEventData(GraphicsRayCastAssistance.Instance.eventSystem);
+            ped.position = Input.mousePosition;
+            List<RaycastResult> results = new List<RaycastResult>();
+            GraphicsRayCastAssistance.Instance.caster.Raycast(ped, results);
+            foreach (RaycastResult result in results)
+            {
+                if (result.gameObject.TryGetComponent<UnitMiniPanel>(out UnitMiniPanel ump))
+                {
+                    PickUnit(ump.myUnit.standingOn);
+                    return;
                 }
             }
 
@@ -322,7 +330,6 @@ public abstract class PlayCard : MonoBehaviour
             Vector3 mousePosition = Input.mousePosition;
             Ray ray = Camera.main.ScreenPointToRay(mousePosition);
             RaycastHit hit;
-            //LayerMask ignoreOnUnit = LayerMask.GetMask("UI", "dirtLayer");
 
             if (Physics.Raycast(ray, out hit/*, float.MaxValue, ignoreOnUnit*/))
             {
@@ -455,6 +462,3 @@ public abstract class PlayCard : MonoBehaviour
         HoverManager.RepeatLastCursor();
     }
 }
-
-   
-
