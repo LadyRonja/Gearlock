@@ -62,6 +62,7 @@ MonoBehaviour:
   gfx: {fileID: 6819292618928897335}
   myMR: {fileID: 0}
   mySR: {fileID: 1813631389424071510}
+  currentEase: 0
   brokenDigger: {fileID: 1387611179076426880, guid: d532bd26be33c284297d583c1446e12a, type: 3}
 --- !u!65 &5896766868822617361
 BoxCollider:
@@ -156,7 +157,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: e7ba8894375206f40aa83f46c3d838a4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
