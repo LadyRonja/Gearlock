@@ -18,8 +18,9 @@ public class AttackCard : Card
     public void Awake()
     {
         if (verificationText != null)
-            verificationText.SetActive(false);      
+            verificationText.SetActive(false);
     }
+
 
     public override void ExecuteBehaivour(Tile onTile, Unit byUnit)
     {

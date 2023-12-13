@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using static Card;
 
 public class CardManager : MonoBehaviour
 {
@@ -19,8 +20,9 @@ public class CardManager : MonoBehaviour
     public GameObject brokenFighter;
     public GameObject brokenDigger;
     public GameObject dynamite;
-    bool startingHand;
     public TextMeshProUGUI DrawAmount;
+    [HideInInspector] public int siblingIndex;
+
 
     public static CardManager Instance
     {
@@ -46,18 +48,11 @@ public class CardManager : MonoBehaviour
     {
         // The starting deck is added to the draw pile
 
-        startingHand = true; //changed from TRUE
+
         drawPile.Add(dig);
         drawPile.Add(dig);
         drawPile.Add(dig);
-        //drawPile.Add(dig);
         drawPile.Add(attack);
-        //drawPile.Add(attack);
-
-        //drawPile.Add(attack2x);
-
-
-        //drawPile.Add(diggerBot);
         drawPile.Add(diggerBot);
         drawPile.Add(fighterBot);
 
@@ -79,24 +74,6 @@ public class CardManager : MonoBehaviour
     }
     public void DealHand()
     {
-        // Gives player start hand, 1 digger and 1 dig + 3 random cards.
-        //if (startingHand)
-        //{
-        //    //drawPile.Remove(dig);
-        //    //drawPile.Remove(diggerBot);
-        //    //Instantiate(dig, handParent.transform);
-        //    //Instantiate(diggerBot, handParent.transform);
-
-        //    //ShuffleDrawPile();
-
-        //    for (int i = 0; i < 3; i++)
-        //    {
-        //        Instantiate(drawPile[0], handParent.transform);
-        //        drawPile.RemoveAt(0);
-        //    }
-        //    startingHand = false;
-        //}
-
         for (int i = 0; handParent.transform.childCount < 5 && i < 5; i++)
         {
 
@@ -124,32 +101,34 @@ public class CardManager : MonoBehaviour
             {
                 GameObject card = discardPileObject.transform.GetChild(i).gameObject;
 
-                if (card.name == "Dig(Clone)")
+                Card.CardType cardType = card.GetComponent<Card>().myType;
+
+                if (cardType == Card.CardType.Dig)
                 {
                     DestroyImmediate(card);
                     cardsToAddToDrawPile.Add(dig);
                 }
-                else if (card.name == "Attack(Clone)")
+                else if (cardType == Card.CardType.Attack)
                 {
                     DestroyImmediate(card);
                     cardsToAddToDrawPile.Add(attack);
                 }
-                else if (card.name == "Attack x2(Clone)")
+                else if (cardType == Card.CardType.Attack2x)
                 {
                     DestroyImmediate(card);
                     cardsToAddToDrawPile.Add(attack2x);
                 }
-                else if (card.name == "Digger Bot(Clone)")
+                else if (cardType == Card.CardType.DiggerBot)
                 {
                     DestroyImmediate(card);
                     cardsToAddToDrawPile.Add(diggerBot);
                 }
-                else if (card.name == "Fighter Bot(Clone)")
+                else if (cardType == Card.CardType.FighterBot)
                 {
                     DestroyImmediate(card);
                     cardsToAddToDrawPile.Add(fighterBot);
                 }
-                else if (card.name == "Dynamite(Clone)")
+                else if (cardType == Card.CardType.Dynamite)
                 {
                     DestroyImmediate(card);
                     cardsToAddToDrawPile.Add(dynamite);
@@ -195,14 +174,51 @@ public class CardManager : MonoBehaviour
 
     public void ClearActiveCard() // Any card that was being played is returned to hand.
     {
-        for (int i = ActiveCard.Instance.transform.childCount - 1; i >= 0; i--)
+        if (ActiveCard.Instance.transform.childCount > 0)
         {
-            GameObject CardBeingPlayed = ActiveCard.Instance.transform.GetChild(i).gameObject;
-            CardBeingPlayed.transform.parent = HandPanel.Instance.transform;
-            CardBeingPlayed.transform.localScale = new Vector3(2, 2, 2);
-            CardBeingPlayed.GetComponent<MouseOverCard>().inHand = true;
-            CardBeingPlayed.GetComponent<MouseOverCard>().isBeingPlayed = false;
-            ActiveCard.Instance.cardBeingPlayed = null;
+            for (int i = 0; i < 1; i++)
+            {
+                Debug.Log("removing active, returning to hand");
+                GameObject card = ActiveCard.Instance.transform.GetChild(0).gameObject;
+                Card.CardType cardType = card.GetComponent<Card>().myType;
+
+                if (cardType == Card.CardType.Dig)
+                {
+                    DestroyImmediate(card);
+                    GameObject newCard = Instantiate(dig, HandPanel.Instance.transform);
+                    newCard.transform.SetSiblingIndex(siblingIndex);
+                }
+                else if (cardType == Card.CardType.Attack)
+                {
+                    DestroyImmediate(card);
+                    GameObject newCard = Instantiate(attack, HandPanel.Instance.transform);
+                    newCard.transform.SetSiblingIndex(siblingIndex);
+                }
+                else if (cardType == Card.CardType.Attack2x)
+                {
+                    DestroyImmediate(card);
+                    GameObject newCard = Instantiate(attack2x, HandPanel.Instance.transform);
+                    newCard.transform.SetSiblingIndex(siblingIndex);
+                }
+                else if (cardType == Card.CardType.DiggerBot)
+                {
+                    DestroyImmediate(card);
+                    GameObject newCard = Instantiate(diggerBot, HandPanel.Instance.transform);
+                    newCard.transform.SetSiblingIndex(siblingIndex);
+                }
+                else if (cardType == Card.CardType.FighterBot)
+                {
+                    DestroyImmediate(card);
+                    GameObject newCard = Instantiate(fighterBot, HandPanel.Instance.transform);
+                    newCard.transform.SetSiblingIndex(siblingIndex);
+                }
+                else if (cardType == Card.CardType.Dynamite)
+                {
+                    DestroyImmediate(card);
+                    GameObject newCard = Instantiate(dynamite, HandPanel.Instance.transform);
+                    newCard.transform.SetSiblingIndex(siblingIndex);
+                }
+            }
         }
     }
 
@@ -253,7 +269,7 @@ public class CardManager : MonoBehaviour
     {
         if (KeepCard.Instance.transform.childCount > 0)
         {
-            for (int i = 0; i < KeepCard.Instance.transform.childCount +1; i++)
+            for (int i = 0; i < KeepCard.Instance.transform.childCount + 1; i++)
             {
                 GameObject Keptcard = KeepCard.Instance.transform.GetChild(0).gameObject;
                 Keptcard.transform.parent = HandPanel.Instance.transform;

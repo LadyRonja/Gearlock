@@ -20,12 +20,21 @@ public enum CardState
 
 public abstract class Card : MonoBehaviour
 {
+    public enum CardType
+    {
+        Dig,
+        Attack,
+        Attack2x,
+        DiggerBot,
+        FighterBot,
+        Dynamite
+    }
     [Header("Info displayed to player")]
     public string cardName = "--";
     public Sprite cardFrame;
     public Color frameColor = Color.white;
     public Sprite illustration;
-    [TextArea(6, 6)] 
+    [TextArea(6, 6)]
     public string cardDescription;
     public int range = 1;
 
@@ -41,7 +50,8 @@ public abstract class Card : MonoBehaviour
     private bool tilesHighligthed = false;
     private bool cardExecutionCalled = false;
 
-    /*[HideInInspector] */public CardState myState = CardState.Inactive;
+    [HideInInspector] public CardState myState = CardState.Inactive;
+    public CardType myType;
     [HideInInspector] public Tile selectedTile = null;
     [HideInInspector] public Unit selectedUnit = null;
 
@@ -49,10 +59,10 @@ public abstract class Card : MonoBehaviour
     {
         myState = CardState.Inactive;
 
-        if(canNotTargetOccupiedTiles && hasToTargetOccupiedTiles)
-            Debug.LogError($"WARNING: {cardName} both has to and is unable to target occupied Tiles!" );
+        if (canNotTargetOccupiedTiles && hasToTargetOccupiedTiles)
+            Debug.LogError($"WARNING: {cardName} both has to and is unable to target occupied Tiles!");
         if (canNotTargetDirtTiles && hasToTargetDirtTiles)
-            Debug.LogError($"WARNING: {cardName} both has to and is unable to target dirt covered Tiles!");       
+            Debug.LogError($"WARNING: {cardName} both has to and is unable to target dirt covered Tiles!");
     }
 
     protected virtual void Update()
@@ -77,7 +87,7 @@ public abstract class Card : MonoBehaviour
             case CardState.SelectingUnit:
                 // Select a new unit
                 // This state is only entered after a failed verification
-                if(!unitsHighligthed)
+                if (!unitsHighligthed)
                 {
                     List<Tile> tilesWithHighlightContent = new();
                     List<Unit> unitsToHighlight = CardTargetFinder.FindLegalUnits(this);
@@ -94,7 +104,7 @@ public abstract class Card : MonoBehaviour
                 break;
             case CardState.SelectingTile:
                 // Select a tile to attempt to use the card on
-                if(!tilesHighligthed)
+                if (!tilesHighligthed)
                 {
                     CardTargetFinder.UnhighlightAllContent();
                     selectedUnit.standingOn.Highlight(Color.blue);
@@ -124,10 +134,10 @@ public abstract class Card : MonoBehaviour
                 MovementManager.Instance.takingMoveAction = true;
                 myState = CardState.Inactive;
                 CardTargetFinder.UnhighlightAllContent();
-                if(UnitSelector.Instance.selectedUnit != null)
-                        UnitSelector.Instance.UpdateSelectedUnit(UnitSelector.Instance.selectedUnit);
+                if (UnitSelector.Instance.selectedUnit != null)
+                    UnitSelector.Instance.UpdateSelectedUnit(UnitSelector.Instance.selectedUnit);
                 ActiveCard.Instance.cardBeingPlayed = null;
-                tilesHighligthed = false; 
+                tilesHighligthed = false;
                 unitsHighligthed = false;
                 cardExecutionCalled = false;
                 DEBUGCardStateUI.Instance.DEBUGUpdateUI(CardState.Inactive, "--");
@@ -145,7 +155,7 @@ public abstract class Card : MonoBehaviour
     protected virtual void VerifyUnitSelection(List<Unit> legalUnits)
     {
         // If no unit is selected - go to select unit.
-        if(selectedUnit == null)
+        if (selectedUnit == null)
         {
             HandleIllegalSelection("No unit selected, please select a unit",
                                     "Select a Unit.");
@@ -193,7 +203,7 @@ public abstract class Card : MonoBehaviour
                 {
                     Tile clickedTile = null;
 
-                    if(hit.collider.gameObject.TryGetComponent<Unit>(out Unit clickedUnit)) 
+                    if (hit.collider.gameObject.TryGetComponent<Unit>(out Unit clickedUnit))
                     {
                         clickedTile = clickedUnit.standingOn;
                         PickUnit(clickedTile);
@@ -202,7 +212,7 @@ public abstract class Card : MonoBehaviour
 
                     if (hit.collider.gameObject.TryGetComponent<Tile>(out clickedTile))
                     {
-                        if(clickedTile.occupant != null)
+                        if (clickedTile.occupant != null)
                         {
                             PickUnit(clickedTile);
                             return;
@@ -264,7 +274,7 @@ public abstract class Card : MonoBehaviour
                 {
                     Tile clickedTile = null;
 
-                    if(hit.collider.gameObject.TryGetComponent<Dirt>(out Dirt clickedDirt))
+                    if (hit.collider.gameObject.TryGetComponent<Dirt>(out Dirt clickedDirt))
                     {
                         clickedTile = clickedDirt.myTile;
                         PickTile(clickedTile);
@@ -310,21 +320,21 @@ public abstract class Card : MonoBehaviour
 
     protected virtual void VerifyTileSelection(List<Tile> legalTargets)
     {
-       // If no selected tile is passed
-       if(selectedTile == null)
+        // If no selected tile is passed
+        if (selectedTile == null)
         {
             HandleIllegalSelection("No tile selected for verification - error in structure",
                                     "Contact a programmer, no tile selected");
             return;
-       }
+        }
 
-       // We already gather all legal tiles to highlight them, no need to do that twice
-       if (!legalTargets.Contains(selectedTile))
-       {
+        // We already gather all legal tiles to highlight them, no need to do that twice
+        if (!legalTargets.Contains(selectedTile))
+        {
             HandleIllegalSelection("Illegal target selected",
                                     "Please select a highlighted target");
             return;
-       }
+        }
 
         // If reached this bit of the code, the card is valid and can be executed
         myState = CardState.Executing;
@@ -373,7 +383,7 @@ public abstract class Card : MonoBehaviour
 
         CardTargetFinder.UnhighlightAllContent();
         UnitSelector.Instance.UpdateSelectedUnit(UnitSelector.Instance.selectedUnit);
-       
+
         HoverManager.RepeatLastCursor(); // TODO: Fix this function so it shoots a raycast and checks what it hits instead
     }
 }
