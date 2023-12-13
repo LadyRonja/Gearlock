@@ -41,7 +41,7 @@ public abstract class Card : MonoBehaviour
     private bool tilesHighligthed = false;
     private bool cardExecutionCalled = false;
 
-    [HideInInspector] public CardState myState = CardState.Inactive;
+    /*[HideInInspector] */public CardState myState = CardState.Inactive;
     [HideInInspector] public Tile selectedTile = null;
     [HideInInspector] public Unit selectedUnit = null;
 

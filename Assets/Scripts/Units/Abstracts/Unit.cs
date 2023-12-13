@@ -39,6 +39,7 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerEnterHandler, IP
     public Transform gfx;
     public MeshRenderer myMR;
     public SpriteRenderer mySR;
+    public SpriteRenderer highligtherArrow;
 
     [Header("DoTween")]
     public Ease currentEase;
@@ -49,9 +50,13 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerEnterHandler, IP
         if(infoTextUnit!= null)
             infoTextUnit.SetActive(false);
 
-        myMR = gfx.GetComponent<MeshRenderer>();
+        //myMR = gfx.GetComponent<MeshRenderer>();
         if(myMR == null)
+        {
             mySR = gfx.GetComponent<SpriteRenderer>();
+        }
+        if(highligtherArrow != null)
+            highligtherArrow.gameObject.SetActive(false);
     }
 
     public virtual void TakeDamage(int amount)
@@ -305,14 +310,15 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerEnterHandler, IP
 
     public virtual void Highlight()
     {
-        Debug.Log($"Implement highlight, called on {unitName}");
-        mySR.color = Color.black;
+        if(highligtherArrow != null)
+            highligtherArrow.gameObject.SetActive(true);
+
     }
 
     public virtual void UnHighlight()
     {
-        Debug.Log($"Implement un-highlight, called on {unitName}");
-        mySR.color = Color.white;
+        if (highligtherArrow != null)
+            highligtherArrow.gameObject.SetActive(false);
     }
 
     protected void HoverTextUnit()

@@ -37,10 +37,9 @@ public class CardPickUp : MonoBehaviour
             return;
         }
 
-        
-        frameSR.sprite = cardLayout.cardFrame;
-        frameSR.color = cardLayout.frameColor;
-        illustrationSR.sprite = cardLayout.illustration;
+        if(frameSR != null) frameSR.sprite = cardLayout.cardFrame;
+        if(frameSR != null) frameSR.color = cardLayout.frameColor;
+        if(illustrationSR != null) illustrationSR.sprite = cardLayout.illustration;
 
         fixedGFX = true;
     }

@@ -8,6 +8,13 @@ public class Dirt : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     public Tile myTile;
     public MeshRenderer gfx;
+    public SpriteRenderer highligther;
+
+    private void Start()
+    {
+        UnHighlight();
+    }
+
     public void OnMouseEnter()
     {
         HoverManager.CursorManagerEnter(myTile);
@@ -30,12 +37,12 @@ public class Dirt : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
     public void Highlight()
     {
-        Debug.Log($"Implement Highlight on dirt, called on by dirt from tile {myTile.name}");
-        gfx.material.color = Color.black;
+        if (highligther != null)
+            highligther.gameObject.SetActive(true);
     }
     public void UnHighlight()
     {
-        Debug.Log($"Implement UnHighlight on dirt, called on by dirt from tile {myTile.name}");
-        gfx.material.color = Color.white;
+        if(highligther != null)
+            highligther.gameObject.SetActive(false);
     } 
 }
