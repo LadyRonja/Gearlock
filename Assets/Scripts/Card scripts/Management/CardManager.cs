@@ -120,7 +120,6 @@ public class CardManager : MonoBehaviour
         if (discardPileObject != null)
         {
             List<GameObject> cardsToAddToDrawPile = new List<GameObject>();
-            Debug.Log("discard script executed");
             for (int i = discardPileObject.transform.childCount - 1; i >= 0; i--)
             {
                 GameObject card = discardPileObject.transform.GetChild(i).gameObject;
@@ -155,13 +154,16 @@ public class CardManager : MonoBehaviour
                     DestroyImmediate(card);
                     cardsToAddToDrawPile.Add(dynamite);
                 }
+                else{
+                    Debug.LogError("Card not identified, please refactor this function");
+                }
             }
 
             // Add the cards to drawPile
             drawPile.AddRange(cardsToAddToDrawPile);
 
             ShuffleDrawPile();
-            Debug.Log(discardPileObject.transform.childCount);
+            //Debug.Log(discardPileObject.transform.childCount);
         }
     }
 

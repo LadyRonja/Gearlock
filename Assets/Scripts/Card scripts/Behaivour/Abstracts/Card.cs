@@ -18,7 +18,7 @@ public enum CardState
     Finished
 }
 
-public abstract class PlayCard : MonoBehaviour
+public abstract class Card : MonoBehaviour
 {
     [Header("Info displayed to player")]
     public string cardName = "--";
@@ -39,7 +39,7 @@ public abstract class PlayCard : MonoBehaviour
 
     private bool unitsHighligthed = false;
     private bool tilesHighligthed = false;
-
+    private bool cardExecutionCalled = false;
 
     [HideInInspector] public CardState myState = CardState.Inactive;
     [HideInInspector] public Tile selectedTile = null;
@@ -61,16 +61,17 @@ public abstract class PlayCard : MonoBehaviour
         switch (myState)
         {
             case CardState.Inactive:
-                // Essentially do nothing.
+                // Ensure all things are ready for being played
                 selectedTile = null;
                 selectedUnit = UnitSelector.Instance.selectedUnit;
                 unitsHighligthed = false;
                 tilesHighligthed = false;
+                cardExecutionCalled = false;
 
                 break;
             case CardState.VerifyUnitSelection:
                 // Verify if the selected unit is legal
-                VerifyUnitSelection();
+                VerifyUnitSelection(CardTargetFinder.FindLegalUnits(this));
 
                 break;
             case CardState.SelectingUnit:
@@ -78,7 +79,14 @@ public abstract class PlayCard : MonoBehaviour
                 // This state is only entered after a failed verification
                 if(!unitsHighligthed)
                 {
-                    HighlightUnits();
+                    List<Tile> tilesWithHighlightContent = new();
+                    List<Unit> unitsToHighlight = CardTargetFinder.FindLegalUnits(this);
+                    foreach (Unit u in unitsToHighlight)
+                    {
+                        tilesWithHighlightContent.Add(u.standingOn);
+                    }
+
+                    CardTargetFinder.HighlightContent(tilesWithHighlightContent, true, false);
                     unitsHighligthed = true;
                 }
                 SelectUnit();
@@ -88,7 +96,7 @@ public abstract class PlayCard : MonoBehaviour
                 // Select a tile to attempt to use the card on
                 if(!tilesHighligthed)
                 {
-                    GridManager.Instance.UnhighlightAll();
+                    CardTargetFinder.UnhighlightAllContent();
                     selectedUnit.standingOn.Highlight(Color.blue);
                     HighlightTiles();
                     tilesHighligthed = true;
@@ -98,27 +106,30 @@ public abstract class PlayCard : MonoBehaviour
                 break;
             case CardState.VerifyTileSelection:
                 // Verify if the selected tile is legal
-                VerifyTileSelection();
+                VerifyTileSelection(CardTargetFinder.FindLegalTiles(this));
 
                 break;
             case CardState.Executing:
                 // Execute the cards behaivour
-                ExecuteBehaivour(selectedTile, selectedUnit);
-                myState = CardState.Finished;
-                DEBUGCardStateUI.Instance.DEBUGUpdateUI(CardState.Executing, "Playing card!");
-
+                if (!cardExecutionCalled)
+                {
+                    ExecuteBehaivour(selectedTile, selectedUnit);
+                    DEBUGCardStateUI.Instance.DEBUGUpdateUI(CardState.Executing, "Playing card!");
+                    cardExecutionCalled = true;
+                }
                 break;
             case CardState.Finished:
                 // Let the card manager know the card is finished and can go to discard
                 CardManager.Instance.CardEffectComplete();
                 MovementManager.Instance.takingMoveAction = true;
                 myState = CardState.Inactive;
-                GridManager.Instance.UnhighlightAll();
+                CardTargetFinder.UnhighlightAllContent();
                 if(UnitSelector.Instance.selectedUnit != null)
                         UnitSelector.Instance.UpdateSelectedUnit(UnitSelector.Instance.selectedUnit);
                 ActiveCard.Instance.cardBeingPlayed = null;
                 tilesHighligthed = false; 
                 unitsHighligthed = false;
+                cardExecutionCalled = false;
                 DEBUGCardStateUI.Instance.DEBUGUpdateUI(CardState.Inactive, "--");
 
                 break;
@@ -131,7 +142,7 @@ public abstract class PlayCard : MonoBehaviour
         }
     }
 
-    protected virtual void VerifyUnitSelection()
+    protected virtual void VerifyUnitSelection(List<Unit> legalUnits)
     {
         // If no unit is selected - go to select unit.
         if(selectedUnit == null)
@@ -142,24 +153,11 @@ public abstract class PlayCard : MonoBehaviour
             return;
         }
 
-        // Player can only play cards on player-cntrolled units
-        if(selectedUnit.playerBot == false)
+        if (!legalUnits.Contains(selectedUnit))
         {
-            HandleIllegalSelection("Selected unit is not controlled by the player",
-                                    "Select a friendly Unit");
+            HandleIllegalSelection("Illegal unit selected", "Please select a highlighted unit");
 
             return;
-        }
-
-        // If the card has a special requirment, make sure the selected bot clears that requirment
-        if(requiredSpecialization != BotSpecialization.None)
-        {
-            if(selectedUnit.mySpecialization != requiredSpecialization) 
-            {
-                HandleIllegalSelection("Selected unit does not match special requirment",
-                                        "Select a unit that can use that card");
-                return;
-            }
         }
 
         // If reached this bit of the code, the bot is verified and get's to cast the card.
@@ -176,7 +174,6 @@ public abstract class PlayCard : MonoBehaviour
             unitsHighligthed = false;
         }
     }
-
 
     protected virtual void SelectUnit()
     {
@@ -233,96 +230,26 @@ public abstract class PlayCard : MonoBehaviour
                 selectedUnit = onTile.occupant;
                 UnitSelector.Instance.UpdateSelectedUnit(selectedUnit);
                 myState = CardState.VerifyUnitSelection;
-                //Debug.Log("New unit selected: " + selectedUnit.unitName);
             }
-
-            //Debug.Log("No unit selected");
-        }
-    }
-
-    protected virtual void HighlightUnits()
-    {
-        // Find legal units
-        List<Unit> legalUnits = new();
-        if (requiredSpecialization != BotSpecialization.None)
-            legalUnits = UnitStorage.Instance.playerUnits.Where(u => u.mySpecialization == requiredSpecialization).ToList();
-        else
-            legalUnits = UnitStorage.Instance.playerUnits;
-
-        #region No legal targets behaivour
-        // If no legal units, put card back in hand
-        /*if (legalUnits.Count == 0)
-        {
-            //Debug.Log("No legal unit found, removing card from played");
-            CancelPlay();
-            CardManager.instance.ClearActiveCard();
-            return;
-        }*/
-        #endregion
-
-        // Highlight the units
-        foreach (Unit u in legalUnits)
-        {
-            u.standingOn.Highlight();
         }
     }
 
     protected virtual void HighlightTiles()
     {
         // Find legal tiles
-        List<Tile> legalTiles = new();
+        List<Tile> legalTiles = CardTargetFinder.FindLegalTiles(this);
 
-        legalTiles.AddRange(GridManager.Instance.tiles);
-        List<Tile> tilesToRemove = new();
-        // Remove illegal tiles
-        foreach(Tile t in legalTiles)
-        {
-            // Dirt Check
-            if(hasToTargetDirtTiles && !t.containsDirt)
-                tilesToRemove.Add(t);
+        // Deterime what to highlight
+        bool highlightDirt = hasToTargetDirtTiles;
+        bool highlightUnits = hasToTargetOccupiedTiles;
 
-            if(canNotTargetDirtTiles && t.containsDirt) 
-                tilesToRemove.Add(t);
-
-            // Unit Check
-            if(hasToTargetOccupiedTiles && !t.occupied)
-                tilesToRemove.Add(t);
-
-            if(canNotTargetOccupiedTiles && t.occupied)
-                tilesToRemove.Add(t);
-
-            // Range check
-            if (Pathfinding.GetDistance(t, selectedUnit.standingOn) > range || Pathfinding.GetDistance(t, selectedUnit.standingOn) == 0)
-                tilesToRemove.Add(t);
-        }
-
-        foreach (Tile t in tilesToRemove)
-        {
-            if(legalTiles.Contains(t))
-                legalTiles.Remove(t);
-        }
-
-        #region No legal targets behaivour
-        // If no legal tiles, put card back in hand
-        /*if (legalTiles.Count == 0)
-        {
-            //Debug.Log("No legal tile found, removing card from played");
-            CancelPlay();
-            CardManager.instance.ClearActiveCard();
-            return;
-        }*/
-        #endregion
-
-        // Highlight the tiles
-        foreach (Tile t in legalTiles)
-        {
-            t.Highlight();
-        }
+        // Highlight relevant data
+        CardTargetFinder.HighlightContent(legalTiles, highlightUnits, highlightDirt);
     }
 
     protected virtual void SelectTile()
     {
-        // Click on a tile
+        // Click on a tile, unit, or dirt
         // That is now the selected tile
         // Send to verify
         if (Input.GetMouseButtonDown((int)MouseButton.Left))
@@ -331,7 +258,7 @@ public abstract class PlayCard : MonoBehaviour
             Ray ray = Camera.main.ScreenPointToRay(mousePosition);
             RaycastHit hit;
 
-            if (Physics.Raycast(ray, out hit/*, float.MaxValue, ignoreOnUnit*/))
+            if (Physics.Raycast(ray, out hit))
             {
                 if (hit.collider != null)
                 {
@@ -359,17 +286,29 @@ public abstract class PlayCard : MonoBehaviour
                 }
             }
 
+            // Also check UI elements for the mini potraits
+            PointerEventData ped = new PointerEventData(GraphicsRayCastAssistance.Instance.eventSystem);
+            ped.position = Input.mousePosition;
+            List<RaycastResult> results = new List<RaycastResult>();
+            GraphicsRayCastAssistance.Instance.caster.Raycast(ped, results);
+            foreach (RaycastResult result in results)
+            {
+                if (result.gameObject.TryGetComponent<UnitMiniPanel>(out UnitMiniPanel ump))
+                {
+                    PickTile(ump.myUnit.standingOn);
+                    return;
+                }
+            }
+
             void PickTile(Tile thisTile)
             {
                 selectedTile = thisTile;
                 myState = CardState.VerifyTileSelection;
-                //Debug.Log("New tile selected: " + selectedTile.transform.name);
             }
-            //Debug.Log("No tile selected");
         }
     }
 
-    protected virtual void VerifyTileSelection()
+    protected virtual void VerifyTileSelection(List<Tile> legalTargets)
     {
        // If no selected tile is passed
        if(selectedTile == null)
@@ -379,86 +318,62 @@ public abstract class PlayCard : MonoBehaviour
             return;
        }
 
-       // Check if the tile contains dirt
-       if(hasToTargetDirtTiles && !selectedTile.containsDirt)
+       // We already gather all legal tiles to highlight them, no need to do that twice
+       if (!legalTargets.Contains(selectedTile))
        {
-            HandleIllegalSelection("Tile must contain dirt for this card",
-                                    "This card must be played on a tile with dirt");
+            HandleIllegalSelection("Illegal target selected",
+                                    "Please select a highlighted target");
             return;
-       }
-
-       if(canNotTargetDirtTiles && selectedTile.containsDirt)
-       {
-            HandleIllegalSelection("Tile cannot contain dirt for this card",
-                                    "This card can not be played on a tile with dirt");
-            return;
-       }
-
-        // Check if the tile contains a unit
-        if (hasToTargetOccupiedTiles && !selectedTile.occupied)
-        {
-            HandleIllegalSelection("Tile must contain a unit for this card",
-                                    "This card has to be played on a tile with a unit on it");
-            return;
-        }
-
-        if(canNotTargetOccupiedTiles && selectedTile.occupied)
-        {
-            HandleIllegalSelection("Tile can not contain a unit for this card",
-                                    "This card has to be played on a tile without a unit on it");
-            return;
-        }
-
-
-        // Check if the tile is in range
-        if (range > 0)
-        {
-            int dist = Pathfinding.GetDistance(selectedTile, selectedUnit.standingOn);
-            
-            // Unless range is 0, cannot target own tile
-            if(!(dist <= range && dist != 0))
-            {
-                HandleIllegalSelection("Tile is out of range, unless range is 0 it can not target the same tile as the user",
-                                        "Tile selected was not within card range");
-                return;
-            }
        }
 
         // If reached this bit of the code, the card is valid and can be executed
         myState = CardState.Executing;
 
+        // When an illegal selection is made, log it and return to the selection stage
         void HandleIllegalSelection(string errorMessage, string cardStateText)
         {
-            Debug.Log(errorMessage);
+            //Debug.Log(errorMessage);
             DEBUGCardStateUI.Instance.DEBUGUpdateUI(CardState.VerifyTileSelection, cardStateText);
             myState = CardState.SelectingTile;
-            GridManager.Instance.UnhighlightAll();
+            CardTargetFinder.UnhighlightAllContent();
             tilesHighligthed = false;
         }
     }
 
+    // Called to start playing the process of playing the card
     public virtual void Play()
     {
-        //Debug.Log("card is being played:" + this.name);
+        // Since units may be selected before playing, start by verifying the selected unit to play the card with.
         myState = CardState.VerifyUnitSelection;
         DEBUGCardStateUI.Instance.DEBUGUpdateUI(CardState.SelectingUnit, "Select a unit");
+
+        // Disable the ability to move units while playing cards
         MovementManager.Instance.takingMoveAction = false;
     }
 
 
     public abstract void ExecuteBehaivour(Tile onTile, Unit byUnit);
 
+    /// <summary>
+    /// Left Abstract to force reminder when implementing new subclass
+    /// Call this once the card behaivour is complete
+    /// </summary>
+    public abstract void ConfirmCardExecuted();
+
     public void CancelPlay()
     {
-        //Debug.Log("Card is returned to inactive play");
         DEBUGCardStateUI.Instance.DEBUGUpdateUI(CardState.Inactive, "--");
+
         selectedTile = null;
         selectedUnit = null;
         myState = CardState.Inactive;
+
         ActiveCard.Instance.cardBeingPlayed = null;
         MovementManager.Instance.takingMoveAction = true;
-        GridManager.Instance.UnhighlightAll();
+
+        CardTargetFinder.UnhighlightAllContent();
         UnitSelector.Instance.UpdateSelectedUnit(UnitSelector.Instance.selectedUnit);
-        HoverManager.RepeatLastCursor();
+       
+        HoverManager.RepeatLastCursor(); // TODO: Fix this function so it shoots a raycast and checks what it hits instead
     }
 }

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DynamiteCard : PlayCard 
+public class DynamiteCard : Card 
 {
     //kolla vart robortarna är 
     //Man kan inte targeta dirt
@@ -22,7 +22,10 @@ public class DynamiteCard : PlayCard
    
     public override void ExecuteBehaivour(Tile onTile, Unit byUnit)
     {
-                //playerAnimator.SetTrigger("Exploding"); 
+        ConfirmCardExecuted();
+        return;
+
+         //playerAnimator.SetTrigger("Exploding"); 
 
          Vector3 spawnpoint = onTile.transform.position;
          spawnpoint.y += 3;
@@ -87,5 +90,10 @@ public class DynamiteCard : PlayCard
             }
         }
 
+    }
+
+    public override void ConfirmCardExecuted()
+    {
+        myState = CardState.Finished;
     }
 }

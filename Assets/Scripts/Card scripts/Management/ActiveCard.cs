@@ -6,7 +6,7 @@ public class ActiveCard : MonoBehaviour
 {
 
     public static ActiveCard Instance;
-    public PlayCard cardBeingPlayed;
+    public Card cardBeingPlayed;
 
 
     private void Awake()

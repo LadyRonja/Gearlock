@@ -5,12 +5,12 @@ using UnityEngine;
 public class DebugCardPlayer : MonoBehaviour
 {
     public GameObject cardPrefab;
-    public PlayCard activeCard;
+    public Card activeCard;
    
 
     private void Start()
     {
-        activeCard = Instantiate(cardPrefab).GetComponent<PlayCard>();
+        activeCard = Instantiate(cardPrefab).GetComponent<Card>();
         
     }
 

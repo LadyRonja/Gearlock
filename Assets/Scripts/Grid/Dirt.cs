@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -26,4 +27,15 @@ public class Dirt : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
         HoverManager.HoverTileExit(myTile);
     }
+
+    public void Highlight()
+    {
+        Debug.Log($"Implement Highlight on dirt, called on by dirt from tile {myTile.name}");
+        gfx.material.color = Color.black;
+    }
+    public void UnHighlight()
+    {
+        Debug.Log($"Implement UnHighlight on dirt, called on by dirt from tile {myTile.name}");
+        gfx.material.color = Color.white;
+    } 
 }

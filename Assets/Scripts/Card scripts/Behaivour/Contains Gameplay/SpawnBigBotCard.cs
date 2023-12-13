@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpawnBigBotCard : PlayCard
+public class SpawnBigBotCard : Card
 {
     public GameObject bigBot;
 
@@ -16,6 +16,12 @@ public class SpawnBigBotCard : PlayCard
         bigBotScript.standingOn = onTile;
 
         UnitStorage.Instance.enemyUnits.Add(bigBotScript);
-
+        ConfirmCardExecuted();
     }
+
+    public override void ConfirmCardExecuted()
+    {
+        myState = CardState.Finished;
+    }
+
 }

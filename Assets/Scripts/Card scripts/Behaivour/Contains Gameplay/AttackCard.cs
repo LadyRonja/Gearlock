@@ -4,7 +4,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class AttackCard : PlayCard
+public class AttackCard : Card
 {
     [SerializeField]
     private int multiplier = 1;
@@ -18,9 +18,7 @@ public class AttackCard : PlayCard
     public void Awake()
     {
         if (verificationText != null)
-            verificationText.SetActive(false);
-
-        
+            verificationText.SetActive(false);      
     }
 
     public override void ExecuteBehaivour(Tile onTile, Unit byUnit)
@@ -42,17 +40,24 @@ public class AttackCard : PlayCard
             }
         }*/
         onTile.occupant.TakeDamage(byUnit.power * multiplier);
-
+        ConfirmCardExecuted();
     }
 
-   /* public void ClickedYes()
+    public override void ConfirmCardExecuted()
     {
-        verificationText.SetActive(false);
-        onTile.occupant.TakeDamage(byUnit.power * multiplier);
+        myState = CardState.Finished;
     }
 
-    public void ClickedNo()
-    {
-        verificationText.SetActive(false);
-    }*/
+
+
+    /* public void ClickedYes()
+     {
+         verificationText.SetActive(false);
+         onTile.occupant.TakeDamage(byUnit.power * multiplier);
+     }
+
+     public void ClickedNo()
+     {
+         verificationText.SetActive(false);
+     }*/
 }

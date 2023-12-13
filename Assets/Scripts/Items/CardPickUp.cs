@@ -30,7 +30,7 @@ public class CardPickUp : MonoBehaviour
 
     public void CardLayout()
     {
-        PlayCard cardLayout = cardToAdd.GetComponent<PlayCard>();
+        Card cardLayout = cardToAdd.GetComponent<Card>();
         if (cardLayout == null)
         {
             Debug.LogError("Card Missing Card Data");

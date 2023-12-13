@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpawnUnitCard : PlayCard
+public class SpawnUnitCard : Card
 {
     public GameObject unitPrefabToSpawn;
 
@@ -19,5 +19,14 @@ public class SpawnUnitCard : PlayCard
         botScript.unitName += " "  + UnitStorage.Instance.playerUnits.Count;
         UnitSelector.Instance.UpdateSelectedUnit(botScript);
         UnitSelector.Instance.UpdatePlayerUnitUI();
+
+        ConfirmCardExecuted();
     }
+
+
+    public override void ConfirmCardExecuted()
+    {
+        myState = CardState.Finished;
+    }
+
 }
