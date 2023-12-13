@@ -17,13 +17,13 @@ public class TurnManager : MonoBehaviour // classen blir en singleton
     public GameObject KeepCardScreen;
     public TMP_Text endTurnText;
 
-    //DOTween Player and AI turn
+    //DOTween Player and AI turn text
     public GameObject underlineRightRed; //turn text line enemy
     public GameObject underlineLeftRed;//turn text line enemy
     public GameObject underlineRightBlue; //turn text line player
     public GameObject underlineLeftBlue;//turn text line player
     public Ease currentEase;
-    Vector3 startPos;
+    
 
     [SerializeField] TMP_Text tempTurnText;
 
@@ -57,6 +57,7 @@ public class TurnManager : MonoBehaviour // classen blir en singleton
             tempTurnText.DOFade(100, 2);
             underlineRightRed.GetComponent<UnityEngine.UI.Image>().DOFade(100, 2);
             underlineLeftRed.GetComponent<UnityEngine.UI.Image>().DOFade(100, 2);
+            
 
             CameraController.Instance.playerCanMove = false;
             CameraController.Instance.playerHasMoved = false;
@@ -88,8 +89,8 @@ public class TurnManager : MonoBehaviour // classen blir en singleton
         endTurnText.text = "End Turn";
         UpdateUI();
         tempTurnText.DOFade(100, 2);
-        underlineRightRed.GetComponent<UnityEngine.UI.Image>().DOFade(100, 2);
-        underlineLeftRed.GetComponent<UnityEngine.UI.Image>().DOFade(100, 2);
+        underlineRightBlue.GetComponent<UnityEngine.UI.Image>().DOFade(100, 2);
+        underlineLeftBlue.GetComponent<UnityEngine.UI.Image>().DOFade(100, 2);
     }
 
 
@@ -103,21 +104,15 @@ public class TurnManager : MonoBehaviour // classen blir en singleton
         {
             tempTurnText.text = "Player Turn";
             ChangeColorOnTurn();
-            TextAnimationTurn();
-
-
-
-
+            TexAnimationTurnPlayer();
         }
         else 
         {
             tempTurnText.text = "AI Turn";
             ChangeColorOnTurn();
-            TextAnimationTurn();
+            TextAnimationTurnAI();
         }
-        
-            
-            
+  
     }
 
 
@@ -147,12 +142,10 @@ public class TurnManager : MonoBehaviour // classen blir en singleton
         }
     }   
 
-    public void TextAnimationTurn()
+    public void TextAnimationTurnAI()
     {
         
         tempTurnText.rectTransform.anchoredPosition = new Vector2(1430, 15);
-        //tempTurnText.transform.DOMoveX(600, 0.5f).SetEase(currentEase).OnStepComplete(FadeTextTurn);
-
         underlineRightRed.transform.localPosition = new Vector3(2000, -80, 0);
         underlineLeftRed.transform.localPosition = new Vector3(-2000, 90, 0);
 
@@ -162,16 +155,33 @@ public class TurnManager : MonoBehaviour // classen blir en singleton
         textSequence.Join(underlineLeftRed.transform.DOMoveX(730, 0.2f).SetEase(currentEase));
         textSequence.OnComplete(FadeTextTurn);
 
-        //underlineRight.transform.DOMoveX(600, 0.2f).SetEase(currentEase).OnStepComplete(FadeTextTurn);
+        
     }
 
-   
+    public void TexAnimationTurnPlayer()
+    {
+        tempTurnText.rectTransform.anchoredPosition = new Vector2(1430, 15);
+        underlineRightBlue.transform.localPosition = new Vector3(2000, -80, 0);
+        underlineLeftBlue.transform.localPosition = new Vector3(-2000, 90, 0);
+
+        DG.Tweening.Sequence textSequence = DOTween.Sequence();
+        textSequence.Append(tempTurnText.transform.DOMoveX(600, 0.5f).SetEase(currentEase));
+        textSequence.Join(underlineRightBlue.transform.DOMoveX(470, 0.2f).SetEase(currentEase));
+        textSequence.Join(underlineLeftBlue.transform.DOMoveX(730, 0.2f).SetEase(currentEase));
+        textSequence.OnComplete(FadeTextTurn);
+
+    }
+
+
 
     public void FadeTextTurn()
     {
         tempTurnText.DOFade(0, 2).SetDelay(0.7f);
         underlineRightRed.GetComponent<UnityEngine.UI.Image>().DOFade(0, 2).SetDelay(0.7f);
         underlineLeftRed.GetComponent<UnityEngine.UI.Image>().DOFade(0, 2).SetDelay(0.7f);
+
+        underlineRightBlue.GetComponent<UnityEngine.UI.Image>().DOFade(0, 2).SetDelay(0.7f);
+        underlineLeftBlue.GetComponent<UnityEngine.UI.Image>().DOFade(0, 2).SetDelay(0.7f);
 
     }
 

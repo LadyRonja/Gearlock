@@ -342,6 +342,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myTile: {fileID: 7304095214633707530}
   gfx: {fileID: 1134829075}
+  highligther: {fileID: 0}
 --- !u!4 &153697830
 Transform:
   m_ObjectHideFlags: 0
@@ -774,6 +775,7 @@ MonoBehaviour:
   gfx: {fileID: 840327518}
   myMR: {fileID: 0}
   mySR: {fileID: 840327519}
+  highligtherArrow: {fileID: 0}
   currentEase: 0
 --- !u!1 &247181633
 GameObject:
@@ -808,6 +810,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myTile: {fileID: 6597606564871663574}
   gfx: {fileID: 1310944960}
+  highligther: {fileID: 0}
 --- !u!4 &247181635
 Transform:
   m_ObjectHideFlags: 0
@@ -1067,6 +1070,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myTile: {fileID: 284818098967100619}
   gfx: {fileID: 507883829}
+  highligther: {fileID: 0}
 --- !u!4 &315720114
 Transform:
   m_ObjectHideFlags: 0
@@ -1212,6 +1216,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myTile: {fileID: 4570398963101970897}
   gfx: {fileID: 1433449411}
+  highligther: {fileID: 0}
 --- !u!4 &369905534
 Transform:
   m_ObjectHideFlags: 0
@@ -1638,6 +1643,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myTile: {fileID: 2641520444567201375}
   gfx: {fileID: 912523024}
+  highligther: {fileID: 0}
 --- !u!4 &432776364
 Transform:
   m_ObjectHideFlags: 0
@@ -1738,6 +1744,7 @@ MonoBehaviour:
   canNotTargetOccupiedTiles: 0
   goesToDiscardAfterPlay: 1
   myState: 0
+  myType: 0
   selectedTile: {fileID: 0}
   selectedUnit: {fileID: 0}
   dynamite: {fileID: 0}
@@ -2257,6 +2264,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myTile: {fileID: 5108885220810808871}
   gfx: {fileID: 415872658}
+  highligther: {fileID: 0}
 --- !u!4 &519735215
 Transform:
   m_ObjectHideFlags: 0
@@ -2692,6 +2700,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myTile: {fileID: 5670280812036503496}
   gfx: {fileID: 736760048}
+  highligther: {fileID: 0}
 --- !u!4 &671572958
 Transform:
   m_ObjectHideFlags: 0
@@ -2796,6 +2805,7 @@ MonoBehaviour:
   gfx: {fileID: 1284964942}
   myMR: {fileID: 0}
   mySR: {fileID: 1284964941}
+  highligtherArrow: {fileID: 0}
   currentEase: 0
 --- !u!4 &672333018
 Transform:
@@ -3129,6 +3139,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myTile: {fileID: 465055839641552508}
   gfx: {fileID: 1503097441}
+  highligther: {fileID: 0}
 --- !u!4 &756326787
 Transform:
   m_ObjectHideFlags: 0
@@ -3993,6 +4004,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myTile: {fileID: 7338601059839571467}
   gfx: {fileID: 2006993802}
+  highligther: {fileID: 0}
 --- !u!4 &856317733
 Transform:
   m_ObjectHideFlags: 0
@@ -4084,6 +4096,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myTile: {fileID: 1563931011869745715}
   gfx: {fileID: 1242021266}
+  highligther: {fileID: 0}
 --- !u!4 &881263609
 Transform:
   m_ObjectHideFlags: 0
@@ -5021,6 +5034,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myTile: {fileID: 7389297293007430559}
   gfx: {fileID: 1900169615}
+  highligther: {fileID: 0}
 --- !u!4 &1032995509
 Transform:
   m_ObjectHideFlags: 0
@@ -5679,6 +5693,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myTile: {fileID: 7796904985782186140}
   gfx: {fileID: 1132453831}
+  highligther: {fileID: 0}
 --- !u!4 &1188354778
 Transform:
   m_ObjectHideFlags: 0
@@ -6019,6 +6034,7 @@ MonoBehaviour:
   gfx: {fileID: 1448536944}
   myMR: {fileID: 0}
   mySR: {fileID: 1448536943}
+  highligtherArrow: {fileID: 0}
   currentEase: 0
 --- !u!4 &1205755848
 Transform:
@@ -6672,6 +6688,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myTile: {fileID: 1443484397687942454}
   gfx: {fileID: 1366513239}
+  highligther: {fileID: 0}
 --- !u!4 &1337037259
 Transform:
   m_ObjectHideFlags: 0
@@ -7204,6 +7221,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myTile: {fileID: 1366394439047209296}
   gfx: {fileID: 1174687879}
+  highligther: {fileID: 0}
 --- !u!4 &1427030555
 Transform:
   m_ObjectHideFlags: 0
@@ -7508,6 +7526,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myTile: {fileID: 5769307682763150179}
   gfx: {fileID: 2040440868}
+  highligther: {fileID: 0}
 --- !u!4 &1467298161
 Transform:
   m_ObjectHideFlags: 0
@@ -7947,6 +7966,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myTile: {fileID: 6437816511202206155}
   gfx: {fileID: 2100250486}
+  highligther: {fileID: 0}
 --- !u!4 &1578261701
 Transform:
   m_ObjectHideFlags: 0
@@ -8098,6 +8118,7 @@ MonoBehaviour:
   gfx: {fileID: 278322629}
   myMR: {fileID: 0}
   mySR: {fileID: 278322628}
+  highligtherArrow: {fileID: 0}
   currentEase: 20
   brokenFighter: {fileID: 3141665598236762354, guid: a01b1ee6048250e4595d21ee65596a4d, type: 3}
 --- !u!4 &1605080590
@@ -8453,6 +8474,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myTile: {fileID: 2495270383883785980}
   gfx: {fileID: 1080224192}
+  highligther: {fileID: 0}
 --- !u!4 &1644988212
 Transform:
   m_ObjectHideFlags: 0
@@ -8544,6 +8566,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myTile: {fileID: 8636179353595106130}
   gfx: {fileID: 835626632}
+  highligther: {fileID: 0}
 --- !u!4 &1655453768
 Transform:
   m_ObjectHideFlags: 0
@@ -8844,6 +8867,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myTile: {fileID: 3328293534217257359}
   gfx: {fileID: 1818089093}
+  highligther: {fileID: 0}
 --- !u!4 &1682795049
 Transform:
   m_ObjectHideFlags: 0
@@ -9032,6 +9056,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerUnitParent: {fileID: 4971297747065336438}
   enemyUnitParent: {fileID: 8126368467769436310}
+  unitPrefabsToSpawn: []
+  tilesToSpawnThemOn: []
   unitPrefabToSpawn: {fileID: 2276334545744438668, guid: 00d5c74013d3ba141ae6ee02d702f5f0, type: 3}
   tileToSpawnOn: {fileID: 2035617440052126264}
   unitToRemove: {fileID: 0}
@@ -9236,6 +9262,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myTile: {fileID: 2453470662850626863}
   gfx: {fileID: 154889039}
+  highligther: {fileID: 0}
 --- !u!4 &1775858349
 Transform:
   m_ObjectHideFlags: 0
@@ -9712,6 +9739,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myTile: {fileID: 2746268839919200068}
   gfx: {fileID: 1623669602}
+  highligther: {fileID: 0}
 --- !u!4 &1876195598
 Transform:
   m_ObjectHideFlags: 0
@@ -12318,8 +12346,8 @@ MonoBehaviour:
   endTurnText: {fileID: 1045891518411710160}
   underlineRightRed: {fileID: 8647313}
   underlineLeftRed: {fileID: 1901208683}
-  underlinRightBlue: {fileID: 1019413375}
-  underlinLeftBlue: {fileID: 591443287}
+  underlineRightBlue: {fileID: 1019413375}
+  underlineLeftBlue: {fileID: 591443287}
   currentEase: 25
   tempTurnText: {fileID: 5237200228625571307}
 --- !u!4 &883605068537394148
@@ -13603,6 +13631,7 @@ MonoBehaviour:
   brokenDigger: {fileID: 1387611179076426880, guid: d532bd26be33c284297d583c1446e12a, type: 3}
   dynamite: {fileID: 0}
   DrawAmount: {fileID: 1942902843589467019}
+  siblingIndex: 0
 --- !u!1 &1713682485971117879
 GameObject:
   m_ObjectHideFlags: 0
