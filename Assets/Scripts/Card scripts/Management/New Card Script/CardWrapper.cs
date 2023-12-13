@@ -4,6 +4,7 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.XR;
 
 public class CardWrapper : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler,
     IPointerUpHandler
@@ -27,6 +28,8 @@ public class CardWrapper : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     private Vector2 dragStartPos;
     public EventsConfig eventsConfig;
 
+
+
     public float width
     {
         get => rectTransform.rect.width * rectTransform.localScale.x;
@@ -48,6 +51,9 @@ public class CardWrapper : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
         UpdatePosition();
         UpdateScale();
         UpdateUILayer();
+
+
+
     }
 
     private void UpdateUILayer()
@@ -175,5 +181,6 @@ public class CardWrapper : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
         isDragged = false;
         container.OnCardDragEnd();
     }
+
 
 }

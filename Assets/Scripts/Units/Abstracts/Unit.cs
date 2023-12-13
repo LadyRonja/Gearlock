@@ -39,6 +39,7 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerEnterHandler, IP
     public Transform gfx;
     public MeshRenderer myMR;
     public SpriteRenderer mySR;
+    public SpriteRenderer highligtherArrow;
 
     [Header("DoTween")]
     public Ease currentEase;
@@ -49,9 +50,13 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerEnterHandler, IP
         if(infoTextUnit!= null)
             infoTextUnit.SetActive(false);
 
-        myMR = gfx.GetComponent<MeshRenderer>();
+        //myMR = gfx.GetComponent<MeshRenderer>();
         if(myMR == null)
+        {
             mySR = gfx.GetComponent<SpriteRenderer>();
+        }
+        if(highligtherArrow != null)
+            highligtherArrow.gameObject.SetActive(false);
     }
 
     public virtual void TakeDamage(int amount)
@@ -101,10 +106,6 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerEnterHandler, IP
 
         yield return null;
     }
-
-    //TODO:
-    // If playerbot, spawn scrap on the ground
-    // That needs to be picked up in order to add the unit back into the discard pile
     
     //test elin 
     protected IEnumerator FadeAndDestroy(float fadeTime)
@@ -146,7 +147,6 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerEnterHandler, IP
         doneMoving = false;
         StartCoroutine(MovePath(path));
     }
-
 
     public IEnumerator MovePath(List<Tile> path)
     {
@@ -224,7 +224,7 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerEnterHandler, IP
     {
         // Check all units the player has
         List<Unit> targets = UnitStorage.Instance.playerUnits;
-        if(targets.Count == 0)
+        if (targets.Count == 0)
         {
             Debug.LogError("Player has no units registered");
             return null;
@@ -273,16 +273,12 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerEnterHandler, IP
                 int rand = UnityEngine.Random.Range(0, 100);
                 int tieBreakerGoodLuckPercentage = 75;
                 if (rand <= tieBreakerGoodLuckPercentage)
-                    if (nearestFoundUnit.healthCur < targets[i].healthCur) { 
+                {
+                    if (nearestFoundUnit.healthCur < targets[i].healthCur)
                         nearestFoundUnit = targets[i];
-                        Debug.Log($"Tiebreaker went for lower health target: " + rand);
-                    }
-                else
-                    if (nearestFoundUnit.healthCur > targets[i].healthCur)
-                    {
+                    else if (nearestFoundUnit.healthCur > targets[i].healthCur)
                         nearestFoundUnit = targets[i];
-                        Debug.Log($"Tiebreaker went for higher health target: " + rand);
-                    }
+                }
             }
         }
         return nearestFoundUnit;
@@ -312,6 +308,19 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerEnterHandler, IP
         TileClicker.Instance.UpdateSelectedUnit(standingOn);
     }
 
+    public virtual void Highlight()
+    {
+        if(highligtherArrow != null)
+            highligtherArrow.gameObject.SetActive(true);
+
+    }
+
+    public virtual void UnHighlight()
+    {
+        if (highligtherArrow != null)
+            highligtherArrow.gameObject.SetActive(false);
+    }
+
     protected void HoverTextUnit()
     {
         if (infoTextUnit != null)
@@ -326,15 +335,11 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerEnterHandler, IP
 
     //test elin DoTween shake unit
     public void ShakeUnit()
-    {
-        
-        transform.DOShakePosition(duration: 0.5f, strength: new Vector3(2f, 0f, 0f), vibrato: 10, randomness: 0, fadeOut: false);
-        
+    {      
+        transform.DOShakePosition(duration: 0.5f, strength: new Vector3(2f, 0f, 0f), vibrato: 10, randomness: 0, fadeOut: false);      
     }
     public void OnDisable()
     {
         transform.DOKill();
     }
-
- 
 }

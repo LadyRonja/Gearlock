@@ -26,7 +26,7 @@ public class CardVisualSetup : MonoBehaviour
 
     private void SetUpCard()
     {
-        PlayCard cardInfo = GetComponent<PlayCard>();
+        Card cardInfo = GetComponent<Card>();
         if (cardInfo == null)
         {
             Debug.LogError("Card Missing Card Data");

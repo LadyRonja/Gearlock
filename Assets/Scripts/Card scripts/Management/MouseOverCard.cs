@@ -29,7 +29,7 @@ public class MouseOverCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     public bool inHand = true;
     public bool isBeingPlayed = false;
     Vector3 dragPos;
-    PlayCard card;
+    Card card;
     bool canDrag;
     bool clickedCard;
     public GameObject keepCard;
@@ -113,7 +113,7 @@ public class MouseOverCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         {
             if (Input.GetMouseButtonDown(1))
             {
-                this.gameObject.GetComponent<PlayCard>().CancelPlay();
+                this.gameObject.GetComponent<Card>().CancelPlay();
                 transform.parent = HandPanel.Instance.transform;
                 GetComponent<RectTransform>().anchoredPosition = new Vector3(anchoredX, anchoredY, 0);
                 transform.localScale = new Vector3(smallSize, smallSize, smallSize);
@@ -125,7 +125,7 @@ public class MouseOverCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     private void SetUpCard()
     {
-        PlayCard cardInfo = GetComponent<PlayCard>();
+        Card cardInfo = GetComponent<Card>();
         if(cardInfo == null) 
         {
             Debug.LogError("Card Missing Card Data");
@@ -153,10 +153,10 @@ public class MouseOverCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     private void SetActiveCard()
     {
         CardManager.Instance.ClearActiveCard();
-        this.gameObject.GetComponent<PlayCard>().Play();
+        this.gameObject.GetComponent<Card>().Play();
         transform.parent = ActiveCard.Instance.transform;
         transform.localScale = new Vector3(bigSize, bigSize, bigSize); 
-        ActiveCard.Instance.cardBeingPlayed = GetComponent<PlayCard>();
+        ActiveCard.Instance.cardBeingPlayed = GetComponent<Card>();
         inHand = false;
         isBeingPlayed = true;
         //Debug.Log("card was played");

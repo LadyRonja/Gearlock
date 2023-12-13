@@ -43,7 +43,17 @@ public class CardContainer : MonoBehaviour {
 
     private RectTransform rectTransform;
     private CardWrapper currentDraggedCard;
+    public static CardContainer Instance;
 
+    float bigSize = 2.7f;
+
+    private void Awake()
+    {
+        if (Instance == null)
+            Instance = this;
+        else
+            Destroy(this.gameObject);
+    }
     private void Start() {
         rectTransform = GetComponent<RectTransform>();
         InitCards();
@@ -78,6 +88,12 @@ public class CardContainer : MonoBehaviour {
 
     void Update() {
         UpdateCards();
+
+        if (Input.GetMouseButtonDown(1) && ActiveCard.Instance.transform.childCount > 0)
+        {
+            CardManager.Instance.ClearActiveCard();
+
+        }
     }
 
     void SetUpCards() {
@@ -214,11 +230,27 @@ public class CardContainer : MonoBehaviour {
 
     public void OnCardDragEnd() {
         // If card is in play area, play it!
-        if (IsCursorInPlayArea()) {
-            eventsConfig?.OnCardPlayed?.Invoke(new CardPlayed(currentDraggedCard));
-            if (cardPlayConfig.destroyOnPlay) {
+        if (IsCursorInPlayArea())
+        {
+            CardManager.Instance.ClearActiveCard();
+            CardManager.Instance.siblingIndex = currentDraggedCard.transform.GetSiblingIndex();
+            // Instantiate a copy of the currently dragged card as a child of ActiveCard
+            CardWrapper newCard = Instantiate(currentDraggedCard, ActiveCard.Instance.transform);
+            newCard.transform.localScale = new Vector3(bigSize, bigSize, bigSize);
+
+            // Set the new card as the active card
+            ActiveCard.Instance.cardBeingPlayed = newCard.GetComponent<Card>();
+            ActiveCard.Instance.transform.GetChild(0).gameObject.GetComponent<CardWrapper>().enabled = false;
+            Invoke("SetActiveCard", 0.1f);
+
+            if (cardPlayConfig.destroyOnPlay)
+            {
+                // Destroy the original card
                 DestroyCard(currentDraggedCard);
             }
+            
+
+
         }
         currentDraggedCard = null;
     }
@@ -242,4 +274,15 @@ public class CardContainer : MonoBehaviour {
                cursorPosition.y < playAreaCorners[2].y;
         
     }
+
+    public void SetActiveCard()
+    {
+
+        // Play the card
+        ActiveCard.Instance.transform.GetChild(0).gameObject.GetComponent<Card>().Play();
+        ActiveCard.Instance.transform.GetChild(0).gameObject.GetComponent<Card>().myState = CardState.VerifyUnitSelection;
+
+    }
+
+
 }

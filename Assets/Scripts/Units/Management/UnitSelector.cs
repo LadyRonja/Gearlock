@@ -170,6 +170,7 @@ public class UnitSelector : MonoBehaviour
             timePassed += Time.deltaTime;
             yield return null;
         }
+        tempHealthFillWhite.fillAmount = endValue;
 
         yield return null;
     }

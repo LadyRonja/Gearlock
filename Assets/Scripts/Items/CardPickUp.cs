@@ -30,17 +30,16 @@ public class CardPickUp : MonoBehaviour
 
     public void CardLayout()
     {
-        PlayCard cardLayout = cardToAdd.GetComponent<PlayCard>();
+        Card cardLayout = cardToAdd.GetComponent<Card>();
         if (cardLayout == null)
         {
             Debug.LogError("Card Missing Card Data");
             return;
         }
 
-        
-        frameSR.sprite = cardLayout.cardFrame;
-        frameSR.color = cardLayout.frameColor;
-        illustrationSR.sprite = cardLayout.illustration;
+        if(frameSR != null) frameSR.sprite = cardLayout.cardFrame;
+        if(frameSR != null) frameSR.color = cardLayout.frameColor;
+        if(illustrationSR != null) illustrationSR.sprite = cardLayout.illustration;
 
         fixedGFX = true;
     }

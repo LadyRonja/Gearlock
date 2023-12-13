@@ -151,6 +151,9 @@ public class Tile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
             return;
         }
 
+        if(dirt != null)
+            dirt.UnHighlight();
+
         myHighligther.color = Color.white;
         myHighligther.gameObject.SetActive(false);
     }

@@ -5,10 +5,6 @@ using UnityEngine;
 public class Digger : Unit
 {
     public GameObject brokenDigger;
-
-    
-
-   
     public override void Die()
     {
         if (brokenDigger != null)
@@ -25,7 +21,4 @@ public class Digger : Unit
 
         base.Die();
     }
-
-    
-
 }

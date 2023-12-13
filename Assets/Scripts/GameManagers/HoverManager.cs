@@ -73,7 +73,7 @@ public class HoverManager : MonoBehaviour
         lastHit = tile;
 
         Unit selectedUnit = UnitSelector.Instance.selectedUnit;
-        PlayCard selectedCard = ActiveCard.Instance.cardBeingPlayed;
+        Card selectedCard = ActiveCard.Instance.cardBeingPlayed;
 
         // No bot selected  - default
         if(selectedUnit == null)
