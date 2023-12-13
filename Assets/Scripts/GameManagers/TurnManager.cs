@@ -17,6 +17,11 @@ public class TurnManager : MonoBehaviour // classen blir en singleton
     public GameObject KeepCardScreen;
     public TMP_Text endTurnText;
 
+    //DOTween Player and AI turn
+    public GameObject underlineRightRed; //turn text line enemy
+    public GameObject underlineLeftRed;//turn text line enemy
+    public GameObject underlineRightBlue; //turn text line player
+    public GameObject underlineLeftBlue;//turn text line player
     public Ease currentEase;
     Vector3 startPos;
 
@@ -49,6 +54,9 @@ public class TurnManager : MonoBehaviour // classen blir en singleton
             UnitSelector.Instance.playerCanSelectNewUnit = false;
 
             UpdateUI();
+            tempTurnText.DOFade(100, 2);
+            underlineRightRed.GetComponent<UnityEngine.UI.Image>().DOFade(100, 2);
+            underlineLeftRed.GetComponent<UnityEngine.UI.Image>().DOFade(100, 2);
 
             CameraController.Instance.playerCanMove = false;
             CameraController.Instance.playerHasMoved = false;
@@ -79,6 +87,9 @@ public class TurnManager : MonoBehaviour // classen blir en singleton
         }
         endTurnText.text = "End Turn";
         UpdateUI();
+        tempTurnText.DOFade(100, 2);
+        underlineRightRed.GetComponent<UnityEngine.UI.Image>().DOFade(100, 2);
+        underlineLeftRed.GetComponent<UnityEngine.UI.Image>().DOFade(100, 2);
     }
 
 
@@ -91,11 +102,17 @@ public class TurnManager : MonoBehaviour // classen blir en singleton
         if (isPlayerTurn)
         {
             tempTurnText.text = "Player Turn";
+            ChangeColorOnTurn();
             TextAnimationTurn();
+
+
+
+
         }
         else 
         {
             tempTurnText.text = "AI Turn";
+            ChangeColorOnTurn();
             TextAnimationTurn();
         }
         
@@ -133,12 +150,49 @@ public class TurnManager : MonoBehaviour // classen blir en singleton
     public void TextAnimationTurn()
     {
         
-        tempTurnText.rectTransform.anchoredPosition = new Vector2(1430, 0);
-        tempTurnText.transform.DOMoveX(600, 0.5f).SetEase(currentEase);
+        tempTurnText.rectTransform.anchoredPosition = new Vector2(1430, 15);
+        //tempTurnText.transform.DOMoveX(600, 0.5f).SetEase(currentEase).OnStepComplete(FadeTextTurn);
+
+        underlineRightRed.transform.localPosition = new Vector3(2000, -80, 0);
+        underlineLeftRed.transform.localPosition = new Vector3(-2000, 90, 0);
+
+        DG.Tweening.Sequence textSequence = DOTween.Sequence();
+        textSequence.Append(tempTurnText.transform.DOMoveX(600, 0.5f).SetEase(currentEase));
+        textSequence.Join(underlineRightRed.transform.DOMoveX(470, 0.2f).SetEase(currentEase));
+        textSequence.Join(underlineLeftRed.transform.DOMoveX(730, 0.2f).SetEase(currentEase));
+        textSequence.OnComplete(FadeTextTurn);
+
+        //underlineRight.transform.DOMoveX(600, 0.2f).SetEase(currentEase).OnStepComplete(FadeTextTurn);
+    }
+
+   
+
+    public void FadeTextTurn()
+    {
+        tempTurnText.DOFade(0, 2).SetDelay(0.7f);
+        underlineRightRed.GetComponent<UnityEngine.UI.Image>().DOFade(0, 2).SetDelay(0.7f);
+        underlineLeftRed.GetComponent<UnityEngine.UI.Image>().DOFade(0, 2).SetDelay(0.7f);
+
+    }
+
+    public void ChangeColorOnTurn()
+    {
+   
+        if (isPlayerTurn)
+        {
+            tempTurnText.color = new Color(38f / 255f, 202f / 255f, 227f / 255f, 1f);
+
+        }
+        else
+        {
+            tempTurnText.color = new Color(180f / 255f, 13f / 255f, 8f / 255f, 1f);
+        }
     }
 
     public void OnDisable()
     {
         transform.DOKill();
     }
+
+
 }
