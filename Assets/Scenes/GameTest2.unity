@@ -6305,6 +6305,63 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 860383800}
   m_CullTransparentMesh: 1
+--- !u!1001 &867551571
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 7013444362678985220, guid: 6afe273b1a94983439145af572c78ece, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -9.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7013444362678985220, guid: 6afe273b1a94983439145af572c78ece, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -19.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7013444362678985220, guid: 6afe273b1a94983439145af572c78ece, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -5.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7013444362678985220, guid: 6afe273b1a94983439145af572c78ece, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7013444362678985220, guid: 6afe273b1a94983439145af572c78ece, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7013444362678985220, guid: 6afe273b1a94983439145af572c78ece, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7013444362678985220, guid: 6afe273b1a94983439145af572c78ece, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7013444362678985220, guid: 6afe273b1a94983439145af572c78ece, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7013444362678985220, guid: 6afe273b1a94983439145af572c78ece, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7013444362678985220, guid: 6afe273b1a94983439145af572c78ece, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9158165731378038780, guid: 6afe273b1a94983439145af572c78ece, type: 3}
+      propertyPath: m_Name
+      value: CheckeredBoardTint
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6afe273b1a94983439145af572c78ece, type: 3}
 --- !u!1 &882732912
 GameObject:
   m_ObjectHideFlags: 0
@@ -14552,9 +14609,6 @@ MonoBehaviour:
   blocked: 1
   occupied: 0
   cameFrom: {fileID: 0}
-  baseColor: {r: 0, g: 0, b: 0, a: 0}
-  offsetColor: {r: 0, g: 0, b: 0, a: 0}
-  sR: {fileID: 0}
 --- !u!222 &290357130134418974
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -14697,9 +14751,6 @@ MonoBehaviour:
   blocked: 1
   occupied: 0
   cameFrom: {fileID: 0}
-  baseColor: {r: 0, g: 0, b: 0, a: 0}
-  offsetColor: {r: 0, g: 0, b: 0, a: 0}
-  sR: {fileID: 0}
 --- !u!4 &481338328527913620
 Transform:
   m_ObjectHideFlags: 0
@@ -15690,9 +15741,6 @@ MonoBehaviour:
   blocked: 1
   occupied: 0
   cameFrom: {fileID: 0}
-  baseColor: {r: 0, g: 0, b: 0, a: 0}
-  offsetColor: {r: 0, g: 0, b: 0, a: 0}
-  sR: {fileID: 0}
 --- !u!4 &1397648018042014399
 Transform:
   m_ObjectHideFlags: 0
@@ -15811,9 +15859,6 @@ MonoBehaviour:
   blocked: 1
   occupied: 0
   cameFrom: {fileID: 0}
-  baseColor: {r: 0, g: 0, b: 0, a: 0}
-  offsetColor: {r: 0, g: 0, b: 0, a: 0}
-  sR: {fileID: 0}
 --- !u!23 &1462452810082760161
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -15996,9 +16041,6 @@ MonoBehaviour:
   blocked: 1
   occupied: 0
   cameFrom: {fileID: 0}
-  baseColor: {r: 0, g: 0, b: 0, a: 0}
-  offsetColor: {r: 0, g: 0, b: 0, a: 0}
-  sR: {fileID: 0}
 --- !u!114 &1645948397421181232
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16315,9 +16357,6 @@ MonoBehaviour:
   blocked: 0
   occupied: 0
   cameFrom: {fileID: 0}
-  baseColor: {r: 0, g: 0, b: 0, a: 0}
-  offsetColor: {r: 0, g: 0, b: 0, a: 0}
-  sR: {fileID: 0}
 --- !u!224 &1773122780480537576
 RectTransform:
   m_ObjectHideFlags: 0
@@ -16765,9 +16804,6 @@ MonoBehaviour:
   blocked: 1
   occupied: 1
   cameFrom: {fileID: 0}
-  baseColor: {r: 0, g: 0, b: 0, a: 0}
-  offsetColor: {r: 0, g: 0, b: 0, a: 0}
-  sR: {fileID: 0}
 --- !u!1 &2043228143652417841
 GameObject:
   m_ObjectHideFlags: 0
@@ -16969,9 +17005,6 @@ MonoBehaviour:
   blocked: 0
   occupied: 0
   cameFrom: {fileID: 0}
-  baseColor: {r: 0, g: 0, b: 0, a: 0}
-  offsetColor: {r: 0, g: 0, b: 0, a: 0}
-  sR: {fileID: 0}
 --- !u!64 &2282538041275979041
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -17073,9 +17106,6 @@ MonoBehaviour:
   blocked: 1
   occupied: 0
   cameFrom: {fileID: 0}
-  baseColor: {r: 0, g: 0, b: 0, a: 0}
-  offsetColor: {r: 0, g: 0, b: 0, a: 0}
-  sR: {fileID: 0}
 --- !u!114 &2493595305341716067
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17111,9 +17141,6 @@ MonoBehaviour:
   blocked: 1
   occupied: 1
   cameFrom: {fileID: 0}
-  baseColor: {r: 0, g: 0, b: 0, a: 0}
-  offsetColor: {r: 0, g: 0, b: 0, a: 0}
-  sR: {fileID: 0}
 --- !u!114 &2495270383883785980
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17151,9 +17178,6 @@ MonoBehaviour:
   blocked: 1
   occupied: 0
   cameFrom: {fileID: 0}
-  baseColor: {r: 0, g: 0, b: 0, a: 0}
-  offsetColor: {r: 0, g: 0, b: 0, a: 0}
-  sR: {fileID: 0}
 --- !u!1 &2514693445002571660
 GameObject:
   m_ObjectHideFlags: 0
@@ -17334,9 +17358,6 @@ MonoBehaviour:
   blocked: 1
   occupied: 0
   cameFrom: {fileID: 0}
-  baseColor: {r: 0, g: 0, b: 0, a: 0}
-  offsetColor: {r: 0, g: 0, b: 0, a: 0}
-  sR: {fileID: 0}
 --- !u!4 &2645618596025229921
 Transform:
   m_ObjectHideFlags: 0
@@ -17396,9 +17417,6 @@ MonoBehaviour:
   blocked: 1
   occupied: 0
   cameFrom: {fileID: 0}
-  baseColor: {r: 0, g: 0, b: 0, a: 0}
-  offsetColor: {r: 0, g: 0, b: 0, a: 0}
-  sR: {fileID: 0}
 --- !u!33 &2791086019669462569
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -18347,9 +18365,6 @@ MonoBehaviour:
   blocked: 1
   occupied: 0
   cameFrom: {fileID: 0}
-  baseColor: {r: 0, g: 0, b: 0, a: 0}
-  offsetColor: {r: 0, g: 0, b: 0, a: 0}
-  sR: {fileID: 0}
 --- !u!1 &3376669258639346040
 GameObject:
   m_ObjectHideFlags: 0
@@ -18591,9 +18606,6 @@ MonoBehaviour:
   blocked: 0
   occupied: 0
   cameFrom: {fileID: 0}
-  baseColor: {r: 0, g: 0, b: 0, a: 0}
-  offsetColor: {r: 0, g: 0, b: 0, a: 0}
-  sR: {fileID: 0}
 --- !u!114 &3778890155960664333
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19446,9 +19458,6 @@ MonoBehaviour:
   blocked: 1
   occupied: 0
   cameFrom: {fileID: 0}
-  baseColor: {r: 0, g: 0, b: 0, a: 0}
-  offsetColor: {r: 0, g: 0, b: 0, a: 0}
-  sR: {fileID: 0}
 --- !u!64 &4588670092062888147
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -19955,9 +19964,6 @@ MonoBehaviour:
   blocked: 1
   occupied: 0
   cameFrom: {fileID: 0}
-  baseColor: {r: 0, g: 0, b: 0, a: 0}
-  offsetColor: {r: 0, g: 0, b: 0, a: 0}
-  sR: {fileID: 0}
 --- !u!33 &5110836443664150551
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -20165,9 +20171,6 @@ MonoBehaviour:
   blocked: 0
   occupied: 0
   cameFrom: {fileID: 0}
-  baseColor: {r: 0, g: 0, b: 0, a: 0}
-  offsetColor: {r: 0, g: 0, b: 0, a: 0}
-  sR: {fileID: 0}
 --- !u!114 &5363807872065471243
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20621,9 +20624,6 @@ MonoBehaviour:
   blocked: 1
   occupied: 0
   cameFrom: {fileID: 0}
-  baseColor: {r: 0, g: 0, b: 0, a: 0}
-  offsetColor: {r: 0, g: 0, b: 0, a: 0}
-  sR: {fileID: 0}
 --- !u!1 &5684823799561545334
 GameObject:
   m_ObjectHideFlags: 0
@@ -20777,9 +20777,6 @@ MonoBehaviour:
   blocked: 1
   occupied: 0
   cameFrom: {fileID: 0}
-  baseColor: {r: 0, g: 0, b: 0, a: 0}
-  offsetColor: {r: 0, g: 0, b: 0, a: 0}
-  sR: {fileID: 0}
 --- !u!224 &5798665060090755194
 RectTransform:
   m_ObjectHideFlags: 0
@@ -21043,9 +21040,6 @@ MonoBehaviour:
   blocked: 0
   occupied: 0
   cameFrom: {fileID: 0}
-  baseColor: {r: 0, g: 0, b: 0, a: 0}
-  offsetColor: {r: 0, g: 0, b: 0, a: 0}
-  sR: {fileID: 0}
 --- !u!224 &6042707368664552392
 RectTransform:
   m_ObjectHideFlags: 0
@@ -21505,9 +21499,6 @@ MonoBehaviour:
   blocked: 1
   occupied: 0
   cameFrom: {fileID: 0}
-  baseColor: {r: 0, g: 0, b: 0, a: 0}
-  offsetColor: {r: 0, g: 0, b: 0, a: 0}
-  sR: {fileID: 0}
 --- !u!1 &6472812692370192455
 GameObject:
   m_ObjectHideFlags: 0
@@ -21690,9 +21681,6 @@ MonoBehaviour:
   blocked: 1
   occupied: 0
   cameFrom: {fileID: 0}
-  baseColor: {r: 0, g: 0, b: 0, a: 0}
-  offsetColor: {r: 0, g: 0, b: 0, a: 0}
-  sR: {fileID: 0}
 --- !u!1 &6660965125279371183
 GameObject:
   m_ObjectHideFlags: 0
@@ -21839,9 +21827,6 @@ MonoBehaviour:
   blocked: 0
   occupied: 0
   cameFrom: {fileID: 0}
-  baseColor: {r: 0, g: 0, b: 0, a: 0}
-  offsetColor: {r: 0, g: 0, b: 0, a: 0}
-  sR: {fileID: 0}
 --- !u!33 &6833613025033922547
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -22034,9 +22019,6 @@ MonoBehaviour:
   blocked: 1
   occupied: 1
   cameFrom: {fileID: 0}
-  baseColor: {r: 0, g: 0, b: 0, a: 0}
-  offsetColor: {r: 0, g: 0, b: 0, a: 0}
-  sR: {fileID: 0}
 --- !u!224 &6955170893711123571
 RectTransform:
   m_ObjectHideFlags: 0
@@ -22398,9 +22380,6 @@ MonoBehaviour:
   blocked: 1
   occupied: 0
   cameFrom: {fileID: 0}
-  baseColor: {r: 0, g: 0, b: 0, a: 0}
-  offsetColor: {r: 0, g: 0, b: 0, a: 0}
-  sR: {fileID: 0}
 --- !u!114 &7338601059839571467
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22438,9 +22417,6 @@ MonoBehaviour:
   blocked: 1
   occupied: 0
   cameFrom: {fileID: 0}
-  baseColor: {r: 0, g: 0, b: 0, a: 0}
-  offsetColor: {r: 0, g: 0, b: 0, a: 0}
-  sR: {fileID: 0}
 --- !u!23 &7341376339185783308
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -22568,9 +22544,6 @@ MonoBehaviour:
   blocked: 1
   occupied: 0
   cameFrom: {fileID: 0}
-  baseColor: {r: 0, g: 0, b: 0, a: 0}
-  offsetColor: {r: 0, g: 0, b: 0, a: 0}
-  sR: {fileID: 0}
 --- !u!4 &7392854272538507014
 Transform:
   m_ObjectHideFlags: 0
@@ -22919,9 +22892,6 @@ MonoBehaviour:
   blocked: 1
   occupied: 1
   cameFrom: {fileID: 0}
-  baseColor: {r: 0, g: 0, b: 0, a: 0}
-  offsetColor: {r: 0, g: 0, b: 0, a: 0}
-  sR: {fileID: 0}
 --- !u!1 &7639751512301884072
 GameObject:
   m_ObjectHideFlags: 0
@@ -23068,9 +23038,6 @@ MonoBehaviour:
   blocked: 1
   occupied: 0
   cameFrom: {fileID: 0}
-  baseColor: {r: 0, g: 0, b: 0, a: 0}
-  offsetColor: {r: 0, g: 0, b: 0, a: 0}
-  sR: {fileID: 0}
 --- !u!114 &7818363933134133380
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23315,9 +23282,6 @@ MonoBehaviour:
   blocked: 1
   occupied: 1
   cameFrom: {fileID: 0}
-  baseColor: {r: 0, g: 0, b: 0, a: 0}
-  offsetColor: {r: 0, g: 0, b: 0, a: 0}
-  sR: {fileID: 0}
 --- !u!114 &8065949040789420589
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23496,9 +23460,6 @@ MonoBehaviour:
   blocked: 0
   occupied: 0
   cameFrom: {fileID: 0}
-  baseColor: {r: 0, g: 0, b: 0, a: 0}
-  offsetColor: {r: 0, g: 0, b: 0, a: 0}
-  sR: {fileID: 0}
 --- !u!64 &8216651378367788167
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -23914,9 +23875,6 @@ MonoBehaviour:
   blocked: 1
   occupied: 0
   cameFrom: {fileID: 0}
-  baseColor: {r: 0, g: 0, b: 0, a: 0}
-  offsetColor: {r: 0, g: 0, b: 0, a: 0}
-  sR: {fileID: 0}
 --- !u!4 &8660587316508806172
 Transform:
   m_ObjectHideFlags: 0
@@ -24003,9 +23961,6 @@ MonoBehaviour:
   blocked: 0
   occupied: 0
   cameFrom: {fileID: 0}
-  baseColor: {r: 0, g: 0, b: 0, a: 0}
-  offsetColor: {r: 0, g: 0, b: 0, a: 0}
-  sR: {fileID: 0}
 --- !u!4 &8714569855440141470
 Transform:
   m_ObjectHideFlags: 0
@@ -24182,9 +24137,6 @@ MonoBehaviour:
   blocked: 0
   occupied: 0
   cameFrom: {fileID: 0}
-  baseColor: {r: 0, g: 0, b: 0, a: 0}
-  offsetColor: {r: 0, g: 0, b: 0, a: 0}
-  sR: {fileID: 0}
 --- !u!4 &8982822756503937125
 Transform:
   m_ObjectHideFlags: 0
@@ -24323,9 +24275,6 @@ MonoBehaviour:
   blocked: 0
   occupied: 0
   cameFrom: {fileID: 0}
-  baseColor: {r: 0, g: 0, b: 0, a: 0}
-  offsetColor: {r: 0, g: 0, b: 0, a: 0}
-  sR: {fileID: 0}
 --- !u!33 &9007237705388564943
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -24454,6 +24403,7 @@ SceneRoots:
   - {fileID: 8982822756503937125}
   - {fileID: 4971297747065336438}
   - {fileID: 8126368467769436310}
+  - {fileID: 867551571}
   - {fileID: 6259127921914300087}
   - {fileID: 1985790269617892789}
   - {fileID: 5755052315886393831}
