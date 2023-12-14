@@ -28,6 +28,14 @@ PrefabInstance:
       propertyPath: m_Center.y
       value: 0.0821774
       objectReference: {fileID: 0}
+    - target: {fileID: 6262402697669964395, guid: 89bc880b93910a34caed231e137919d8, type: 3}
+      propertyPath: m_text
+      value: Diggers can mine rocks for cards and assemble new bots
+      objectReference: {fileID: 0}
+    - target: {fileID: 6262402697669964395, guid: 89bc880b93910a34caed231e137919d8, type: 3}
+      propertyPath: m_fontSize
+      value: 1.55
+      objectReference: {fileID: 0}
     - target: {fileID: 6783090875490602526, guid: 89bc880b93910a34caed231e137919d8, type: 3}
       propertyPath: m_Name
       value: Digger_New
@@ -83,6 +91,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 5853174060903658368}
   m_SourcePrefab: {fileID: 100100000, guid: 89bc880b93910a34caed231e137919d8, type: 3}
+--- !u!1 &42840025943840832 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6416808246705326726, guid: 89bc880b93910a34caed231e137919d8, type: 3}
+  m_PrefabInstance: {fileID: 6455109469304394438}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &555991050257800408 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6783090875490602526, guid: 89bc880b93910a34caed231e137919d8, type: 3}
@@ -104,7 +117,7 @@ MonoBehaviour:
   playerBot: 1
   mySpecialization: 1
   portrait: {fileID: 21300000, guid: d7d0e67135b96e646b2608ef685b53de, type: 3}
-  infoTextUnit: {fileID: 0}
+  infoTextUnit: {fileID: 42840025943840832}
   healthMax: 3
   healthCur: 3
   movePointsMax: 3
