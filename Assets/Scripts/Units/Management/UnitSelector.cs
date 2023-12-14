@@ -4,6 +4,7 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using static Unity.Burst.Intrinsics.X86.Avx;
 
 public class UnitSelector : MonoBehaviour
 {
@@ -146,12 +147,16 @@ public class UnitSelector : MonoBehaviour
         foreach (Transform child in gridParent)
         {
             Destroy(child.gameObject);
+            UnitStorage.Instance.playerPanels = new();
         }
 
         foreach (Unit u in UnitStorage.Instance.playerUnits)
         {
             GameObject unitMiniPanel = Instantiate(displayPrefab, gridParent);
-            unitMiniPanel.GetComponent<UnitMiniPanel>().SetInfo(u);
+            UnitMiniPanel ump = unitMiniPanel.GetComponent<UnitMiniPanel>();
+            ump.SetInfo(u);
+            ump.UnHighlight();
+            UnitStorage.Instance.playerPanels.Add(ump);
         }
     }
 

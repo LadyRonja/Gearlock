@@ -226,9 +226,9 @@ public abstract class Card : MonoBehaviour
             ped.position = Input.mousePosition;
             List<RaycastResult> results = new List<RaycastResult>();
             GraphicsRayCastAssistance.Instance.caster.Raycast(ped, results);
-            foreach (RaycastResult result in results)
+            foreach (RaycastResult r in results)
             {
-                if (result.gameObject.TryGetComponent<UnitMiniPanel>(out UnitMiniPanel ump))
+                if (r.gameObject.TryGetComponent<UnitMiniPanel>(out UnitMiniPanel ump))
                 {
                     PickUnit(ump.myUnit.standingOn);
                     return;

@@ -93,7 +93,12 @@ public static class CardTargetFinder
             if (highlightUnits)
             {
                 if(t.occupant != null)
+                {
                     t.occupant.Highlight();
+                    List<UnitMiniPanel> panelsToHighlight = UnitStorage.Instance.playerPanels.Where(ump => ump.myUnit == t.occupant).ToList();
+                    if (panelsToHighlight.Count != 0)
+                        panelsToHighlight[0].Highlight();
+                }
             }
 
             if(highlightDirt)
@@ -111,5 +116,7 @@ public static class CardTargetFinder
             u.UnHighlight();
         foreach (Unit u in UnitStorage.Instance.enemyUnits)
             u.UnHighlight();
+        foreach (UnitMiniPanel ump in UnitStorage.Instance.playerPanels)
+            ump.UnHighlight();
     }
 }

@@ -6,8 +6,9 @@ public class UnitStorage : MonoBehaviour
 {
     public static UnitStorage Instance;
 
-    public List<Unit> playerUnits = new List<Unit>();
-    public List<Unit> enemyUnits = new List<Unit>();
+    public List<Unit> playerUnits = new();
+    public List<Unit> enemyUnits = new();
+    public List<UnitMiniPanel> playerPanels = new();
 
     private void Awake()
     {
