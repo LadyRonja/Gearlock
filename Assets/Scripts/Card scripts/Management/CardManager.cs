@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using config;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -56,10 +57,7 @@ public class CardManager : MonoBehaviour
         drawPile.Add(diggerBot);
         drawPile.Add(fighterBot);
 
-
-
         DealHand();
-
     }
 
 
@@ -158,17 +156,20 @@ public class CardManager : MonoBehaviour
             GameObject temp = drawPile[i];
             drawPile[i] = drawPile[j];
             drawPile[j] = temp;
-
         }
     }
 
     public void EndTurnDiscardHand() // When the player ends their turn, any remaining cards in hand is discarded.
     {
-        for (int i = handParent.transform.childCount - 1; i >= 0; i--)
+        for (int i = 0; i < handParent.transform.childCount; i++)
         {
             GameObject CardInHand = handParent.transform.GetChild(i).gameObject;
-            CardInHand.transform.parent = DiscardPile.Instance.transform;
-            CardInHand.GetComponent<MouseOverCard>().inHand = false;
+            GameObject DiscardedCard = Instantiate(CardInHand, DiscardPile.Instance.transform);
+            DiscardedCard.transform.rotation = Quaternion.identity;
+            DiscardedCard.transform.localScale = new Vector3(1.6f, 1.6f, 1.6f);
+            DiscardedCard.GetComponent<CardWrapper>().enabled = false;
+
+            Destroy(CardInHand); 
         }
     }
 
@@ -257,11 +258,21 @@ public class CardManager : MonoBehaviour
 
     public void RetrieveKeptCards()
     {
-        for (int i = KeepCard.Instance.transform.childCount - 1; i >= 0; i--)
+        if (KeepCard.Instance.transform.childCount > 0)
         {
-            GameObject keptCard = KeepCard.Instance.transform.GetChild(i).gameObject;
-            keptCard.transform.parent = HandPanel.Instance.transform;
-            keptCard.GetComponent<MouseOverCard>().inHand = true;
+            for (int i = 0; i < KeepCard.Instance.transform.childCount; i++)
+            {
+                GameObject KeptCard = KeepCard.Instance.transform.GetChild(i).gameObject;
+                GameObject ReturnedCard = Instantiate(KeptCard, HandPanel.Instance.transform);
+
+                for (int j = 0; j < HandPanel.Instance.transform.childCount; j++)
+                {
+                    HandPanel.Instance.transform.GetChild(j).gameObject.GetComponent<CardWrapper>().enabled = true;
+                }
+
+                CardContainer.Instance.SetUpCards();
+                Destroy(KeptCard);
+            }
         }
     }
 
@@ -271,9 +282,16 @@ public class CardManager : MonoBehaviour
         {
             for (int i = 0; i < KeepCard.Instance.transform.childCount + 1; i++)
             {
-                GameObject Keptcard = KeepCard.Instance.transform.GetChild(0).gameObject;
-                Keptcard.transform.parent = HandPanel.Instance.transform;
-                Keptcard.GetComponent<MouseOverCard>().inHand = true;
+                GameObject KeptCard = KeepCard.Instance.transform.GetChild(i).gameObject;
+                GameObject ReturnedCard = Instantiate(KeptCard, HandPanel.Instance.transform);
+
+                for (int j = 0; j < HandPanel.Instance.transform.childCount; j++)
+                {
+                    HandPanel.Instance.transform.GetChild(j).gameObject.GetComponent<CardWrapper>().enabled = true;
+                }
+
+
+                Destroy(KeptCard);
             }
         }
     }
