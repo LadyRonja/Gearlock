@@ -9686,7 +9686,7 @@ MonoBehaviour:
   m_StartCorner: 0
   m_StartAxis: 0
   m_CellSize: {x: 100, y: 100}
-  m_Spacing: {x: 100, y: 0}
+  m_Spacing: {x: 200, y: 0}
   m_Constraint: 1
   m_ConstraintCount: 5
 --- !u!64 &613799161578199846
@@ -10012,6 +10012,7 @@ MonoBehaviour:
   - {fileID: 672333017}
   - {fileID: 212268662}
   - {fileID: 1205755847}
+  playerPanels: []
 --- !u!224 &845560310662435597
 RectTransform:
   m_ObjectHideFlags: 0
@@ -16645,7 +16646,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &6676762537627826398
 GameObject:
   m_ObjectHideFlags: 0

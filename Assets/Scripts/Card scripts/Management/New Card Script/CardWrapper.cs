@@ -28,7 +28,8 @@ public class CardWrapper : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     private Vector2 dragStartPos;
     public EventsConfig eventsConfig;
 
-
+    private bool clickedCard = false;
+    private bool dragging = false;
 
     public float width
     {
@@ -169,17 +170,39 @@ public class CardWrapper : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
 
     public void OnPointerDown(PointerEventData eventData)
     {
+        if (!TurnManager.Instance.isPlayerTurn || clickedCard)
+            return;
+
         isDragged = true;
         dragStartPos = new Vector2(transform.position.x - eventData.position.x,
             transform.position.y - eventData.position.y);
         container.OnCardDragStart(this);
         eventsConfig?.OnCardUnhover?.Invoke(new CardUnhover(this));
+
+        clickedCard = true;
+        Invoke("ResetBoolClick", 0.2f);
     }
 
     public void OnPointerUp(PointerEventData eventData)
     {
-        isDragged = false;
-        container.OnCardDragEnd();
+        if (!TurnManager.Instance.isPlayerTurn)
+            return;
+
+        else if (clickedCard && dragging)
+        {
+            dragging = false;
+            isDragged = false;
+            container.OnCardDragEnd();
+        }
+
+        else if (clickedCard && !dragging)
+            dragging = true;
+
+    }
+
+    void ResetBoolClick()
+    {
+        clickedCard = false;
     }
 
 
