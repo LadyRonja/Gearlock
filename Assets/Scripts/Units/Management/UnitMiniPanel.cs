@@ -10,6 +10,7 @@ public class UnitMiniPanel : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     public Image potrait;
     public TMP_Text nameText;
     public Image healthFill;
+    public Image highligther;
     
     public Unit myUnit;
 
@@ -20,6 +21,22 @@ public class UnitMiniPanel : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         healthFill.fillAmount = (float)unit.healthCur / (float)unit.healthMax;
 
         myUnit = unit;
+    }
+
+    public void Highlight()
+    {
+        if (highligther == null)
+            return;
+
+        highligther.gameObject.SetActive(true);
+    }
+
+    public void UnHighlight()
+    {
+        if (highligther == null)
+            return;
+
+        highligther.gameObject.SetActive(false);
     }
 
     public void OnPointerDown(PointerEventData eventData)

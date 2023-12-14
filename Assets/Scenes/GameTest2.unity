@@ -13790,8 +13790,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1544158785}
     - target: {fileID: 5089259581290941422, guid: bca934adf52f27149866b6e9c1188193, type: 3}
+      propertyPath: zoomConfig.zoomedSortOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5089259581290941422, guid: bca934adf52f27149866b6e9c1188193, type: 3}
       propertyPath: zoomConfig.overrideYPosition
       value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 6511531275807866220, guid: bca934adf52f27149866b6e9c1188193, type: 3}
+      propertyPath: m_Color.a
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -14552,9 +14560,6 @@ MonoBehaviour:
   blocked: 1
   occupied: 0
   cameFrom: {fileID: 0}
-  baseColor: {r: 0, g: 0, b: 0, a: 0}
-  offsetColor: {r: 0, g: 0, b: 0, a: 0}
-  sR: {fileID: 0}
 --- !u!222 &290357130134418974
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -14697,9 +14702,6 @@ MonoBehaviour:
   blocked: 1
   occupied: 0
   cameFrom: {fileID: 0}
-  baseColor: {r: 0, g: 0, b: 0, a: 0}
-  offsetColor: {r: 0, g: 0, b: 0, a: 0}
-  sR: {fileID: 0}
 --- !u!4 &481338328527913620
 Transform:
   m_ObjectHideFlags: 0
@@ -14786,8 +14788,8 @@ MonoBehaviour:
   m_ChildAlignment: 4
   m_StartCorner: 0
   m_StartAxis: 0
-  m_CellSize: {x: 200, y: 200}
-  m_Spacing: {x: 100, y: 0}
+  m_CellSize: {x: 100, y: 100}
+  m_Spacing: {x: 200, y: 0}
   m_Constraint: 1
   m_ConstraintCount: 5
 --- !u!64 &613799161578199846
@@ -15113,6 +15115,7 @@ MonoBehaviour:
   - {fileID: 1411825836}
   - {fileID: 703309845}
   - {fileID: 2101963089}
+  playerPanels: []
 --- !u!224 &845560310662435597
 RectTransform:
   m_ObjectHideFlags: 0
@@ -15690,9 +15693,6 @@ MonoBehaviour:
   blocked: 1
   occupied: 0
   cameFrom: {fileID: 0}
-  baseColor: {r: 0, g: 0, b: 0, a: 0}
-  offsetColor: {r: 0, g: 0, b: 0, a: 0}
-  sR: {fileID: 0}
 --- !u!4 &1397648018042014399
 Transform:
   m_ObjectHideFlags: 0
@@ -15811,9 +15811,6 @@ MonoBehaviour:
   blocked: 1
   occupied: 0
   cameFrom: {fileID: 0}
-  baseColor: {r: 0, g: 0, b: 0, a: 0}
-  offsetColor: {r: 0, g: 0, b: 0, a: 0}
-  sR: {fileID: 0}
 --- !u!23 &1462452810082760161
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -15996,9 +15993,6 @@ MonoBehaviour:
   blocked: 1
   occupied: 0
   cameFrom: {fileID: 0}
-  baseColor: {r: 0, g: 0, b: 0, a: 0}
-  offsetColor: {r: 0, g: 0, b: 0, a: 0}
-  sR: {fileID: 0}
 --- !u!114 &1645948397421181232
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16315,9 +16309,6 @@ MonoBehaviour:
   blocked: 0
   occupied: 0
   cameFrom: {fileID: 0}
-  baseColor: {r: 0, g: 0, b: 0, a: 0}
-  offsetColor: {r: 0, g: 0, b: 0, a: 0}
-  sR: {fileID: 0}
 --- !u!224 &1773122780480537576
 RectTransform:
   m_ObjectHideFlags: 0
@@ -16765,9 +16756,6 @@ MonoBehaviour:
   blocked: 1
   occupied: 1
   cameFrom: {fileID: 0}
-  baseColor: {r: 0, g: 0, b: 0, a: 0}
-  offsetColor: {r: 0, g: 0, b: 0, a: 0}
-  sR: {fileID: 0}
 --- !u!1 &2043228143652417841
 GameObject:
   m_ObjectHideFlags: 0
@@ -16969,9 +16957,6 @@ MonoBehaviour:
   blocked: 0
   occupied: 0
   cameFrom: {fileID: 0}
-  baseColor: {r: 0, g: 0, b: 0, a: 0}
-  offsetColor: {r: 0, g: 0, b: 0, a: 0}
-  sR: {fileID: 0}
 --- !u!64 &2282538041275979041
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -17073,9 +17058,6 @@ MonoBehaviour:
   blocked: 1
   occupied: 0
   cameFrom: {fileID: 0}
-  baseColor: {r: 0, g: 0, b: 0, a: 0}
-  offsetColor: {r: 0, g: 0, b: 0, a: 0}
-  sR: {fileID: 0}
 --- !u!114 &2493595305341716067
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17111,9 +17093,6 @@ MonoBehaviour:
   blocked: 1
   occupied: 1
   cameFrom: {fileID: 0}
-  baseColor: {r: 0, g: 0, b: 0, a: 0}
-  offsetColor: {r: 0, g: 0, b: 0, a: 0}
-  sR: {fileID: 0}
 --- !u!114 &2495270383883785980
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17151,9 +17130,6 @@ MonoBehaviour:
   blocked: 1
   occupied: 0
   cameFrom: {fileID: 0}
-  baseColor: {r: 0, g: 0, b: 0, a: 0}
-  offsetColor: {r: 0, g: 0, b: 0, a: 0}
-  sR: {fileID: 0}
 --- !u!1 &2514693445002571660
 GameObject:
   m_ObjectHideFlags: 0
@@ -17334,9 +17310,6 @@ MonoBehaviour:
   blocked: 1
   occupied: 0
   cameFrom: {fileID: 0}
-  baseColor: {r: 0, g: 0, b: 0, a: 0}
-  offsetColor: {r: 0, g: 0, b: 0, a: 0}
-  sR: {fileID: 0}
 --- !u!4 &2645618596025229921
 Transform:
   m_ObjectHideFlags: 0
@@ -17396,9 +17369,6 @@ MonoBehaviour:
   blocked: 1
   occupied: 0
   cameFrom: {fileID: 0}
-  baseColor: {r: 0, g: 0, b: 0, a: 0}
-  offsetColor: {r: 0, g: 0, b: 0, a: 0}
-  sR: {fileID: 0}
 --- !u!33 &2791086019669462569
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -18347,9 +18317,6 @@ MonoBehaviour:
   blocked: 1
   occupied: 0
   cameFrom: {fileID: 0}
-  baseColor: {r: 0, g: 0, b: 0, a: 0}
-  offsetColor: {r: 0, g: 0, b: 0, a: 0}
-  sR: {fileID: 0}
 --- !u!1 &3376669258639346040
 GameObject:
   m_ObjectHideFlags: 0
@@ -18591,9 +18558,6 @@ MonoBehaviour:
   blocked: 0
   occupied: 0
   cameFrom: {fileID: 0}
-  baseColor: {r: 0, g: 0, b: 0, a: 0}
-  offsetColor: {r: 0, g: 0, b: 0, a: 0}
-  sR: {fileID: 0}
 --- !u!114 &3778890155960664333
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18663,9 +18627,9 @@ RectTransform:
   - {fileID: 2601420928192048314}
   - {fileID: 6862983081676147376}
   - {fileID: 6042707368664552392}
-  - {fileID: 6770088928405936237}
   - {fileID: 860383801}
   - {fileID: 1234919127}
+  - {fileID: 6770088928405936237}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -18932,6 +18896,7 @@ GameObject:
   - component: {fileID: 4512087838243481270}
   - component: {fileID: 3125950221627390706}
   - component: {fileID: 8065949040789420589}
+  - component: {fileID: 8065949040789420590}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -19446,9 +19411,6 @@ MonoBehaviour:
   blocked: 1
   occupied: 0
   cameFrom: {fileID: 0}
-  baseColor: {r: 0, g: 0, b: 0, a: 0}
-  offsetColor: {r: 0, g: 0, b: 0, a: 0}
-  sR: {fileID: 0}
 --- !u!64 &4588670092062888147
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -19955,9 +19917,6 @@ MonoBehaviour:
   blocked: 1
   occupied: 0
   cameFrom: {fileID: 0}
-  baseColor: {r: 0, g: 0, b: 0, a: 0}
-  offsetColor: {r: 0, g: 0, b: 0, a: 0}
-  sR: {fileID: 0}
 --- !u!33 &5110836443664150551
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -20165,9 +20124,6 @@ MonoBehaviour:
   blocked: 0
   occupied: 0
   cameFrom: {fileID: 0}
-  baseColor: {r: 0, g: 0, b: 0, a: 0}
-  offsetColor: {r: 0, g: 0, b: 0, a: 0}
-  sR: {fileID: 0}
 --- !u!114 &5363807872065471243
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20414,7 +20370,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1693494652081514299}
         m_TargetAssemblyTypeName: CardManager, Assembly-CSharp
-        m_MethodName: ReturnKept
+        m_MethodName: RetrieveKeptCards
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -20621,9 +20577,6 @@ MonoBehaviour:
   blocked: 1
   occupied: 0
   cameFrom: {fileID: 0}
-  baseColor: {r: 0, g: 0, b: 0, a: 0}
-  offsetColor: {r: 0, g: 0, b: 0, a: 0}
-  sR: {fileID: 0}
 --- !u!1 &5684823799561545334
 GameObject:
   m_ObjectHideFlags: 0
@@ -20777,9 +20730,6 @@ MonoBehaviour:
   blocked: 1
   occupied: 0
   cameFrom: {fileID: 0}
-  baseColor: {r: 0, g: 0, b: 0, a: 0}
-  offsetColor: {r: 0, g: 0, b: 0, a: 0}
-  sR: {fileID: 0}
 --- !u!224 &5798665060090755194
 RectTransform:
   m_ObjectHideFlags: 0
@@ -21043,9 +20993,6 @@ MonoBehaviour:
   blocked: 0
   occupied: 0
   cameFrom: {fileID: 0}
-  baseColor: {r: 0, g: 0, b: 0, a: 0}
-  offsetColor: {r: 0, g: 0, b: 0, a: 0}
-  sR: {fileID: 0}
 --- !u!224 &6042707368664552392
 RectTransform:
   m_ObjectHideFlags: 0
@@ -21505,9 +21452,6 @@ MonoBehaviour:
   blocked: 1
   occupied: 0
   cameFrom: {fileID: 0}
-  baseColor: {r: 0, g: 0, b: 0, a: 0}
-  offsetColor: {r: 0, g: 0, b: 0, a: 0}
-  sR: {fileID: 0}
 --- !u!1 &6472812692370192455
 GameObject:
   m_ObjectHideFlags: 0
@@ -21690,9 +21634,6 @@ MonoBehaviour:
   blocked: 1
   occupied: 0
   cameFrom: {fileID: 0}
-  baseColor: {r: 0, g: 0, b: 0, a: 0}
-  offsetColor: {r: 0, g: 0, b: 0, a: 0}
-  sR: {fileID: 0}
 --- !u!1 &6660965125279371183
 GameObject:
   m_ObjectHideFlags: 0
@@ -21839,9 +21780,6 @@ MonoBehaviour:
   blocked: 0
   occupied: 0
   cameFrom: {fileID: 0}
-  baseColor: {r: 0, g: 0, b: 0, a: 0}
-  offsetColor: {r: 0, g: 0, b: 0, a: 0}
-  sR: {fileID: 0}
 --- !u!33 &6833613025033922547
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -22034,9 +21972,6 @@ MonoBehaviour:
   blocked: 1
   occupied: 1
   cameFrom: {fileID: 0}
-  baseColor: {r: 0, g: 0, b: 0, a: 0}
-  offsetColor: {r: 0, g: 0, b: 0, a: 0}
-  sR: {fileID: 0}
 --- !u!224 &6955170893711123571
 RectTransform:
   m_ObjectHideFlags: 0
@@ -22398,9 +22333,6 @@ MonoBehaviour:
   blocked: 1
   occupied: 0
   cameFrom: {fileID: 0}
-  baseColor: {r: 0, g: 0, b: 0, a: 0}
-  offsetColor: {r: 0, g: 0, b: 0, a: 0}
-  sR: {fileID: 0}
 --- !u!114 &7338601059839571467
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22438,9 +22370,6 @@ MonoBehaviour:
   blocked: 1
   occupied: 0
   cameFrom: {fileID: 0}
-  baseColor: {r: 0, g: 0, b: 0, a: 0}
-  offsetColor: {r: 0, g: 0, b: 0, a: 0}
-  sR: {fileID: 0}
 --- !u!23 &7341376339185783308
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -22568,9 +22497,6 @@ MonoBehaviour:
   blocked: 1
   occupied: 0
   cameFrom: {fileID: 0}
-  baseColor: {r: 0, g: 0, b: 0, a: 0}
-  offsetColor: {r: 0, g: 0, b: 0, a: 0}
-  sR: {fileID: 0}
 --- !u!4 &7392854272538507014
 Transform:
   m_ObjectHideFlags: 0
@@ -22919,9 +22845,6 @@ MonoBehaviour:
   blocked: 1
   occupied: 1
   cameFrom: {fileID: 0}
-  baseColor: {r: 0, g: 0, b: 0, a: 0}
-  offsetColor: {r: 0, g: 0, b: 0, a: 0}
-  sR: {fileID: 0}
 --- !u!1 &7639751512301884072
 GameObject:
   m_ObjectHideFlags: 0
@@ -23068,9 +22991,6 @@ MonoBehaviour:
   blocked: 1
   occupied: 0
   cameFrom: {fileID: 0}
-  baseColor: {r: 0, g: 0, b: 0, a: 0}
-  offsetColor: {r: 0, g: 0, b: 0, a: 0}
-  sR: {fileID: 0}
 --- !u!114 &7818363933134133380
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23315,9 +23235,6 @@ MonoBehaviour:
   blocked: 1
   occupied: 1
   cameFrom: {fileID: 0}
-  baseColor: {r: 0, g: 0, b: 0, a: 0}
-  offsetColor: {r: 0, g: 0, b: 0, a: 0}
-  sR: {fileID: 0}
 --- !u!114 &8065949040789420589
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23335,6 +23252,20 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &8065949040789420590
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4046984755129963444}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8ce4987ddc98cf49b48b41d0a1520b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  caster: {fileID: 8065949040789420589}
+  eventSystem: {fileID: 4379228654665630613}
 --- !u!224 &8087069253342619027
 RectTransform:
   m_ObjectHideFlags: 0
@@ -23496,9 +23427,6 @@ MonoBehaviour:
   blocked: 0
   occupied: 0
   cameFrom: {fileID: 0}
-  baseColor: {r: 0, g: 0, b: 0, a: 0}
-  offsetColor: {r: 0, g: 0, b: 0, a: 0}
-  sR: {fileID: 0}
 --- !u!64 &8216651378367788167
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -23914,9 +23842,6 @@ MonoBehaviour:
   blocked: 1
   occupied: 0
   cameFrom: {fileID: 0}
-  baseColor: {r: 0, g: 0, b: 0, a: 0}
-  offsetColor: {r: 0, g: 0, b: 0, a: 0}
-  sR: {fileID: 0}
 --- !u!4 &8660587316508806172
 Transform:
   m_ObjectHideFlags: 0
@@ -24003,9 +23928,6 @@ MonoBehaviour:
   blocked: 0
   occupied: 0
   cameFrom: {fileID: 0}
-  baseColor: {r: 0, g: 0, b: 0, a: 0}
-  offsetColor: {r: 0, g: 0, b: 0, a: 0}
-  sR: {fileID: 0}
 --- !u!4 &8714569855440141470
 Transform:
   m_ObjectHideFlags: 0
@@ -24182,9 +24104,6 @@ MonoBehaviour:
   blocked: 0
   occupied: 0
   cameFrom: {fileID: 0}
-  baseColor: {r: 0, g: 0, b: 0, a: 0}
-  offsetColor: {r: 0, g: 0, b: 0, a: 0}
-  sR: {fileID: 0}
 --- !u!4 &8982822756503937125
 Transform:
   m_ObjectHideFlags: 0
@@ -24323,9 +24242,6 @@ MonoBehaviour:
   blocked: 0
   occupied: 0
   cameFrom: {fileID: 0}
-  baseColor: {r: 0, g: 0, b: 0, a: 0}
-  offsetColor: {r: 0, g: 0, b: 0, a: 0}
-  sR: {fileID: 0}
 --- !u!33 &9007237705388564943
 MeshFilter:
   m_ObjectHideFlags: 0

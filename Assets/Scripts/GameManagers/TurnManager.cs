@@ -91,6 +91,9 @@ public class TurnManager : MonoBehaviour // classen blir en singleton
         tempTurnText.DOFade(100, 2);
         underlineRightBlue.GetComponent<UnityEngine.UI.Image>().DOFade(100, 2);
         underlineLeftBlue.GetComponent<UnityEngine.UI.Image>().DOFade(100, 2);
+
+        // TODO: Make this!
+        //UnitSelector.Instance.UpdateSelectedUnit(UnitStorage.Instance.playerUnits[0], true);
     }
 
 
