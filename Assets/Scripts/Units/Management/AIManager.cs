@@ -56,6 +56,7 @@ public class AIManager : MonoBehaviour
         }
 
         TurnManager.Instance.GoToPlayerTurn();
+        UnitSelector.Instance.UpdateSelectedUnit(UnitStorage.Instance.playerUnits[0], true);
         yield return null;
     }
 }

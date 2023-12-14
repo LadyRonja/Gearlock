@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using static Unity.Collections.AllocatorManager;
 
@@ -48,6 +49,8 @@ public class TileClicker : MonoBehaviour
         if (!TurnManager.Instance.isPlayerTurn) return;
         if (tile.occupant != null)
             if (tile.occupant.playerBot) return;
+        if (Input.GetMouseButtonDown((int)MouseButton.Right))
+            return;
 
         // Move
         MovementManager.Instance.MoveUnit(UnitSelector.Instance.selectedUnit, tile);
