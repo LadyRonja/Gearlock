@@ -279,7 +279,7 @@ public class CardContainer : MonoBehaviour
                     for (int i = 0; i < KeepCard.Instance.transform.childCount; i++)
                     {
                         KeepCard.Instance.transform.GetChild(i).gameObject.GetComponent<CardWrapper>().enabled = false;
-                        Debug.Log("disabled wrapper");
+                       // Debug.Log("disabled wrapper");
                     }
 
                     if (cardPlayConfig.destroyOnPlay)

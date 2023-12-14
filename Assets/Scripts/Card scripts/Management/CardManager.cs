@@ -179,7 +179,7 @@ public class CardManager : MonoBehaviour
         {
             for (int i = 0; i < 1; i++)
             {
-                Debug.Log("removing active, returning to hand");
+                //Debug.Log("removing active, returning to hand");
                 GameObject card = ActiveCard.Instance.transform.GetChild(0).gameObject;
                 Card.CardType cardType = card.GetComponent<Card>().myType;
 
@@ -264,6 +264,7 @@ public class CardManager : MonoBehaviour
             {
                 GameObject KeptCard = KeepCard.Instance.transform.GetChild(i).gameObject;
                 GameObject ReturnedCard = Instantiate(KeptCard, HandPanel.Instance.transform);
+                ReturnedCard.GetComponent<RectTransform>().sizeDelta = new Vector2(100, 100);
 
                 for (int j = 0; j < HandPanel.Instance.transform.childCount; j++)
                 {

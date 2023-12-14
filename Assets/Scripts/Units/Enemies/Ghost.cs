@@ -15,12 +15,12 @@ public class Ghost : Unit
         List<Tile> output = Pathfinding.FindPath(standingOn, targetTile, movePointsCur, true);
         if (output == null)
         {
-            Debug.Log("No path found");
+            //Debug.Log("No path found");
             return null;
         }
         if(output.Count == 0)
         {
-            Debug.Log("Path is 0 long");
+            //Debug.Log("Path is 0 long");
             return null;
         }
 
