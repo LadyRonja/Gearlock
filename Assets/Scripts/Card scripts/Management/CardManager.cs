@@ -270,7 +270,6 @@ public class CardManager : MonoBehaviour
                     HandPanel.Instance.transform.GetChild(j).gameObject.GetComponent<CardWrapper>().enabled = true;
                 }
 
-                CardContainer.Instance.SetUpCards();
                 Destroy(KeptCard);
             }
         }
