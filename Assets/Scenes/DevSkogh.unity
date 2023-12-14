@@ -1023,7 +1023,7 @@ Transform:
   m_GameObject: {fileID: 334745789}
   serializedVersion: 2
   m_LocalRotation: {x: 0.5, y: -0.5, z: 0.5, w: 0.5}
-  m_LocalPosition: {x: 47.99, y: -63.88, z: 29.4}
+  m_LocalPosition: {x: 50.5, y: -63.33, z: 30.33}
   m_LocalScale: {x: 1.0858886, y: 1.2775323, z: 2.527045}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4381,7 +4381,7 @@ Transform:
   m_GameObject: {fileID: 2078892532}
   serializedVersion: 2
   m_LocalRotation: {x: -0.4912091, y: 0.5083933, z: -0.48583138, w: -0.51402116}
-  m_LocalPosition: {x: 50.3, y: -72.24, z: 26.78}
+  m_LocalPosition: {x: 50.3, y: -72.24, z: 25.3}
   m_LocalScale: {x: 0.22000001, y: 0.22000001, z: 0.22000001}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -4470,6 +4470,8 @@ MonoBehaviour:
   gfx: {fileID: 8286238780360717869}
   myMR: {fileID: 0}
   mySR: {fileID: 0}
+  highligtherArrow: {fileID: 0}
+  currentEase: 0
 --- !u!222 &114341890472274327
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4952,6 +4954,11 @@ MonoBehaviour:
   TurnEnd: 0
   KeepCardScreen: {fileID: 0}
   endTurnText: {fileID: 0}
+  underlineRightRed: {fileID: 0}
+  underlineLeftRed: {fileID: 0}
+  underlineRightBlue: {fileID: 0}
+  underlineLeftBlue: {fileID: 0}
+  currentEase: 0
   tempTurnText: {fileID: 7301554765260689521}
 --- !u!212 &915661768587442722
 SpriteRenderer:
@@ -5394,6 +5401,7 @@ MonoBehaviour:
   brokenDigger: {fileID: 0}
   dynamite: {fileID: 0}
   DrawAmount: {fileID: 0}
+  siblingIndex: 0
 --- !u!1 &1713682485971117879
 GameObject:
   m_ObjectHideFlags: 0
@@ -8178,6 +8186,8 @@ MonoBehaviour:
   gfx: {fileID: 114602580636637657}
   myMR: {fileID: 0}
   mySR: {fileID: 0}
+  highligtherArrow: {fileID: 0}
+  currentEase: 0
   brokenDigger: {fileID: 0}
 --- !u!114 &7909590848908899540
 MonoBehaviour:
@@ -8232,6 +8242,8 @@ MonoBehaviour:
   MovePointDark: []
   MovePointLight: []
   portrait: {fileID: 0}
+  gridParent: {fileID: 0}
+  displayPrefab: {fileID: 0}
 --- !u!114 &8052507527482191947
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8260,6 +8272,8 @@ MonoBehaviour:
   gfx: {fileID: 666374150037296619}
   myMR: {fileID: 0}
   mySR: {fileID: 0}
+  highligtherArrow: {fileID: 0}
+  currentEase: 0
   brokenFighter: {fileID: 0}
 --- !u!4 &8126368467769436310
 Transform:
