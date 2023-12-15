@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameoverManager : MonoBehaviour
 {
     public static GameoverManager Instance;
     [SerializeField] GameObject gameOverScreen;
     [SerializeField] TMP_Text gameOverText;
+    public bool isTutorial = false;
 
     private void Awake()
     {
@@ -40,6 +42,14 @@ public class GameoverManager : MonoBehaviour
 
     private void GameIsOver(bool playerWon)
     {
+        if(isTutorial)
+        {
+            if (playerWon)
+                SceneManager.LoadScene("GameTest2");
+            else
+                SceneManager.LoadScene("Tutorial 1");
+        }
+
         if(playerWon)
             gameOverText.text = "You won!";
         else
