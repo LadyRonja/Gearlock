@@ -14539,6 +14539,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Play Area
       objectReference: {fileID: 0}
+    - target: {fileID: 7798032642255166121, guid: c273c3393b404c34a81c1253ee25a5bb, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -15369,7 +15373,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1693494652081514299}
         m_TargetAssemblyTypeName: CardManager, Assembly-CSharp
-        m_MethodName: ReturnKept
+        m_MethodName: RetrieveKeptCards
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

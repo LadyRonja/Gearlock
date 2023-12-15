@@ -280,6 +280,7 @@ public class CardContainer : MonoBehaviour
                     CardManager.Instance.siblingIndex = currentDraggedCard.transform.GetSiblingIndex();
                     CardWrapper newCard = Instantiate(currentDraggedCard, KeepCard.Instance.transform);
                     newCard.transform.localScale = new Vector3(2, 2, 2);
+                    newCard.GetComponent<CardWrapper>().kept = true;
 
                     for (int i = 0; i < KeepCard.Instance.transform.childCount; i++)
                     {

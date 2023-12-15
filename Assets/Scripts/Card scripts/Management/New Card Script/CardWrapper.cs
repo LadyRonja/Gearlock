@@ -30,6 +30,7 @@ public class CardWrapper : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
 
     private bool clickedCard = false;
     private bool dragging = false;
+    public bool kept = false;
 
     public float width
     {

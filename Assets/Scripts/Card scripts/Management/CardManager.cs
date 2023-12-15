@@ -264,11 +264,12 @@ public class CardManager : MonoBehaviour
             {
                 GameObject KeptCard = KeepCard.Instance.transform.GetChild(i).gameObject;
                 GameObject ReturnedCard = Instantiate(KeptCard, HandPanel.Instance.transform);
-                ReturnedCard.GetComponent<RectTransform>().sizeDelta = new Vector2(100, 100);
+                ReturnedCard.GetComponent<RectTransform>().sizeDelta = new Vector2(100, 100);                
 
                 for (int j = 0; j < HandPanel.Instance.transform.childCount; j++)
                 {
                     HandPanel.Instance.transform.GetChild(j).gameObject.GetComponent<CardWrapper>().enabled = true;
+                    KeptCard.GetComponent<CardWrapper>().kept = false;
                 }
 
                 Destroy(KeptCard);
