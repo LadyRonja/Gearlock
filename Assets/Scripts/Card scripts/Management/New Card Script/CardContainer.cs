@@ -47,6 +47,8 @@ public class CardContainer : MonoBehaviour
     public static CardContainer Instance;
 
     float bigSize = 2.7f;
+    public RectTransform yourPanelRectTransform;
+
 
     private void Awake()
     {
@@ -96,7 +98,7 @@ public class CardContainer : MonoBehaviour
     void Update()
     {
         UpdateCards();
-
+        UpdatePanelSize();
         if (Input.GetMouseButtonDown(1) && ActiveCard.Instance.transform.childCount > 0)
         {
             ActiveCard.Instance.cardBeingPlayed.CancelPlay();
@@ -343,5 +345,14 @@ public class CardContainer : MonoBehaviour
         ActiveCard.Instance.transform.GetChild(0).gameObject.GetComponent<Card>().myState = CardState.VerifyUnitSelection;
     }
 
+    private void UpdatePanelSize()
+    {
+        if (yourPanelRectTransform != null)
+        {
+            float newPanelSize = 855 - 90 * transform.childCount;            
 
+            yourPanelRectTransform.anchoredPosition = new Vector2(0, yourPanelRectTransform.anchoredPosition.y);
+            yourPanelRectTransform.sizeDelta = new Vector2(-newPanelSize * 2, yourPanelRectTransform.sizeDelta.y);
+        }
+    }
 }

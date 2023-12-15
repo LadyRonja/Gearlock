@@ -170,7 +170,7 @@ public class CardWrapper : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        if (!TurnManager.Instance.isPlayerTurn || clickedCard)
+        if (!TurnManager.Instance.isPlayerTurn)
             return;
 
         isDragged = true;
@@ -197,6 +197,15 @@ public class CardWrapper : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
 
         else if (clickedCard && !dragging)
             dragging = true;
+
+        else
+        {
+            dragging = false;
+            isDragged = false;
+            container.OnCardDragEnd();
+        }
+        //isDragged = false;
+        //container.OnCardDragEnd();
 
     }
 
