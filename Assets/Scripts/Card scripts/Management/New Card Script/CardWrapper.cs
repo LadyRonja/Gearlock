@@ -188,6 +188,13 @@ public class CardWrapper : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
         if (!TurnManager.Instance.isPlayerTurn)
             return;
 
+        if (clickedCard && CardContainer.clickToPlayToggle)
+        {
+            container.OnCardDragEnd();
+            dragging = false;
+            isDragged = false;
+        }
+
         else if (clickedCard && dragging)
         {
             dragging = false;
@@ -204,8 +211,6 @@ public class CardWrapper : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
             isDragged = false;
             container.OnCardDragEnd();
         }
-        //isDragged = false;
-        //container.OnCardDragEnd();
 
     }
 

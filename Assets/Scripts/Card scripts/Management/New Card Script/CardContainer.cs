@@ -44,10 +44,11 @@ public class CardContainer : MonoBehaviour
 
     private RectTransform rectTransform;
     private CardWrapper currentDraggedCard;
+
+    public static bool clickToPlayToggle = false;
     public static CardContainer Instance;
 
     float bigSize = 2.7f;
-    public RectTransform yourPanelRectTransform;
 
 
     private void Awake()
@@ -268,7 +269,7 @@ public class CardContainer : MonoBehaviour
     public void OnCardDragEnd()
     {
 
-        if (IsCursorInPlayArea())
+        if (IsCursorInPlayArea() || clickToPlayToggle)
         {
             if (TurnManager.Instance.TurnEnd)
             {
@@ -347,12 +348,12 @@ public class CardContainer : MonoBehaviour
 
     private void UpdatePanelSize()
     {
-        if (yourPanelRectTransform != null)
+        if (gameObject.GetComponent<RectTransform>() != null)
         {
             float newPanelSize = 855 - 90 * transform.childCount;            
 
-            yourPanelRectTransform.anchoredPosition = new Vector2(0, yourPanelRectTransform.anchoredPosition.y);
-            yourPanelRectTransform.sizeDelta = new Vector2(-newPanelSize * 2, yourPanelRectTransform.sizeDelta.y);
+            gameObject.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, gameObject.GetComponent<RectTransform>().anchoredPosition.y);
+            gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(-newPanelSize * 2, gameObject.GetComponent<RectTransform>().sizeDelta.y);
         }
     }
 }
