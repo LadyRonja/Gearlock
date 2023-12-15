@@ -7,7 +7,7 @@ public class CheckerTintTiles : MonoBehaviour
     public int rows = 8;
     public int columns = 8;
     public float tileSize = 1.0f;
-    public float transparency = 0.5f; // Adjust this value for transparency
+    public float transparency = 0.35f; // Adjust this value for transparency
     public Transform checkeredboardTint; // Reference to the CheckeredboardTint object -9.8,-19.5, -5.5
 
     void Start()
@@ -25,7 +25,6 @@ public class CheckerTintTiles : MonoBehaviour
         }
 
         Material material = new Material(Shader.Find("Standard"));
-        material.SetFloat("_Mode", 2); // Set rendering mode to Fade
         material.SetInt("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.SrcAlpha);
         material.SetInt("_DstBlend", (int)UnityEngine.Rendering.BlendMode.OneMinusSrcAlpha);
         material.SetInt("_ZWrite", 0);
@@ -72,8 +71,6 @@ public class CheckerTintTiles : MonoBehaviour
                 Color tileColor = ((row + col) % 2 == 0) ? Color.white : Color.black;
                 tileColor.a = transparency; // Set the alpha value for transparency
                 tileRenderer.material.color = tileColor;
-
-                tile.transform.parent = transform;
             }
         }
     }

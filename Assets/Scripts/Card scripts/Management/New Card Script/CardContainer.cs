@@ -44,9 +44,12 @@ public class CardContainer : MonoBehaviour
 
     private RectTransform rectTransform;
     private CardWrapper currentDraggedCard;
+
+    public static bool clickToPlayToggle = false;
     public static CardContainer Instance;
 
     float bigSize = 2.7f;
+
 
     private void Awake()
     {
@@ -96,12 +99,14 @@ public class CardContainer : MonoBehaviour
     void Update()
     {
         UpdateCards();
-
+        UpdatePanelSize();
         if (Input.GetMouseButtonDown(1) && ActiveCard.Instance.transform.childCount > 0)
         {
             ActiveCard.Instance.cardBeingPlayed.CancelPlay();
             CardManager.Instance.ClearActiveCard();
         }
+        if (Input.GetKeyDown(KeyCode.P))
+            clickToPlayToggle = !clickToPlayToggle;
     }
 
     public void SetUpCards()
@@ -266,7 +271,7 @@ public class CardContainer : MonoBehaviour
     public void OnCardDragEnd()
     {
 
-        if (IsCursorInPlayArea())
+        if (IsCursorInPlayArea() || clickToPlayToggle)
         {
             if (TurnManager.Instance.TurnEnd)
             {
@@ -343,5 +348,14 @@ public class CardContainer : MonoBehaviour
         ActiveCard.Instance.transform.GetChild(0).gameObject.GetComponent<Card>().myState = CardState.VerifyUnitSelection;
     }
 
+    private void UpdatePanelSize()
+    {
+        if (gameObject.GetComponent<RectTransform>() != null)
+        {
+            float newPanelSize = 855 - 90 * transform.childCount;            
 
+            gameObject.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, gameObject.GetComponent<RectTransform>().anchoredPosition.y);
+            gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(-newPanelSize * 2, gameObject.GetComponent<RectTransform>().sizeDelta.y);
+        }
+    }
 }

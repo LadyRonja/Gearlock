@@ -7459,8 +7459,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5089259581290941422, guid: bca934adf52f27149866b6e9c1188193, type: 3}
       propertyPath: allowCardRepositioning
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5089259581290941422, guid: bca934adf52f27149866b6e9c1188193, type: 3}
+      propertyPath: yourPanelRectTransform
+      value: 
+      objectReference: {fileID: 1309896575}
     - target: {fileID: 5089259581290941422, guid: bca934adf52f27149866b6e9c1188193, type: 3}
       propertyPath: cardPlayConfig.playArea
       value: 
@@ -13794,6 +13798,7 @@ GameObject:
   - component: {fileID: 4512087838243481270}
   - component: {fileID: 3125950221627390706}
   - component: {fileID: 8065949040789420589}
+  - component: {fileID: 8065949040789420590}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -18246,6 +18251,20 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &8065949040789420590
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4046984755129963444}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8ce4987ddc98cf49b48b41d0a1520b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  caster: {fileID: 0}
+  eventSystem: {fileID: 0}
 --- !u!224 &8087069253342619027
 RectTransform:
   m_ObjectHideFlags: 0
