@@ -269,7 +269,7 @@ public class CardManager : MonoBehaviour
                 for (int j = 0; j < HandPanel.Instance.transform.childCount; j++)
                 {
                     HandPanel.Instance.transform.GetChild(j).gameObject.GetComponent<CardWrapper>().enabled = true;
-                    KeptCard.GetComponent<CardWrapper>().kept = false;
+                    HandPanel.Instance.transform.GetChild(j).gameObject.GetComponent<CardWrapper>().kept = false;
                 }
 
                 Destroy(KeptCard);
