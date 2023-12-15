@@ -105,6 +105,8 @@ public class CardContainer : MonoBehaviour
             ActiveCard.Instance.cardBeingPlayed.CancelPlay();
             CardManager.Instance.ClearActiveCard();
         }
+        if (Input.GetKeyDown(KeyCode.P))
+            clickToPlayToggle = !clickToPlayToggle;
     }
 
     public void SetUpCards()
