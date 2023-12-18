@@ -37,14 +37,15 @@ public class UnitSelector : MonoBehaviour
             Destroy(this.gameObject);
         #endregion
 
-        UpdateUI();
-        UpdatePlayerUnitUI();
     }
 
     private void Update()
     {
         if(Input.GetMouseButtonDown((int)MouseButton.Right))
             DeselectUnit();
+
+        UpdateUI();
+        UpdatePlayerUnitUI();
     }
 
     public void UpdateSelectedUnit(Unit unitToSelect, bool calledByAI)

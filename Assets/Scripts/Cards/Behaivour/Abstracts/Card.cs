@@ -46,9 +46,9 @@ public abstract class Card : MonoBehaviour
     public bool canNotTargetOccupiedTiles = false;
     public bool goesToDiscardAfterPlay = true;
 
-    private bool unitsHighligthed = false;
-    private bool tilesHighligthed = false;
-    private bool cardExecutionCalled = false;
+    protected bool unitsHighligthed = false;
+    protected bool tilesHighligthed = false;
+    protected bool cardExecutionCalled = false;
 
     [HideInInspector] public CardState myState = CardState.Inactive;
     public CardType myType;
