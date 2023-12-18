@@ -1,3 +1,4 @@
+using DG.Tweening.Core.Easing;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Collections;
@@ -18,6 +19,8 @@ public class Tile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
 
     public int x;
     public int y;
+
+    public bool highlighted = false;
 
     // Contents
     public Unit occupant;
@@ -135,6 +138,7 @@ public class Tile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
             return;
         }
 
+        highlighted = true;
         myHighligther.gameObject.SetActive(true);
         myHighligther.color = highlightColor;
     }
@@ -154,8 +158,9 @@ public class Tile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
         if(dirt != null)
             dirt.UnHighlight();
 
-        myHighligther.color = Color.white;
-        myHighligther.gameObject.SetActive(false);
+        myHighligther.color = new Color(0, 0, 0, 0.3f);
+        highlighted = false;    
+        //myHighligther.gameObject.SetActive(false);
     }
 
     

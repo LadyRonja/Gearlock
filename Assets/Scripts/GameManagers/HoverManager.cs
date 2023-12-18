@@ -15,7 +15,7 @@ public class HoverManager : MonoBehaviour
         // If a card is not being played
         // Highlight white or red depending on blocked status
         // Yellow/blue takes higher priority for enemy/friendly units
-        if (ActiveCard.Instance.transform.childCount == 0)
+        if (ActiveCard.Instance.cardBeingPlayed == null)
         {
             if (tile.myHighligther.color == Color.blue || tile.myHighligther.color == Color.yellow)
             { }// Do nothings
@@ -25,7 +25,7 @@ public class HoverManager : MonoBehaviour
             else
                 tile.Highlight(Color.red);
         }
-        else if (tile.myHighligther.gameObject.activeSelf == true)
+        else if (tile.highlighted)
         {
             // If a card is being played, highlight as green if it's not on the selected unit
 
@@ -43,12 +43,12 @@ public class HoverManager : MonoBehaviour
 
         // If a card is not being played
         // Remove highlight
-        if (ActiveCard.Instance.transform.childCount == 0)
+        if (ActiveCard.Instance.cardBeingPlayed == null)
         {
             if (tile.myHighligther.color != Color.blue && tile.myHighligther.color != Color.yellow)
                 tile.UnHighlight();
         }
-        else if (tile.myHighligther.gameObject.activeSelf == true)
+        else if (tile.highlighted)
         {
             // If a card is being played
             // Keep it highligthed

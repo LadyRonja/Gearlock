@@ -49,7 +49,7 @@ public class TileClicker : MonoBehaviour
         if (!TurnManager.Instance.isPlayerTurn) return;
         if (tile.occupant != null)
             if (tile.occupant.playerBot) return;
-        if (Input.GetMouseButtonDown((int)MouseButton.Right))
+        if (Input.GetMouseButtonDown((int)MouseButton.Right) || Input.GetMouseButtonDown((int)MouseButton.Middle))
             return;
 
         // Move

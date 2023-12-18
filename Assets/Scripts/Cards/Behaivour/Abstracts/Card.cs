@@ -262,7 +262,7 @@ public abstract class Card : MonoBehaviour
         // Click on a tile, unit, or dirt
         // That is now the selected tile
         // Send to verify
-        if (Input.GetMouseButtonDown((int)MouseButton.Left))
+        if (Input.GetMouseButtonDown((int)MouseButton.Left) && !CardManager.Instance.isDisplaying)
         {
             Vector3 mousePosition = Input.mousePosition;
             Ray ray = Camera.main.ScreenPointToRay(mousePosition);

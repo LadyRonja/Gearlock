@@ -23,6 +23,10 @@ public class CardManager : MonoBehaviour
     public GameObject dynamite;
     public TextMeshProUGUI DrawAmount;
     [HideInInspector] public int siblingIndex;
+    public bool isDisplaying = false;
+
+    public bool useList = false;
+    public List<GameObject> cards;
 
 
     public static CardManager Instance
@@ -49,13 +53,23 @@ public class CardManager : MonoBehaviour
     {
         // The starting deck is added to the draw pile
 
+        if(useList)
+        {
+            foreach (GameObject item in cards) 
+            { 
+                drawPile.Add(item);
+            }
+        }
+        else
+        {
+            drawPile.Add(dig);
+            drawPile.Add(dig);
+            drawPile.Add(dig);
+            drawPile.Add(attack);
+            drawPile.Add(diggerBot);
+            drawPile.Add(fighterBot);
+        }
 
-        drawPile.Add(dig);
-        drawPile.Add(dig);
-        drawPile.Add(dig);
-        drawPile.Add(attack);
-        drawPile.Add(diggerBot);
-        drawPile.Add(fighterBot);
 
         DealHand();
     }
