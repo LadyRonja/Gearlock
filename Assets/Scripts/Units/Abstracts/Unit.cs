@@ -40,6 +40,7 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
     public MeshRenderer myMR;
     public SpriteRenderer mySR;
     public SpriteRenderer highligtherArrow;
+    public SpriteRenderer dropShadow;
 
     [Header("DoTween")]
     public Ease currentEase;
@@ -165,6 +166,7 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
         yield return null;
     }
 
+    // TODO - shape shadow during jump
     protected IEnumerator MoveStep(Tile toTile)
     {
         movePointsCur--;
@@ -180,6 +182,12 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
         float timePassed = 0;
         float jumpHeight = 3f;
         bool hasChangedHighlight = false;
+
+        Vector3 shadowScaleStart = Vector3.one;
+        if (dropShadow != null)
+            shadowScaleStart = dropShadow.transform.localScale;
+
+        Vector3 shadowScaleMid = shadowScaleStart / 2f;
 
         while (timePassed < timeToMove)
         {
@@ -203,6 +211,14 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
                 }            
             }
 
+            if(dropShadow != null)
+            {
+                if(timePassed < timeToMove / 2f)
+                    dropShadow.transform.localScale = Vector3.Lerp(shadowScaleStart, shadowScaleMid, (timePassed / timeToMove));
+                else
+                    dropShadow.transform.localScale = Vector3.Lerp(shadowScaleMid, shadowScaleStart, (timePassed / timeToMove));
+            }
+
             timePassed += Time.deltaTime;
             UnitSelector.Instance.UpdateUI();
             yield return null;
@@ -211,8 +227,10 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
         standingOn.UpdateOccupant(null);
         standingOn = toTile;
         toTile.UpdateOccupant(this);
+        if (dropShadow != null)
+            dropShadow.transform.localScale = shadowScaleStart;
 
-        yield return null;
+           yield return null;
     }
 
     public virtual Unit FindTargetUnit()
