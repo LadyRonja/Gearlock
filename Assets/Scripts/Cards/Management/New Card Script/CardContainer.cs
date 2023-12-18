@@ -105,6 +105,8 @@ public class CardContainer : MonoBehaviour
     {
         UpdateCards();
         UpdatePanelSize();
+        UpdatePanelPosition();
+
         if (Input.GetMouseButtonDown(1) && ActiveCard.Instance.transform.childCount > 0)
         {
             ActiveCard.Instance.cardBeingPlayed.CancelPlay();
@@ -112,8 +114,6 @@ public class CardContainer : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.P))
             clickToPlayToggle = !clickToPlayToggle;
-
-        UpdatePanelPosition();
     }
 
     public void SetUpCards()
@@ -313,7 +313,7 @@ public class CardContainer : MonoBehaviour
                 // Instantiate a copy of the currently dragged card as a child of ActiveCard
                 CardWrapper newCard = Instantiate(currentDraggedCard, ActiveCard.Instance.transform);
                 newCard.transform.localScale = new Vector3(bigSize, bigSize, bigSize);
-
+                CardManager.Instance.isDisplaying = false;
                 // Set the new card as the active card
                 ActiveCard.Instance.cardBeingPlayed = newCard.GetComponent<Card>();
                 ActiveCard.Instance.transform.GetChild(0).gameObject.GetComponent<CardWrapper>().enabled = false;
@@ -327,7 +327,7 @@ public class CardContainer : MonoBehaviour
             }
         }
         currentDraggedCard = null;
-        CardManager.Instance.isDisplaying = false;
+
     }
 
     public void DestroyCard(CardWrapper card)

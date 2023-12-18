@@ -2,63 +2,41 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class AttackCard : Card
 {
-    [SerializeField]
-    private int multiplier = 1;
-
-    public GameObject verificationText;
-
-    private Unit byUnit;
-    private Tile onTile;
-    
-
-    public void Awake()
-    {
-        if (verificationText != null)
-            verificationText.SetActive(false);
-    }
-
+    [SerializeField] private int multiplier = 1;
 
     public override void ExecuteBehaivour(Tile onTile, Unit byUnit)
     {
-        /*if(onTile.occupant != null)
+        if(byUnit.playerBot && onTile.occupant.playerBot)
         {
-            onTile.occupant.TakeDamage(byUnit.power * multiplier);
+            FriendlyFirePopUp.Instance.OpenPopUp();
+            FriendlyFirePopUp.Instance.ConfirmButton.onClick.AddListener(delegate() { ConfirmAttack(onTile, byUnit); });
+            FriendlyFirePopUp.Instance.CancelButton.onClick.AddListener(delegate () { CancelAttack(); });
+        }
+    }
 
-            if (byUnit.playerBot)
-            {
-                Debug.LogError("do you want to hit your bot?");
-                verificationText.SetActive(true);
-
-                //SetVerificationPanelActive(true);
-            }
-            else
-            {
-                
-            }
-        }*/
+    private void ConfirmAttack(Tile onTile, Unit byUnit)
+    {
+        FriendlyFirePopUp.Instance.ClosePopUp();
         onTile.occupant.TakeDamage(byUnit.power * multiplier);
         ConfirmCardExecuted();
+    }
+
+    private void CancelAttack()
+    {
+        FriendlyFirePopUp.Instance.ClosePopUp();
+        selectedTile = null;
+        tilesHighligthed = false;
+        cardExecutionCalled = false;
+        myState = CardState.SelectingTile;
     }
 
     public override void ConfirmCardExecuted()
     {
         myState = CardState.Finished;
     }
-
-
-
-    /* public void ClickedYes()
-     {
-         verificationText.SetActive(false);
-         onTile.occupant.TakeDamage(byUnit.power * multiplier);
-     }
-
-     public void ClickedNo()
-     {
-         verificationText.SetActive(false);
-     }*/
 }

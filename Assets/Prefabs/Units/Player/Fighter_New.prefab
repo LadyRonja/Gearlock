@@ -122,6 +122,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 2807905146187061361}
   m_SourcePrefab: {fileID: 100100000, guid: 89bc880b93910a34caed231e137919d8, type: 3}
+--- !u!212 &1716630435092306293 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 9134419596077065337, guid: 89bc880b93910a34caed231e137919d8, type: 3}
+  m_PrefabInstance: {fileID: 7570912098415770892}
+  m_PrefabAsset: {fileID: 0}
 --- !u!212 &2774649333248233339 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 5733294182543290999, guid: 89bc880b93910a34caed231e137919d8, type: 3}
@@ -166,6 +171,7 @@ MonoBehaviour:
   myMR: {fileID: 0}
   mySR: {fileID: 4901807042198367898}
   highligtherArrow: {fileID: 2774649333248233339}
+  dropShadow: {fileID: 1716630435092306293}
   currentEase: 0
   brokenFighter: {fileID: 3141665598236762354, guid: a01b1ee6048250e4595d21ee65596a4d, type: 3}
 --- !u!65 &1200858403524648116

@@ -9,6 +9,9 @@ public class CollectKeptCard : MonoBehaviour, IPointerDownHandler
 {
     public void OnPointerDown(PointerEventData eventData)
     {
+        if (gameObject.transform.parent != KeepCard.Instance.gameObject)
+            return;
+
         if (GetComponent<CardWrapper>().kept)
         {
             GameObject KeptCard = gameObject;

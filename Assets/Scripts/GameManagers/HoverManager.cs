@@ -68,7 +68,7 @@ public class HoverManager : MonoBehaviour
             }
 
             // Check for dirt
-            if(hit.collider.gameObject.TryGetComponent<Dirt>(out Dirt d))
+            else if(hit.collider.gameObject.TryGetComponent<Dirt>(out Dirt d))
             {
                 myHits.dirt = d;
                 myHits.tile = d.myTile;

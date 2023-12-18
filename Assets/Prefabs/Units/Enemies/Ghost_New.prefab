@@ -108,6 +108,11 @@ SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 3249347098272502678, guid: 89bc880b93910a34caed231e137919d8, type: 3}
   m_PrefabInstance: {fileID: 2410177946771884866}
   m_PrefabAsset: {fileID: 0}
+--- !u!212 &6895387248764383035 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 9134419596077065337, guid: 89bc880b93910a34caed231e137919d8, type: 3}
+  m_PrefabInstance: {fileID: 2410177946771884866}
+  m_PrefabAsset: {fileID: 0}
 --- !u!212 &7990068245457533237 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 5733294182543290999, guid: 89bc880b93910a34caed231e137919d8, type: 3}
@@ -157,6 +162,7 @@ MonoBehaviour:
   myMR: {fileID: 0}
   mySR: {fileID: 893212369661663444}
   highligtherArrow: {fileID: 7990068245457533237}
+  dropShadow: {fileID: 6895387248764383035}
   currentEase: 0
 --- !u!65 &8004614544635770442
 BoxCollider:
