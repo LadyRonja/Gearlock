@@ -4,9 +4,97 @@ using Unity.VisualScripting;
 using UnityEngine;
 using static Unity.Collections.AllocatorManager;
 
+public struct HoverHits
+{
+    public HoverHits(Unit u, Tile t, Dirt d)
+    {
+        unit = u;
+        tile = t;
+        dirt = d;
+    }
+
+    public Unit unit;
+    public Tile tile;
+    public Dirt dirt;
+}
+
 public class HoverManager : MonoBehaviour
 {
-    static Tile lastHit;
+    private static HoverManager instance;
+    public HoverHits myHits = new HoverHits(null, null, null);
+
+    public static HoverManager Instance { get => GetInstance(); private set => instance = value; }
+
+    private void Awake()
+    {
+        if(instance == null || instance == this)
+            instance = this;
+        else
+            Destroy(this.gameObject);
+    }
+
+    private void Update()
+    {
+        CheckHover();
+    }
+    public void CheckHover()
+    {
+        Vector3 mousePosition = Input.mousePosition;
+        Ray ray = Camera.main.ScreenPointToRay(mousePosition);
+        RaycastHit hit;
+
+        Tile oldTile = myHits.tile;
+
+        /*if(myHits.tile != null)
+            HoverTileExit(myHits.tile);*/
+
+        if(myHits.unit != null)
+            myHits.unit.HoverTextUnitExit();
+
+        myHits.unit = null;
+        myHits.tile = null;
+        myHits.dirt = null;
+
+        if (Physics.Raycast(ray, out hit))
+        {
+            if (hit.collider == null)
+                return;
+
+            // Check for unit
+            if(hit.collider.gameObject.TryGetComponent<Unit>(out Unit u))
+            {
+                myHits.unit = u;
+                myHits.tile = u.standingOn;
+            }
+
+            // Check for dirt
+            if(hit.collider.gameObject.TryGetComponent<Dirt>(out Dirt d))
+            {
+                myHits.dirt = d;
+                myHits.tile = d.myTile;
+            }
+
+            // Check for tile
+            if(myHits.tile == null) 
+            {
+                if (hit.collider.gameObject.TryGetComponent<Tile>(out Tile t))
+                    myHits.tile = t;
+            }
+
+            if(myHits.tile != oldTile)
+            {
+                if (oldTile != null)
+                    HoverTileExit(oldTile);
+            }
+
+            if (myHits.tile != null)
+                HoverTileEnter(myHits.tile);
+
+            if (myHits.unit != null)
+                myHits.unit.HoverTextUnit();
+        }
+    }
+
     public static void HoverTileEnter(Tile tile)
     {
         if (tile.myHighligther == null) 
@@ -69,8 +157,6 @@ public class HoverManager : MonoBehaviour
 
         // TODO: 
         // Use local functions to make this whole function more readable
-
-        lastHit = tile;
 
         Unit selectedUnit = UnitSelector.Instance.selectedUnit;
         Card selectedCard = ActiveCard.Instance.cardBeingPlayed;
@@ -195,11 +281,13 @@ public class HoverManager : MonoBehaviour
         MouseControl.Instance.SetCursor(Cursors.Default, true);
     }
 
-    public static void RepeatLastCursor()
+    public static HoverManager GetInstance()
     {
-        if(lastHit != null)
-            CursorManagerEnter(lastHit);
-        else
-            MouseControl.Instance.SetCursor(Cursors.Default, true);
+        if (instance != null)
+            return instance;
+
+        GameObject newManager = new GameObject();
+        instance = newManager.AddComponent<HoverManager>();
+        return instance;
     }
 }

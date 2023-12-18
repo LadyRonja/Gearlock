@@ -4,7 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class Dirt : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class Dirt : MonoBehaviour
 {
     public Tile myTile;
     public MeshRenderer gfx;
@@ -13,26 +13,6 @@ public class Dirt : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     private void Start()
     {
         UnHighlight();
-    }
-
-    public void OnMouseEnter()
-    {
-        HoverManager.CursorManagerEnter(myTile);
-    }
-
-    public void OnMouseExit()
-    {
-        HoverManager.CursorManagerExit();
-    }
-
-    public void OnPointerEnter(PointerEventData eventData)
-    {
-        HoverManager.HoverTileEnter(myTile);
-    }
-
-    public void OnPointerExit(PointerEventData eventData)
-    {
-        HoverManager.HoverTileExit(myTile);
     }
 
     public void Highlight()

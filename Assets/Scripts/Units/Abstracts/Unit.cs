@@ -14,7 +14,7 @@ public enum BotSpecialization
     Digger
 }
 
-public abstract class Unit : MonoBehaviour, IDamagable, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler
+public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
 {
     [Header("Generics")]
     public string unitName = "Unnamed Unit";
@@ -291,18 +291,6 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerEnterHandler, IP
         return output;
     }
 
-    public void OnPointerEnter(PointerEventData eventData)
-    {
-        HoverManager.HoverTileEnter(standingOn);
-        HoverTextUnit();
-    }
-
-    public void OnPointerExit(PointerEventData eventData)
-    {
-        HoverManager.HoverTileExit(standingOn);
-        HoverTextUnitExit();
-    }
-
     public void OnPointerDown(PointerEventData eventData)
     {
         TileClicker.Instance.UpdateSelectedUnit(standingOn);
@@ -321,13 +309,13 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerEnterHandler, IP
             highligtherArrow.gameObject.SetActive(false);
     }
 
-    protected void HoverTextUnit()
+    public virtual void HoverTextUnit()
     {
         if (infoTextUnit != null)
             infoTextUnit.SetActive(true);
     }
 
-    protected void HoverTextUnitExit()
+    public virtual void HoverTextUnitExit()
     {
         if (infoTextUnit != null)
             infoTextUnit.SetActive(false);

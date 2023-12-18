@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 
 
-public class Tile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler
+public class Tile : MonoBehaviour, IPointerDownHandler
 {
     public MeshRenderer myMR;
     public SpriteRenderer myHighligther;
@@ -75,16 +75,6 @@ public class Tile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
         }
     }
 
-    public void OnPointerEnter(PointerEventData eventData)
-    {
-        HoverManager.HoverTileEnter(this);
-    }
-
-    public void OnPointerExit(PointerEventData eventData)
-    {
-        HoverManager.HoverTileExit(this);
-    }
-
     public void OnPointerDown(PointerEventData eventData)
      {
         // Select My Unit
@@ -125,9 +115,7 @@ public class Tile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
         //ItemSpawner.Instance.SpawnRandomItem(this);
         if(ItemSpawner.Instance != null)
            ItemSpawner.Instance.SpawnRandomCardDelete(this);
-            
-        
-            
+                           
     }
 
     public void Highlight(Color highlightColor)

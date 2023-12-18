@@ -383,7 +383,5 @@ public abstract class Card : MonoBehaviour
 
         CardTargetFinder.UnhighlightAllContent();
         UnitSelector.Instance.UpdateSelectedUnit(UnitSelector.Instance.selectedUnit);
-
-        HoverManager.RepeatLastCursor(); // TODO: Fix this function so it shoots a raycast and checks what it hits instead
     }
 }
