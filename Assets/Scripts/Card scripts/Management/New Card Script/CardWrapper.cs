@@ -53,9 +53,6 @@ public class CardWrapper : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
         UpdatePosition();
         UpdateScale();
         UpdateUILayer();
-
-
-
     }
 
     private void UpdateUILayer()
@@ -73,7 +70,7 @@ public class CardWrapper : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
             var target = new Vector2(targetPosition.x, targetPosition.y + targetVerticalDisplacement);
             if (isHovered && zoomConfig.overrideYPosition != -1)
             {
-                target = new Vector2(target.x, zoomConfig.overrideYPosition);
+                target = new Vector2(target.x, canvas.pixelRect.height / zoomConfig.overrideYPosition);
             }
 
             var distance = Vector2.Distance(rectTransform.position, target);
@@ -154,6 +151,7 @@ public class CardWrapper : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
 
         eventsConfig?.OnCardHover?.Invoke(new CardHover(this));
         isHovered = true;
+        CardManager.Instance.isDisplaying = true;
     }
 
 
@@ -167,6 +165,7 @@ public class CardWrapper : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
         canvas.sortingOrder = uiLayer;
         isHovered = false;
         eventsConfig?.OnCardUnhover?.Invoke(new CardUnhover(this));
+        CardManager.Instance.isDisplaying = false;
     }
 
     public void OnPointerDown(PointerEventData eventData)

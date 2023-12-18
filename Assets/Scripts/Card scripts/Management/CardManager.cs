@@ -23,6 +23,7 @@ public class CardManager : MonoBehaviour
     public GameObject dynamite;
     public TextMeshProUGUI DrawAmount;
     [HideInInspector] public int siblingIndex;
+    public bool isDisplaying = false;
 
     public bool useList = false;
     public List<GameObject> cards;

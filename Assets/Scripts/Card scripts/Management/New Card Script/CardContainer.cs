@@ -41,6 +41,7 @@ public class CardContainer : MonoBehaviour
     private EventsConfig eventsConfig;
 
     private List<CardWrapper> cards = new();
+    private Canvas canvas;
 
     private RectTransform rectTransform;
     private CardWrapper currentDraggedCard;
@@ -48,6 +49,9 @@ public class CardContainer : MonoBehaviour
     public static bool clickToPlayToggle = false;
     public static CardContainer Instance;
 
+
+    public float panelPosYHigh;
+    public float panelPosYLow;
     float bigSize = 2.7f;
 
 
@@ -60,6 +64,7 @@ public class CardContainer : MonoBehaviour
     }
     private void Start()
     {
+        canvas = GetComponent<Canvas>();
         rectTransform = GetComponent<RectTransform>();
         InitCards();
     }
@@ -107,6 +112,8 @@ public class CardContainer : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.P))
             clickToPlayToggle = !clickToPlayToggle;
+
+        UpdatePanelPosition();
     }
 
     public void SetUpCards()
@@ -357,6 +364,20 @@ public class CardContainer : MonoBehaviour
 
             gameObject.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, gameObject.GetComponent<RectTransform>().anchoredPosition.y);
             gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(-newPanelSize * 2, gameObject.GetComponent<RectTransform>().sizeDelta.y);
+        }
+    }
+
+    private void UpdatePanelPosition()
+    {
+        if (gameObject.GetComponent<RectTransform>() != null)
+        {
+            float panelRectX = gameObject.GetComponent<RectTransform>().anchoredPosition.x;
+            if (TurnManager.Instance.isPlayerTurn)
+                gameObject.GetComponent<RectTransform>().anchoredPosition = new Vector2(panelRectX, canvas.pixelRect.height / panelPosYHigh);
+
+            else if (!TurnManager.Instance.isPlayerTurn)
+                gameObject.GetComponent<RectTransform>().anchoredPosition = new Vector2(panelRectX, canvas.pixelRect.height / panelPosYLow);
+
         }
     }
 }

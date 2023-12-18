@@ -5590,6 +5590,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fa7c15f23d5d8944b623eb0b0ef3319, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!223 &1309896583
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1309896574}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
+  m_AdditionalShaderChannelsFlag: 0
+  m_UpdateRectTransformForStandalone: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_TargetDisplay: 0
 --- !u!1 &1310247050 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 541117939076042102, guid: 57ca9bb72f2aadd4abfb595c43fd95fd, type: 3}
@@ -6064,6 +6087,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameOverScreen: {fileID: 4371369217328364235}
   gameOverText: {fileID: 1887471484320622777}
+  isTutorial: 0
 --- !u!1 &1448536942
 GameObject:
   m_ObjectHideFlags: 0
@@ -7458,6 +7482,14 @@ PrefabInstance:
       value: NewHand
       objectReference: {fileID: 0}
     - target: {fileID: 5089259581290941422, guid: bca934adf52f27149866b6e9c1188193, type: 3}
+      propertyPath: panelPosYLow
+      value: -1.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5089259581290941422, guid: bca934adf52f27149866b6e9c1188193, type: 3}
+      propertyPath: panelPosYHigh
+      value: -2.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5089259581290941422, guid: bca934adf52f27149866b6e9c1188193, type: 3}
       propertyPath: allowCardRepositioning
       value: 0
       objectReference: {fileID: 0}
@@ -7469,10 +7501,17 @@ PrefabInstance:
       propertyPath: cardPlayConfig.playArea
       value: 
       objectReference: {fileID: 360802112}
+    - target: {fileID: 5089259581290941422, guid: bca934adf52f27149866b6e9c1188193, type: 3}
+      propertyPath: zoomConfig.overrideYPosition
+      value: 5.1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2201165938577988288, guid: bca934adf52f27149866b6e9c1188193, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1309896583}
   m_SourcePrefab: {fileID: 100100000, guid: bca934adf52f27149866b6e9c1188193, type: 3}
 --- !u!1 &1724308550
 GameObject:
@@ -11156,6 +11195,9 @@ MonoBehaviour:
   dynamite: {fileID: 0}
   DrawAmount: {fileID: 1942902843589467019}
   siblingIndex: 0
+  isDisplaying: 0
+  useList: 0
+  cards: []
 --- !u!1 &1756816183270798132
 GameObject:
   m_ObjectHideFlags: 0
