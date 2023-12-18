@@ -101,7 +101,7 @@ public class UnitSpawner : MonoBehaviour
         if (unitScript.myMR != null)
             spawnPos.y += (unitScript.myMR.bounds.size.y / 2f) * 0.01f;
         else
-            spawnPos.y += (unitScript.mySR.bounds.size.y / 2f) * 0.90f;
+            spawnPos.y += (unitScript.mySR.bounds.size.y / 2f);
         unitObject.transform.position = spawnPos;
 
         // Set Parent

@@ -11,7 +11,8 @@ using Unity.VisualScripting;
 public enum BotSpecialization
 {
     None,
-    Digger
+    Digger,
+    Constructor
 }
 
 public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
