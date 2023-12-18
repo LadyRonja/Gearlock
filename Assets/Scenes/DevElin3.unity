@@ -11853,6 +11853,7 @@ MonoBehaviour:
   - {fileID: 672333017}
   - {fileID: 212268662}
   - {fileID: 1205755847}
+  playerPanels: []
 --- !u!224 &845560310662435597
 RectTransform:
   m_ObjectHideFlags: 0
@@ -22447,6 +22448,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3152786065937450759, guid: 6afe273b1a94983439145af572c78ece, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: ab9089e351435ec42abdfc2196654d1b, type: 2}
     - target: {fileID: 7013444362678985220, guid: 6afe273b1a94983439145af572c78ece, type: 3}
       propertyPath: m_LocalPosition.x
       value: -9.8
@@ -22490,6 +22495,10 @@ PrefabInstance:
     - target: {fileID: 9158165731378038780, guid: 6afe273b1a94983439145af572c78ece, type: 3}
       propertyPath: m_Name
       value: CheckeredBoardTint
+      objectReference: {fileID: 0}
+    - target: {fileID: 9158165731378038780, guid: 6afe273b1a94983439145af572c78ece, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
