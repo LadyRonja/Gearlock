@@ -23,7 +23,9 @@ public class TurnManager : MonoBehaviour // classen blir en singleton
     public GameObject underlineRightBlue; //turn text line player
     public GameObject underlineLeftBlue;//turn text line player
     public Ease currentEase;
-    public Vector3 middlePosition; //middle of canvas
+
+    // public GameObject canvas;//ref to canvas for position 
+    public Canvas canvasPos;
 
 
     [SerializeField] TMP_Text tempTurnText;
@@ -41,17 +43,7 @@ public class TurnManager : MonoBehaviour // classen blir en singleton
 
     }
 
-    public void Start()
-    {
-        Canvas canvas = FindObjectOfType<Canvas>();
-        if (canvas != null)
-        {
-            RectTransform canvasRectTransform = canvas.GetComponent<RectTransform>();
-            // Calculate the middle position of the canvas
-            Vector3 middlePosition = canvasRectTransform.position;
-        }
-
-    }
+   
 
 
     public void EndTurn() //when clicked on End Turn Button
@@ -160,9 +152,13 @@ public class TurnManager : MonoBehaviour // classen blir en singleton
 
     public void TextAnimationTurnAI()
     {
-       
+        
+        if (canvasPos != null)
+        {
 
-           
+            RectTransform canvasRectTransform = canvasPos.GetComponent<RectTransform>();
+            // Calculate the middle position of the canvas
+            Vector3 middlePosition = canvasRectTransform.position;
 
 
             tempTurnText.rectTransform.anchoredPosition = new Vector2(1430, 15);
@@ -174,15 +170,20 @@ public class TurnManager : MonoBehaviour // classen blir en singleton
             textSequence.Join(underlineRightRed.transform.DOMoveX(middlePosition.x, 0.2f).SetEase(currentEase));
             textSequence.Join(underlineLeftRed.transform.DOMoveX(middlePosition.x, 0.2f).SetEase(currentEase));
             textSequence.OnComplete(FadeTextTurn);
-        
+        }
 
     }
 
     public void TexAnimationTurnPlayer()
     {
-       
+        
+        if (canvasPos != null)
+        {
 
-           
+            RectTransform canvasRectTransform = canvasPos.GetComponent<RectTransform>();
+            // Calculate the middle position of the canvas
+            Vector3 middlePosition = canvasRectTransform.position;
+
 
             tempTurnText.rectTransform.anchoredPosition = new Vector2(1430, 15);
             underlineRightBlue.transform.localPosition = new Vector3(2000, -80, 0);
@@ -193,7 +194,7 @@ public class TurnManager : MonoBehaviour // classen blir en singleton
             textSequence.Join(underlineRightBlue.transform.DOMoveX(middlePosition.x, 0.2f).SetEase(currentEase));
             textSequence.Join(underlineLeftBlue.transform.DOMoveX(middlePosition.x, 0.2f).SetEase(currentEase));
             textSequence.OnComplete(FadeTextTurn);
-        
+        }
     }
 
 
@@ -209,9 +210,9 @@ public class TurnManager : MonoBehaviour // classen blir en singleton
 
         // Move the text and lines back to their original positions after a delay
         DG.Tweening.Sequence returnSequence = DOTween.Sequence();
-        returnSequence.Append(tempTurnText.rectTransform.DOAnchorPos(new Vector2(1430, 15), 0.5f).SetEase(currentEase).SetDelay(2.7f));
-        returnSequence.Join(underlineRightBlue.transform.DOLocalMove(new Vector3(2000, -80, 0), 0.5f).SetEase(currentEase).SetDelay(2.7f));
-        returnSequence.Join(underlineLeftBlue.transform.DOLocalMove(new Vector3(-2000, 90, 0), 0.5f).SetEase(currentEase).SetDelay(2.7f));
+        returnSequence.Append(tempTurnText.rectTransform.DOAnchorPos(new Vector2(1430, 15), 0.5f).SetEase(currentEase).SetDelay(3f));
+        returnSequence.Join(underlineRightBlue.transform.DOLocalMove(new Vector3(2000, -80, 0), 0.5f).SetEase(currentEase).SetDelay(3f));
+        returnSequence.Join(underlineLeftBlue.transform.DOLocalMove(new Vector3(-2000, 90, 0), 0.5f).SetEase(currentEase).SetDelay(3f));
 
     }
 
