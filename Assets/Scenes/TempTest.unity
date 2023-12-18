@@ -5590,29 +5590,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fa7c15f23d5d8944b623eb0b0ef3319, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!223 &1309896583
-Canvas:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1309896574}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_RenderMode: 2
-  m_Camera: {fileID: 0}
-  m_PlaneDistance: 100
-  m_PixelPerfect: 0
-  m_ReceivesEvents: 1
-  m_OverrideSorting: 0
-  m_OverridePixelPerfect: 0
-  m_SortingBucketNormalizedSize: 0
-  m_VertexColorAlwaysGammaSpace: 0
-  m_AdditionalShaderChannelsFlag: 0
-  m_UpdateRectTransformForStandalone: 0
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
-  m_TargetDisplay: 0
 --- !u!1 &1310247050 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 541117939076042102, guid: 57ca9bb72f2aadd4abfb595c43fd95fd, type: 3}
@@ -7482,36 +7459,13 @@ PrefabInstance:
       value: NewHand
       objectReference: {fileID: 0}
     - target: {fileID: 5089259581290941422, guid: bca934adf52f27149866b6e9c1188193, type: 3}
-      propertyPath: panelPosYLow
-      value: -1.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 5089259581290941422, guid: bca934adf52f27149866b6e9c1188193, type: 3}
-      propertyPath: panelPosYHigh
-      value: -2.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5089259581290941422, guid: bca934adf52f27149866b6e9c1188193, type: 3}
-      propertyPath: allowCardRepositioning
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5089259581290941422, guid: bca934adf52f27149866b6e9c1188193, type: 3}
-      propertyPath: yourPanelRectTransform
-      value: 
-      objectReference: {fileID: 1309896575}
-    - target: {fileID: 5089259581290941422, guid: bca934adf52f27149866b6e9c1188193, type: 3}
       propertyPath: cardPlayConfig.playArea
       value: 
       objectReference: {fileID: 360802112}
-    - target: {fileID: 5089259581290941422, guid: bca934adf52f27149866b6e9c1188193, type: 3}
-      propertyPath: zoomConfig.overrideYPosition
-      value: 5.1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 2201165938577988288, guid: bca934adf52f27149866b6e9c1188193, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1309896583}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bca934adf52f27149866b6e9c1188193, type: 3}
 --- !u!1 &1724308550
 GameObject:
@@ -9492,6 +9446,7 @@ MonoBehaviour:
   - {fileID: 3768376687208267939}
   x: 4
   y: 2
+  highlighted: 0
   occupant: {fileID: 0}
   containsDirt: 1
   dirt: {fileID: 1547894940}
@@ -9634,6 +9589,7 @@ MonoBehaviour:
   - {fileID: 5670280812036503496}
   x: 2
   y: 5
+  highlighted: 0
   occupant: {fileID: 0}
   containsDirt: 1
   dirt: {fileID: 375156558}
@@ -10625,6 +10581,7 @@ MonoBehaviour:
   - {fileID: 3328293534217257359}
   x: 3
   y: 3
+  highlighted: 0
   occupant: {fileID: 0}
   containsDirt: 1
   dirt: {fileID: 696902033}
@@ -10743,6 +10700,7 @@ MonoBehaviour:
   - {fileID: 2269660461851504779}
   x: 2
   y: 2
+  highlighted: 0
   occupant: {fileID: 0}
   containsDirt: 1
   dirt: {fileID: 911541168}
@@ -10925,6 +10883,7 @@ MonoBehaviour:
   - {fileID: 2453470662850626863}
   x: 5
   y: 1
+  highlighted: 0
   occupant: {fileID: 0}
   containsDirt: 1
   dirt: {fileID: 2110106713}
@@ -11244,6 +11203,7 @@ MonoBehaviour:
   - {fileID: 8636179353595106130}
   x: 5
   y: 3
+  highlighted: 0
   occupant: {fileID: 0}
   containsDirt: 0
   dirt: {fileID: 0}
@@ -11691,6 +11651,7 @@ MonoBehaviour:
   - {fileID: 8997604407667670556}
   x: 0
   y: 1
+  highlighted: 0
   occupant: {fileID: 1205755847}
   containsDirt: 0
   dirt: {fileID: 0}
@@ -11892,6 +11853,7 @@ MonoBehaviour:
   - {fileID: 6597606564871663574}
   x: 2
   y: 3
+  highlighted: 0
   occupant: {fileID: 0}
   containsDirt: 0
   dirt: {fileID: 0}
@@ -11993,6 +11955,7 @@ MonoBehaviour:
   - {fileID: 1770070396784505252}
   x: 5
   y: 2
+  highlighted: 0
   occupant: {fileID: 0}
   containsDirt: 1
   dirt: {fileID: 752079924}
@@ -12028,6 +11991,7 @@ MonoBehaviour:
   - {fileID: 2641520444567201375}
   x: 4
   y: 0
+  highlighted: 0
   occupant: {fileID: 1605080589}
   containsDirt: 0
   dirt: {fileID: 0}
@@ -12065,6 +12029,7 @@ MonoBehaviour:
   - {fileID: 1366394439047209296}
   x: 3
   y: 2
+  highlighted: 0
   occupant: {fileID: 0}
   containsDirt: 1
   dirt: {fileID: 1478061727}
@@ -12245,6 +12210,7 @@ MonoBehaviour:
   - {fileID: 284818098967100619}
   x: 4
   y: 1
+  highlighted: 0
   occupant: {fileID: 0}
   containsDirt: 1
   dirt: {fileID: 231861997}
@@ -12304,6 +12270,7 @@ MonoBehaviour:
   - {fileID: 6795926666492340888}
   x: 4
   y: 5
+  highlighted: 0
   occupant: {fileID: 0}
   containsDirt: 1
   dirt: {fileID: 882560543}
@@ -13252,6 +13219,7 @@ MonoBehaviour:
   - {fileID: 5670280812036503496}
   x: 3
   y: 4
+  highlighted: 0
   occupant: {fileID: 0}
   containsDirt: 1
   dirt: {fileID: 2119595394}
@@ -13493,6 +13461,7 @@ MonoBehaviour:
   - {fileID: 6918050072285048015}
   x: 4
   y: 3
+  highlighted: 0
   occupant: {fileID: 0}
   containsDirt: 0
   dirt: {fileID: 0}
@@ -14347,6 +14316,7 @@ MonoBehaviour:
   - {fileID: 7389297293007430559}
   x: 1
   y: 3
+  highlighted: 0
   occupant: {fileID: 0}
   containsDirt: 1
   dirt: {fileID: 1575786251}
@@ -14954,6 +14924,7 @@ MonoBehaviour:
   - {fileID: 4570398963101970897}
   x: 1
   y: 2
+  highlighted: 0
   occupant: {fileID: 0}
   containsDirt: 1
   dirt: {fileID: 96427275}
@@ -15161,6 +15132,7 @@ MonoBehaviour:
   - {fileID: 7992419455696041446}
   x: 0
   y: 5
+  highlighted: 0
   occupant: {fileID: 0}
   containsDirt: 0
   dirt: {fileID: 0}
@@ -15614,6 +15586,7 @@ MonoBehaviour:
   - {fileID: 2746268839919200068}
   x: 3
   y: 5
+  highlighted: 0
   occupant: {fileID: 0}
   containsDirt: 1
   dirt: {fileID: 1185923716}
@@ -15767,6 +15740,7 @@ MonoBehaviour:
   - {fileID: 2035617440052126264}
   x: 0
   y: 0
+  highlighted: 0
   occupant: {fileID: 0}
   containsDirt: 1
   dirt: {fileID: 436055350}
@@ -16030,6 +16004,7 @@ MonoBehaviour:
   - {fileID: 7304095214633707530}
   x: 0
   y: 3
+  highlighted: 0
   occupant: {fileID: 0}
   containsDirt: 0
   dirt: {fileID: 0}
@@ -16489,6 +16464,7 @@ MonoBehaviour:
   - {fileID: 1443484397687942454}
   x: 2
   y: 1
+  highlighted: 0
   occupant: {fileID: 0}
   containsDirt: 1
   dirt: {fileID: 787111181}
@@ -16671,6 +16647,7 @@ MonoBehaviour:
   - {fileID: 465055839641552508}
   x: 2
   y: 4
+  highlighted: 0
   occupant: {fileID: 0}
   containsDirt: 1
   dirt: {fileID: 727708672}
@@ -16817,6 +16794,7 @@ MonoBehaviour:
   - {fileID: 8636179353595106130}
   x: 5
   y: 5
+  highlighted: 0
   occupant: {fileID: 0}
   containsDirt: 0
   dirt: {fileID: 0}
@@ -17009,6 +16987,7 @@ MonoBehaviour:
   - {fileID: 2746268839919200068}
   x: 4
   y: 4
+  highlighted: 0
   occupant: {fileID: 212268662}
   containsDirt: 0
   dirt: {fileID: 0}
@@ -17370,6 +17349,7 @@ MonoBehaviour:
   - {fileID: 5302379851731915168}
   x: 0
   y: 4
+  highlighted: 0
   occupant: {fileID: 0}
   containsDirt: 1
   dirt: {fileID: 972576021}
@@ -17407,6 +17387,7 @@ MonoBehaviour:
   - {fileID: 5108885220810808871}
   x: 1
   y: 1
+  highlighted: 0
   occupant: {fileID: 0}
   containsDirt: 1
   dirt: {fileID: 101032478}
@@ -17534,6 +17515,7 @@ MonoBehaviour:
   - {fileID: 7992419455696041446}
   x: 1
   y: 4
+  highlighted: 0
   occupant: {fileID: 0}
   containsDirt: 1
   dirt: {fileID: 925888876}
@@ -17882,6 +17864,7 @@ MonoBehaviour:
   - {fileID: 1563931011869745715}
   x: 5
   y: 0
+  highlighted: 0
   occupant: {fileID: 1530277194}
   containsDirt: 0
   dirt: {fileID: 0}
@@ -18028,6 +18011,7 @@ MonoBehaviour:
   - {fileID: 7338601059839571467}
   x: 1
   y: 0
+  highlighted: 0
   occupant: {fileID: 0}
   containsDirt: 1
   dirt: {fileID: 1588781662}
@@ -18272,6 +18256,7 @@ MonoBehaviour:
   - {fileID: 465055839641552508}
   x: 1
   y: 5
+  highlighted: 0
   occupant: {fileID: 672333017}
   containsDirt: 0
   dirt: {fileID: 0}
@@ -18529,6 +18514,7 @@ MonoBehaviour:
   - {fileID: 8930467636780421907}
   x: 3
   y: 0
+  highlighted: 0
   occupant: {fileID: 0}
   containsDirt: 0
   dirt: {fileID: 0}
@@ -18944,6 +18930,7 @@ MonoBehaviour:
   - {fileID: 6795926666492340888}
   x: 5
   y: 4
+  highlighted: 0
   occupant: {fileID: 0}
   containsDirt: 1
   dirt: {fileID: 1478813942}
@@ -19030,6 +19017,7 @@ MonoBehaviour:
   - {fileID: 6437816511202206155}
   x: 2
   y: 0
+  highlighted: 0
   occupant: {fileID: 0}
   containsDirt: 0
   dirt: {fileID: 0}
@@ -19206,6 +19194,7 @@ MonoBehaviour:
   - {fileID: 2495270383883785980}
   x: 3
   y: 1
+  highlighted: 0
   occupant: {fileID: 0}
   containsDirt: 0
   dirt: {fileID: 0}
@@ -19344,6 +19333,7 @@ MonoBehaviour:
   - {fileID: 6025241019568973945}
   x: 0
   y: 2
+  highlighted: 0
   occupant: {fileID: 0}
   containsDirt: 0
   dirt: {fileID: 0}
