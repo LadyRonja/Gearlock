@@ -23,7 +23,8 @@ public class TurnManager : MonoBehaviour // classen blir en singleton
     public GameObject underlineRightBlue; //turn text line player
     public GameObject underlineLeftBlue;//turn text line player
     public Ease currentEase;
-    
+    public Vector3 middlePosition; //middle of canvas
+
 
     [SerializeField] TMP_Text tempTurnText;
 
@@ -40,7 +41,19 @@ public class TurnManager : MonoBehaviour // classen blir en singleton
 
     }
 
-    
+    public void Start()
+    {
+        Canvas canvas = FindObjectOfType<Canvas>();
+        if (canvas != null)
+        {
+            RectTransform canvasRectTransform = canvas.GetComponent<RectTransform>();
+            // Calculate the middle position of the canvas
+            Vector3 middlePosition = canvasRectTransform.position;
+        }
+
+    }
+
+
     public void EndTurn() //when clicked on End Turn Button
     {
         if (isPlayerTurn)
@@ -147,32 +160,40 @@ public class TurnManager : MonoBehaviour // classen blir en singleton
 
     public void TextAnimationTurnAI()
     {
-        
-        tempTurnText.rectTransform.anchoredPosition = new Vector2(1430, 15);
-        underlineRightRed.transform.localPosition = new Vector3(2000, -80, 0);
-        underlineLeftRed.transform.localPosition = new Vector3(-2000, 90, 0);
+       
 
-        DG.Tweening.Sequence textSequence = DOTween.Sequence();
-        textSequence.Append(tempTurnText.transform.DOMoveX(600, 0.5f).SetEase(currentEase));
-        textSequence.Join(underlineRightRed.transform.DOMoveX(470, 0.2f).SetEase(currentEase));
-        textSequence.Join(underlineLeftRed.transform.DOMoveX(730, 0.2f).SetEase(currentEase));
-        textSequence.OnComplete(FadeTextTurn);
+           
 
+
+            tempTurnText.rectTransform.anchoredPosition = new Vector2(1430, 15);
+            underlineRightRed.transform.localPosition = new Vector3(2000, -80, 0);
+            underlineLeftRed.transform.localPosition = new Vector3(-2000, 90, 0);
+
+            DG.Tweening.Sequence textSequence = DOTween.Sequence();
+            textSequence.Append(tempTurnText.transform.DOMoveX(middlePosition.x, 0.5f).SetEase(currentEase));
+            textSequence.Join(underlineRightRed.transform.DOMoveX(middlePosition.x, 0.2f).SetEase(currentEase));
+            textSequence.Join(underlineLeftRed.transform.DOMoveX(middlePosition.x, 0.2f).SetEase(currentEase));
+            textSequence.OnComplete(FadeTextTurn);
         
+
     }
 
     public void TexAnimationTurnPlayer()
     {
-        tempTurnText.rectTransform.anchoredPosition = new Vector2(1430, 15);
-        underlineRightBlue.transform.localPosition = new Vector3(2000, -80, 0);
-        underlineLeftBlue.transform.localPosition = new Vector3(-2000, 90, 0);
+       
 
-        DG.Tweening.Sequence textSequence = DOTween.Sequence();
-        textSequence.Append(tempTurnText.transform.DOMoveX(600, 0.5f).SetEase(currentEase));
-        textSequence.Join(underlineRightBlue.transform.DOMoveX(470, 0.2f).SetEase(currentEase));
-        textSequence.Join(underlineLeftBlue.transform.DOMoveX(730, 0.2f).SetEase(currentEase));
-        textSequence.OnComplete(FadeTextTurn);
+           
 
+            tempTurnText.rectTransform.anchoredPosition = new Vector2(1430, 15);
+            underlineRightBlue.transform.localPosition = new Vector3(2000, -80, 0);
+            underlineLeftBlue.transform.localPosition = new Vector3(-2000, 90, 0);
+
+            DG.Tweening.Sequence textSequence = DOTween.Sequence();
+            textSequence.Append(tempTurnText.transform.DOMoveX(middlePosition.x, 0.5f).SetEase(currentEase));
+            textSequence.Join(underlineRightBlue.transform.DOMoveX(middlePosition.x, 0.2f).SetEase(currentEase));
+            textSequence.Join(underlineLeftBlue.transform.DOMoveX(middlePosition.x, 0.2f).SetEase(currentEase));
+            textSequence.OnComplete(FadeTextTurn);
+        
     }
 
 
@@ -185,6 +206,12 @@ public class TurnManager : MonoBehaviour // classen blir en singleton
 
         underlineRightBlue.GetComponent<UnityEngine.UI.Image>().DOFade(0, 2).SetDelay(0.7f);
         underlineLeftBlue.GetComponent<UnityEngine.UI.Image>().DOFade(0, 2).SetDelay(0.7f);
+
+        // Move the text and lines back to their original positions after a delay
+        DG.Tweening.Sequence returnSequence = DOTween.Sequence();
+        returnSequence.Append(tempTurnText.rectTransform.DOAnchorPos(new Vector2(1430, 15), 0.5f).SetEase(currentEase).SetDelay(2.7f));
+        returnSequence.Join(underlineRightBlue.transform.DOLocalMove(new Vector3(2000, -80, 0), 0.5f).SetEase(currentEase).SetDelay(2.7f));
+        returnSequence.Join(underlineLeftBlue.transform.DOLocalMove(new Vector3(-2000, 90, 0), 0.5f).SetEase(currentEase).SetDelay(2.7f));
 
     }
 
