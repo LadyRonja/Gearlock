@@ -17,6 +17,11 @@ public class AttackCard : Card
             FriendlyFirePopUp.Instance.ConfirmButton.onClick.AddListener(delegate() { ConfirmAttack(onTile, byUnit); });
             FriendlyFirePopUp.Instance.CancelButton.onClick.AddListener(delegate () { CancelAttack(); });
         }
+        else
+        {
+            onTile.occupant.TakeDamage(byUnit.power * multiplier);
+            ConfirmCardExecuted();
+        }
     }
 
     private void ConfirmAttack(Tile onTile, Unit byUnit)

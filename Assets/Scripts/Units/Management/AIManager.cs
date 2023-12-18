@@ -56,7 +56,11 @@ public class AIManager : MonoBehaviour
         }
 
         TurnManager.Instance.GoToPlayerTurn();
-        UnitSelector.Instance.UpdateSelectedUnit(UnitStorage.Instance.playerUnits[0], true);
+        if(UnitStorage.Instance.playerUnits.Count >= 2)
+            UnitSelector.Instance.UpdateSelectedUnit(UnitStorage.Instance.playerUnits[1], true);
+        else
+            UnitSelector.Instance.UpdateSelectedUnit(UnitStorage.Instance.playerUnits[0], true);
+
         yield return null;
     }
 }
