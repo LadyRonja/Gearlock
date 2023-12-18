@@ -5,6 +5,8 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using static Card;
+using static UnityEngine.GraphicsBuffer;
+using DG.Tweening;
 
 public class CardManager : MonoBehaviour
 {
@@ -21,10 +23,12 @@ public class CardManager : MonoBehaviour
     public GameObject brokenFighter;
     public GameObject brokenDigger;
     public GameObject dynamite;
+    public Transform discardIcon;
     public TextMeshProUGUI DrawAmount;
     [HideInInspector] public int siblingIndex;
-    public bool isDisplaying = false;
 
+    public Ease cardEase;
+    public bool isDisplaying = false;
     public bool useList = false;
     public List<GameObject> cards;
 
@@ -268,6 +272,12 @@ public class CardManager : MonoBehaviour
     {
         GameObject newCard = Instantiate(cardToAdd, discardPileObject.transform);
         newCard.GetComponent<MouseOverCard>().inHand = false;
+
+        
+        GameObject toDiscard = Instantiate(cardToAdd, AddedToDiscard.Instance.transform);
+        toDiscard.transform.DOMove(new Vector3(discardIcon.position.x, discardIcon.position.y, discardIcon.position.z), 1).SetEase(cardEase);
+        toDiscard.transform.DOScale(new Vector3(0.1f, 0.1f, 0.1f), 1).SetEase(cardEase);
+        Destroy(toDiscard, 1);
     }
 
     public void RetrieveKeptCards()
