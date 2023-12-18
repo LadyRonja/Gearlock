@@ -4557,6 +4557,7 @@ MonoBehaviour:
   myMR: {fileID: 0}
   mySR: {fileID: 1725493638}
   highligtherArrow: {fileID: 447737483}
+  aktiveSpineAnimation: 0
   currentEase: 0
 --- !u!1 &707028997
 GameObject:
@@ -4695,6 +4696,7 @@ MonoBehaviour:
   myMR: {fileID: 0}
   mySR: {fileID: 667432319}
   highligtherArrow: {fileID: 687420057}
+  aktiveSpineAnimation: 0
   currentEase: 0
   brokenFighter: {fileID: 3141665598236762354, guid: a01b1ee6048250e4595d21ee65596a4d, type: 3}
 --- !u!4 &707891268
@@ -7489,6 +7491,7 @@ MonoBehaviour:
   myMR: {fileID: 0}
   mySR: {fileID: 1981654384}
   highligtherArrow: {fileID: 270008792}
+  aktiveSpineAnimation: 0
   currentEase: 0
   brokenDigger: {fileID: 1387611179076426880, guid: d532bd26be33c284297d583c1446e12a, type: 3}
 --- !u!1 &1077641699
@@ -9509,6 +9512,7 @@ MonoBehaviour:
   myMR: {fileID: 0}
   mySR: {fileID: 1502413088}
   highligtherArrow: {fileID: 760385415}
+  aktiveSpineAnimation: 0
   currentEase: 0
 --- !u!1 &1420925366
 GameObject:
@@ -12496,7 +12500,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1897173150}
-  m_Mesh: {fileID: -4692823790785507783, guid: 589bbfb03bb5e394ca97c7dd97c444c0, type: 3}
+  m_Mesh: {fileID: 0}
 --- !u!114 &1897173153
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12534,7 +12538,7 @@ MonoBehaviour:
   disableRenderingOnOverride: 1
   updateTiming: 1
   unscaledTime: 0
-  _animationName: 
+  _animationName: Idle
   loop: 0
   timeScale: 1
 --- !u!23 &1897173154
@@ -14368,6 +14372,7 @@ MonoBehaviour:
   myMR: {fileID: 0}
   mySR: {fileID: 2003922768}
   highligtherArrow: {fileID: 784309892}
+  aktiveSpineAnimation: 0
   currentEase: 0
 --- !u!4 &2101963090
 Transform:

@@ -40,6 +40,7 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
     public MeshRenderer myMR;
     public SpriteRenderer mySR;
     public SpriteRenderer highligtherArrow;
+    public bool aktiveSpineAnimation; // if a unit has spine this i checked
 
     [Header("DoTween")]
     public Ease currentEase;
@@ -329,5 +330,11 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
     public void OnDisable()
     {
         transform.DOKill();
+    }
+
+
+    public void SpineAnimation()
+    {
+
     }
 }
