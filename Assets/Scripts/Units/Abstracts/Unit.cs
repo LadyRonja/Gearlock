@@ -47,10 +47,14 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
     public Ease currentEase;
 
     [Header("SpineAnimation")]
-    public string Jump;
     public bool aktiveSpineAnimation = false; // if a unit has spine this i checked
+    public string idleAnimation;
+    public string jumpAnimation;
 
-    SkeletonAnimation skeletonAnimation;
+    private bool isJumping = false;
+    
+
+    public SkeletonAnimation skeletonAnimation;
 
 
     private void Start()
@@ -58,11 +62,11 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
         // Check if the child object with the name "GFX (Spine)" exists
         Transform spineGFX = transform.Find("GFX (Spine)");
 
-        // If the child object is found, set the boolean variable to true and play spine animation
-        if (spineGFX != null)
+        //skeletonAnimation = spineGFX.GetComponent<SkeletonAnimation>();
+        if (skeletonAnimation != null)
         {
             aktiveSpineAnimation = true;
-            SpineAnimation(); 
+            PlayIdleAnimation();
         }
 
         if (infoTextUnit!= null)
@@ -206,11 +210,18 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
             transform.position = Vector3.Lerp(startPos, endPos, (timePassed / timeToMove));
 
             CameraController.Instance.MoveToTarget(this.transform.position, 0.01f);
-            
+
             // Jumping
-            float yOffSet = gfx.localPosition.y;
-            yOffSet = Mathf.Max(0, jumpHeight * Mathf.Sin(timePassed / timeToMove * Mathf.PI));
-            gfx.localPosition = new Vector3(gfx.localPosition.x, yOffSet, gfx.localPosition.z);
+            
+                float yOffSet = gfx.localPosition.y;
+                yOffSet = Mathf.Max(0, jumpHeight * Mathf.Sin(timePassed / timeToMove * Mathf.PI));
+                gfx.localPosition = new Vector3(gfx.localPosition.x, yOffSet, gfx.localPosition.z);
+
+                PlayJumpAnimation();
+
+            
+
+               
 
             
 
@@ -354,9 +365,31 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
     }
 
 
-    public void SpineAnimation()
+    public void PlayIdleAnimation()
     {
-        //test spine elin 
-        //skeletonAnimation.AnimationState.SetAnimation(0, Jump, true);
+        if (skeletonAnimation != null && !isJumping)
+        {
+            skeletonAnimation.AnimationState.SetAnimation(0, idleAnimation, true);
+        }
+    }
+
+    // Call this method to play the jump animation
+    public void PlayJumpAnimation()
+    {
+        if (skeletonAnimation != null)
+        {
+            skeletonAnimation.AnimationState.SetAnimation(0, jumpAnimation, false);
+            // Set a callback to handle the animation completion
+            skeletonAnimation.AnimationState.Complete += OnJumpAnimationComplete;
+            isJumping = true;
+        }
+    }
+
+    // Callback for jump animation completion
+    private void OnJumpAnimationComplete(Spine.TrackEntry trackEntry)
+    {
+        // Reset the flag and play the idle animation again
+        isJumping = false;
+        PlayIdleAnimation();
     }
 }
