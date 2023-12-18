@@ -41,15 +41,31 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
     public MeshRenderer myMR;
     public SpriteRenderer mySR;
     public SpriteRenderer highligtherArrow;
-    public bool aktiveSpineAnimation; // if a unit has spine this i checked
+    
 
     [Header("DoTween")]
     public Ease currentEase;
-    private Vector3 startPos;
+
+    [Header("SpineAnimation")]
+    public string Jump;
+    public bool aktiveSpineAnimation = false; // if a unit has spine this i checked
+
+    SkeletonAnimation skeletonAnimation;
+
 
     private void Start()
     {
-        if(infoTextUnit!= null)
+        // Check if the child object with the name "GFX (Spine)" exists
+        Transform spineGFX = transform.Find("GFX (Spine)");
+
+        // If the child object is found, set the boolean variable to true and play spine animation
+        if (spineGFX != null)
+        {
+            aktiveSpineAnimation = true;
+            SpineAnimation(); 
+        }
+
+        if (infoTextUnit!= null)
             infoTextUnit.SetActive(false);
 
         //myMR = gfx.GetComponent<MeshRenderer>();
@@ -196,7 +212,9 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
             yOffSet = Mathf.Max(0, jumpHeight * Mathf.Sin(timePassed / timeToMove * Mathf.PI));
             gfx.localPosition = new Vector3(gfx.localPosition.x, yOffSet, gfx.localPosition.z);
 
-            if(!hasChangedHighlight && timePassed > timeToMove / 2f)
+            
+
+            if (!hasChangedHighlight && timePassed > timeToMove / 2f)
             {
                 hasChangedHighlight = true;
                 if (UnitSelector.Instance.selectedUnit == this)
@@ -338,6 +356,7 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
 
     public void SpineAnimation()
     {
-
+        //test spine elin 
+        //skeletonAnimation.AnimationState.SetAnimation(0, Jump, true);
     }
 }
