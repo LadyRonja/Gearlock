@@ -146,6 +146,7 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
     /// <param name="path"></param>
     public void StartMovePath(List<Tile> path)
     {
+        MovementManager.Instance.takingMoveAction = false;
         doneMoving = false;
         StartCoroutine(MovePath(path));
     }
@@ -164,6 +165,7 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
         }
 
         doneMoving = true;
+        MovementManager.Instance.takingMoveAction = true;
         yield return null;
     }
 
