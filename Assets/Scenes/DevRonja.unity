@@ -9403,6 +9403,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameOverScreen: {fileID: 4371369217328364235}
   gameOverText: {fileID: 1887471484320622777}
+  isTutorial: 0
 --- !u!1 &1452868772
 GameObject:
   m_ObjectHideFlags: 0
@@ -10173,6 +10174,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1590313356}
   m_CullTransparentMesh: 1
+--- !u!1 &1616034653
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1616034654}
+  - component: {fileID: 1616034655}
+  m_Layer: 0
+  m_Name: Hover Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1616034654
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1616034653}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1985790269617892789}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1616034655
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1616034653}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b82311e916d0954090a3f5f6b6d50dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1619855187
 GameObject:
   m_ObjectHideFlags: 0
@@ -14747,6 +14792,7 @@ MonoBehaviour:
   - {fileID: 3768376687208267939}
   x: 4
   y: 2
+  highlighted: 0
   occupant: {fileID: 0}
   containsDirt: 1
   dirt: {fileID: 613040200}
@@ -14889,6 +14935,7 @@ MonoBehaviour:
   - {fileID: 5670280812036503496}
   x: 2
   y: 5
+  highlighted: 0
   occupant: {fileID: 0}
   containsDirt: 1
   dirt: {fileID: 504779241}
@@ -15880,6 +15927,7 @@ MonoBehaviour:
   - {fileID: 3328293534217257359}
   x: 3
   y: 3
+  highlighted: 0
   occupant: {fileID: 0}
   containsDirt: 1
   dirt: {fileID: 1967461522}
@@ -15998,6 +16046,7 @@ MonoBehaviour:
   - {fileID: 2269660461851504779}
   x: 2
   y: 2
+  highlighted: 0
   occupant: {fileID: 0}
   containsDirt: 1
   dirt: {fileID: 827433126}
@@ -16180,6 +16229,7 @@ MonoBehaviour:
   - {fileID: 2453470662850626863}
   x: 5
   y: 1
+  highlighted: 0
   occupant: {fileID: 0}
   containsDirt: 1
   dirt: {fileID: 1289063134}
@@ -16450,6 +16500,8 @@ MonoBehaviour:
   dynamite: {fileID: 0}
   DrawAmount: {fileID: 1942902843589467019}
   siblingIndex: 0
+  useList: 0
+  cards: []
 --- !u!1 &1756816183270798132
 GameObject:
   m_ObjectHideFlags: 0
@@ -16496,6 +16548,7 @@ MonoBehaviour:
   - {fileID: 8636179353595106130}
   x: 5
   y: 3
+  highlighted: 0
   occupant: {fileID: 0}
   containsDirt: 0
   dirt: {fileID: 0}
@@ -16904,8 +16957,9 @@ Transform:
   - {fileID: 6159448707859249779}
   - {fileID: 2213554364136363034}
   - {fileID: 666007072471186165}
-  - {fileID: 1446938518}
   - {fileID: 816473969}
+  - {fileID: 1446938518}
+  - {fileID: 1616034654}
   - {fileID: 2097474900}
   - {fileID: 8660587316508806172}
   - {fileID: 360184062}
@@ -16943,6 +16997,7 @@ MonoBehaviour:
   - {fileID: 8997604407667670556}
   x: 0
   y: 1
+  highlighted: 0
   occupant: {fileID: 1411825836}
   containsDirt: 0
   dirt: {fileID: 0}
@@ -17144,6 +17199,7 @@ MonoBehaviour:
   - {fileID: 6597606564871663574}
   x: 2
   y: 3
+  highlighted: 0
   occupant: {fileID: 0}
   containsDirt: 0
   dirt: {fileID: 0}
@@ -17245,6 +17301,7 @@ MonoBehaviour:
   - {fileID: 1770070396784505252}
   x: 5
   y: 2
+  highlighted: 0
   occupant: {fileID: 0}
   containsDirt: 1
   dirt: {fileID: 210413529}
@@ -17280,6 +17337,7 @@ MonoBehaviour:
   - {fileID: 2641520444567201375}
   x: 4
   y: 0
+  highlighted: 0
   occupant: {fileID: 707891267}
   containsDirt: 0
   dirt: {fileID: 0}
@@ -17317,6 +17375,7 @@ MonoBehaviour:
   - {fileID: 1366394439047209296}
   x: 3
   y: 2
+  highlighted: 0
   occupant: {fileID: 0}
   containsDirt: 1
   dirt: {fileID: 1619855188}
@@ -17497,6 +17556,7 @@ MonoBehaviour:
   - {fileID: 284818098967100619}
   x: 4
   y: 1
+  highlighted: 0
   occupant: {fileID: 0}
   containsDirt: 1
   dirt: {fileID: 971438320}
@@ -17556,6 +17616,7 @@ MonoBehaviour:
   - {fileID: 6795926666492340888}
   x: 4
   y: 5
+  highlighted: 0
   occupant: {fileID: 0}
   containsDirt: 1
   dirt: {fileID: 1354770722}
@@ -18504,6 +18565,7 @@ MonoBehaviour:
   - {fileID: 5670280812036503496}
   x: 3
   y: 4
+  highlighted: 0
   occupant: {fileID: 0}
   containsDirt: 1
   dirt: {fileID: 41106237}
@@ -18745,6 +18807,7 @@ MonoBehaviour:
   - {fileID: 6918050072285048015}
   x: 4
   y: 3
+  highlighted: 0
   occupant: {fileID: 0}
   containsDirt: 0
   dirt: {fileID: 0}
@@ -19598,6 +19661,7 @@ MonoBehaviour:
   - {fileID: 7389297293007430559}
   x: 1
   y: 3
+  highlighted: 0
   occupant: {fileID: 0}
   containsDirt: 1
   dirt: {fileID: 754608293}
@@ -20104,6 +20168,7 @@ MonoBehaviour:
   - {fileID: 4570398963101970897}
   x: 1
   y: 2
+  highlighted: 0
   occupant: {fileID: 0}
   containsDirt: 1
   dirt: {fileID: 282155215}
@@ -20311,6 +20376,7 @@ MonoBehaviour:
   - {fileID: 7992419455696041446}
   x: 0
   y: 5
+  highlighted: 0
   occupant: {fileID: 0}
   containsDirt: 0
   dirt: {fileID: 0}
@@ -20764,6 +20830,7 @@ MonoBehaviour:
   - {fileID: 2746268839919200068}
   x: 3
   y: 5
+  highlighted: 0
   occupant: {fileID: 0}
   containsDirt: 1
   dirt: {fileID: 1988284704}
@@ -20917,6 +20984,7 @@ MonoBehaviour:
   - {fileID: 2035617440052126264}
   x: 0
   y: 0
+  highlighted: 0
   occupant: {fileID: 0}
   containsDirt: 1
   dirt: {fileID: 1776880159}
@@ -21180,6 +21248,7 @@ MonoBehaviour:
   - {fileID: 7304095214633707530}
   x: 0
   y: 3
+  highlighted: 0
   occupant: {fileID: 0}
   containsDirt: 0
   dirt: {fileID: 0}
@@ -21639,6 +21708,7 @@ MonoBehaviour:
   - {fileID: 1443484397687942454}
   x: 2
   y: 1
+  highlighted: 0
   occupant: {fileID: 0}
   containsDirt: 1
   dirt: {fileID: 737424770}
@@ -21821,6 +21891,7 @@ MonoBehaviour:
   - {fileID: 465055839641552508}
   x: 2
   y: 4
+  highlighted: 0
   occupant: {fileID: 0}
   containsDirt: 1
   dirt: {fileID: 1077641700}
@@ -21967,6 +22038,7 @@ MonoBehaviour:
   - {fileID: 8636179353595106130}
   x: 5
   y: 5
+  highlighted: 0
   occupant: {fileID: 0}
   containsDirt: 0
   dirt: {fileID: 0}
@@ -22159,6 +22231,7 @@ MonoBehaviour:
   - {fileID: 2746268839919200068}
   x: 4
   y: 4
+  highlighted: 0
   occupant: {fileID: 703309845}
   containsDirt: 0
   dirt: {fileID: 0}
@@ -22520,6 +22593,7 @@ MonoBehaviour:
   - {fileID: 5302379851731915168}
   x: 0
   y: 4
+  highlighted: 0
   occupant: {fileID: 0}
   containsDirt: 1
   dirt: {fileID: 1939438110}
@@ -22557,6 +22631,7 @@ MonoBehaviour:
   - {fileID: 5108885220810808871}
   x: 1
   y: 1
+  highlighted: 0
   occupant: {fileID: 0}
   containsDirt: 1
   dirt: {fileID: 2003456292}
@@ -22684,6 +22759,7 @@ MonoBehaviour:
   - {fileID: 7992419455696041446}
   x: 1
   y: 4
+  highlighted: 0
   occupant: {fileID: 0}
   containsDirt: 1
   dirt: {fileID: 1666916140}
@@ -23032,6 +23108,7 @@ MonoBehaviour:
   - {fileID: 1563931011869745715}
   x: 5
   y: 0
+  highlighted: 0
   occupant: {fileID: 1072016313}
   containsDirt: 0
   dirt: {fileID: 0}
@@ -23178,6 +23255,7 @@ MonoBehaviour:
   - {fileID: 7338601059839571467}
   x: 1
   y: 0
+  highlighted: 0
   occupant: {fileID: 0}
   containsDirt: 1
   dirt: {fileID: 25025533}
@@ -23422,6 +23500,7 @@ MonoBehaviour:
   - {fileID: 465055839641552508}
   x: 1
   y: 5
+  highlighted: 0
   occupant: {fileID: 2101963089}
   containsDirt: 0
   dirt: {fileID: 0}
@@ -23614,6 +23693,7 @@ MonoBehaviour:
   - {fileID: 8930467636780421907}
   x: 3
   y: 0
+  highlighted: 0
   occupant: {fileID: 0}
   containsDirt: 0
   dirt: {fileID: 0}
@@ -24029,6 +24109,7 @@ MonoBehaviour:
   - {fileID: 6795926666492340888}
   x: 5
   y: 4
+  highlighted: 0
   occupant: {fileID: 0}
   containsDirt: 1
   dirt: {fileID: 71675697}
@@ -24115,6 +24196,7 @@ MonoBehaviour:
   - {fileID: 6437816511202206155}
   x: 2
   y: 0
+  highlighted: 0
   occupant: {fileID: 0}
   containsDirt: 0
   dirt: {fileID: 0}
@@ -24291,6 +24373,7 @@ MonoBehaviour:
   - {fileID: 2495270383883785980}
   x: 3
   y: 1
+  highlighted: 0
   occupant: {fileID: 0}
   containsDirt: 0
   dirt: {fileID: 0}
@@ -24429,6 +24512,7 @@ MonoBehaviour:
   - {fileID: 6025241019568973945}
   x: 0
   y: 2
+  highlighted: 0
   occupant: {fileID: 0}
   containsDirt: 0
   dirt: {fileID: 0}
