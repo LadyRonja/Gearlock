@@ -14035,7 +14035,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5089259581290941422, guid: bca934adf52f27149866b6e9c1188193, type: 3}
       propertyPath: zoomConfig.overrideYPosition
-      value: 150
+      value: 5.1
       objectReference: {fileID: 0}
     - target: {fileID: 6511531275807866220, guid: bca934adf52f27149866b6e9c1188193, type: 3}
       propertyPath: m_Color.a
@@ -15406,6 +15406,7 @@ MonoBehaviour:
   underlineRightBlue: {fileID: 767074428}
   underlineLeftBlue: {fileID: 767074427}
   currentEase: 0
+  middlePosition: {x: 0, y: 0, z: 0}
   tempTurnText: {fileID: 767074426}
 --- !u!4 &883605068537394148
 Transform:
@@ -16500,6 +16501,7 @@ MonoBehaviour:
   dynamite: {fileID: 0}
   DrawAmount: {fileID: 1942902843589467019}
   siblingIndex: 0
+  isDisplaying: 0
   useList: 0
   cards: []
 --- !u!1 &1756816183270798132
