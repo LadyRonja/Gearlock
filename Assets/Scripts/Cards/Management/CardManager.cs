@@ -23,7 +23,10 @@ public class CardManager : MonoBehaviour
     public GameObject brokenFighter;
     public GameObject brokenDigger;
     public GameObject dynamite;
+    public GameObject genericCard;
     public Transform discardIcon;
+    public Transform drawIcon;
+    public Transform discardSpawn;
     public GameObject drawSpawnPosition;
     public TextMeshProUGUI DrawAmount;
     [HideInInspector] public int siblingIndex;
@@ -115,6 +118,9 @@ public class CardManager : MonoBehaviour
         if (discardPileObject != null)
         {
             List<GameObject> cardsToAddToDrawPile = new List<GameObject>();
+
+            StartCoroutine(AnimateCardToDrawPileWithDelay(discardPileObject.transform.childCount));
+
             for (int i = discardPileObject.transform.childCount - 1; i >= 0; i--)
             {
                 GameObject card = discardPileObject.transform.GetChild(i).gameObject;
@@ -123,37 +129,33 @@ public class CardManager : MonoBehaviour
 
                 if (cardType == Card.CardType.Dig)
                 {
-                    DestroyImmediate(card);
                     cardsToAddToDrawPile.Add(dig);
                 }
                 else if (cardType == Card.CardType.Attack)
                 {
-                    DestroyImmediate(card);
                     cardsToAddToDrawPile.Add(attack);
                 }
                 else if (cardType == Card.CardType.Attack2x)
                 {
-                    DestroyImmediate(card);
                     cardsToAddToDrawPile.Add(attack2x);
                 }
                 else if (cardType == Card.CardType.DiggerBot)
                 {
-                    DestroyImmediate(card);
                     cardsToAddToDrawPile.Add(diggerBot);
                 }
                 else if (cardType == Card.CardType.FighterBot)
                 {
-                    DestroyImmediate(card);
                     cardsToAddToDrawPile.Add(fighterBot);
                 }
                 else if (cardType == Card.CardType.Dynamite)
                 {
-                    DestroyImmediate(card);
                     cardsToAddToDrawPile.Add(dynamite);
                 }
                 else{
                     Debug.LogError("Card not identified, please refactor this function");
                 }
+
+                //DestroyImmediate(card);
             }
 
             // Add the cards to drawPile
@@ -164,6 +166,29 @@ public class CardManager : MonoBehaviour
         }
     }
 
+    public void AnimateCardToDrawPile()
+    {
+        // Instantiate a copy of the card
+        GameObject cardCopy = Instantiate(genericCard, discardSpawn.transform);
+        cardCopy.transform.position = discardIcon.transform.position;
+        cardCopy.transform.localScale = new Vector3(0.4f, 0.4f, 0.4f);
+        cardCopy.transform.SetAsFirstSibling();
+        //cardCopy.GetComponent<CardWrapper>().enabled = false;
+
+        //Parent the copy to the drawPileTransform
+        //cardCopy.transform.parent = drawPileTransform;
+
+        // Define control points for the Bezier curve
+        Vector3 startPos = cardCopy.transform.position;
+        Vector3 endPos = drawIcon.transform.position;
+        Vector3 controlPoint = (startPos + endPos) / 2 + Vector3.up * 80.0f;
+
+        // Animate the copy along the Bezier curve using DOTween
+        cardCopy.transform.DOPath(new Vector3[] { startPos, controlPoint, endPos }, 1, PathType.CatmullRom)
+            .SetEase(Ease.OutQuint)  // You can adjust the ease function as needed
+            .OnComplete(() => Destroy(cardCopy))
+            .SetDelay(0.1f);   // Destroy the copy when the animation is complete
+    }
 
     public void ShuffleDrawPile() // Shuffles draw pile by going randomly switching each card with another.
     {
@@ -317,9 +342,19 @@ public class CardManager : MonoBehaviour
                     HandPanel.Instance.transform.GetChild(j).gameObject.GetComponent<CardWrapper>().enabled = true;
                 }
 
-
                 Destroy(KeptCard);
             }
         }
     }
+
+    private IEnumerator AnimateCardToDrawPileWithDelay(int children)
+    {
+        for (int i = 0; i < children; i++)
+        {
+            AnimateCardToDrawPile();
+            yield return new WaitForSeconds(0.05f);
+        }
+
+    }
+
 }
