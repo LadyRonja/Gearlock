@@ -9,7 +9,6 @@ public class SpawnUnitCard : Card
     public override void ExecuteBehaivour(Tile onTile, Unit byUnit)
     {
         Vector3 spawnpoint = onTile.transform.position;
-        spawnpoint.y += 6;
         GameObject botObject = Instantiate(unitPrefabToSpawn, spawnpoint, Quaternion.identity);
 
         Unit botScript = botObject.GetComponent<Unit>();
@@ -19,6 +18,9 @@ public class SpawnUnitCard : Card
         botScript.unitName += " "  + UnitStorage.Instance.playerUnits.Count;
         UnitSelector.Instance.UpdateSelectedUnit(botScript);
         UnitSelector.Instance.UpdatePlayerUnitUI();
+
+        spawnpoint.y += botScript.mySR.bounds.size.y / 2f;
+        botObject.transform.position = spawnpoint;
 
         ConfirmCardExecuted();
     }

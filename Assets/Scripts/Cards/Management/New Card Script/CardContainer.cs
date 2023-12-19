@@ -46,7 +46,7 @@ public class CardContainer : MonoBehaviour
     private RectTransform rectTransform;
     private CardWrapper currentDraggedCard;
 
-    public static bool clickToPlayToggle = false;
+    public static bool clickToPlayToggle = true;
     public static CardContainer Instance;
 
 
@@ -355,6 +355,8 @@ public class CardContainer : MonoBehaviour
 
     public void SetActiveCard()
     {
+        UnitSelector.Instance.UnHighlightAllTilesMoveableTo();
+
         ActiveCard.Instance.transform.GetChild(0).gameObject.GetComponent<Card>().Play();
         ActiveCard.Instance.transform.GetChild(0).gameObject.GetComponent<Card>().myState = CardState.VerifyUnitSelection;
     }
