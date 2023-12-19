@@ -11,29 +11,36 @@ using DG.Tweening;
 public class CardManager : MonoBehaviour
 {
     public static CardManager instance;
-    public List<GameObject> discardPile;
-    public List<GameObject> drawPile;
+
     public GameObject dig;
     public GameObject attack;
     public GameObject attack2x;
     public GameObject diggerBot;
     public GameObject fighterBot;
+
     public GameObject handParent;
     public GameObject discardPileObject;
     public GameObject brokenFighter;
     public GameObject brokenDigger;
-    public GameObject dynamite;
+    [HideInInspector] public GameObject dynamite;
     public GameObject genericCard;
+    public GameObject drawSpawnPosition;
+
+
     public Transform discardIcon;
     public Transform drawIcon;
     public Transform discardSpawn;
-    public GameObject drawSpawnPosition;
     public TextMeshProUGUI DrawAmount;
     [HideInInspector] public int siblingIndex;
 
+
     public Ease cardEase;
+    public Ease drawEase;
     public bool isDisplaying = false;
     public bool useList = false;
+
+    public List<GameObject> discardPile;
+    public List<GameObject> drawPile;
     public List<GameObject> cards;
 
 
@@ -106,6 +113,8 @@ public class CardManager : MonoBehaviour
             {
                 GameObject cardClone = Instantiate(drawPile[0], drawSpawnPosition.transform.position,Quaternion.identity);
                 cardClone.transform.SetParent(handParent.transform, false);
+                cardClone.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
+                cardClone.transform.DOScale(new Vector3(2f, 2f, 2f), 0.8f).SetEase(drawEase);
                 drawPile.RemoveAt(0);
             }
         }
@@ -178,7 +187,7 @@ public class CardManager : MonoBehaviour
         //Parent the copy to the drawPileTransform
         //cardCopy.transform.parent = drawPileTransform;
 
-        // Define control points for the Bezier curve
+        // Define control point for the Bezier curve
         Vector3 startPos = cardCopy.transform.position;
         Vector3 endPos = drawIcon.transform.position;
         Vector3 controlPoint = (startPos + endPos) / 2 + Vector3.up * 80.0f;

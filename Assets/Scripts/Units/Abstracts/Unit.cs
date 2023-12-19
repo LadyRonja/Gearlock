@@ -7,6 +7,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using DG.Tweening;
 using Unity.VisualScripting;
+using TMPro;
 
 public enum BotSpecialization
 {
@@ -42,6 +43,16 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
     public MeshRenderer myMR;
     public SpriteRenderer mySR;
     public SpriteRenderer highligtherArrow;
+
+    /*[Header("Hover Info")]
+    public TMP_Text tempNameTextMini;
+    public TMP_Text tempHealthTextMini;
+    public Image tempHealthFillMini;
+    public Image tempHealthFillWhiteMini;
+    //public TMP_Text tempPowerTextMini;
+    //public List<GameObject> MovePointDarkMini;
+    //public List<GameObject> MovePointLightMini;*/
+
     
 
     [Header("DoTween")]
@@ -356,14 +367,21 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
     public virtual void HoverTextUnit()
     {
         if (infoTextUnit != null)
+        {
             infoTextUnit.SetActive(true);
+            
+        }
+            
 
     }
 
     public virtual void HoverTextUnitExit()
     {
         if (infoTextUnit != null)
+        {
             infoTextUnit.SetActive(false);
+        }
+            
     }
 
     //test elin DoTween shake unit
