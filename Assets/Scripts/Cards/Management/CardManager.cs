@@ -24,6 +24,7 @@ public class CardManager : MonoBehaviour
     public GameObject brokenDigger;
     public GameObject dynamite;
     public Transform discardIcon;
+    public GameObject drawSpawnPosition;
     public TextMeshProUGUI DrawAmount;
     [HideInInspector] public int siblingIndex;
 
@@ -100,7 +101,8 @@ public class CardManager : MonoBehaviour
 
             if (drawPile.Count >= 1)
             {
-                Instantiate(drawPile[0], handParent.transform);
+                GameObject cardClone = Instantiate(drawPile[0], drawSpawnPosition.transform.position,Quaternion.identity);
+                cardClone.transform.SetParent(handParent.transform, false);
                 drawPile.RemoveAt(0);
             }
         }
