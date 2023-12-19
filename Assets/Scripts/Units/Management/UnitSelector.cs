@@ -10,6 +10,7 @@ using static Unity.Burst.Intrinsics.X86.Avx;
 public class UnitSelector : MonoBehaviour
 {
     public static UnitSelector Instance;
+    public static bool highlightingMovementTiles = false;
     public Unit selectedUnit;
     public bool playerCanSelectNewUnit = true;
 
@@ -195,6 +196,8 @@ public class UnitSelector : MonoBehaviour
             if (!selectedUnit.playerBot) return;
         }
 
+        highlightingMovementTiles = true;
+
         //Debug.Log("We will now highlight all tiles the selected unit can move to");
         List<Tile> allTiles = new();
         allTiles.AddRange(GridManager.Instance.tiles);
@@ -231,5 +234,7 @@ public class UnitSelector : MonoBehaviour
             t.highlightedForMovement = false;
             t.UnHighlight();
         }
+
+        highlightingMovementTiles = false;
     }
 }

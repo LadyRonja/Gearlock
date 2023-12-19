@@ -18,6 +18,7 @@ public struct HoverHits
     public Dirt dirt;
 }
 
+// I am sorry for how I wrote this - R
 public class HoverManager : MonoBehaviour
 {
     private static HoverManager instance;
@@ -100,6 +101,28 @@ public class HoverManager : MonoBehaviour
         if (tile.myHighligther == null) 
             return;
 
+        if (tile.highlightedForMovement)
+        {
+            List<Tile> pathable = Pathfinding.FindPath(tile, UnitSelector.Instance.selectedUnit.standingOn, UnitSelector.Instance.selectedUnit.movePointsCur, false);
+
+            if (tile.myHighligther.color == Color.blue || tile.myHighligther.color == Color.yellow)
+            { }// Do nothings
+            else if(pathable != null)
+            {
+                if(pathable.Count <= UnitSelector.Instance.selectedUnit.movePointsCur)
+                    tile.Highlight(Color.green);
+                else
+                    tile.Highlight(Color.red);
+            }
+            else
+                tile.Highlight(Color.red);
+
+
+            CursorManagerEnter(tile);
+            return;
+        }
+
+
         // If a card is not being played
         // Highlight white or red depending on blocked status
         // Yellow/blue takes higher priority for enemy/friendly units
@@ -107,10 +130,10 @@ public class HoverManager : MonoBehaviour
         {
             if (tile.myHighligther.color == Color.blue || tile.myHighligther.color == Color.yellow)
             { }// Do nothings
-            else if (!tile.blocked)
-                tile.Highlight();
-            else
+            else if (UnitSelector.highlightingMovementTiles || tile.blocked)
                 tile.Highlight(Color.red);
+            else
+                tile.Highlight();
         }
         else if (tile.highlighted)
         {
@@ -136,6 +159,11 @@ public class HoverManager : MonoBehaviour
             {
                 if (tile.myHighligther.color != Color.blue && tile.myHighligther.color != Color.yellow)
                     tile.UnHighlight();
+            }
+            else
+            {
+                if (tile.myHighligther.color != Color.blue && tile.myHighligther.color != Color.yellow)
+                    tile.Highlight();
             }
         }
         else if (tile.highlighted)
