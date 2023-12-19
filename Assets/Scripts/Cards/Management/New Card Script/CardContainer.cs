@@ -46,7 +46,7 @@ public class CardContainer : MonoBehaviour
     private RectTransform rectTransform;
     private CardWrapper currentDraggedCard;
 
-    public static bool clickToPlayToggle = false;
+    public static bool clickToPlayToggle = true;
     public static CardContainer Instance;
 
 
