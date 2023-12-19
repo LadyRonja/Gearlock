@@ -60,7 +60,7 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
     private void Start()
     {
         // Check if the child object with the name "GFX (Spine)" exists
-        Transform spineGFX = transform.Find("GFX (Spine)");
+        Transform spineGFX = transform.Find("GFX (Spine)"); // TODO: Why?
 
         //skeletonAnimation = spineGFX.GetComponent<SkeletonAnimation>();
         if (skeletonAnimation != null)
@@ -167,6 +167,7 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
     public void StartMovePath(List<Tile> path)
     {
         MovementManager.Instance.takingMoveAction = false;
+        UnitSelector.Instance.UnHighlightAllTilesMoveableTo();
         doneMoving = false;
         StartCoroutine(MovePath(path));
     }
@@ -186,6 +187,7 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
 
         doneMoving = true;
         MovementManager.Instance.takingMoveAction = true;
+        UnitSelector.Instance.HighlightAllTilesMovableTo();
         yield return null;
     }
 
@@ -211,20 +213,14 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
 
             CameraController.Instance.MoveToTarget(this.transform.position, 0.01f);
 
-            // Jumping
+            // Jumping          
+            float yOffSet = gfx.localPosition.y;
+            yOffSet = Mathf.Max(0, jumpHeight * Mathf.Sin(timePassed / timeToMove * Mathf.PI));
+            gfx.localPosition = new Vector3(gfx.localPosition.x, yOffSet, gfx.localPosition.z);
+
+            PlayJumpAnimation();
             
-                float yOffSet = gfx.localPosition.y;
-                yOffSet = Mathf.Max(0, jumpHeight * Mathf.Sin(timePassed / timeToMove * Mathf.PI));
-                gfx.localPosition = new Vector3(gfx.localPosition.x, yOffSet, gfx.localPosition.z);
-
-                PlayJumpAnimation();
-
-            
-
-               
-
-            
-
+            // After the halfway point, change the highlighted tile
             if (!hasChangedHighlight && timePassed > timeToMove / 2f)
             {
                 hasChangedHighlight = true;

@@ -2,6 +2,7 @@ using DG.Tweening.Core.Easing;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -27,6 +28,7 @@ public class Tile : MonoBehaviour, IPointerDownHandler
     public bool containsDirt;
     public Dirt dirt;
     public CardPickUp myPickUp;
+    public bool highlightedForMovement = false;
 
     // Pathfinding
     public bool targetable = true;
