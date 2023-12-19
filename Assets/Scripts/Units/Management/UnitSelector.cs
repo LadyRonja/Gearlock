@@ -18,9 +18,10 @@ public class UnitSelector : MonoBehaviour
     public TMP_Text tempHealthText;
     public Image tempHealthFill;
     public Image tempHealthFillWhite;
-    public TMP_Text tempPowerText; 
-    public List<GameObject> MovePointDark;
+    public TMP_Text tempPowerText;
+    public List<GameObject> MovePointBase;
     public List<GameObject> MovePointLight;
+    public List<GameObject> MovePointDark;
     public Image portrait;
     int maxMovePoints = 4;
 
@@ -41,7 +42,7 @@ public class UnitSelector : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetMouseButtonDown((int)MouseButton.Right))
+        if (Input.GetMouseButtonDown((int)MouseButton.Right))
             DeselectUnit();
 
         UpdateUI();
@@ -54,11 +55,11 @@ public class UnitSelector : MonoBehaviour
         if (!playerCanSelectNewUnit && !calledByAI)
             return;
 
-        if(selectedUnit != null)
+        if (selectedUnit != null)
             selectedUnit.standingOn.UnHighlight();
 
         selectedUnit = unitToSelect;
-        if(selectedUnit != null)
+        if (selectedUnit != null)
         {
             if (selectedUnit.playerBot)
                 selectedUnit.standingOn.Highlight(Color.blue);
@@ -86,10 +87,11 @@ public class UnitSelector : MonoBehaviour
     public void UpdateUI(bool damageApplication)
     {
 
-        for (int i = 0; i < maxMovePoints;  i++)
+        for (int i = 0; i < maxMovePoints; i++)
         {
-            MovePointDark[i].SetActive(false);
+            MovePointBase[i].SetActive(false);
             MovePointLight[i].SetActive(false);
+            MovePointDark[i].SetActive(false);
         }
 
         // TODO: Update UI properly
@@ -106,7 +108,7 @@ public class UnitSelector : MonoBehaviour
             tempPowerText.text = $"{selectedUnit.power}";
             tempHealthText.text = $"HP: {selectedUnit.healthCur}/{selectedUnit.healthMax}";
             tempHealthFill.fillAmount = (float)selectedUnit.healthCur / (float)selectedUnit.healthMax;
-            if(damageApplication)
+            if (damageApplication)
                 StartCoroutine(ReduceHealthbarOverTime(0.5f, selectedUnit));
             else
                 tempHealthFillWhite.fillAmount = (float)selectedUnit.healthCur / (float)selectedUnit.healthMax;
@@ -115,7 +117,7 @@ public class UnitSelector : MonoBehaviour
 
             for (int i = 0; i < selectedUnit.movePointsMax; i++)
             {
-                MovePointDark[i].SetActive(true);
+                MovePointBase[i].SetActive(true);
             }
 
             if (selectedUnit.movePointsCur < 0)
@@ -123,6 +125,7 @@ public class UnitSelector : MonoBehaviour
                 Debug.LogError("Units movepoint cur is negative, displaying as 0");
                 for (int i = 0; i < selectedUnit.movePointsMax; i++)
                 {
+                    MovePointDark[i].SetActive(false);
                     MovePointLight[i].SetActive(false);
                 }
             }
@@ -130,7 +133,10 @@ public class UnitSelector : MonoBehaviour
             {
                 for (int i = 0; i < selectedUnit.movePointsCur; i++)
                 {
-                    MovePointLight[i].SetActive(true);
+                    if (selectedUnit.playerBot)
+                        MovePointLight[i].SetActive(true);
+                    else
+                        MovePointDark[i].SetActive(true);
                 }
             }
 
@@ -164,7 +170,7 @@ public class UnitSelector : MonoBehaviour
     private IEnumerator ReduceHealthbarOverTime(float seconds, Unit healthOf)
     {
         float startValue = tempHealthFillWhite.fillAmount;
-        float endValue = (float)healthOf.healthCur/(float)healthOf.healthMax;
+        float endValue = (float)healthOf.healthCur / (float)healthOf.healthMax;
 
         float timeToSet = 0.5f;
         float timePassed = 0;
