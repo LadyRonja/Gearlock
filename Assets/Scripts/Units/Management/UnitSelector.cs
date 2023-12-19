@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -51,6 +52,8 @@ public class UnitSelector : MonoBehaviour
     public void UpdateSelectedUnit(Unit unitToSelect, bool calledByAI)
     {
         // Determine if updating the selected units is legal
+        UnHighlightAllTilesMoveableTo();
+
         if (!playerCanSelectNewUnit && !calledByAI)
             return;
 
@@ -61,7 +64,10 @@ public class UnitSelector : MonoBehaviour
         if(selectedUnit != null)
         {
             if (selectedUnit.playerBot)
+            {
+                HighlightAllTilesMovableTo();
                 selectedUnit.standingOn.Highlight(Color.blue);
+            }
             else
                 selectedUnit.standingOn.Highlight(Color.yellow);
 
@@ -85,7 +91,6 @@ public class UnitSelector : MonoBehaviour
 
     public void UpdateUI(bool damageApplication)
     {
-
         for (int i = 0; i < maxMovePoints;  i++)
         {
             MovePointDark[i].SetActive(false);
@@ -179,5 +184,52 @@ public class UnitSelector : MonoBehaviour
         tempHealthFillWhite.fillAmount = endValue;
 
         yield return null;
+    }
+
+    public void HighlightAllTilesMovableTo(bool forced)
+    {
+        if (!forced)
+        {
+            if (selectedUnit == null) return;
+            if (ActiveCard.Instance.cardBeingPlayed != null) return;
+            if (!selectedUnit.playerBot) return;
+        }
+
+        //Debug.Log("We will now highlight all tiles the selected unit can move to");
+        List<Tile> allTiles = new();
+        allTiles.AddRange(GridManager.Instance.tiles);
+        List<Tile> potentialTilesToHighlight = allTiles.Where(t => Pathfinding.GetDistance(t, selectedUnit.standingOn) <= selectedUnit.movePointsCur).ToList();
+
+        foreach (Tile t in potentialTilesToHighlight)
+        {
+            List<Tile> pathToTiles = Pathfinding.FindPath(selectedUnit.standingOn, t, selectedUnit.movePointsCur, false);
+            if (pathToTiles != null)
+            {
+                if(pathToTiles.Count <= selectedUnit.movePointsCur)
+                {
+                    if(!t.blocked)
+                    {
+                        t.highlightedForMovement = true;
+                        t.Highlight();
+                    }
+                }
+            }
+        }
+        selectedUnit.standingOn.Highlight(Color.blue);
+    }
+
+    public void HighlightAllTilesMovableTo() 
+    {
+        HighlightAllTilesMovableTo(false);
+    }
+
+    public void UnHighlightAllTilesMoveableTo()
+    {
+        //Debug.Log("We will now un-highlight all tiles the selected unit can move to");
+        foreach(Tile t in GridManager.Instance.tiles)
+        {
+            t.highlightedForMovement = false;
+            t.UnHighlight();
+        }
     }
 }

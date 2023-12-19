@@ -109,7 +109,6 @@ public class HoverManager : MonoBehaviour
             { }// Do nothings
             else if (!tile.blocked)
                 tile.Highlight();
-
             else
                 tile.Highlight(Color.red);
         }
@@ -133,8 +132,11 @@ public class HoverManager : MonoBehaviour
         // Remove highlight
         if (ActiveCard.Instance.cardBeingPlayed == null)
         {
-            if (tile.myHighligther.color != Color.blue && tile.myHighligther.color != Color.yellow)
-                tile.UnHighlight();
+            if (!tile.highlightedForMovement)
+            {
+                if (tile.myHighligther.color != Color.blue && tile.myHighligther.color != Color.yellow)
+                    tile.UnHighlight();
+            }
         }
         else if (tile.highlighted)
         {
