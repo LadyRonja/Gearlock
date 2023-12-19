@@ -4,6 +4,7 @@ using System.Linq;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using static Unity.Burst.Intrinsics.X86.Avx;
 
@@ -26,6 +27,18 @@ public class UnitSelector : MonoBehaviour
     public List<GameObject> MovePointDark;
     public Image portrait;
     int maxMovePoints = 4;
+
+    [Header("Hover Info")]
+    public TMP_Text tempNameTextMini;
+    public TMP_Text tempHealthTextMini;
+    public Image tempHealthFillMini;
+    public Image tempHealthFillWhiteMini;
+    //public TMP_Text tempPowerTextMini;
+    //public List<GameObject> MovePointDarkMini;
+    //public List<GameObject> MovePointLightMini;
+
+    private Unit hoveredUnit; // Track the currently hovered unit
+
 
     [Header("All player Units")]
     public Transform gridParent;
@@ -50,6 +63,8 @@ public class UnitSelector : MonoBehaviour
         UpdateUI();
         UpdatePlayerUnitUI();
     }
+
+    //test elin
 
     public void UpdateSelectedUnit(Unit unitToSelect, bool calledByAI)
     {
@@ -117,10 +132,17 @@ public class UnitSelector : MonoBehaviour
             tempPowerText.text = $"{selectedUnit.power}";
             tempHealthText.text = $"HP: {selectedUnit.healthCur}/{selectedUnit.healthMax}";
             tempHealthFill.fillAmount = (float)selectedUnit.healthCur / (float)selectedUnit.healthMax;
+            
+
             if (damageApplication)
                 StartCoroutine(ReduceHealthbarOverTime(0.5f, selectedUnit));
             else
+            {
                 tempHealthFillWhite.fillAmount = (float)selectedUnit.healthCur / (float)selectedUnit.healthMax;
+                
+
+            }
+                
 
             portrait.sprite = selectedUnit.portrait;
 

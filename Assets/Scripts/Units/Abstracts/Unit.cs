@@ -7,6 +7,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using DG.Tweening;
 using Unity.VisualScripting;
+using TMPro;
 
 public enum BotSpecialization
 {
@@ -23,6 +24,7 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
     public BotSpecialization mySpecialization = BotSpecialization.None;
     public Sprite portrait;
     public GameObject infoTextUnit;
+    
 
     [Header("Stats")]
     public int healthMax = 5;
@@ -41,6 +43,16 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
     public MeshRenderer myMR;
     public SpriteRenderer mySR;
     public SpriteRenderer highligtherArrow;
+
+    /*[Header("Hover Info")]
+    public TMP_Text tempNameTextMini;
+    public TMP_Text tempHealthTextMini;
+    public Image tempHealthFillMini;
+    public Image tempHealthFillWhiteMini;
+    //public TMP_Text tempPowerTextMini;
+    //public List<GameObject> MovePointDarkMini;
+    //public List<GameObject> MovePointLightMini;*/
+
     
 
     [Header("DoTween")]
@@ -206,10 +218,22 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
         float timePassed = 0;
         float jumpHeight = 3f;
         bool hasChangedHighlight = false;
+        bool shouldBeRight = standingOn.x - toTile.x > 0;
+        float startXScale = gfx.localScale.x;
+        Vector3 startSize = gfx.transform.localScale;
+        float destinationEndX = 0;
+        if (shouldBeRight)
+            destinationEndX = MathF.Abs(gfx.localScale.x);
+        else
+            destinationEndX = MathF.Abs(gfx.localScale.x) * -1f;
+
 
         while (timePassed < timeToMove)
         {
             transform.position = Vector3.Lerp(startPos, endPos, (timePassed / timeToMove));
+            Vector3 flipScale = gfx.transform.localScale;
+            flipScale.x = Mathf.Lerp(startXScale, destinationEndX, (timePassed / timeToMove));
+            gfx.transform.localScale = flipScale;
 
             CameraController.Instance.MoveToTarget(this.transform.position, 0.01f);
 
@@ -237,6 +261,8 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
             yield return null;
         }
         gfx.position = transform.position;
+        startSize.x = destinationEndX;
+        gfx.localScale = startSize;
         standingOn.UpdateOccupant(null);
         standingOn = toTile;
         toTile.UpdateOccupant(this);
@@ -341,13 +367,21 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
     public virtual void HoverTextUnit()
     {
         if (infoTextUnit != null)
+        {
             infoTextUnit.SetActive(true);
+            
+        }
+            
+
     }
 
     public virtual void HoverTextUnitExit()
     {
         if (infoTextUnit != null)
+        {
             infoTextUnit.SetActive(false);
+        }
+            
     }
 
     //test elin DoTween shake unit

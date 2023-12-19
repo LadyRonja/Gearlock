@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 2703456066549230151, guid: 89bc880b93910a34caed231e137919d8, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -5.58
+      objectReference: {fileID: 0}
     - target: {fileID: 3856975517133895266, guid: 89bc880b93910a34caed231e137919d8, type: 3}
       propertyPath: m_Size.x
       value: 1.9138484
@@ -130,8 +134,11 @@ MonoBehaviour:
   myMR: {fileID: 0}
   mySR: {fileID: 8395510307729736016}
   highligtherArrow: {fileID: 1586928922130931889}
-  dropShadow: {fileID: 2834696992933574335}
   currentEase: 0
+  aktiveSpineAnimation: 0
+  idleAnimation: 
+  jumpAnimation: 
+  skeletonAnimation: {fileID: 0}
   brokenDigger: {fileID: 1387611179076426880, guid: d532bd26be33c284297d583c1446e12a, type: 3}
 --- !u!65 &5853174060903658368
 BoxCollider:
@@ -162,11 +169,6 @@ Transform:
 --- !u!212 &1586928922130931889 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 5733294182543290999, guid: 89bc880b93910a34caed231e137919d8, type: 3}
-  m_PrefabInstance: {fileID: 6455109469304394438}
-  m_PrefabAsset: {fileID: 0}
---- !u!212 &2834696992933574335 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 9134419596077065337, guid: 89bc880b93910a34caed231e137919d8, type: 3}
   m_PrefabInstance: {fileID: 6455109469304394438}
   m_PrefabAsset: {fileID: 0}
 --- !u!212 &8395510307729736016 stripped
