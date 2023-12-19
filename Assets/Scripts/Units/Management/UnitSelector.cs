@@ -24,6 +24,18 @@ public class UnitSelector : MonoBehaviour
     public Image portrait;
     int maxMovePoints = 4;
 
+    [Header("Hover Info")]
+    public TMP_Text tempNameTextMini;
+    public TMP_Text tempHealthTextMini;
+    public Image tempHealthFillMini;
+    public Image tempHealthFillWhiteMini;
+    //public TMP_Text tempPowerTextMini;
+    //public List<GameObject> MovePointDarkMini;
+    //public List<GameObject> MovePointLightMini;
+
+    private Unit hoveredUnit; // Track the currently hovered unit
+
+
     [Header("All player Units")]
     public Transform gridParent;
     public GameObject displayPrefab;
@@ -48,7 +60,28 @@ public class UnitSelector : MonoBehaviour
         UpdatePlayerUnitUI();
     }
 
-    public void UpdateSelectedUnit(Unit unitToSelect, bool calledByAI)
+    //test elin
+    private void UpdateMiniUI()
+    {
+        // Update the mini UI based on the hovered unit
+        if (hoveredUnit != null)
+        {
+            tempNameTextMini.text = hoveredUnit.unitName;
+            tempHealthTextMini.text = $"HP: {hoveredUnit.healthCur}/{hoveredUnit.healthMax}";
+            tempHealthFillMini.fillAmount = (float)hoveredUnit.healthCur / (float)hoveredUnit.healthMax;
+            tempHealthFillWhiteMini.fillAmount = (float)hoveredUnit.healthCur / (float)hoveredUnit.healthMax;
+            // Update other mini UI elements as needed
+        }
+        else
+        {
+            // Reset mini UI when no unit is hovered
+            tempNameTextMini.text = string.Empty;
+            tempHealthTextMini.text = string.Empty;
+            // Reset other mini UI elements as needed
+        }
+    }
+
+        public void UpdateSelectedUnit(Unit unitToSelect, bool calledByAI)
     {
         // Determine if updating the selected units is legal
         if (!playerCanSelectNewUnit && !calledByAI)
@@ -103,13 +136,23 @@ public class UnitSelector : MonoBehaviour
         {
             tempUIPanel.SetActive(true);
             tempNameText.text = selectedUnit.unitName;
+            tempNameTextMini.text = selectedUnit.unitName;
             tempPowerText.text = $"{selectedUnit.power}";
             tempHealthText.text = $"HP: {selectedUnit.healthCur}/{selectedUnit.healthMax}";
+            tempHealthTextMini.text = $"HP: {selectedUnit.healthCur}/{selectedUnit.healthMax}";
+
             tempHealthFill.fillAmount = (float)selectedUnit.healthCur / (float)selectedUnit.healthMax;
-            if(damageApplication)
+            tempHealthFillMini.fillAmount = (float)selectedUnit.healthCur / (float)selectedUnit.healthMax;
+
+
+            if (damageApplication)
                 StartCoroutine(ReduceHealthbarOverTime(0.5f, selectedUnit));
             else
+            {
                 tempHealthFillWhite.fillAmount = (float)selectedUnit.healthCur / (float)selectedUnit.healthMax;
+                tempHealthFillWhiteMini.fillAmount = (float)selectedUnit.healthCur / (float)selectedUnit.healthMax;
+            }
+                
 
             portrait.sprite = selectedUnit.portrait;
 

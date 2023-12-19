@@ -23,6 +23,7 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
     public BotSpecialization mySpecialization = BotSpecialization.None;
     public Sprite portrait;
     public GameObject infoTextUnit;
+    
 
     [Header("Stats")]
     public int healthMax = 5;
@@ -346,6 +347,7 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
     {
         if (infoTextUnit != null)
             infoTextUnit.SetActive(true);
+
     }
 
     public virtual void HoverTextUnitExit()
