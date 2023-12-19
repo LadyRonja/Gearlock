@@ -78,6 +78,7 @@ public class CardManager : MonoBehaviour
         else
         {
             drawPile.Add(dig);
+            drawPile.Add(dynamite);
             drawPile.Add(dig);
             drawPile.Add(dig);
             drawPile.Add(attack);

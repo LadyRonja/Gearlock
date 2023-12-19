@@ -184,7 +184,7 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
         StartCoroutine(MovePath(path));
     }
 
-    public IEnumerator MovePath(List<Tile> path)
+    public virtual IEnumerator MovePath(List<Tile> path)
     {
         if (path == null) 
             yield break; 
