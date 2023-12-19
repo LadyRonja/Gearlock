@@ -135,7 +135,10 @@ public abstract class Card : MonoBehaviour
                 myState = CardState.Inactive;
                 CardTargetFinder.UnhighlightAllContent();
                 if (UnitSelector.Instance.selectedUnit != null)
+                {
                     UnitSelector.Instance.UpdateSelectedUnit(UnitSelector.Instance.selectedUnit);
+                    UnitSelector.Instance.HighlightAllTilesMovableTo(true);
+                }
                 ActiveCard.Instance.cardBeingPlayed = null;
                 tilesHighligthed = false;
                 unitsHighligthed = false;

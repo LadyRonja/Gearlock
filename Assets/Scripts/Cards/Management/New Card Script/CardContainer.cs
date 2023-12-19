@@ -355,6 +355,8 @@ public class CardContainer : MonoBehaviour
 
     public void SetActiveCard()
     {
+        UnitSelector.Instance.UnHighlightAllTilesMoveableTo();
+
         ActiveCard.Instance.transform.GetChild(0).gameObject.GetComponent<Card>().Play();
         ActiveCard.Instance.transform.GetChild(0).gameObject.GetComponent<Card>().myState = CardState.VerifyUnitSelection;
     }

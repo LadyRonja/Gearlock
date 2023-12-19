@@ -24,12 +24,15 @@ public class MovementManager : MonoBehaviour
         if (!takingMoveAction) return;
         if (unit.movePointsCur <= 0) return;
 
-        List<Tile> path = Pathfinding.FindPath(unit.standingOn, toTile, unit.movePointsCur);
+        List<Tile> path = Pathfinding.FindPath(unit.standingOn, toTile/*, unit.movePointsCur*/);
         if (path == null) 
         {
             // TODO: Indicate no available path
             return;
         }
+
+        if (path.Count > unit.movePointsCur)
+            return;
 
         unit.StartMovePath(path);
     }
