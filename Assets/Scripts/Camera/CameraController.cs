@@ -16,6 +16,9 @@ public class CameraController : MonoBehaviour
     public bool movingOnCoroutine = false;
     Vector3 velocity = Vector3.zero;
 
+    Vector3 mouseStartPos = Vector3.zero;
+    public bool inverseMouseControls = false;
+
     private void Awake()
     {
         #region Singleton
@@ -29,10 +32,14 @@ public class CameraController : MonoBehaviour
     private void Update()
     {
         DetectDoubleClick(); //If double clicking, let the camera auto-move again
-        MovementManager();
+        KeyBoardMovement();
+        MouseMovement();
+
+        if(Input.GetKeyDown(KeyCode.I))
+            inverseMouseControls = !inverseMouseControls;
     }
 
-    private void MovementManager()
+    private void KeyBoardMovement()
     {
         if (!playerCanMove)
             return;
@@ -47,6 +54,35 @@ public class CameraController : MonoBehaviour
             playerHasMoved = true;
 
         transform.position = newPos;
+    }
+
+    private void MouseMovement()
+    {
+        if (Input.GetMouseButtonDown((int)MouseButton.Middle))
+        {
+            mouseStartPos = Input.mousePosition;
+        }
+
+        if (Input.GetMouseButton((int)MouseButton.Middle))
+        {
+            Vector3 dir = (mouseStartPos - Input.mousePosition);
+            //dir.Normalize();
+
+            if(!inverseMouseControls)
+            {
+                dir *= -1f;
+            }
+
+            if (dir != Vector3.zero)
+                playerHasMoved = true;
+
+            float dampener = 0.004f;
+            Vector3 newPos = transform.position;
+            newPos.x += dir.x * camSpeed * 1.15f * dampener * Time.deltaTime;
+            newPos.z += dir.y * camSpeed * 1.15f * dampener * Time.deltaTime;
+
+            transform.position = newPos;
+        }
     }
 
     public void MoveToTarget(Vector3 target, float seconds = 0.5f)
@@ -101,7 +137,30 @@ public class CameraController : MonoBehaviour
             {
                 playerHasMoved = false;
                 clickedRecently = false;
+
+                Vector3 mousePosition = Input.mousePosition;
+                Ray ray = Camera.main.ScreenPointToRay(mousePosition);
+                RaycastHit hit;
+
+                if (Physics.Raycast(ray, out hit))
+                {
+                    if (hit.collider == null)
+                        return;
+
+                    // Check for unit
+                    if (hit.collider.gameObject.TryGetComponent<Unit>(out Unit u))
+                    {
+                        UnitSelector.Instance.UpdateSelectedUnit(u);
+                    }
+                    else if (hit.collider.gameObject.TryGetComponent<Tile>(out Tile t))
+                    {
+                        if(t.occupant != null)
+                            UnitSelector.Instance.UpdateSelectedUnit(t.occupant);
+
+                    }
+                }
             }
+
             clickedRecently = true;
             doublClickTimer = doubleClickSpan;
         }

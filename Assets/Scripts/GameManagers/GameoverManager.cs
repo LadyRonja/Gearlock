@@ -9,7 +9,11 @@ public class GameoverManager : MonoBehaviour
     public static GameoverManager Instance;
     [SerializeField] GameObject gameOverScreen;
     [SerializeField] TMP_Text gameOverText;
-    public bool isTutorial = false;
+    [SerializeField] string firstTutorialSceneName = "Tutorial First";
+    public bool isFirstTutorial = false;
+    [SerializeField] string secondTutorialSceneName = "Tutorial Second";
+    public bool isSecondTutorial = false;
+    [SerializeField] string levelOneName = "DevRonja";
 
     private void Awake()
     {
@@ -42,20 +46,30 @@ public class GameoverManager : MonoBehaviour
 
     private void GameIsOver(bool playerWon)
     {
-        if(isTutorial)
+        if(isFirstTutorial)
         {
             if (playerWon)
-                SceneManager.LoadScene("GameTest2");
+                SceneManager.LoadScene(secondTutorialSceneName);
             else
-                SceneManager.LoadScene("Tutorial 1");
+                SceneManager.LoadScene(firstTutorialSceneName);
+        }
+        else if(isSecondTutorial)
+        {
+            if (playerWon)
+                SceneManager.LoadScene(levelOneName);
+            else
+                SceneManager.LoadScene(secondTutorialSceneName);
+        }
+        else
+        {
+            if (playerWon)
+                gameOverText.text = "You won!";
+            else
+                gameOverText.text = "You lost!";
+
+
+            gameOverScreen.SetActive(true);
         }
 
-        if(playerWon)
-            gameOverText.text = "You won!";
-        else
-            gameOverText.text = "You lost!";
-
-
-        gameOverScreen.SetActive(true);
     }
 }
