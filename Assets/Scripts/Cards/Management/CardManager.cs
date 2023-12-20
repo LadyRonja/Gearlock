@@ -165,7 +165,7 @@ public class CardManager : MonoBehaviour
                     Debug.LogError("Card not identified, please refactor this function");
                 }
 
-                //DestroyImmediate(card);
+                DestroyImmediate(card);
             }
 
             // Add the cards to drawPile
