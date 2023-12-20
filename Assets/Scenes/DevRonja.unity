@@ -272,7 +272,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: This text appears when you hover over units
+  m_text: This is a construction station, it allows you to make new robots if you
+    have the cards for it.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: df4bd483e5d076c49bfb7c4799d92703, type: 2}
   m_sharedMaterial: {fileID: 6734769496113428420, guid: df4bd483e5d076c49bfb7c4799d92703, type: 2}
@@ -3911,6 +3912,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1127417310 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8856681708799631340, guid: 57ca9bb72f2aadd4abfb595c43fd95fd, type: 3}
+  m_PrefabInstance: {fileID: 3993006905578124987}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1141425118 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7669112644298872164, guid: 57ca9bb72f2aadd4abfb595c43fd95fd, type: 3}
@@ -3919,6 +3925,11 @@ GameObject:
 --- !u!1 &1160618011 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8300684559798560392, guid: 57ca9bb72f2aadd4abfb595c43fd95fd, type: 3}
+  m_PrefabInstance: {fileID: 3993006905578124987}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1161456797 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6740392023260520424, guid: 57ca9bb72f2aadd4abfb595c43fd95fd, type: 3}
   m_PrefabInstance: {fileID: 3993006905578124987}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1172891683
@@ -4612,6 +4623,11 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 100
   m_TargetDisplay: 0
+--- !u!1 &1273568290 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2565271407308805428, guid: 57ca9bb72f2aadd4abfb595c43fd95fd, type: 3}
+  m_PrefabInstance: {fileID: 3993006905578124987}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1310247050 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 541117939076042102, guid: 57ca9bb72f2aadd4abfb595c43fd95fd, type: 3}
@@ -5374,6 +5390,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1527503260 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8895128857285531975, guid: 57ca9bb72f2aadd4abfb595c43fd95fd, type: 3}
+  m_PrefabInstance: {fileID: 3993006905578124987}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &1544158785 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6909014121066981394, guid: c273c3393b404c34a81c1253ee25a5bb, type: 3}
@@ -10705,7 +10726,7 @@ MonoBehaviour:
   discardPileObject: {fileID: 2879278854496055974}
   brokenFighter: {fileID: 3141665598236762354, guid: a01b1ee6048250e4595d21ee65596a4d, type: 3}
   brokenDigger: {fileID: 1387611179076426880, guid: d532bd26be33c284297d583c1446e12a, type: 3}
-  dynamite: {fileID: 0}
+  dynamite: {fileID: 5421826990026163501, guid: ab6e0bc5738517c42b260f76420e9d9e, type: 3}
   genericCard: {fileID: 456323171}
   discardIcon: {fileID: 6412751962425492403}
   drawIcon: {fileID: 594211657}
@@ -12436,7 +12457,7 @@ MonoBehaviour:
   tempHealthFill: {fileID: 7917435806235403165}
   tempHealthFillWhite: {fileID: 6525379374278535081}
   tempPowerText: {fileID: 7499759528809398030}
-  MovePointDark:
+  MovePointBase:
   - {fileID: 1160618011}
   - {fileID: 1199454148}
   - {fileID: 981874445}
@@ -12446,6 +12467,11 @@ MonoBehaviour:
   - {fileID: 1141425118}
   - {fileID: 2079215673}
   - {fileID: 979927808}
+  MovePointDark:
+  - {fileID: 1273568290}
+  - {fileID: 1127417310}
+  - {fileID: 1527503260}
+  - {fileID: 1161456797}
   portrait: {fileID: 1909408377}
   gridParent: {fileID: 860383801}
   displayPrefab: {fileID: 4982287730161726828, guid: 7d81b1886adca73468c040374bc0fd71, type: 3}
@@ -13309,23 +13335,20 @@ MonoBehaviour:
   - {fileID: 7085131046943255271, guid: 5e94dfb5f6b36fd44895fffece21eefd, type: 3}
   - {fileID: 5112470102642997458, guid: b2bd73ee66ac96a408d22f77f4851814, type: 3}
   spawnableCardsFinite:
-  - {fileID: 898281027607506639, guid: 4b48bcb37e6304e4c866ca4159064d03, type: 3}
+  - {fileID: 5421826990026163501, guid: ab6e0bc5738517c42b260f76420e9d9e, type: 3}
+  - {fileID: 6944391597733846485, guid: b1cdf32aae116e84aa826db772b8ca36, type: 3}
+  - {fileID: 5112470102642997458, guid: b2bd73ee66ac96a408d22f77f4851814, type: 3}
   - {fileID: 6944391597733846485, guid: b1cdf32aae116e84aa826db772b8ca36, type: 3}
   - {fileID: 6944391597733846485, guid: b1cdf32aae116e84aa826db772b8ca36, type: 3}
-  - {fileID: 6944391597733846485, guid: b1cdf32aae116e84aa826db772b8ca36, type: 3}
-  - {fileID: 3861232017947565500, guid: 5e8f3cb1634380744befee5806ee00c9, type: 3}
-  - {fileID: 898281027607506639, guid: 4b48bcb37e6304e4c866ca4159064d03, type: 3}
+  - {fileID: 5421826990026163501, guid: ab6e0bc5738517c42b260f76420e9d9e, type: 3}
   - {fileID: 7085131046943255271, guid: 5e94dfb5f6b36fd44895fffece21eefd, type: 3}
   - {fileID: 3861232017947565500, guid: 5e8f3cb1634380744befee5806ee00c9, type: 3}
   - {fileID: 6944391597733846485, guid: b1cdf32aae116e84aa826db772b8ca36, type: 3}
   - {fileID: 6944391597733846485, guid: b1cdf32aae116e84aa826db772b8ca36, type: 3}
-  - {fileID: 5112470102642997458, guid: b2bd73ee66ac96a408d22f77f4851814, type: 3}
   - {fileID: 3861232017947565500, guid: 5e8f3cb1634380744befee5806ee00c9, type: 3}
-  - {fileID: 898281027607506639, guid: 4b48bcb37e6304e4c866ca4159064d03, type: 3}
-  - {fileID: 898281027607506639, guid: 4b48bcb37e6304e4c866ca4159064d03, type: 3}
-  - {fileID: 898281027607506639, guid: 4b48bcb37e6304e4c866ca4159064d03, type: 3}
   - {fileID: 6944391597733846485, guid: b1cdf32aae116e84aa826db772b8ca36, type: 3}
   - {fileID: 6944391597733846485, guid: b1cdf32aae116e84aa826db772b8ca36, type: 3}
+  - {fileID: 3861232017947565500, guid: 5e8f3cb1634380744befee5806ee00c9, type: 3}
 --- !u!1 &2738659695132123358
 GameObject:
   m_ObjectHideFlags: 0
@@ -15660,9 +15683,21 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 849042627255935403, guid: 57ca9bb72f2aadd4abfb595c43fd95fd, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1526288223604348189, guid: 57ca9bb72f2aadd4abfb595c43fd95fd, type: 3}
       propertyPath: m_Name
       value: Selected Unit
+      objectReference: {fileID: 0}
+    - target: {fileID: 2923051624041720573, guid: 57ca9bb72f2aadd4abfb595c43fd95fd, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4386692466451613926, guid: 57ca9bb72f2aadd4abfb595c43fd95fd, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7445859078354091166, guid: 57ca9bb72f2aadd4abfb595c43fd95fd, type: 3}
       propertyPath: m_Pivot.x
@@ -15742,6 +15777,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7445859078354091166, guid: 57ca9bb72f2aadd4abfb595c43fd95fd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8300684559798560392, guid: 57ca9bb72f2aadd4abfb595c43fd95fd, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8657458881909334870, guid: 57ca9bb72f2aadd4abfb595c43fd95fd, type: 3}

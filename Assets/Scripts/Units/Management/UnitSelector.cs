@@ -226,6 +226,7 @@ public class UnitSelector : MonoBehaviour
             if (selectedUnit == null) return;
             if (ActiveCard.Instance.cardBeingPlayed != null) return;
             if (!selectedUnit.playerBot) return;
+            if (!TurnManager.Instance.isPlayerTurn) return;
         }
 
         highlightingMovementTiles = true;
@@ -237,7 +238,7 @@ public class UnitSelector : MonoBehaviour
 
         foreach (Tile t in potentialTilesToHighlight)
         {
-            List<Tile> pathToTiles = Pathfinding.FindPath(selectedUnit.standingOn, t, selectedUnit.movePointsCur, false);
+            List<Tile> pathToTiles = Pathfinding.FindPath(selectedUnit.standingOn, t);
             if (pathToTiles != null)
             {
                 if(pathToTiles.Count <= selectedUnit.movePointsCur)

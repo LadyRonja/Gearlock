@@ -1,15 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
+using config;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Scenehandler : MonoBehaviour
 {
+    public static Scenehandler Instance;
+
     public GameObject menuButtons;
     public GameObject tutorialCheckPanel;
     public GameObject optionsBar;
 
+    public bool toggleZoomOnHover = false;
+    public bool toggleClickToDrag = false;
+    public bool toggleCardReposition = false;
+
+    private void Awake()
+    {
+        if (Instance == null)
+            Instance = this;
+        else
+            Destroy(this.gameObject);
+    }
     public void TutorialCheck()
     {
         menuButtons.SetActive(false);
@@ -44,6 +58,18 @@ public class Scenehandler : MonoBehaviour
         Application.Quit();
     }
 
-    //Click the cell in the menu to trigger the easter egg
+    public void ToggleZoomOnHover()
+    {
+        toggleZoomOnHover = !toggleZoomOnHover;
+    }
 
+    public void ToggleClickToDrag()
+    {
+        toggleClickToDrag= !toggleClickToDrag;
+    }
+
+    public void ToggleCardReposition()
+    {
+        toggleCardReposition= !toggleCardReposition;
+    }
 }

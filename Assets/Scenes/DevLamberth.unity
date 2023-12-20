@@ -13375,6 +13375,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1050425075}
     - target: {fileID: 5089259581290941422, guid: bca934adf52f27149866b6e9c1188193, type: 3}
+      propertyPath: zoomConfig.zoomOnHover
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5089259581290941422, guid: bca934adf52f27149866b6e9c1188193, type: 3}
       propertyPath: cardPlayConfig.playArea
       value: 
       objectReference: {fileID: 1544158785}
@@ -23207,6 +23211,10 @@ MonoBehaviour:
   - {fileID: 23220239}
   - {fileID: 140848868}
   portrait: {fileID: 1909408377}
+  tempNameTextMini: {fileID: 0}
+  tempHealthTextMini: {fileID: 0}
+  tempHealthFillMini: {fileID: 0}
+  tempHealthFillWhiteMini: {fileID: 0}
   gridParent: {fileID: 860383801}
   displayPrefab: {fileID: 4982287730161726828, guid: 7d81b1886adca73468c040374bc0fd71, type: 3}
 --- !u!114 &7958700484331351078

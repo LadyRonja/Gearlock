@@ -1,0 +1,150 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &2667585422447922027
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2054911543744519678, guid: 89bc880b93910a34caed231e137919d8, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3249347098272502678, guid: 89bc880b93910a34caed231e137919d8, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 022f24b352f8f7f449eaba6f6f010a4f, type: 3}
+    - target: {fileID: 3856975517133895266, guid: 89bc880b93910a34caed231e137919d8, type: 3}
+      propertyPath: m_Size.x
+      value: 3.0925536
+      objectReference: {fileID: 0}
+    - target: {fileID: 3856975517133895266, guid: 89bc880b93910a34caed231e137919d8, type: 3}
+      propertyPath: m_Size.y
+      value: 6.426302
+      objectReference: {fileID: 0}
+    - target: {fileID: 3856975517133895266, guid: 89bc880b93910a34caed231e137919d8, type: 3}
+      propertyPath: m_Center.x
+      value: 0.055146933
+      objectReference: {fileID: 0}
+    - target: {fileID: 3856975517133895266, guid: 89bc880b93910a34caed231e137919d8, type: 3}
+      propertyPath: m_Center.y
+      value: 0.043920517
+      objectReference: {fileID: 0}
+    - target: {fileID: 6262402697669964395, guid: 89bc880b93910a34caed231e137919d8, type: 3}
+      propertyPath: m_text
+      value: This enemy can usually dig through rocks, but we've disabled that for
+        the tutorial.
+      objectReference: {fileID: 0}
+    - target: {fileID: 6783090875490602526, guid: 89bc880b93910a34caed231e137919d8, type: 3}
+      propertyPath: m_Name
+      value: Tutorial Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 7409664076847683695, guid: 89bc880b93910a34caed231e137919d8, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7409664076847683695, guid: 89bc880b93910a34caed231e137919d8, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7409664076847683695, guid: 89bc880b93910a34caed231e137919d8, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7409664076847683695, guid: 89bc880b93910a34caed231e137919d8, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7409664076847683695, guid: 89bc880b93910a34caed231e137919d8, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7409664076847683695, guid: 89bc880b93910a34caed231e137919d8, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7409664076847683695, guid: 89bc880b93910a34caed231e137919d8, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7409664076847683695, guid: 89bc880b93910a34caed231e137919d8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7409664076847683695, guid: 89bc880b93910a34caed231e137919d8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7409664076847683695, guid: 89bc880b93910a34caed231e137919d8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6783090875490602526, guid: 89bc880b93910a34caed231e137919d8, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6007182118596848972}
+  m_SourcePrefab: {fileID: 100100000, guid: 89bc880b93910a34caed231e137919d8, type: 3}
+--- !u!212 &581761732767013117 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 3249347098272502678, guid: 89bc880b93910a34caed231e137919d8, type: 3}
+  m_PrefabInstance: {fileID: 2667585422447922027}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &7680302438364657948 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 5733294182543290999, guid: 89bc880b93910a34caed231e137919d8, type: 3}
+  m_PrefabInstance: {fileID: 2667585422447922027}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &8475080670925883575 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5807570086404670428, guid: 89bc880b93910a34caed231e137919d8, type: 3}
+  m_PrefabInstance: {fileID: 2667585422447922027}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8874145121055753589 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6783090875490602526, guid: 89bc880b93910a34caed231e137919d8, type: 3}
+  m_PrefabInstance: {fileID: 2667585422447922027}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6007182118596848972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8874145121055753589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5282919aaa7943444b9ded2d78036024, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unitName: Tutorial Enemy
+  playerBot: 0
+  mySpecialization: 0
+  portrait: {fileID: -348515267, guid: bf2845cf54bd2f84cbed42b908a0b1e0, type: 3}
+  infoTextUnit: {fileID: 8937463642995016173}
+  healthMax: 2
+  healthCur: 2
+  movePointsMax: 2
+  movePointsCur: 2
+  power: 1
+  attackRange: 1
+  doneMoving: 1
+  standingOn: {fileID: 0}
+  gfx: {fileID: 8475080670925883575}
+  myMR: {fileID: 0}
+  mySR: {fileID: 581761732767013117}
+  highligtherArrow: {fileID: 7680302438364657948}
+  currentEase: 0
+  aktiveSpineAnimation: 0
+  idleAnimation: 
+  jumpAnimation: 
+  skeletonAnimation: {fileID: 0}
+--- !u!1 &8937463642995016173 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6416808246705326726, guid: 89bc880b93910a34caed231e137919d8, type: 3}
+  m_PrefabInstance: {fileID: 2667585422447922027}
+  m_PrefabAsset: {fileID: 0}

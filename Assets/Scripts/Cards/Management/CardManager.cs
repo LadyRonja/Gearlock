@@ -79,9 +79,10 @@ public class CardManager : MonoBehaviour
         {
             drawPile.Add(dig);
             drawPile.Add(dig);
+            drawPile.Add(diggerBot);
+            drawPile.Add(dynamite);
             drawPile.Add(dig);
             drawPile.Add(attack);
-            drawPile.Add(diggerBot);
             drawPile.Add(fighterBot);
         }
 
@@ -164,7 +165,7 @@ public class CardManager : MonoBehaviour
                     Debug.LogError("Card not identified, please refactor this function");
                 }
 
-                //DestroyImmediate(card);
+                DestroyImmediate(card);
             }
 
             // Add the cards to drawPile
@@ -231,49 +232,46 @@ public class CardManager : MonoBehaviour
     {
         if (ActiveCard.Instance.transform.childCount > 0)
         {
-            for (int i = 0; i < 1; i++)
-            {
-                //Debug.Log("removing active, returning to hand");
-                GameObject card = ActiveCard.Instance.transform.GetChild(0).gameObject;
-                Card.CardType cardType = card.GetComponent<Card>().myType;
+            GameObject card = ActiveCard.Instance.transform.GetChild(0).gameObject;
+            Card.CardType cardType = card.GetComponent<Card>().myType;
 
-                if (cardType == Card.CardType.Dig)
-                {
-                    DestroyImmediate(card);
-                    GameObject newCard = Instantiate(dig, HandPanel.Instance.transform);
-                    newCard.transform.SetSiblingIndex(siblingIndex);
-                }
-                else if (cardType == Card.CardType.Attack)
-                {
-                    DestroyImmediate(card);
-                    GameObject newCard = Instantiate(attack, HandPanel.Instance.transform);
-                    newCard.transform.SetSiblingIndex(siblingIndex);
-                }
-                else if (cardType == Card.CardType.Attack2x)
-                {
-                    DestroyImmediate(card);
-                    GameObject newCard = Instantiate(attack2x, HandPanel.Instance.transform);
-                    newCard.transform.SetSiblingIndex(siblingIndex);
-                }
-                else if (cardType == Card.CardType.DiggerBot)
-                {
-                    DestroyImmediate(card);
-                    GameObject newCard = Instantiate(diggerBot, HandPanel.Instance.transform);
-                    newCard.transform.SetSiblingIndex(siblingIndex);
-                }
-                else if (cardType == Card.CardType.FighterBot)
-                {
-                    DestroyImmediate(card);
-                    GameObject newCard = Instantiate(fighterBot, HandPanel.Instance.transform);
-                    newCard.transform.SetSiblingIndex(siblingIndex);
-                }
-                else if (cardType == Card.CardType.Dynamite)
-                {
-                    DestroyImmediate(card);
-                    GameObject newCard = Instantiate(dynamite, HandPanel.Instance.transform);
-                    newCard.transform.SetSiblingIndex(siblingIndex);
-                }
+            if (cardType == Card.CardType.Dig)
+            {
+                DestroyImmediate(card);
+                GameObject newCard = Instantiate(dig, HandPanel.Instance.transform);
+                newCard.transform.SetSiblingIndex(siblingIndex);
             }
+            else if (cardType == Card.CardType.Attack)
+            {
+                DestroyImmediate(card);
+                GameObject newCard = Instantiate(attack, HandPanel.Instance.transform);
+                newCard.transform.SetSiblingIndex(siblingIndex);
+            }
+            else if (cardType == Card.CardType.Attack2x)
+            {
+                DestroyImmediate(card);
+                GameObject newCard = Instantiate(attack2x, HandPanel.Instance.transform);
+                newCard.transform.SetSiblingIndex(siblingIndex);
+            }
+            else if (cardType == Card.CardType.DiggerBot)
+            {
+                DestroyImmediate(card);
+                GameObject newCard = Instantiate(diggerBot, HandPanel.Instance.transform);
+                newCard.transform.SetSiblingIndex(siblingIndex);
+            }
+            else if (cardType == Card.CardType.FighterBot)
+            {
+                DestroyImmediate(card);
+                GameObject newCard = Instantiate(fighterBot, HandPanel.Instance.transform);
+                newCard.transform.SetSiblingIndex(siblingIndex);
+            }
+            else if (cardType == Card.CardType.Dynamite)
+            {
+                DestroyImmediate(card);
+                GameObject newCard = Instantiate(dynamite, HandPanel.Instance.transform);
+                newCard.transform.SetSiblingIndex(siblingIndex);
+            }
+            
         }
     }
 
