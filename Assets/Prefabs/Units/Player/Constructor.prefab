@@ -42,7 +42,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6262402697669964395, guid: 89bc880b93910a34caed231e137919d8, type: 3}
       propertyPath: m_text
-      value: This is a spawn bot, you can place new units next to it
+      value: This is a construction station, it allows you to make new robots if
+        you have the cards for it.
       objectReference: {fileID: 0}
     - target: {fileID: 6783090875490602526, guid: 89bc880b93910a34caed231e137919d8, type: 3}
       propertyPath: m_Name
@@ -140,8 +141,11 @@ MonoBehaviour:
   myMR: {fileID: 0}
   mySR: {fileID: 2381489882926389480}
   highligtherArrow: {fileID: 4867264441830832393}
-  dropShadow: {fileID: 8275581674494062343}
   currentEase: 0
+  aktiveSpineAnimation: 0
+  idleAnimation: 
+  jumpAnimation: 
+  skeletonAnimation: {fileID: 0}
 --- !u!1 &6131134725052563960 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6416808246705326726, guid: 89bc880b93910a34caed231e137919d8, type: 3}
@@ -150,10 +154,5 @@ GameObject:
 --- !u!4 &6666345249929742498 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5807570086404670428, guid: 89bc880b93910a34caed231e137919d8, type: 3}
-  m_PrefabInstance: {fileID: 872360866647444350}
-  m_PrefabAsset: {fileID: 0}
---- !u!212 &8275581674494062343 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 9134419596077065337, guid: 89bc880b93910a34caed231e137919d8, type: 3}
   m_PrefabInstance: {fileID: 872360866647444350}
   m_PrefabAsset: {fileID: 0}

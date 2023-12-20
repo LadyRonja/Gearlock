@@ -79,9 +79,10 @@ public class CardManager : MonoBehaviour
         {
             drawPile.Add(dig);
             drawPile.Add(dig);
+            drawPile.Add(diggerBot);
+            drawPile.Add(dynamite);
             drawPile.Add(dig);
             drawPile.Add(attack);
-            drawPile.Add(diggerBot);
             drawPile.Add(fighterBot);
         }
 
