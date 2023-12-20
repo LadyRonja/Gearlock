@@ -25,7 +25,7 @@ public class GridManager : MonoBehaviour
         if (tiles == null)
             FindGrid();
 
-        if (tiles[0, 1].y != 1)
+        if (tiles[1, 0].x != 1)
         {
             Debug.LogError("Grid Data Lost!");
             UpdateTileData();

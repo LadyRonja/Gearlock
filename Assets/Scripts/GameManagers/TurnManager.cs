@@ -127,6 +127,7 @@ public class TurnManager : MonoBehaviour // classen blir en singleton
     public void toggleEnd()
     {
         CardManager.Instance.ClearActiveCard();
+        DEBUGCardStateUI.Instance.DEBUGUpdateUI(CardState.Inactive, "--");
 
         if (TurnEnd)
         {
