@@ -5,10 +5,12 @@ using UnityEngine;
 
 public abstract class Projectile : MonoBehaviour
 {
-    [Header("Required information")]
+    [Header("Requirements")]
     [HideInInspector] public Unit thrower;
     [HideInInspector] public Card activator;
     [HideInInspector] public Tile targetTile;
+
+    [Header("Projectile Basics")]
     public float secondsToArrive = 1f;
     public float maxYOffSet = 1f;
     public float startDelay = 0.5f;

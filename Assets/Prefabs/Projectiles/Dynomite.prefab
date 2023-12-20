@@ -133,6 +133,9 @@ MonoBehaviour:
   activator: {fileID: 0}
   targetTile: {fileID: 0}
   secondsToArrive: 1
-  maxYOffSet: 50
+  maxYOffSet: 10
   startDelay: 0.5
   gfx: {fileID: 2174749104254715680}
+  explosionRadius: 1
+  explosionDamage: 2
+  explosionPrefab: {fileID: 3196395379450799013, guid: 074d8c97d72b68c479fd66e58e660e0d, type: 3}
