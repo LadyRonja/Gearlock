@@ -17,12 +17,20 @@ public class CardManager : MonoBehaviour
     public GameObject attack2x;
     public GameObject diggerBot;
     public GameObject fighterBot;
+    public GameObject dynamite;
+
+    [HideInInspector] public int digInDiscard;
+    [HideInInspector] public int attackInDiscard;
+    [HideInInspector] public int attack2xInDiscard;
+    [HideInInspector] public int diggerInDiscard;
+    [HideInInspector] public int fighterInDiscard;
+    [HideInInspector] public int dynamiteInDiscard;
+    [HideInInspector] public int totalCardsInDiscard;
 
     public GameObject handParent;
     public GameObject discardPileObject;
     public GameObject brokenFighter;
     public GameObject brokenDigger;
-    [HideInInspector] public GameObject dynamite;
     public GameObject genericCard;
     public GameObject drawSpawnPosition;
 
@@ -43,6 +51,7 @@ public class CardManager : MonoBehaviour
     public List<GameObject> drawPile;
     public List<GameObject> cards;
 
+    private Dictionary<Card.CardType, GameObject> cardTypeToPrefab;
 
     public static CardManager Instance
     {
@@ -61,6 +70,17 @@ public class CardManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+
+        cardTypeToPrefab = new Dictionary<Card.CardType, GameObject>
+        {
+            { Card.CardType.Dig, dig },
+            { Card.CardType.Attack, attack },
+            { Card.CardType.Attack2x, attack2x },
+            { Card.CardType.DiggerBot, diggerBot },
+            { Card.CardType.FighterBot, fighterBot },
+            { Card.CardType.Dynamite, dynamite }
+        };
     }
 
 
@@ -68,10 +88,10 @@ public class CardManager : MonoBehaviour
     {
         // The starting deck is added to the draw pile
 
-        if(useList)
+        if (useList)
         {
-            foreach (GameObject item in cards) 
-            { 
+            foreach (GameObject item in cards)
+            {
                 drawPile.Add(item);
             }
         }
@@ -104,15 +124,14 @@ public class CardManager : MonoBehaviour
     {
         for (int i = 0; handParent.transform.childCount < 5 && i < 5; i++)
         {
-
-            if (drawPile.Count == 0 && discardPileObject.transform.childCount != 0)
+            if (drawPile.Count == 0 && discardPile.Count > 0)
             {
                 ClearDiscard();
             }
 
             if (drawPile.Count >= 1)
             {
-                GameObject cardClone = Instantiate(drawPile[0], drawSpawnPosition.transform.position,Quaternion.identity);
+                GameObject cardClone = Instantiate(drawPile[0], drawSpawnPosition.transform.position, Quaternion.identity);
                 cardClone.transform.SetParent(handParent.transform, false);
                 cardClone.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
                 cardClone.transform.DOScale(new Vector3(2f, 2f, 2f), 0.8f).SetEase(drawEase);
@@ -123,61 +142,24 @@ public class CardManager : MonoBehaviour
     }
 
 
-    public void ClearDiscard() // removes all cards from discard, and adds them to draw pile. Shuffles draw pile.
+    public void ClearDiscard()
     {
-        if (discardPileObject != null)
+        if (discardPile.Count > 0)
         {
-            List<GameObject> cardsToAddToDrawPile = new List<GameObject>();
+            StartCoroutine(AnimateCardToDrawPileWithDelay(discardPile.Count));
 
-            StartCoroutine(AnimateCardToDrawPileWithDelay(discardPileObject.transform.childCount));
-
-            for (int i = discardPileObject.transform.childCount - 1; i >= 0; i--)
-            {
-                GameObject card = discardPileObject.transform.GetChild(i).gameObject;
-
-                Card.CardType cardType = card.GetComponent<Card>().myType;
-
-                if (cardType == Card.CardType.Dig)
-                {
-                    cardsToAddToDrawPile.Add(dig);
-                }
-                else if (cardType == Card.CardType.Attack)
-                {
-                    cardsToAddToDrawPile.Add(attack);
-                }
-                else if (cardType == Card.CardType.Attack2x)
-                {
-                    cardsToAddToDrawPile.Add(attack2x);
-                }
-                else if (cardType == Card.CardType.DiggerBot)
-                {
-                    cardsToAddToDrawPile.Add(diggerBot);
-                }
-                else if (cardType == Card.CardType.FighterBot)
-                {
-                    cardsToAddToDrawPile.Add(fighterBot);
-                }
-                else if (cardType == Card.CardType.Dynamite)
-                {
-                    cardsToAddToDrawPile.Add(dynamite);
-                }
-                else{
-                    Debug.LogError("Card not identified, please refactor this function");
-                }
-
-                DestroyImmediate(card);
-            }
-
-            // Add the cards to drawPile
-            drawPile.AddRange(cardsToAddToDrawPile);
+            drawPile.AddRange(discardPile);
+            discardPile.Clear();
 
             ShuffleDrawPile();
-            //Debug.Log(discardPileObject.transform.childCount);
+
         }
+        DiscardPile.Instance.UpdateDiscardDisplay();
     }
 
     public void AnimateCardToDrawPile()
     {
+
         // Instantiate a copy of the card
         GameObject cardCopy = Instantiate(genericCard, discardSpawn.transform);
         cardCopy.transform.position = discardIcon.transform.position;
@@ -198,6 +180,7 @@ public class CardManager : MonoBehaviour
             .SetEase(Ease.OutQuint)  // You can adjust the ease function as needed
             .OnComplete(() => Destroy(cardCopy))
             .SetDelay(0.1f);   // Destroy the copy when the animation is complete
+
     }
 
     public void ShuffleDrawPile() // Shuffles draw pile by going randomly switching each card with another.
@@ -219,13 +202,17 @@ public class CardManager : MonoBehaviour
         for (int i = 0; i < handParent.transform.childCount; i++)
         {
             GameObject CardInHand = handParent.transform.GetChild(i).gameObject;
-            GameObject DiscardedCard = Instantiate(CardInHand, DiscardPile.Instance.transform);
-            DiscardedCard.transform.rotation = Quaternion.identity;
-            DiscardedCard.transform.localScale = new Vector3(1.6f, 1.6f, 1.6f);
-            DiscardedCard.GetComponent<CardWrapper>().enabled = false;
+            //GameObject DiscardedCard = Instantiate(CardInHand, DiscardPile.Instance.transform);
+            //DiscardedCard.transform.rotation = Quaternion.identity;
+            //DiscardedCard.transform.localScale = new Vector3(1.6f, 1.6f, 1.6f);
+            //DiscardedCard.GetComponent<CardWrapper>().enabled = false;
 
-            Destroy(CardInHand); 
+            Card.CardType cardType = CardInHand.GetComponent<Card>().myType;
+            discardPile.Add(cardTypeToPrefab[cardType]);
+
+            Destroy(CardInHand);
         }
+        DiscardPile.Instance.UpdateDiscardDisplay();
     }
 
     public void ClearActiveCard() // Any card that was being played is returned to hand.
@@ -280,41 +267,31 @@ public class CardManager : MonoBehaviour
 
     public void CardEffectComplete() // After the card effects have happened, discard the card.
     {
-        for (int i = ActiveCard.Instance.transform.childCount - 1; i >= 0; i--)
-        {
-            GameObject PlayedCard = ActiveCard.Instance.transform.GetChild(i).gameObject;
-            PlayedCard.GetComponent<MouseOverCard>().isBeingPlayed = false;
-            PlayedCard.transform.localScale = new Vector3(2, 2, 2);
+        //for (int i = ActiveCard.Instance.transform.childCount - 1; i >= 0; i--)
+        //{
+        GameObject playedCard = ActiveCard.Instance.transform.GetChild(0).gameObject;
+        Card.CardType cardType = playedCard.GetComponent<Card>().myType;
+        if (cardType != Card.CardType.DiggerBot && cardType != Card.CardType.FighterBot && cardType != Card.CardType.Dynamite)
+            discardPile.Add(cardTypeToPrefab[cardType]);
+        Destroy(playedCard);
 
-
-            if (!ActiveCard.Instance.cardBeingPlayed.goesToDiscardAfterPlay)
-            {
-
-                //if (PlayedCard.name == "Fighter(Clone)")
-                //    Instantiate(brokenFighter, pos);
-
-                //else if (PlayedCard.name == "Digger(Clone)")
-                //    Instantiate(brokenDigger, pos);
-
-                Destroy(PlayedCard);
-            }
-            else
-                PlayedCard.transform.parent = DiscardPile.Instance.transform;
-
-            //Debug.Log(PlayedCard);
-        }
+        DiscardPile.Instance.UpdateDiscardDisplay();
     }
 
     public void AddNewCard(GameObject cardToAdd)
     {
-        GameObject newCard = Instantiate(cardToAdd, discardPileObject.transform);
-        newCard.GetComponent<MouseOverCard>().inHand = false;
+        //GameObject newCard = Instantiate(cardToAdd, discardPileObject.transform);
+        //newCard.GetComponent<MouseOverCard>().inHand = false;
+        Card.CardType cardType = cardToAdd.GetComponent<Card>().myType;
 
-        
+        discardPile.Add(cardTypeToPrefab[cardType]);
+
         GameObject toDiscard = Instantiate(cardToAdd, AddedToDiscard.Instance.transform);
         toDiscard.transform.DOMove(new Vector3(discardIcon.position.x, discardIcon.position.y, discardIcon.position.z), 1).SetEase(cardEase);
         toDiscard.transform.DOScale(new Vector3(0.1f, 0.1f, 0.1f), 1).SetEase(cardEase);
         Destroy(toDiscard, 1);
+
+        DiscardPile.Instance.UpdateDiscardDisplay();
     }
 
     public void RetrieveKeptCards()
@@ -325,7 +302,7 @@ public class CardManager : MonoBehaviour
             {
                 GameObject KeptCard = KeepCard.Instance.transform.GetChild(i).gameObject;
                 GameObject ReturnedCard = Instantiate(KeptCard, HandPanel.Instance.transform);
-                ReturnedCard.GetComponent<RectTransform>().sizeDelta = new Vector2(100, 100);                
+                ReturnedCard.GetComponent<RectTransform>().sizeDelta = new Vector2(100, 100);
 
                 for (int j = 0; j < HandPanel.Instance.transform.childCount; j++)
                 {
