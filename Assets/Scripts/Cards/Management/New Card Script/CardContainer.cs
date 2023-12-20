@@ -28,7 +28,7 @@ public class CardContainer : MonoBehaviour
     private float maxHeightDisplacement;
 
     [SerializeField]
-    private ZoomConfig zoomConfig;
+    public ZoomConfig zoomConfig;
 
     [SerializeField]
     private AnimationSpeedConfig animationSpeedConfig;
@@ -46,10 +46,10 @@ public class CardContainer : MonoBehaviour
     private RectTransform rectTransform;
     private CardWrapper currentDraggedCard;
 
-    public static bool clickToPlayToggle = true;
     public static CardContainer Instance;
 
 
+    public static bool clickToPlayToggle = true;
     public float panelPosYHigh;
     public float panelPosYLow;
     float bigSize = 2.7f;
@@ -67,6 +67,14 @@ public class CardContainer : MonoBehaviour
         canvas = GetComponent<Canvas>();
         rectTransform = GetComponent<RectTransform>();
         InitCards();
+
+        //if (Scenehandler.Instance != null)
+        //{
+        //    Debug.Log("not null");
+        zoomConfig.zoomOnHover = Scenehandler.Instance.toggleZoomOnHover;
+        clickToPlayToggle = !Scenehandler.Instance.toggleClickToDrag;
+        allowCardRepositioning = Scenehandler.Instance.toggleCardReposition;
+        //}
     }
 
     public void InitCards()
@@ -288,12 +296,12 @@ public class CardContainer : MonoBehaviour
                     CardWrapper newCard = Instantiate(currentDraggedCard, KeepCard.Instance.transform);
                     newCard.transform.localScale = new Vector3(2, 2, 2);
                     newCard.GetComponent<CardWrapper>().kept = true;
-                    
+
 
                     for (int i = 0; i < KeepCard.Instance.transform.childCount; i++)
                     {
                         KeepCard.Instance.transform.GetChild(i).gameObject.GetComponent<CardWrapper>().enabled = false;
-                       // Debug.Log("disabled wrapper");
+                        // Debug.Log("disabled wrapper");
                     }
 
                     if (cardPlayConfig.destroyOnPlay)
@@ -306,7 +314,7 @@ public class CardContainer : MonoBehaviour
                 else
                     return;
             }
-            else if(MovementManager.Instance.takingMoveAction)
+            else if (MovementManager.Instance.takingMoveAction)
             {
 
                 CardManager.Instance.ClearActiveCard();
@@ -365,7 +373,7 @@ public class CardContainer : MonoBehaviour
     {
         if (gameObject.GetComponent<RectTransform>() != null)
         {
-            float newPanelSize = 855 - 90 * transform.childCount;            
+            float newPanelSize = 855 - 90 * transform.childCount;
 
             gameObject.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, gameObject.GetComponent<RectTransform>().anchoredPosition.y);
             gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(-newPanelSize * 2, gameObject.GetComponent<RectTransform>().sizeDelta.y);
