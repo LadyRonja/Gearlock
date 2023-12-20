@@ -16,6 +16,9 @@ public class CameraController : MonoBehaviour
     public bool movingOnCoroutine = false;
     Vector3 velocity = Vector3.zero;
 
+    Vector3 mouseStartPos = Vector3.zero;
+    public bool inverseMouseControls = false;
+
     private void Awake()
     {
         #region Singleton
@@ -29,10 +32,14 @@ public class CameraController : MonoBehaviour
     private void Update()
     {
         DetectDoubleClick(); //If double clicking, let the camera auto-move again
-        MovementManager();
+        KeyBoardMovement();
+        MouseMovement();
+
+        if(Input.GetKeyDown(KeyCode.I))
+            inverseMouseControls = !inverseMouseControls;
     }
 
-    private void MovementManager()
+    private void KeyBoardMovement()
     {
         if (!playerCanMove)
             return;
@@ -47,6 +54,34 @@ public class CameraController : MonoBehaviour
             playerHasMoved = true;
 
         transform.position = newPos;
+    }
+
+    private void MouseMovement()
+    {
+        if (Input.GetMouseButtonDown((int)MouseButton.Middle))
+        {
+            mouseStartPos = Input.mousePosition;
+        }
+
+        if (Input.GetMouseButton((int)MouseButton.Middle))
+        {
+            Vector3 dir = (mouseStartPos - Input.mousePosition);
+            dir.Normalize();
+
+            if(!inverseMouseControls)
+            {
+                dir *= -1f;
+            }
+
+            if (dir != Vector3.zero)
+                playerHasMoved = true;
+
+            Vector3 newPos = transform.position;
+            newPos.x += dir.x * camSpeed * 1.15f * Time.deltaTime;
+            newPos.z += dir.y * camSpeed * 1.15f * Time.deltaTime;
+
+            transform.position = newPos;
+        }
     }
 
     public void MoveToTarget(Vector3 target, float seconds = 0.5f)
