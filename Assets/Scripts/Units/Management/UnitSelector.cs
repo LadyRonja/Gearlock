@@ -139,7 +139,8 @@ public class UnitSelector : MonoBehaviour
             else
             {
                 tempHealthFillWhite.fillAmount = (float)selectedUnit.healthCur / (float)selectedUnit.healthMax;
-                
+                // Update health bar
+                UpdateHealthBar(selectedUnit.healthFill, selectedUnit.healthCur, selectedUnit.healthMax);
 
             }
                 
@@ -267,5 +268,16 @@ public class UnitSelector : MonoBehaviour
         }
 
         highlightingMovementTiles = false;
+    }
+
+    private void UpdateHealthBar(Image healthFill, int currentHealth, int maxHealth)
+    {
+        if (healthFill != null)
+        {
+            float healthPercentage = (float)currentHealth / maxHealth;
+            healthFill.fillAmount = healthPercentage;
+
+
+        }
     }
 }
