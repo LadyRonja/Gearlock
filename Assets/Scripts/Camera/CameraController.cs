@@ -66,7 +66,7 @@ public class CameraController : MonoBehaviour
         if (Input.GetMouseButton((int)MouseButton.Middle))
         {
             Vector3 dir = (mouseStartPos - Input.mousePosition);
-            dir.Normalize();
+            //dir.Normalize();
 
             if(!inverseMouseControls)
             {
@@ -76,9 +76,10 @@ public class CameraController : MonoBehaviour
             if (dir != Vector3.zero)
                 playerHasMoved = true;
 
+            float dampener = 0.004f;
             Vector3 newPos = transform.position;
-            newPos.x += dir.x * camSpeed * 1.15f * Time.deltaTime;
-            newPos.z += dir.y * camSpeed * 1.15f * Time.deltaTime;
+            newPos.x += dir.x * camSpeed * 1.15f * dampener * Time.deltaTime;
+            newPos.z += dir.y * camSpeed * 1.15f * dampener * Time.deltaTime;
 
             transform.position = newPos;
         }
