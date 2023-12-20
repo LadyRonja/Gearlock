@@ -102,7 +102,7 @@ public class Tile : MonoBehaviour, IPointerDownHandler
         }
 
         containsDirt = false;
-        blocked = false;
+        blocked = occupied;
         bool remoevedInEditor = false;
 #if UNITY_EDITOR
         DestroyImmediate(dirt.gameObject);

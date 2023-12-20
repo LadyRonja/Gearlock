@@ -209,8 +209,9 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
 
         Vector3 startPos = this.transform.position;
         Vector3 endPos = toTile.transform.position;
+        endPos.z -= 0.1f;
         if (myMR != null)
-            endPos.y += (myMR.bounds.size.y / 2f) * 0.1f;
+            endPos.y += myMR.bounds.size.y / 2f;
         else
             endPos.y += mySR.bounds.size.y / 2f;
 
@@ -219,14 +220,14 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
         float jumpHeight = 3f;
         bool hasChangedHighlight = false;
         bool shouldBeRight = standingOn.x - toTile.x > 0;
+        bool shouldBeLeft = standingOn.x - toTile.x < 0;
         float startXScale = gfx.localScale.x;
         Vector3 startSize = gfx.transform.localScale;
-        float destinationEndX = 0;
+        float destinationEndX = startXScale;
         if (shouldBeRight)
             destinationEndX = MathF.Abs(gfx.localScale.x);
-        else
+        else if(shouldBeLeft)
             destinationEndX = MathF.Abs(gfx.localScale.x) * -1f;
-
 
         while (timePassed < timeToMove)
         {
