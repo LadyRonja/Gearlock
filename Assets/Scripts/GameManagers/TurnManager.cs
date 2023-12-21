@@ -27,9 +27,10 @@ public class TurnManager : MonoBehaviour // classen blir en singleton
     // public GameObject canvas;//ref to canvas for position 
     public Canvas canvasPos;
 
+    private Unit enableLights;
 
     [SerializeField] TMP_Text tempTurnText;
-
+    
     public void Awake()
     {
         #region Singleton
@@ -44,7 +45,10 @@ public class TurnManager : MonoBehaviour // classen blir en singleton
         UpdateUI();
     }
 
-   
+    public void Start()
+    {
+         enableLights = GetComponent<Unit>();   
+    }
 
 
     public void EndTurn() //when clicked on End Turn Button
@@ -58,6 +62,7 @@ public class TurnManager : MonoBehaviour // classen blir en singleton
 
             MovementManager.Instance.takingMoveAction = false;
             UnitSelector.Instance.playerCanSelectNewUnit = false;
+            
 
             UpdateUI();
             tempTurnText.DOFade(100, 2);
@@ -81,7 +86,7 @@ public class TurnManager : MonoBehaviour // classen blir en singleton
             return;
         }
 
-
+        
         CardManager.Instance.DealHand();
 
         isPlayerTurn = true;
@@ -91,6 +96,7 @@ public class TurnManager : MonoBehaviour // classen blir en singleton
         foreach (Unit u in UnitStorage.Instance.playerUnits)
         {
             u.movePointsCur = u.movePointsMax;
+           
         }
         endTurnText.text = "End Turn";
         UpdateUI();
@@ -114,12 +120,18 @@ public class TurnManager : MonoBehaviour // classen blir en singleton
             tempTurnText.text = "Player Turn";
             ChangeColorOnTurn();
             TexAnimationTurnPlayer();
+
+            
+
         }
         else 
         {
             tempTurnText.text = "AI Turn";
             ChangeColorOnTurn();
             TextAnimationTurnAI();
+
+           
+            
         }
   
     }
@@ -137,6 +149,8 @@ public class TurnManager : MonoBehaviour // classen blir en singleton
             CardManager.Instance.RetrieveKeptCards();
             TurnEnd = !TurnEnd;
             endTurnText.text = "--";
+
+           
         }
         else
         {
@@ -237,5 +251,18 @@ public class TurnManager : MonoBehaviour // classen blir en singleton
         transform.DOKill();
     }
 
+    //test elin 
+    /*private void EnableMovePointLights()
+    {
+        // Iterate through all units in the MovePointLight list and enable their lights
+        foreach (Unit unit in UnitStorage.Instance.playerUnits)
+        {
+          
+                unit.EnableMovePointLights();
+            
+        }
+    }*/
+
+    
 
 }

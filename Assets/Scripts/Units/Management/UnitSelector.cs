@@ -28,14 +28,7 @@ public class UnitSelector : MonoBehaviour
     public Image portrait;
     int maxMovePoints = 4;
 
-    [Header("Hover Info")]
-    public TMP_Text tempNameTextMini;
-    public TMP_Text tempHealthTextMini;
-    public Image tempHealthFillMini;
-    public Image tempHealthFillWhiteMini;
-    //public TMP_Text tempPowerTextMini;
-    //public List<GameObject> MovePointDarkMini;
-    //public List<GameObject> MovePointLightMini;
+  
 
     private Unit hoveredUnit; // Track the currently hovered unit
 

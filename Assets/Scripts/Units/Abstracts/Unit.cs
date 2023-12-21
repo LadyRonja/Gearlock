@@ -18,7 +18,7 @@ public enum BotSpecialization
 
 public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
 {
-   public static Unit Instance;
+   //public static Unit Instance;
     
     [Header("Generics")]
     public string unitName = "Unnamed Unit";
@@ -70,6 +70,7 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
 
     private bool isJumping = false;
 
+    private TurnManager turnManager;
 
     public SkeletonAnimation skeletonAnimation;
 
@@ -77,6 +78,8 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
     private void Start()
     {
         EnableMovePointLights();
+
+        turnManager=GetComponent<TurnManager>();
 
         // Initialize health text
         if (healthText != null)
@@ -104,8 +107,9 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
             highligtherArrow.gameObject.SetActive(false);
     }
 
-  
-    
+   
+
+
 
     public virtual void TakeDamage(int amount)
     {
@@ -196,8 +200,8 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
     /// <param name="path"></param>
     public void StartMovePath(List<Tile> path)
     {
+        
 
-       
 
         MovementManager.Instance.takingMoveAction = false;
         UnitSelector.Instance.UnHighlightAllTilesMoveableTo();
@@ -210,6 +214,8 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
 
     public virtual IEnumerator MovePath(List<Tile> path)
     {
+        
+        
         if (path == null)
             yield break;
 
@@ -222,8 +228,12 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
         }
 
         doneMoving = true;
+        
         MovementManager.Instance.takingMoveAction = true;
         UnitSelector.Instance.HighlightAllTilesMovableTo();
+       
+        
+
         yield return null;
 
         
@@ -234,6 +244,7 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
     {
         movePointsCur--;
         DisableMovePointLights();
+       
 
         Vector3 startPos = this.transform.position;
         Vector3 endPos = toTile.transform.position;
@@ -474,15 +485,13 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
 
     public void EnableMovePointLights()
     {
-       
-            
 
             // Enable all MovePointLight game objects
             foreach (GameObject lightObject in MovePointLight)
             {
                 lightObject.SetActive(true);
             }
-        
+
         
     }
 
