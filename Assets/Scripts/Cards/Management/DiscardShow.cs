@@ -7,6 +7,7 @@ public class DiscardShow : MonoBehaviour
 {
     public bool displayingDiscard;
     public GameObject discardPile;
+    public GameObject keepPanel;
 
     // Start is called before the first frame update
 
@@ -18,5 +19,7 @@ public class DiscardShow : MonoBehaviour
     public void ToggleDisplay()
     {
         discardPile.SetActive(!discardPile.activeSelf);
+        if (TurnManager.Instance.keepPhase)
+            keepPanel.SetActive(!keepPanel.activeSelf);
     }
 }

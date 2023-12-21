@@ -33,6 +33,8 @@ public class CardManager : MonoBehaviour
     public GameObject brokenDigger;
     public GameObject genericCard;
     public GameObject drawSpawnPosition;
+    public GameObject drawPileText;
+    public GameObject discardPileText;
 
 
     public Transform discardIcon;
@@ -114,11 +116,14 @@ public class CardManager : MonoBehaviour
     private void Update()
     {
         // Temporary code to "play" card with space, until card plays completely with code
-        if (Input.GetKeyDown(KeyCode.Space))
-            CardEffectComplete();
+        //if (Input.GetKeyDown(KeyCode.Space))
+        //    CardEffectComplete();
 
         if (DrawAmount != null)
             DrawAmount.text = drawPile.Count.ToString();
+
+        drawPileText.GetComponent<TextMeshProUGUI>().text = drawPile.Count.ToString();
+        discardPileText.GetComponent<TextMeshProUGUI>().text = discardPile.Count.ToString();
     }
     public void DealHand()
     {
