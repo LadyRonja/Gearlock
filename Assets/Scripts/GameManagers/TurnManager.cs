@@ -52,6 +52,7 @@ public class TurnManager : MonoBehaviour // classen blir en singleton
         if (isPlayerTurn)
         {
             isPlayerTurn = false;
+            endTurnText.text = "--";
 
             CardManager.Instance.ClearActiveCard();
             CardManager.Instance.EndTurnDiscardHand();

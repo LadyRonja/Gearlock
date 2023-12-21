@@ -27,7 +27,6 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
     public Sprite portrait;
     public GameObject infoTextUnit;
 
-
     [Header("Stats")]
     public int healthMax = 5;
     public int healthCur = 5;
@@ -51,14 +50,13 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
     public SpriteRenderer mySR;
     public SpriteRenderer highligtherArrow;
 
-
-
     [Header("Health Bar")]
     public GameObject healthBar;
     public Image healthFill;
     public TMP_Text healthText;
 
-
+    [Header("Sounds")]
+    public List<AudioClip> getSelectedSound = new();
 
     [Header("DoTween")]
     public Ease currentEase;
@@ -69,7 +67,6 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
     public string jumpAnimation;
 
     private bool isJumping = false;
-
 
     public SkeletonAnimation skeletonAnimation;
 
