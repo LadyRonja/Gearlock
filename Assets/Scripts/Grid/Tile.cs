@@ -103,6 +103,7 @@ public class Tile : MonoBehaviour, IPointerDownHandler
 
         containsDirt = false;
         blocked = occupied;
+        AudioHandler.PlaySoundEffect(dirt.getMinedSound);
         bool remoevedInEditor = false;
 #if UNITY_EDITOR
         DestroyImmediate(dirt.gameObject);
@@ -112,6 +113,7 @@ public class Tile : MonoBehaviour, IPointerDownHandler
             Destroy(dirt.gameObject);
 
         dirt = null;
+
 
         // TODO: See item spawner todo
         //ItemSpawner.Instance.SpawnRandomItem(this);

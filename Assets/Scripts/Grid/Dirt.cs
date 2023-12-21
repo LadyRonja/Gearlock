@@ -9,6 +9,7 @@ public class Dirt : MonoBehaviour
     public Tile myTile;
     public MeshRenderer gfx;
     public SpriteRenderer highligther;
+    public AudioClip getMinedSound;
 
     private void Start()
     {
