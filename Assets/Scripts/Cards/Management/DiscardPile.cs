@@ -71,7 +71,6 @@ public class DiscardPile : MonoBehaviour
             digCounter.transform.localScale = Vector3.one * 0.2f;
             GameObject digCountText = Instantiate(counterText, digCard.transform);
             digCountText.transform.localScale = Vector3.one * 0.4f;
-            digCountText.transform.position = digCard.transform.position;
             digCountText.GetComponent<TextMeshProUGUI>().text = digCards.ToString();
 
         }
@@ -82,7 +81,6 @@ public class DiscardPile : MonoBehaviour
             attackCounter.transform.localScale = Vector3.one * 0.2f;
             GameObject attackCountText = Instantiate(counterText, attackCard.transform);
             attackCountText.transform.localScale = Vector3.one * 0.4f;
-            attackCountText.transform.position = attackCard.transform.position;
             attackCountText.GetComponent<TextMeshProUGUI>().text = attackCards.ToString();
         }
         if (attackTwiceCards > 0)
@@ -92,7 +90,6 @@ public class DiscardPile : MonoBehaviour
             Counter.transform.localScale = Vector3.one * 0.2f;
             GameObject CountText = Instantiate(counterText, attackTwiceCard.transform);
             CountText.transform.localScale = Vector3.one * 0.4f;
-            CountText.transform.position = attackTwiceCard.transform.position;
             CountText.GetComponent<TextMeshProUGUI>().text = attackTwiceCards.ToString();
         }
         if (dynamiteCards > 0)
@@ -102,7 +99,6 @@ public class DiscardPile : MonoBehaviour
             Counter.transform.localScale = Vector3.one * 0.2f;
             GameObject CountText = Instantiate(counterText, dynamiteCard.transform);
             CountText.transform.localScale = Vector3.one * 0.4f;
-            CountText.transform.position = dynamiteCard.transform.position;
             CountText.GetComponent<TextMeshProUGUI>().text = dynamiteCards.ToString();
         }
         if (diggerBotCards > 0)
@@ -112,7 +108,6 @@ public class DiscardPile : MonoBehaviour
             Counter.transform.localScale = Vector3.one * 0.2f;
             GameObject CountText = Instantiate(counterText, diggerCard.transform);
             CountText.transform.localScale = Vector3.one * 0.4f;
-            CountText.transform.position = diggerCard.transform.position;
             CountText.GetComponent<TextMeshProUGUI>().text = diggerBotCards.ToString();
         }
         if (fighterBotCards > 0)
@@ -122,7 +117,6 @@ public class DiscardPile : MonoBehaviour
             Counter.transform.localScale = Vector3.one * 0.2f;
             GameObject CountText = Instantiate(counterText, fighterCard.transform);
             CountText.transform.localScale = Vector3.one * 0.4f;
-            CountText.transform.position = fighterCard.transform.position;
             CountText.GetComponent<TextMeshProUGUI>().text = fighterBotCards.ToString();
         }
 

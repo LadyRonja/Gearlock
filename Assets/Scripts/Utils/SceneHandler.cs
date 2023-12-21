@@ -26,6 +26,8 @@ public class Scenehandler : MonoBehaviour
         else
             Destroy(this.gameObject);
 
+        DontDestroyOnLoad(this.gameObject);
+
         AudioHandler musicInitializer = AudioHandler.Instance;
     }
     public void TutorialCheck()
