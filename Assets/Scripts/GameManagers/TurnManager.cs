@@ -39,8 +39,9 @@ public class TurnManager : MonoBehaviour // classen blir en singleton
             Destroy(this.gameObject);
         #endregion
 
-        UpdateUI();
 
+        AudioHandler musicInitializer = AudioHandler.Instance;
+        UpdateUI();
     }
 
    

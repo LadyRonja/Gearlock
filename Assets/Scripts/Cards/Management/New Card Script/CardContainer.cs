@@ -68,13 +68,13 @@ public class CardContainer : MonoBehaviour
         rectTransform = GetComponent<RectTransform>();
         InitCards();
 
-        //if (Scenehandler.Instance != null)
-        //{
-        //    Debug.Log("not null");
-        zoomConfig.zoomOnHover = Scenehandler.Instance.toggleZoomOnHover;
-        clickToPlayToggle = !Scenehandler.Instance.toggleClickToDrag;
-        allowCardRepositioning = Scenehandler.Instance.toggleCardReposition;
-        //}
+        if (Scenehandler.Instance != null)
+        {
+            Debug.Log("not null");
+            zoomConfig.zoomOnHover = Scenehandler.Instance.toggleZoomOnHover;
+            clickToPlayToggle = !Scenehandler.Instance.toggleClickToDrag;
+            allowCardRepositioning = Scenehandler.Instance.toggleCardReposition;
+        }
     }
 
     public void InitCards()

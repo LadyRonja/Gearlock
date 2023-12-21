@@ -16,6 +16,8 @@ public class Scenehandler : MonoBehaviour
     public bool toggleZoomOnHover = false;
     public bool toggleClickToDrag = false;
     public bool toggleCardReposition = false;
+    [Range(0f, 1f)] public float musicVolume = 1f;
+    [Range(0f, 1f)] public float effectVolume = 1f;
 
     private void Awake()
     {
@@ -23,6 +25,8 @@ public class Scenehandler : MonoBehaviour
             Instance = this;
         else
             Destroy(this.gameObject);
+
+        AudioHandler musicInitializer = AudioHandler.Instance;
     }
     public void TutorialCheck()
     {
