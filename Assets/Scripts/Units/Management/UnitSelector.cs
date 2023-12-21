@@ -89,6 +89,7 @@ public class UnitSelector : MonoBehaviour
                 selectedUnit.standingOn.Highlight(Color.yellow);
 
             CameraController.Instance.MoveToTarget(selectedUnit.transform.position);
+            AudioHandler.PlayRandomEffectFromList(selectedUnit.getSelectedSound);
         }
         UpdateUI();
     }
