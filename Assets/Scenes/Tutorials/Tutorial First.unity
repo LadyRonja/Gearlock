@@ -1617,6 +1617,11 @@ MonoBehaviour:
   healthFill: {fileID: 0}
   healthText: {fileID: 0}
   getSelectedSound: []
+  takeDamageSound: []
+  deathSound: []
+  getSpawnedSound: []
+  startMovingSound: []
+  finishedStepSound: []
   currentEase: 0
   aktiveSpineAnimation: 0
   idleAnimation: 
@@ -2415,6 +2420,7 @@ MonoBehaviour:
   myTile: {fileID: 988965995}
   gfx: {fileID: 517039763}
   highligther: {fileID: 223197757}
+  getMinedSound: {fileID: 8300000, guid: e17ee5116384ed848b93e0291624a81a, type: 3}
 --- !u!4 &758903683
 Transform:
   m_ObjectHideFlags: 0
@@ -5550,6 +5556,11 @@ MonoBehaviour:
   healthFill: {fileID: 0}
   healthText: {fileID: 0}
   getSelectedSound: []
+  takeDamageSound: []
+  deathSound: []
+  getSpawnedSound: []
+  startMovingSound: []
+  finishedStepSound: []
   currentEase: 0
   aktiveSpineAnimation: 0
   idleAnimation: 
