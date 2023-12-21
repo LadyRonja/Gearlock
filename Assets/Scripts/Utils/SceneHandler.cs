@@ -26,6 +26,8 @@ public class Scenehandler : MonoBehaviour
         else
             Destroy(this.gameObject);
 
+        DontDestroyOnLoad(this.gameObject);
+
         AudioHandler musicInitializer = AudioHandler.Instance;
     }
     public void TutorialCheck()
@@ -41,12 +43,12 @@ public class Scenehandler : MonoBehaviour
     }
     public void GameStart()
     {
-        SceneManager.LoadScene("DevLamberth");
+        SceneManager.LoadScene("GameTest4");
     }
 
     public void TutorialStart()
     {
-        SceneManager.LoadScene("Tutorial 1");
+        SceneManager.LoadScene("Tutorial First");
     }
 
     public void menu()

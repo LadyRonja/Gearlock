@@ -136,7 +136,7 @@ public abstract class Card : MonoBehaviour
                 CardTargetFinder.UnhighlightAllContent();
                 if (UnitSelector.Instance.selectedUnit != null)
                 {
-                    UnitSelector.Instance.UpdateSelectedUnit(UnitSelector.Instance.selectedUnit);
+                    UnitSelector.Instance.UpdateSelectedUnit(UnitSelector.Instance.selectedUnit, false, true);
                     UnitSelector.Instance.HighlightAllTilesMovableTo(true);
                 }
                 ActiveCard.Instance.cardBeingPlayed = null;

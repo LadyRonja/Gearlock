@@ -134,10 +134,27 @@ MonoBehaviour:
   attackRange: 1
   doneMoving: 1
   standingOn: {fileID: 0}
+  MovePointBase: []
+  MovePointLight: []
+  MovePointDark: []
   gfx: {fileID: 8475080670925883575}
   myMR: {fileID: 0}
   mySR: {fileID: 581761732767013117}
   highligtherArrow: {fileID: 7680302438364657948}
+  healthBar: {fileID: 0}
+  healthFill: {fileID: 0}
+  healthText: {fileID: 0}
+  getSelectedSound:
+  - {fileID: 8300000, guid: 4a80f52029eed514bbcca323d7b535b9, type: 3}
+  takeDamageSound:
+  - {fileID: 8300000, guid: 467198d9673686646af87e8a9eda0fe5, type: 3}
+  deathSound:
+  - {fileID: 8300000, guid: 109744253d944a348899b8878ec1e179, type: 3}
+  getSpawnedSound: []
+  startMovingSound:
+  - {fileID: 8300000, guid: 8319a7f93a3a68f498d8c0a855ce9c20, type: 3}
+  finishedStepSound:
+  - {fileID: 8300000, guid: 083cc030827e2ef44bc452281932474b, type: 3}
   currentEase: 0
   aktiveSpineAnimation: 0
   idleAnimation: 

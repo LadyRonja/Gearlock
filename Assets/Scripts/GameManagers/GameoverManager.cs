@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class GameoverManager : MonoBehaviour
 {
     public static GameoverManager Instance;
-    [SerializeField] GameObject gameOverScreen;
+    [SerializeField] public GameObject gameOverScreen;
     [SerializeField] TMP_Text gameOverText;
     [SerializeField] string firstTutorialSceneName = "Tutorial First";
     public bool isFirstTutorial = false;
@@ -66,7 +66,6 @@ public class GameoverManager : MonoBehaviour
                 gameOverText.text = "You won!";
             else
                 gameOverText.text = "You lost!";
-
 
             gameOverScreen.SetActive(true);
         }
