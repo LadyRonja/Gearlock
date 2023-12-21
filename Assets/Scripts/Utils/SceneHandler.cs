@@ -16,6 +16,8 @@ public class Scenehandler : MonoBehaviour
     public bool toggleZoomOnHover = false;
     public bool toggleClickToDrag = false;
     public bool toggleCardReposition = false;
+    [Range(0f, 1f)] public float musicVolume = 1f;
+    [Range(0f, 1f)] public float effectVolume = 1f;
 
     private void Awake()
     {
@@ -23,6 +25,10 @@ public class Scenehandler : MonoBehaviour
             Instance = this;
         else
             Destroy(this.gameObject);
+
+        DontDestroyOnLoad(this.gameObject);
+
+        AudioHandler musicInitializer = AudioHandler.Instance;
     }
     public void TutorialCheck()
     {
@@ -37,12 +43,12 @@ public class Scenehandler : MonoBehaviour
     }
     public void GameStart()
     {
-        SceneManager.LoadScene("DevLamberth");
+        SceneManager.LoadScene("GameTest4");
     }
 
     public void TutorialStart()
     {
-        SceneManager.LoadScene("Tutorial 1");
+        SceneManager.LoadScene("Tutorial First");
     }
 
     public void menu()

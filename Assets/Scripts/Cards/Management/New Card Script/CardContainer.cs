@@ -68,13 +68,12 @@ public class CardContainer : MonoBehaviour
         rectTransform = GetComponent<RectTransform>();
         InitCards();
 
-        //if (Scenehandler.Instance != null)
-        //{
-        //    Debug.Log("not null");
-        zoomConfig.zoomOnHover = Scenehandler.Instance.toggleZoomOnHover;
-        clickToPlayToggle = !Scenehandler.Instance.toggleClickToDrag;
-        allowCardRepositioning = Scenehandler.Instance.toggleCardReposition;
-        //}
+        if (Scenehandler.Instance != null)
+        {
+            zoomConfig.zoomOnHover = Scenehandler.Instance.toggleZoomOnHover;
+            clickToPlayToggle = !Scenehandler.Instance.toggleClickToDrag;
+            allowCardRepositioning = Scenehandler.Instance.toggleCardReposition;
+        }
     }
 
     public void InitCards()
@@ -384,13 +383,19 @@ public class CardContainer : MonoBehaviour
     {
         if (gameObject.GetComponent<RectTransform>() != null)
         {
-            float panelRectX = gameObject.GetComponent<RectTransform>().anchoredPosition.x;
-            if (TurnManager.Instance.isPlayerTurn)
-                gameObject.GetComponent<RectTransform>().anchoredPosition = new Vector2(panelRectX, canvas.pixelRect.height / panelPosYHigh);
+            if (!GameoverManager.Instance.gameOverScreen.activeSelf)
+            {
+                float panelRectX = gameObject.GetComponent<RectTransform>().anchoredPosition.x;
+                if (TurnManager.Instance.isPlayerTurn)
+                    gameObject.GetComponent<RectTransform>().anchoredPosition = new Vector2(panelRectX, canvas.pixelRect.height / panelPosYHigh);
 
-            else if (!TurnManager.Instance.isPlayerTurn)
-                gameObject.GetComponent<RectTransform>().anchoredPosition = new Vector2(panelRectX, canvas.pixelRect.height / panelPosYLow);
-
+                else if (!TurnManager.Instance.isPlayerTurn)
+                    gameObject.GetComponent<RectTransform>().anchoredPosition = new Vector2(panelRectX, canvas.pixelRect.height / panelPosYLow);
+            }
+            else
+            {
+                gameObject.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, -2000);
+            }
         }
     }
 }

@@ -8,6 +8,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2054911543744519678, guid: 89bc880b93910a34caed231e137919d8, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 3249347098272502678, guid: 89bc880b93910a34caed231e137919d8, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -108,11 +112,6 @@ SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 3249347098272502678, guid: 89bc880b93910a34caed231e137919d8, type: 3}
   m_PrefabInstance: {fileID: 2410177946771884866}
   m_PrefabAsset: {fileID: 0}
---- !u!212 &6895387248764383035 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 9134419596077065337, guid: 89bc880b93910a34caed231e137919d8, type: 3}
-  m_PrefabInstance: {fileID: 2410177946771884866}
-  m_PrefabAsset: {fileID: 0}
 --- !u!212 &7990068245457533237 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 5733294182543290999, guid: 89bc880b93910a34caed231e137919d8, type: 3}
@@ -158,12 +157,33 @@ MonoBehaviour:
   attackRange: 1
   doneMoving: 1
   standingOn: {fileID: 0}
+  MovePointBase: []
+  MovePointLight: []
+  MovePointDark: []
   gfx: {fileID: 8208388852482853022}
   myMR: {fileID: 0}
   mySR: {fileID: 893212369661663444}
   highligtherArrow: {fileID: 7990068245457533237}
-  dropShadow: {fileID: 6895387248764383035}
+  healthBar: {fileID: 0}
+  healthFill: {fileID: 0}
+  healthText: {fileID: 0}
+  getSelectedSound:
+  - {fileID: 8300000, guid: 4a80f52029eed514bbcca323d7b535b9, type: 3}
+  takeDamageSound:
+  - {fileID: 8300000, guid: 467198d9673686646af87e8a9eda0fe5, type: 3}
+  deathSound:
+  - {fileID: 8300000, guid: 467198d9673686646af87e8a9eda0fe5, type: 3}
+  getSpawnedSound:
+  - {fileID: 8300000, guid: 98f6385308116e047b03ac61d89ab282, type: 3}
+  startMovingSound:
+  - {fileID: 8300000, guid: 8319a7f93a3a68f498d8c0a855ce9c20, type: 3}
+  finishedStepSound:
+  - {fileID: 8300000, guid: 083cc030827e2ef44bc452281932474b, type: 3}
   currentEase: 0
+  aktiveSpineAnimation: 0
+  idleAnimation: 
+  jumpAnimation: 
+  skeletonAnimation: {fileID: 0}
 --- !u!65 &8004614544635770442
 BoxCollider:
   m_ObjectHideFlags: 0

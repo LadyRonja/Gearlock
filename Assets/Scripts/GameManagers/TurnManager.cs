@@ -14,8 +14,10 @@ public class TurnManager : MonoBehaviour // classen blir en singleton
     public static TurnManager Instance;
     public bool isPlayerTurn = true;
     public bool TurnEnd = false;
+    public bool keepPhase = false;
     public GameObject KeepCardScreen;
     public TMP_Text endTurnText;
+    public GameObject discard;
 
     //DOTween Player and AI turn text
     public GameObject underlineRightRed; //turn text line enemy
@@ -39,8 +41,9 @@ public class TurnManager : MonoBehaviour // classen blir en singleton
             Destroy(this.gameObject);
         #endregion
 
-        UpdateUI();
 
+        AudioHandler musicInitializer = AudioHandler.Instance;
+        UpdateUI();
     }
 
    
@@ -51,6 +54,7 @@ public class TurnManager : MonoBehaviour // classen blir en singleton
         if (isPlayerTurn)
         {
             isPlayerTurn = false;
+            endTurnText.text = "--";
 
             CardManager.Instance.ClearActiveCard();
             CardManager.Instance.EndTurnDiscardHand();
@@ -127,9 +131,11 @@ public class TurnManager : MonoBehaviour // classen blir en singleton
     public void toggleEnd()
     {
         CardManager.Instance.ClearActiveCard();
+        DEBUGCardStateUI.Instance.DEBUGUpdateUI(CardState.Inactive, "--");
 
         if (TurnEnd)
         {
+            keepPhase = false;
             KeepCardScreen.SetActive(false);
             EndTurn();
             CardManager.Instance.RetrieveKeptCards();
@@ -140,12 +146,17 @@ public class TurnManager : MonoBehaviour // classen blir en singleton
         {
             if (HandPanel.Instance.transform.childCount > 0)
             {
+                keepPhase = true;
                 TurnEnd = !TurnEnd;
                 KeepCardScreen.SetActive(true);
+                discard.SetActive(false);
                 endTurnText.text = "Confirm";
             }
             else
+            {
+                keepPhase = false;
                 EndTurn();
+            }
             
         }
     }   

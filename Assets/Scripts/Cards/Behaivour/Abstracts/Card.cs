@@ -136,7 +136,7 @@ public abstract class Card : MonoBehaviour
                 CardTargetFinder.UnhighlightAllContent();
                 if (UnitSelector.Instance.selectedUnit != null)
                 {
-                    UnitSelector.Instance.UpdateSelectedUnit(UnitSelector.Instance.selectedUnit);
+                    UnitSelector.Instance.UpdateSelectedUnit(UnitSelector.Instance.selectedUnit, false, true);
                     UnitSelector.Instance.HighlightAllTilesMovableTo(true);
                 }
                 ActiveCard.Instance.cardBeingPlayed = null;
@@ -160,22 +160,22 @@ public abstract class Card : MonoBehaviour
         // If no unit is selected - go to select unit.
         if (selectedUnit == null)
         {
-            HandleIllegalSelection("No unit selected, please select a unit",
-                                    "Select a Unit.");
+            HandleIllegalSelection("No robot selected, please select a unit",
+                                    "Select a Robot.");
 
             return;
         }
 
         if (!legalUnits.Contains(selectedUnit))
         {
-            HandleIllegalSelection("Illegal unit selected", "Please select a highlighted unit");
+            HandleIllegalSelection("Illegal unit selected", "Please select a highlighted Robot");
 
             return;
         }
 
         // If reached this bit of the code, the bot is verified and get's to cast the card.
         myState = CardState.SelectingTile;
-        DEBUGCardStateUI.Instance.DEBUGUpdateUI(CardState.SelectingTile, "Select a tile");
+        DEBUGCardStateUI.Instance.DEBUGUpdateUI(CardState.SelectingTile, "Select a Tile");
 
         void HandleIllegalSelection(string errorMessage, string cardStateText)
         {
@@ -327,7 +327,7 @@ public abstract class Card : MonoBehaviour
         if (selectedTile == null)
         {
             HandleIllegalSelection("No tile selected for verification - error in structure",
-                                    "Contact a programmer, no tile selected");
+                                    "Please select a highlighted Tile");
             return;
         }
 

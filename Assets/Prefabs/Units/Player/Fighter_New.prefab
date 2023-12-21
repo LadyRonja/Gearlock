@@ -122,11 +122,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 2807905146187061361}
   m_SourcePrefab: {fileID: 100100000, guid: 89bc880b93910a34caed231e137919d8, type: 3}
---- !u!212 &1716630435092306293 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 9134419596077065337, guid: 89bc880b93910a34caed231e137919d8, type: 3}
-  m_PrefabInstance: {fileID: 7570912098415770892}
-  m_PrefabAsset: {fileID: 0}
 --- !u!212 &2774649333248233339 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 5733294182543290999, guid: 89bc880b93910a34caed231e137919d8, type: 3}
@@ -167,12 +162,33 @@ MonoBehaviour:
   attackRange: 1
   doneMoving: 1
   standingOn: {fileID: 0}
+  MovePointBase: []
+  MovePointLight: []
+  MovePointDark: []
   gfx: {fileID: 4146102533969067728}
   myMR: {fileID: 0}
   mySR: {fileID: 4901807042198367898}
   highligtherArrow: {fileID: 2774649333248233339}
-  dropShadow: {fileID: 1716630435092306293}
+  healthBar: {fileID: 0}
+  healthFill: {fileID: 0}
+  healthText: {fileID: 0}
+  getSelectedSound:
+  - {fileID: 8300000, guid: 4a80f52029eed514bbcca323d7b535b9, type: 3}
+  takeDamageSound:
+  - {fileID: 8300000, guid: 467198d9673686646af87e8a9eda0fe5, type: 3}
+  deathSound:
+  - {fileID: 8300000, guid: 109744253d944a348899b8878ec1e179, type: 3}
+  getSpawnedSound:
+  - {fileID: 8300000, guid: 98f6385308116e047b03ac61d89ab282, type: 3}
+  startMovingSound:
+  - {fileID: 8300000, guid: 8319a7f93a3a68f498d8c0a855ce9c20, type: 3}
+  finishedStepSound:
+  - {fileID: 8300000, guid: 083cc030827e2ef44bc452281932474b, type: 3}
   currentEase: 0
+  aktiveSpineAnimation: 0
+  idleAnimation: 
+  jumpAnimation: 
+  skeletonAnimation: {fileID: 0}
   brokenFighter: {fileID: 3141665598236762354, guid: a01b1ee6048250e4595d21ee65596a4d, type: 3}
 --- !u!65 &1200858403524648116
 BoxCollider:
@@ -294,7 +310,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3

@@ -18,13 +18,14 @@ public enum BotSpecialization
 
 public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
 {
+   public static Unit Instance;
+    
     [Header("Generics")]
     public string unitName = "Unnamed Unit";
     public bool playerBot = false;
     public BotSpecialization mySpecialization = BotSpecialization.None;
     public Sprite portrait;
     public GameObject infoTextUnit;
-    
 
     [Header("Stats")]
     public int healthMax = 5;
@@ -37,6 +38,11 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
     [Header("Movement")]
     public bool doneMoving = true;
     public Tile standingOn;
+    public List<GameObject> MovePointBase;
+    public List<GameObject> MovePointLight;
+    public List<GameObject> MovePointDark;
+    int maxMovePoints = 4;
+    private int lastDisabledLightIndex = -1;
 
     [Header("Components")]
     public Transform gfx;
@@ -44,16 +50,18 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
     public SpriteRenderer mySR;
     public SpriteRenderer highligtherArrow;
 
-    /*[Header("Hover Info")]
-    public TMP_Text tempNameTextMini;
-    public TMP_Text tempHealthTextMini;
-    public Image tempHealthFillMini;
-    public Image tempHealthFillWhiteMini;
-    //public TMP_Text tempPowerTextMini;
-    //public List<GameObject> MovePointDarkMini;
-    //public List<GameObject> MovePointLightMini;*/
+    [Header("Health Bar")]
+    public GameObject healthBar;
+    public Image healthFill;
+    public TMP_Text healthText;
 
-    
+    [Header("Sounds")]
+    public List<AudioClip> getSelectedSound = new();
+    public List<AudioClip> takeDamageSound = new();
+    public List<AudioClip> deathSound = new();
+    public List<AudioClip> getSpawnedSound = new();
+    public List<AudioClip> startMovingSound = new();
+    public List<AudioClip> finishedStepSound = new();
 
     [Header("DoTween")]
     public Ease currentEase;
@@ -64,13 +72,18 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
     public string jumpAnimation;
 
     private bool isJumping = false;
-    
 
     public SkeletonAnimation skeletonAnimation;
 
 
     private void Start()
     {
+        EnableMovePointLights();
+
+        // Initialize health text
+        if (healthText != null)
+            healthText.text = $"HP: {healthCur}/{healthMax}";
+
         // Check if the child object with the name "GFX (Spine)" exists
         Transform spineGFX = transform.Find("GFX (Spine)"); // TODO: Why?
 
@@ -81,21 +94,27 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
             PlayIdleAnimation();
         }
 
-        if (infoTextUnit!= null)
+        if (infoTextUnit != null)
             infoTextUnit.SetActive(false);
 
         //myMR = gfx.GetComponent<MeshRenderer>();
-        if(myMR == null)
+        if (myMR == null)
         {
             mySR = gfx.GetComponent<SpriteRenderer>();
         }
-        if(highligtherArrow != null)
+        if (highligtherArrow != null)
             highligtherArrow.gameObject.SetActive(false);
     }
 
+  
+    
+
     public virtual void TakeDamage(int amount)
     {
-        if(UnitSelector.Instance.selectedUnit == this)
+        if (amount == 0)
+            return;
+
+        if (UnitSelector.Instance.selectedUnit == this)
             UnitSelector.Instance.UpdateUI();
 
         healthCur -= amount;
@@ -104,11 +123,16 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
         //test DoTween 
         ShakeUnit();
 
+        // Update health bar
+        UpdateHealthBar();
+        UpdateHealthText();
+
+        AudioHandler.PlayRandomEffectFromList(takeDamageSound);
 
         if (UnitSelector.Instance.selectedUnit == this)
             UnitSelector.Instance.UpdateUI(true);
 
-        if(playerBot)
+        if (playerBot)
             UnitSelector.Instance.UpdatePlayerUnitUI();
 
         if (healthCur <= 0)
@@ -121,8 +145,8 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
 
     protected IEnumerator FlashDamage(float time)
     {
-       /* if (myMR == null)
-            yield return null;*/
+        /* if (myMR == null)
+             yield return null;*/
 
         Color startColor = mySR.color;
         mySR.material.color = Color.red;
@@ -140,7 +164,7 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
 
         yield return null;
     }
-    
+
     //test elin 
     protected IEnumerator FadeAndDestroy(float fadeTime)
     {
@@ -160,6 +184,7 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
 
     public virtual void Die()
     {
+        AudioHandler.PlayRandomEffectFromList(deathSound);
         UnitStorage.Instance.RemoveUnit(this);
         UnitSelector.Instance.UpdateSelectedUnit(null, true);
         standingOn.UpdateOccupant(null);
@@ -178,18 +203,26 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
     /// <param name="path"></param>
     public void StartMovePath(List<Tile> path)
     {
+
+        if (path != null)
+            if (path.Count != 0)
+                AudioHandler.PlayRandomEffectFromList(startMovingSound);
+
         MovementManager.Instance.takingMoveAction = false;
         UnitSelector.Instance.UnHighlightAllTilesMoveableTo();
         doneMoving = false;
         StartCoroutine(MovePath(path));
+
+       
+
     }
 
     public virtual IEnumerator MovePath(List<Tile> path)
     {
-        if (path == null) 
-            yield break; 
+        if (path == null)
+            yield break;
 
-        if(path.Count == 0)
+        if (path.Count == 0)
             yield break;
 
         for (int i = 0; i < path.Count; i++)
@@ -201,11 +234,15 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
         MovementManager.Instance.takingMoveAction = true;
         UnitSelector.Instance.HighlightAllTilesMovableTo();
         yield return null;
+
+        
+
     }
 
     protected IEnumerator MoveStep(Tile toTile)
     {
         movePointsCur--;
+        DisableMovePointLights();
 
         Vector3 startPos = this.transform.position;
         Vector3 endPos = toTile.transform.position;
@@ -245,6 +282,7 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
 
             PlayJumpAnimation();
             
+
             // After the halfway point, change the highlighted tile
             if (!hasChangedHighlight && timePassed > timeToMove / 2f)
             {
@@ -254,7 +292,7 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
                     Color currentColor = standingOn.myHighligther.color;
                     toTile.Highlight(currentColor);
                     standingOn.UnHighlight();
-                }            
+                }
             }
 
             timePassed += Time.deltaTime;
@@ -266,7 +304,10 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
         gfx.localScale = startSize;
         standingOn.UpdateOccupant(null);
         standingOn = toTile;
+        AudioHandler.PlayRandomEffectFromList(finishedStepSound);
         toTile.UpdateOccupant(this);
+
+        
 
         yield return null;
     }
@@ -354,7 +395,7 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
 
     public virtual void Highlight()
     {
-        if(highligtherArrow != null)
+        if (highligtherArrow != null)
             highligtherArrow.gameObject.SetActive(true);
 
     }
@@ -370,9 +411,9 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
         if (infoTextUnit != null)
         {
             infoTextUnit.SetActive(true);
-            
+
         }
-            
+
 
     }
 
@@ -382,13 +423,13 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
         {
             infoTextUnit.SetActive(false);
         }
-            
+
     }
 
     //test elin DoTween shake unit
     public void ShakeUnit()
-    {      
-        transform.DOShakePosition(duration: 0.5f, strength: new Vector3(2f, 0f, 0f), vibrato: 10, randomness: 0, fadeOut: false);      
+    {
+        transform.DOShakePosition(duration: 0.5f, strength: new Vector3(2f, 0f, 0f), vibrato: 10, randomness: 0, fadeOut: false);
     }
     public void OnDisable()
     {
@@ -423,4 +464,56 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
         isJumping = false;
         PlayIdleAnimation();
     }
+
+    private void UpdateHealthBar()
+    {
+        if (healthBar != null && healthFill != null)
+        {
+            float healthPercentage = (float)healthCur / healthMax;
+            healthFill.fillAmount = healthPercentage;
+        }
+    }
+
+    private void UpdateHealthText()
+    {
+        if (healthText != null)
+        {
+            healthText.text = $"HP: {healthCur}/{healthMax}";
+        }
+    }
+
+    public void EnableMovePointLights()
+    {
+       
+            
+
+            // Enable all MovePointLight game objects
+            foreach (GameObject lightObject in MovePointLight)
+            {
+                lightObject.SetActive(true);
+            }
+        
+        
+    }
+
+    public void DisableMovePointLights()
+    {
+
+
+        // Disable one MovePointLight at a time
+        if (lastDisabledLightIndex < MovePointLight.Count - 1)
+        {
+            int nextLightIndex = lastDisabledLightIndex + 1;
+            MovePointLight[nextLightIndex].SetActive(false);
+            lastDisabledLightIndex = nextLightIndex;
+        }
+
+
+
+    }
+    
+    
+
+
+   
 }

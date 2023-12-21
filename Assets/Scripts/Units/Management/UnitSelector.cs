@@ -66,7 +66,8 @@ public class UnitSelector : MonoBehaviour
 
     //test elin
 
-    public void UpdateSelectedUnit(Unit unitToSelect, bool calledByAI)
+
+    public void UpdateSelectedUnit(Unit unitToSelect, bool calledByAI, bool hideSoundEffect)
     {
         // Determine if updating the selected units is legal
         UnHighlightAllTilesMoveableTo();
@@ -89,9 +90,13 @@ public class UnitSelector : MonoBehaviour
                 selectedUnit.standingOn.Highlight(Color.yellow);
 
             CameraController.Instance.MoveToTarget(selectedUnit.transform.position);
+
+            if(!hideSoundEffect)
+                AudioHandler.PlayRandomEffectFromList(selectedUnit.getSelectedSound);
         }
         UpdateUI();
     }
+
 
     public void DeselectUnit()
     {
@@ -103,7 +108,12 @@ public class UnitSelector : MonoBehaviour
 
     public void UpdateSelectedUnit(Unit unitToSelect)
     {
-        UpdateSelectedUnit(unitToSelect, false);
+        UpdateSelectedUnit(unitToSelect, false, false);
+    }
+
+    public void UpdateSelectedUnit(Unit unitToSelect, bool calledByAI)
+    {
+        UpdateSelectedUnit(unitToSelect, calledByAI, false);
     }
 
     public void UpdateUI(bool damageApplication)
@@ -139,7 +149,8 @@ public class UnitSelector : MonoBehaviour
             else
             {
                 tempHealthFillWhite.fillAmount = (float)selectedUnit.healthCur / (float)selectedUnit.healthMax;
-                
+                // Update health bar
+                UpdateHealthBar(selectedUnit.healthFill, selectedUnit.healthCur, selectedUnit.healthMax);
 
             }
                 
@@ -268,5 +279,16 @@ public class UnitSelector : MonoBehaviour
         }
 
         highlightingMovementTiles = false;
+    }
+
+    private void UpdateHealthBar(Image healthFill, int currentHealth, int maxHealth)
+    {
+        if (healthFill != null)
+        {
+            float healthPercentage = (float)currentHealth / maxHealth;
+            healthFill.fillAmount = healthPercentage;
+
+
+        }
     }
 }
