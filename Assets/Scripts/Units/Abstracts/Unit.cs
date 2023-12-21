@@ -57,6 +57,11 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
 
     [Header("Sounds")]
     public List<AudioClip> getSelectedSound = new();
+    public List<AudioClip> takeDamageSound = new();
+    public List<AudioClip> deathSound = new();
+    public List<AudioClip> getSpawnedSound = new();
+    public List<AudioClip> startMovingSound = new();
+    public List<AudioClip> finishedStepSound = new();
 
     [Header("DoTween")]
     public Ease currentEase;
@@ -106,6 +111,9 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
 
     public virtual void TakeDamage(int amount)
     {
+        if (amount == 0)
+            return;
+
         if (UnitSelector.Instance.selectedUnit == this)
             UnitSelector.Instance.UpdateUI();
 
@@ -119,6 +127,7 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
         UpdateHealthBar();
         UpdateHealthText();
 
+        AudioHandler.PlayRandomEffectFromList(takeDamageSound);
 
         if (UnitSelector.Instance.selectedUnit == this)
             UnitSelector.Instance.UpdateUI(true);
@@ -175,6 +184,7 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
 
     public virtual void Die()
     {
+        AudioHandler.PlayRandomEffectFromList(deathSound);
         UnitStorage.Instance.RemoveUnit(this);
         UnitSelector.Instance.UpdateSelectedUnit(null, true);
         standingOn.UpdateOccupant(null);
@@ -194,7 +204,9 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
     public void StartMovePath(List<Tile> path)
     {
 
-       
+        if (path != null)
+            if (path.Count != 0)
+                AudioHandler.PlayRandomEffectFromList(startMovingSound);
 
         MovementManager.Instance.takingMoveAction = false;
         UnitSelector.Instance.UnHighlightAllTilesMoveableTo();
@@ -292,6 +304,7 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
         gfx.localScale = startSize;
         standingOn.UpdateOccupant(null);
         standingOn = toTile;
+        AudioHandler.PlayRandomEffectFromList(finishedStepSound);
         toTile.UpdateOccupant(this);
 
         

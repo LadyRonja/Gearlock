@@ -13,6 +13,7 @@ public class SpawnUnitCard : Card
 
         Unit botScript = botObject.GetComponent<Unit>();
         onTile.UpdateOccupant(botScript);
+        AudioHandler.PlayRandomEffectFromList(botScript.getSpawnedSound);
         botScript.standingOn = onTile;
         UnitStorage.Instance.playerUnits.Add(botScript);
         botScript.unitName += " "  + UnitStorage.Instance.playerUnits.Count;
