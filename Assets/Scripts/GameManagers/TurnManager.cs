@@ -41,8 +41,9 @@ public class TurnManager : MonoBehaviour // classen blir en singleton
             Destroy(this.gameObject);
         #endregion
 
-        UpdateUI();
 
+        AudioHandler musicInitializer = AudioHandler.Instance;
+        UpdateUI();
     }
 
    
@@ -53,6 +54,7 @@ public class TurnManager : MonoBehaviour // classen blir en singleton
         if (isPlayerTurn)
         {
             isPlayerTurn = false;
+            endTurnText.text = "--";
 
             CardManager.Instance.ClearActiveCard();
             CardManager.Instance.EndTurnDiscardHand();

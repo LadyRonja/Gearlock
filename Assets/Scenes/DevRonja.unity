@@ -166,10 +166,16 @@ MonoBehaviour:
   attackRange: 0
   doneMoving: 1
   standingOn: {fileID: 7580025418813234495}
+  MovePointBase: []
+  MovePointLight: []
+  MovePointDark: []
   gfx: {fileID: 1470079967}
   myMR: {fileID: 0}
   mySR: {fileID: 1470079966}
   highligtherArrow: {fileID: 1359991981}
+  healthBar: {fileID: 0}
+  healthFill: {fileID: 0}
+  healthText: {fileID: 0}
   currentEase: 0
   aktiveSpineAnimation: 0
   idleAnimation: 
@@ -434,134 +440,6 @@ Transform:
   m_Children:
   - {fileID: 333619754}
   m_Father: {fileID: 604693425}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &243107143
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 243107145}
-  - component: {fileID: 243107144}
-  m_Layer: 0
-  m_Name: Sound
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!82 &243107144
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 243107143}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 5f4d5a6abd6c8a447bcd101a41d27d78, type: 3}
-  m_PlayOnAwake: 1
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 1
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
---- !u!4 &243107145
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 243107143}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 14.500393, y: -68.58121, z: 80.159386}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &247986388
 PrefabInstance:
@@ -1981,10 +1859,16 @@ MonoBehaviour:
   attackRange: 1
   doneMoving: 1
   standingOn: {fileID: 7992419455696041446}
+  MovePointBase: []
+  MovePointLight: []
+  MovePointDark: []
   gfx: {fileID: 216705130}
   myMR: {fileID: 0}
   mySR: {fileID: 216705129}
   highligtherArrow: {fileID: 333619753}
+  healthBar: {fileID: 0}
+  healthFill: {fileID: 0}
+  healthText: {fileID: 0}
   currentEase: 0
   aktiveSpineAnimation: 0
   idleAnimation: 
@@ -3463,10 +3347,16 @@ MonoBehaviour:
   attackRange: 1
   doneMoving: 1
   standingOn: {fileID: 2035617440052126264}
+  MovePointBase: []
+  MovePointLight: []
+  MovePointDark: []
   gfx: {fileID: 1800939270}
   myMR: {fileID: 0}
   mySR: {fileID: 1800939271}
   highligtherArrow: {fileID: 1777562602}
+  healthBar: {fileID: 0}
+  healthFill: {fileID: 0}
+  healthText: {fileID: 0}
   currentEase: 0
   aktiveSpineAnimation: 0
   idleAnimation: 
@@ -4037,10 +3927,16 @@ MonoBehaviour:
   attackRange: 1
   doneMoving: 1
   standingOn: {fileID: 6918050072285048015}
+  MovePointBase: []
+  MovePointLight: []
+  MovePointDark: []
   gfx: {fileID: 1840261101}
   myMR: {fileID: 0}
   mySR: {fileID: 1840261102}
   highligtherArrow: {fileID: 1626597996}
+  healthBar: {fileID: 0}
+  healthFill: {fileID: 0}
+  healthText: {fileID: 0}
   currentEase: 0
   aktiveSpineAnimation: 0
   idleAnimation: 
@@ -9014,6 +8910,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a329f2b7bca9d949b47aa7d1ee0e70a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  debugAudioClip: {fileID: 8300000, guid: f1b4c27c90869ee4994e7e6d2da720f8, type: 3}
 --- !u!222 &290357130134418974
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -10715,28 +10612,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c96a475494802a0419083188498f6faa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  discardPile: []
-  drawPile: []
   dig: {fileID: 3861232017947565500, guid: 5e8f3cb1634380744befee5806ee00c9, type: 3}
   attack: {fileID: 898281027607506639, guid: 4b48bcb37e6304e4c866ca4159064d03, type: 3}
   attack2x: {fileID: 6944391597733846485, guid: b1cdf32aae116e84aa826db772b8ca36, type: 3}
   diggerBot: {fileID: 5112470102642997458, guid: b2bd73ee66ac96a408d22f77f4851814, type: 3}
   fighterBot: {fileID: 7085131046943255271, guid: 5e94dfb5f6b36fd44895fffece21eefd, type: 3}
+  dynamite: {fileID: 5421826990026163501, guid: ab6e0bc5738517c42b260f76420e9d9e, type: 3}
+  digInDiscard: 0
+  attackInDiscard: 0
+  attack2xInDiscard: 0
+  diggerInDiscard: 0
+  fighterInDiscard: 0
+  dynamiteInDiscard: 0
+  totalCardsInDiscard: 0
   handParent: {fileID: 1050425070}
   discardPileObject: {fileID: 2879278854496055974}
   brokenFighter: {fileID: 3141665598236762354, guid: a01b1ee6048250e4595d21ee65596a4d, type: 3}
   brokenDigger: {fileID: 1387611179076426880, guid: d532bd26be33c284297d583c1446e12a, type: 3}
-  dynamite: {fileID: 5421826990026163501, guid: ab6e0bc5738517c42b260f76420e9d9e, type: 3}
   genericCard: {fileID: 456323171}
+  drawSpawnPosition: {fileID: 2040214444}
   discardIcon: {fileID: 6412751962425492403}
   drawIcon: {fileID: 594211657}
   discardSpawn: {fileID: 5740968338852831186}
-  drawSpawnPosition: {fileID: 2040214444}
   DrawAmount: {fileID: 1942902843589467019}
   siblingIndex: 0
   cardEase: 0
+  drawEase: 0
   isDisplaying: 0
   useList: 0
+  discardPile: []
+  drawPile: []
   cards: []
 --- !u!4 &1273638091259576306
 Transform:
@@ -12473,6 +12378,10 @@ MonoBehaviour:
   - {fileID: 1527503260}
   - {fileID: 1161456797}
   portrait: {fileID: 1909408377}
+  tempNameTextMini: {fileID: 0}
+  tempHealthTextMini: {fileID: 0}
+  tempHealthFillMini: {fileID: 0}
+  tempHealthFillWhiteMini: {fileID: 0}
   gridParent: {fileID: 860383801}
   displayPrefab: {fileID: 4982287730161726828, guid: 7d81b1886adca73468c040374bc0fd71, type: 3}
 --- !u!114 &2249082971769067716
@@ -14786,6 +14695,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 386b8c2adf90cf341a75c707c57f62c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  counterCircle: {fileID: 0}
+  counterText: {fileID: 0}
+  digCards: 0
+  dynamiteCards: 0
+  attackCards: 0
+  attackTwiceCards: 0
+  diggerBotCards: 0
+  fighterBotCards: 0
+  totalCards: 0
 --- !u!114 &3264101335310350744
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17189,7 +17107,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameOverScreen: {fileID: 4371369217328364235}
   gameOverText: {fileID: 1887471484320622777}
-  isTutorial: 0
+  firstTutorialSceneName: Tutorial First
+  isFirstTutorial: 0
+  secondTutorialSceneName: Tutorial Second
+  isSecondTutorial: 0
+  levelOneName: DevRonja
 --- !u!4 &4773412246373571019
 Transform:
   m_ObjectHideFlags: 0
@@ -22066,6 +21988,7 @@ MonoBehaviour:
   playerCanMove: 1
   playerHasMoved: 0
   movingOnCoroutine: 0
+  inverseMouseControls: 0
 --- !u!114 &7440101850482140301
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24582,4 +24505,3 @@ SceneRoots:
   - {fileID: 759354201}
   - {fileID: 475252077}
   - {fileID: 3832775451219153045}
-  - {fileID: 243107145}
