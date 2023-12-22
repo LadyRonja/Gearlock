@@ -119,7 +119,7 @@ public class DirtSpawner : MonoBehaviour
     [ContextMenu("Destroy All Dirt")]
     public void RemoveAllDirt()
     {
-        Object[] tiles = FindObjectsOfTypeAll(typeof(Tile));
+        Object[] tiles = FindObjectsOfType(typeof(Tile));
 
         foreach (Object o in tiles)
         {

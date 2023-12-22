@@ -23,7 +23,10 @@ public class AudioHandler : MonoBehaviour
         if (instance == null || instance == this)
             instance = this;
         else
-            DestroyImmediate(this.gameObject);
+        {
+            Destroy(this.gameObject);
+            return;
+        }
         #endregion
 
         if(deleteOtherSources)
@@ -118,10 +121,10 @@ public class AudioHandler : MonoBehaviour
 
     private void DestroyAllOtherSources()
     {
-         Object[] oldSources = Resources.FindObjectsOfTypeAll(typeof(AudioSource));
-        foreach (Object o in oldSources)
+        AudioSource[] oldSources = Object.FindObjectsOfType(typeof(AudioSource)) as AudioSource[];
+        foreach (AudioSource o in oldSources)
         {
-            Destroy(o.GameObject());
+            Destroy(o.transform.gameObject);
         }
     }
 
