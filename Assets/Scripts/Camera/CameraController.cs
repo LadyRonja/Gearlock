@@ -99,6 +99,9 @@ public class CameraController : MonoBehaviour
 
     private void MouseMovement()
     {
+        if (!playerCanMove)
+            return;
+
         if (Input.GetMouseButtonDown((int)MouseButton.Middle))
         {
             mouseStartPos = Input.mousePosition;
@@ -184,36 +187,15 @@ public class CameraController : MonoBehaviour
 
     private void DetectDoubleClick()
     {
+        if (TutorialBasic.Instance.IsInTutorial)
+            if(!playerCanMove)
+                return;
+
         if (Input.GetMouseButtonDown((int)MouseButton.Left))
         {
             if (clickedRecently)
             {
                 HoverManager.Instance.CheckHover();
-                /*
-                playerHasMoved = false;
-                clickedRecently = false;
-
-                Vector3 mousePosition = Input.mousePosition;
-                Ray ray = Camera.main.ScreenPointToRay(mousePosition);
-                RaycastHit hit;
-
-                if (Physics.Raycast(ray, out hit))
-                {
-                    if (hit.collider == null)
-                        return;
-
-                    // Check for unit
-                    if (hit.collider.gameObject.TryGetComponent<Unit>(out Unit u))
-                    {
-                        UnitSelector.Instance.UpdateSelectedUnit(u);
-                    }
-                    else if (hit.collider.gameObject.TryGetComponent<Tile>(out Tile t))
-                    {
-                        if(t.occupant != null)
-                            UnitSelector.Instance.UpdateSelectedUnit(t.occupant);
-
-                    }
-                }*/
             }
 
             clickedRecently = true;
