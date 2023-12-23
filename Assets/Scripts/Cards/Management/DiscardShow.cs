@@ -8,8 +8,18 @@ public class DiscardShow : MonoBehaviour
     public bool displayingDiscard;
     public GameObject discardPile;
     public GameObject keepPanel;
+    public bool hasBeenClosedOnce = false;
 
-    // Start is called before the first frame update
+    public static DiscardShow Instance;
+
+
+    private void Awake()
+    {
+        if (Instance == null || Instance == this)
+            Instance = this;
+        else
+            Destroy(this.gameObject);
+    }
 
     private void Start()
     {
@@ -21,5 +31,16 @@ public class DiscardShow : MonoBehaviour
         discardPile.SetActive(!discardPile.activeSelf);
         if (TurnManager.Instance.keepPhase)
             keepPanel.SetActive(!keepPanel.activeSelf);
+
+        // TODO: Fix tutorial coupling
+        if(!discardPile.activeSelf)
+            hasBeenClosedOnce = true;
+        else if (TutorialBasic.Instance.IsInTutorial)
+        {
+            if(!hasBeenClosedOnce)
+            {
+                TutorialBasic.Instance.CloseSpecificPage(11);
+            }
+        }
     }
 }

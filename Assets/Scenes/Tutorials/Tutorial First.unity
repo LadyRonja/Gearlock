@@ -2676,7 +2676,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 166624314}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 401657775}
+        m_TargetAssemblyTypeName: TutorialBasic, Assembly-CSharp
+        m_MethodName: GoToTutorialPage
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 11
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &166624314
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3678,7 +3690,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -4695,7 +4707,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 312614613}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 401657775}
+        m_TargetAssemblyTypeName: TutorialBasic, Assembly-CSharp
+        m_MethodName: GoToTutorialPage
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 7
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &312614613
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5779,6 +5803,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 401657774}
+  - component: {fileID: 401657775}
   m_Layer: 5
   m_Name: Tutorial
   m_TagString: Untagged
@@ -5836,6 +5861,51 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &401657775
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 401657773}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ffca1ff3170848438a6fef076e11f22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  basicTutorialPages:
+  - {fileID: 338009875}
+  - {fileID: 851863054}
+  - {fileID: 1520521666}
+  - {fileID: 67423532}
+  - {fileID: 432886259}
+  - {fileID: 881737445}
+  - {fileID: 2043983323}
+  - {fileID: 923795860}
+  - {fileID: 74874413}
+  - {fileID: 225137399}
+  - {fileID: 794457721}
+  - {fileID: 985099726}
+  - {fileID: 550702250}
+  - {fileID: 77709165}
+  - {fileID: 289207863}
+  - {fileID: 728682056}
+  - {fileID: 1523125891}
+  - {fileID: 1220222336}
+  - {fileID: 2060540770}
+  - {fileID: 1230542234}
+  - {fileID: 743441634}
+  - {fileID: 779592166}
+  - {fileID: 1396314955}
+  - {fileID: 986611271}
+  - {fileID: 175053299}
+  - {fileID: 1987011567}
+  - {fileID: 1020769417}
+  bonusTutorialPages:
+  - {fileID: 1193187013}
+  - {fileID: 1570897650}
+  - {fileID: 1127201720}
+  - {fileID: 1536432321}
 --- !u!1 &407909214
 GameObject:
   m_ObjectHideFlags: 0
@@ -8199,7 +8269,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 633108800}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 401657775}
+        m_TargetAssemblyTypeName: TutorialBasic, Assembly-CSharp
+        m_MethodName: GoToTutorialPage
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 4
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &633108800
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10514,7 +10596,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &794457722
 RectTransform:
   m_ObjectHideFlags: 0
@@ -15989,7 +16071,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1169277611}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 401657775}
+        m_TargetAssemblyTypeName: TutorialBasic, Assembly-CSharp
+        m_MethodName: GoToTutorialPage
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1169277611
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17697,7 +17791,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1305859617}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 401657775}
+        m_TargetAssemblyTypeName: TutorialBasic, Assembly-CSharp
+        m_MethodName: GoToTutorialPage
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 3
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1305859617
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20154,7 +20260,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1463583294}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 401657775}
+        m_TargetAssemblyTypeName: TutorialBasic, Assembly-CSharp
+        m_MethodName: GoToTutorialPage
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 5
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1463583294
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25641,7 +25759,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:

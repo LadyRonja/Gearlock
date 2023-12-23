@@ -88,8 +88,11 @@ public class HoverManager : MonoBehaviour
                     HoverTileExit(oldTile);
             }
 
-            if (myHits.tile != null)
+            if (myHits.tile != null) { 
                 HoverTileEnter(myHits.tile);
+                if (Input.GetMouseButtonDown((int)MouseButton.Left))
+                    myHits.tile.OnClick();
+            }
 
             if (myHits.unit != null)
                 myHits.unit.HoverTextUnit();

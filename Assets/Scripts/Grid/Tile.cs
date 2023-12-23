@@ -79,19 +79,25 @@ public class Tile : MonoBehaviour, IPointerDownHandler
 
     public void OnPointerDown(PointerEventData eventData)
      {
+        // Being called from the HoverManager now, leaving it in until sure it works fine
+        //OnClick();
+     }
+
+    public void OnClick()
+    {   
         // Select My Unit
         if (occupant != null)
         {
             TileClicker.Instance.UpdateSelectedUnit(this);
         }
-         TileClicker.Instance.HandleMoveClick(this);
+        TileClicker.Instance.HandleMoveClick(this);
 
-         // Toggle Blocked (Debug)
-         if (Input.GetKey(KeyCode.LeftControl))
-         {
-             TileClicker.Instance.ToggleBlockedDebug(this);
-         }
-     }
+        // Toggle Blocked (Debug)
+        if (Input.GetKey(KeyCode.LeftControl))
+        {
+            TileClicker.Instance.ToggleBlockedDebug(this);
+        }
+    }
 
     public void RemoveDirt()
     {
