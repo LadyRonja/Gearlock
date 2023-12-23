@@ -18,6 +18,7 @@ public class TurnManager : MonoBehaviour // classen blir en singleton
     public GameObject KeepCardScreen;
     public TMP_Text endTurnText;
     public GameObject discard;
+    public bool hasEndedTurnOnce = false;
 
     //DOTween Player and AI turn text
     public GameObject underlineRightRed; //turn text line enemy
@@ -55,6 +56,8 @@ public class TurnManager : MonoBehaviour // classen blir en singleton
         {
             isPlayerTurn = false;
             endTurnText.text = "--";
+            if(!hasEndedTurnOnce)
+                hasEndedTurnOnce= true;
 
             CardManager.Instance.ClearActiveCard();
             CardManager.Instance.EndTurnDiscardHand();

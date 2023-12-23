@@ -88,6 +88,29 @@ public class CardManager : MonoBehaviour
 
     void Start()
     {
+        // Do not deal on tutorial
+        if (TutorialBasic.Instance.IsInTutorial)
+            return;
+
+        SetUpStartHand();
+    }
+
+
+    private void Update()
+    {
+        // Temporary code to "play" card with space, until card plays completely with code
+        //if (Input.GetKeyDown(KeyCode.Space))
+        //    CardEffectComplete();
+
+        if (DrawAmount != null)
+            DrawAmount.text = drawPile.Count.ToString();
+
+        drawPileText.GetComponent<TextMeshProUGUI>().text = drawPile.Count.ToString();
+        discardPileText.GetComponent<TextMeshProUGUI>().text = discardPile.Count.ToString();
+    }
+
+    public void SetUpStartHand()
+    {
         // The starting deck is added to the draw pile
 
         if (useList)
@@ -108,23 +131,9 @@ public class CardManager : MonoBehaviour
             drawPile.Add(fighterBot);
         }
 
-
         DealHand();
     }
 
-
-    private void Update()
-    {
-        // Temporary code to "play" card with space, until card plays completely with code
-        //if (Input.GetKeyDown(KeyCode.Space))
-        //    CardEffectComplete();
-
-        if (DrawAmount != null)
-            DrawAmount.text = drawPile.Count.ToString();
-
-        drawPileText.GetComponent<TextMeshProUGUI>().text = drawPile.Count.ToString();
-        discardPileText.GetComponent<TextMeshProUGUI>().text = discardPile.Count.ToString();
-    }
     public void DealHand()
     {
         for (int i = 0; handParent.transform.childCount < 5 && i < 5; i++)

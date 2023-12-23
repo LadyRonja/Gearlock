@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 using static Unity.Collections.AllocatorManager;
@@ -40,6 +41,15 @@ public class HoverManager : MonoBehaviour
     }
     public void CheckHover()
     {
+        if (TutorialBasic.Instance.IsInTutorial)
+        {
+            if (TutorialBasic.Instance.BasicIndexesToPreventRaycastingOn.Contains(TutorialBasic.Instance.BasicTutorialIndex))
+            {
+                MouseControl.Instance.SetCursor(Cursors.Default, true); // TODO: Only do this once
+                return;
+            }
+        }
+
         Vector3 mousePosition = Input.mousePosition;
         Ray ray = Camera.main.ScreenPointToRay(mousePosition);
         RaycastHit hit;

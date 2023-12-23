@@ -188,6 +188,8 @@ public class CameraController : MonoBehaviour
         {
             if (clickedRecently)
             {
+                HoverManager.Instance.CheckHover();
+                /*
                 playerHasMoved = false;
                 clickedRecently = false;
 
@@ -211,7 +213,7 @@ public class CameraController : MonoBehaviour
                             UnitSelector.Instance.UpdateSelectedUnit(t.occupant);
 
                     }
-                }
+                }*/
             }
 
             clickedRecently = true;
