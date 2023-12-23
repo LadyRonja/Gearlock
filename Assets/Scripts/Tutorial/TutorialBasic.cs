@@ -23,7 +23,7 @@ public class TutorialBasic : MonoBehaviour
     int basicTutorialIndex = 0;
     int[] basicIndexesToPreventRaycastingOn = { 0, 1, 2, 3, 4, 5, /*6, 7, 8, 9, */
                                                 10, 11, 12, 13, 14, 15, 16, 17, 18, /*19,
-                                                20,*/ 21, 22, /*23,*/ 24/*, 25, 26, 27*/ };
+                                                20,*/ 21, 22, /*23,*/ 24, 25, 26/*, 27*/ };
     int bonusTutorialIndex = 0;
 
 
@@ -131,6 +131,12 @@ public class TutorialBasic : MonoBehaviour
             {
                 GoToTutorialPage(12);
             }
+        }
+
+        else if (basicTutorialIndex >= 14 && basicTutorialIndex <= 17)
+        {
+            if(UnitSelector.Instance.selectedUnit == null)
+                UnitSelector.Instance.UpdateSelectedUnit(UnitStorage.Instance.playerUnits[0], false, true);
         }
 
         // Once all movepoints are done, explain end of turn
