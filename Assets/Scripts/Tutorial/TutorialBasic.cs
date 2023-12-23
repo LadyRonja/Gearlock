@@ -25,6 +25,8 @@ public class TutorialBasic : MonoBehaviour
                                                 10, 11, 12, 13, 14, 15, 16, 17, 18, /*19,
                                                 20,*/ 21, 22, /*23,*/ 24, 25, 26/*, 27*/ };
     int bonusTutorialIndex = 0;
+    bool bonusTutorialDone = false;
+    bool bonusTutorialActive= false;
 
 
     private void Awake()
@@ -41,6 +43,7 @@ public class TutorialBasic : MonoBehaviour
         {
             GoToTutorialPage(1);
             CameraController.Instance.playerCanMove = false;
+            TurnManager.Instance.canEndTurn = false;
         }
     }
 
@@ -66,12 +69,20 @@ public class TutorialBasic : MonoBehaviour
             go.SetActive(false);
         }
 
-        if(basicTutorialIndex <= basicTutorialPages.Count)
+        foreach (GameObject go in bonusTutorialPages)
+        {
+            go.SetActive(false);
+        }
+
+        if (basicTutorialIndex <= basicTutorialPages.Count)
             basicTutorialPages[basicTutorialIndex - 1].SetActive(true);
     }
 
     private void CheckForTutorialTriggers()
     {
+        if (bonusTutorialActive)
+            return;
+
         // Play a card
         if(basicTutorialIndex == 5)
         {
@@ -144,6 +155,7 @@ public class TutorialBasic : MonoBehaviour
         {
             if (UnitStorage.Instance.playerUnits[0].movePointsCur == 0)
             {
+                TurnManager.Instance.canEndTurn = true;
                 GoToTutorialPage(20);
             }
         }
@@ -207,6 +219,50 @@ public class TutorialBasic : MonoBehaviour
         }
 
         basicTutorialPages[basicTutorialIndex - 1].SetActive(false);
+    }
+
+    public void GoToNextBonusTutorial()
+    {
+        foreach (GameObject go in basicTutorialPages)
+        {
+            go.SetActive(false);
+        }
+
+        foreach (GameObject go in bonusTutorialPages)
+        {
+            go.SetActive(false);
+        }
+
+        if(bonusTutorialIndex < bonusTutorialPages.Count)
+        {
+            bonusTutorialPages[bonusTutorialIndex].SetActive(true);
+            bonusTutorialIndex++;
+        }
+        else
+        {
+            bonusTutorialDone = true;
+            bonusTutorialActive = false;
+            foreach (GameObject go in bonusTutorialPages)
+            {
+                go.SetActive(false);
+            }
+
+            if (basicTutorialIndex <= basicTutorialPages.Count)
+                basicTutorialPages[basicTutorialIndex - 1].SetActive(true);
+        }
+
+    }
+
+    public void StartBonusTutorial()
+    {
+        if (!bonusTutorialDone)
+        {
+            if (!bonusTutorialActive)
+            {
+                bonusTutorialActive = true;
+                GoToNextBonusTutorial();
+            }
+        }
     }
 
     public void DealTutorialHand()

@@ -1393,7 +1393,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 76802465}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 401657775}
+        m_TargetAssemblyTypeName: TutorialBasic, Assembly-CSharp
+        m_MethodName: GoToNextBonusTutorial
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &76802465
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3180,7 +3192,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &175053300
 RectTransform:
   m_ObjectHideFlags: 0
@@ -12963,7 +12975,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 889122605}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 401657775}
+        m_TargetAssemblyTypeName: TutorialBasic, Assembly-CSharp
+        m_MethodName: GoToNextBonusTutorial
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &889122605
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17272,7 +17296,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1229469476}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 401657775}
+        m_TargetAssemblyTypeName: TutorialBasic, Assembly-CSharp
+        m_MethodName: GoToNextBonusTutorial
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1229469476
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18403,7 +18439,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1290920844}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 401657775}
+        m_TargetAssemblyTypeName: TutorialBasic, Assembly-CSharp
+        m_MethodName: GoToNextBonusTutorial
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1290920844
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33014,6 +33062,7 @@ MonoBehaviour:
   endTurnText: {fileID: 215161678}
   discard: {fileID: 2074463893}
   hasEndedTurnOnce: 0
+  canEndTurn: 1
   underlineRightRed: {fileID: 767074430}
   underlineLeftRed: {fileID: 767074429}
   underlineRightBlue: {fileID: 767074428}
