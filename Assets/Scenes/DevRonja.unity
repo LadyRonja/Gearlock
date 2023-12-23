@@ -1549,6 +1549,59 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 100
   m_TargetDisplay: 0
+--- !u!1 &526553722
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 526553724}
+  - component: {fileID: 526553723}
+  m_Layer: 0
+  m_Name: TEMP scene handler
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &526553723
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 526553722}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ff39877715641f48844fe9e4e3f953b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  transitionImage: {fileID: 0}
+  menuButtons: {fileID: 0}
+  tutorialCheckPanel: {fileID: 0}
+  optionsBar: {fileID: 0}
+  toggleZoomOnHover: 0
+  toggleClickToDrag: 0
+  toggleCardReposition: 0
+  musicVolume: 1
+  effectVolume: 1
+--- !u!4 &526553724
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 526553722}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 902.7969, y: 494.00247, z: -2.0916748}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &542640658
 GameObject:
   m_ObjectHideFlags: 0
@@ -15717,6 +15770,7 @@ MonoBehaviour:
   displayingDiscard: 0
   discardPile: {fileID: 2517075719975494789}
   keepPanel: {fileID: 4134084893077386398}
+  hasBeenClosedOnce: 0
 --- !u!222 &3785440739000359685
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -22447,6 +22501,8 @@ MonoBehaviour:
   KeepCardScreen: {fileID: 4134084893077386398}
   endTurnText: {fileID: 1045891518411710160}
   discard: {fileID: 2517075719975494789}
+  hasEndedTurnOnce: 0
+  canEndTurn: 1
   underlineRightRed: {fileID: 767074430}
   underlineLeftRed: {fileID: 767074429}
   underlineRightBlue: {fileID: 767074428}
@@ -24895,3 +24951,4 @@ SceneRoots:
   - {fileID: 759354201}
   - {fileID: 475252077}
   - {fileID: 3832775451219153045}
+  - {fileID: 526553724}

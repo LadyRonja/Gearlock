@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class AudioHandler : MonoBehaviour
 {
@@ -124,6 +125,11 @@ public class AudioHandler : MonoBehaviour
         AudioSource[] oldSources = Object.FindObjectsOfType(typeof(AudioSource)) as AudioSource[];
         foreach (AudioSource o in oldSources)
         {
+            AudioHandler thisCheck = o.GetComponent<AudioHandler>();
+            if (thisCheck != null)
+                if (thisCheck == this)
+                    return;
+
             Destroy(o.transform.gameObject);
         }
     }
