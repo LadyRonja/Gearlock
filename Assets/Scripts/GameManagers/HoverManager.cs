@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using static Unity.Collections.AllocatorManager;
 
 public struct HoverHits
@@ -39,6 +40,7 @@ public class HoverManager : MonoBehaviour
     {
         CheckHover();
     }
+
     public void CheckHover()
     {
         if (TutorialBasic.Instance.IsInTutorial)
@@ -50,14 +52,18 @@ public class HoverManager : MonoBehaviour
             }
         }
 
+        // Check if the user maybe tried to click a card rather than doing anything else
+        if(Input.GetMouseButtonDown((int)MouseButton.Left))
+        {
+            if (CheckUIBlocks())
+                return;
+        }
+
         Vector3 mousePosition = Input.mousePosition;
         Ray ray = Camera.main.ScreenPointToRay(mousePosition);
         RaycastHit hit;
 
         Tile oldTile = myHits.tile;
-
-        /*if(myHits.tile != null)
-            HoverTileExit(myHits.tile);*/
 
         if(myHits.unit != null)
             myHits.unit.HoverTextUnitExit();
@@ -107,6 +113,19 @@ public class HoverManager : MonoBehaviour
             if (myHits.unit != null)
                 myHits.unit.HoverTextUnit();
         }
+    }
+
+    // Check if the user maybe tried to click a card rather than doing anything else
+    private bool CheckUIBlocks()
+    {
+        // TODO: This is horribly inefficent.
+        Canvas[] allCanvi = FindObjectsOfType<Canvas>();
+        foreach (Canvas c in allCanvi)
+        {
+            if(c.sortingOrder == 10)
+                return true; 
+        }
+        return false;
     }
 
     public static void HoverTileEnter(Tile tile)

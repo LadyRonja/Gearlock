@@ -49,16 +49,16 @@ public class GameoverManager : MonoBehaviour
         if(isFirstTutorial)
         {
             if (playerWon)
-                SceneManager.LoadScene(secondTutorialSceneName);
+                Scenehandler.Instance.GoToScene(secondTutorialSceneName);
             else
-                SceneManager.LoadScene(firstTutorialSceneName);
+                Scenehandler.Instance.GoToScene(firstTutorialSceneName);
         }
         else if(isSecondTutorial)
         {
             if (playerWon)
-                SceneManager.LoadScene(levelOneName);
+                Scenehandler.Instance.GoToScene(levelOneName);
             else
-                SceneManager.LoadScene(secondTutorialSceneName);
+                Scenehandler.Instance.GoToScene(secondTutorialSceneName);
         }
         else
         {
