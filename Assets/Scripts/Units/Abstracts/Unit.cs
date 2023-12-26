@@ -77,7 +77,7 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
 
     private void Start()
     {
-        EnableMovePointLights();
+        //EnableMovePointLights();
 
         turnManager=GetComponent<TurnManager>();
 
@@ -243,7 +243,7 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
     protected IEnumerator MoveStep(Tile toTile)
     {
         movePointsCur--;
-        DisableMovePointLights();
+        //DisableMovePointLights();
        
 
         Vector3 startPos = this.transform.position;
@@ -483,7 +483,7 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
         }
     }
 
-    public void EnableMovePointLights()
+    /*public void EnableMovePointLights()
     {
 
             // Enable all MovePointLight game objects
@@ -509,7 +509,7 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
 
 
 
-    }
+    }*/
     
     
 
