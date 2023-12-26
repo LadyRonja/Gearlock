@@ -11,6 +11,19 @@ public class DynomiteProjectile : Projectile
     public int explosionDamage = 3;
     [Space]
     public GameObject explosionPrefab;
+    [SerializeField] AudioClip dynamiteTssSound;
+
+    private void Start()
+    {
+        AudioSource mySource = GetComponent<AudioSource>();
+        mySource.clip = dynamiteTssSound;
+        mySource.loop = true;
+        if (Scenehandler.Instance != null)
+            mySource.volume = Scenehandler.Instance.effectVolume;
+        else
+            mySource.volume = 1f;
+        mySource.Play();
+    }
 
     public override void OnArrival()
     {

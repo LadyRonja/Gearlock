@@ -19,6 +19,10 @@ public class TurnManager : MonoBehaviour // classen blir en singleton
     public TMP_Text endTurnText;
     public GameObject discard;
 
+    // Tutorial
+    public bool hasEndedTurnOnce = false;
+    public bool canEndTurn = true;
+
     //DOTween Player and AI turn text
     public GameObject underlineRightRed; //turn text line enemy
     public GameObject underlineLeftRed;//turn text line enemy
@@ -55,10 +59,15 @@ public class TurnManager : MonoBehaviour // classen blir en singleton
 
     public void EndTurn() //when clicked on End Turn Button
     {
+        if (!canEndTurn)
+            return;
+
         if (isPlayerTurn)
         {
             isPlayerTurn = false;
             endTurnText.text = "--";
+            if(!hasEndedTurnOnce)
+                hasEndedTurnOnce= true;
 
             CardManager.Instance.ClearActiveCard();
             CardManager.Instance.EndTurnDiscardHand();
@@ -142,6 +151,9 @@ public class TurnManager : MonoBehaviour // classen blir en singleton
 
     public void toggleEnd()
     {
+        if (!canEndTurn)
+            return;
+
         CardManager.Instance.ClearActiveCard();
         DEBUGCardStateUI.Instance.DEBUGUpdateUI(CardState.Inactive, "--");
 
@@ -160,6 +172,9 @@ public class TurnManager : MonoBehaviour // classen blir en singleton
         {
             if (HandPanel.Instance.transform.childCount > 0)
             {
+                if (TutorialBasic.Instance.IsInTutorial)
+                    TutorialBasic.Instance.StartBonusTutorial();
+
                 keepPhase = true;
                 TurnEnd = !TurnEnd;
                 KeepCardScreen.SetActive(true);

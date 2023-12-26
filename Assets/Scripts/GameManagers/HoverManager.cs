@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using static Unity.Collections.AllocatorManager;
 
 public struct HoverHits
@@ -38,16 +40,30 @@ public class HoverManager : MonoBehaviour
     {
         CheckHover();
     }
+
     public void CheckHover()
     {
+        if (TutorialBasic.Instance.IsInTutorial)
+        {
+            if (TutorialBasic.Instance.BasicIndexesToPreventRaycastingOn.Contains(TutorialBasic.Instance.BasicTutorialIndex))
+            {
+                MouseControl.Instance.SetCursor(Cursors.Default, true); // TODO: Only do this once
+                return;
+            }
+        }
+
+        // Check if the user maybe tried to click a card rather than doing anything else
+        if(Input.GetMouseButtonDown((int)MouseButton.Left))
+        {
+            if (CheckUIBlocks())
+                return;
+        }
+
         Vector3 mousePosition = Input.mousePosition;
         Ray ray = Camera.main.ScreenPointToRay(mousePosition);
         RaycastHit hit;
 
         Tile oldTile = myHits.tile;
-
-        /*if(myHits.tile != null)
-            HoverTileExit(myHits.tile);*/
 
         if(myHits.unit != null)
             myHits.unit.HoverTextUnitExit();
@@ -88,12 +104,28 @@ public class HoverManager : MonoBehaviour
                     HoverTileExit(oldTile);
             }
 
-            if (myHits.tile != null)
+            if (myHits.tile != null) { 
                 HoverTileEnter(myHits.tile);
+                if (Input.GetMouseButtonDown((int)MouseButton.Left))
+                    myHits.tile.OnClick();
+            }
 
             if (myHits.unit != null)
                 myHits.unit.HoverTextUnit();
         }
+    }
+
+    // Check if the user maybe tried to click a card rather than doing anything else
+    private bool CheckUIBlocks()
+    {
+        // TODO: This is horribly inefficent.
+        Canvas[] allCanvi = FindObjectsOfType<Canvas>();
+        foreach (Canvas c in allCanvi)
+        {
+            if(c.sortingOrder == 10)
+                return true; 
+        }
+        return false;
     }
 
     public static void HoverTileEnter(Tile tile)
@@ -299,6 +331,17 @@ public class HoverManager : MonoBehaviour
                     MouseControl.Instance.SetCursor(Cursors.Construct, true);
                 else
                     MouseControl.Instance.SetCursor(Cursors.Construct, false);
+
+                return;
+            }
+
+        if (selectedCard.GetType() == typeof(ProjectileCard))
+            if (!tile.blocked)
+            {
+                if (Pathfinding.GetDistance(selectedUnit.standingOn, tile) <= selectedCard.range)
+                    MouseControl.Instance.SetCursor(Cursors.Dynamite, true);
+                else
+                    MouseControl.Instance.SetCursor(Cursors.Dynamite, false);
 
                 return;
             }

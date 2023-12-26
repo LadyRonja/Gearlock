@@ -88,28 +88,11 @@ public class CardManager : MonoBehaviour
 
     void Start()
     {
-        // The starting deck is added to the draw pile
+        // Do not deal on tutorial
+        if (TutorialBasic.Instance.IsInTutorial)
+            return;
 
-        if (useList)
-        {
-            foreach (GameObject item in cards)
-            {
-                drawPile.Add(item);
-            }
-        }
-        else
-        {
-            drawPile.Add(dig);
-            drawPile.Add(dig);
-            drawPile.Add(diggerBot);
-            drawPile.Add(dynamite);
-            drawPile.Add(dig);
-            drawPile.Add(attack);
-            drawPile.Add(fighterBot);
-        }
-
-
-        DealHand();
+        SetUpStartHand();
     }
 
 
@@ -125,6 +108,32 @@ public class CardManager : MonoBehaviour
         drawPileText.GetComponent<TextMeshProUGUI>().text = drawPile.Count.ToString();
         discardPileText.GetComponent<TextMeshProUGUI>().text = discardPile.Count.ToString();
     }
+
+    public void SetUpStartHand()
+    {
+        // The starting deck is added to the draw pile
+
+        if (useList)
+        {
+            foreach (GameObject item in cards)
+            {
+                drawPile.Add(item);
+            }
+        }
+        else
+        {
+            drawPile.Add(dig);
+            drawPile.Add(dig);
+            drawPile.Add(diggerBot);
+            drawPile.Add(attack);
+            drawPile.Add(attack);
+            drawPile.Add(dynamite);
+            //drawPile.Add(fighterBot);
+        }
+
+        DealHand();
+    }
+
     public void DealHand()
     {
         for (int i = 0; handParent.transform.childCount < 5 && i < 5; i++)

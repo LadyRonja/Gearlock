@@ -6,18 +6,33 @@ using UnityEngine.PlayerLoop;
 
 public class CameraController : MonoBehaviour
 {
+    [Header("General")]
     public static CameraController Instance;
     public float camSpeed = 30f;
     public float xOffSet = 3;
     public float yOffSet = 20;
     public float zOffSet = -30;
+    [Space]
     public bool playerCanMove = true;
-    public bool playerHasMoved = false;
-    public bool movingOnCoroutine = false;
+    [HideInInspector] public bool playerHasMoved = false;
+    [HideInInspector] public bool movingOnCoroutine = false;
     Vector3 velocity = Vector3.zero;
 
     Vector3 mouseStartPos = Vector3.zero;
     public bool inverseMouseControls = false;
+
+    [Header("Double clicker")]
+    private bool clickedRecently = false;
+    private float doubleClickSpan = 0.5f;
+    float doublClickTimer = 0;
+
+    [Header("Clamping")]
+    bool clampsFound = false;
+    [SerializeField] float clampBufferHorizontal = 0f;
+    [SerializeField] float clampBufferVertical = 30f;
+    Vector2 horizontalClamps = Vector2.zero;
+    Vector2 verticalClamps = Vector2.zero;
+
 
     private void Awake()
     {
@@ -29,14 +44,40 @@ public class CameraController : MonoBehaviour
         #endregion
     }
 
+    private void Start()
+    {
+        FindClamps();
+    }
+
     private void Update()
     {
         DetectDoubleClick(); //If double clicking, let the camera auto-move again
         KeyBoardMovement();
         MouseMovement();
+        ClampCamera();
 
-        if(Input.GetKeyDown(KeyCode.I))
+        if (Input.GetKeyDown(KeyCode.I))
             inverseMouseControls = !inverseMouseControls;
+    }
+
+    private void FindClamps()
+    {
+        if (GridManager.Instance == null) return;
+        if (GridManager.Instance.tiles == null) return;
+
+        clampsFound = true;
+
+        float minX = GridManager.Instance.tiles[0,0].transform.position.x;
+        float maxX = GridManager.Instance.tiles[GridManager.Instance.tiles.GetLength(0) - 1, 0].transform.position.x;
+        minX -= clampBufferHorizontal;
+        maxX += clampBufferHorizontal;
+        horizontalClamps = new Vector2(minX, maxX);
+
+        float minZ = GridManager.Instance.tiles[0, 0].transform.position.z;
+        float maxZ = GridManager.Instance.tiles[0, GridManager.Instance.tiles.GetLength(1) - 1].transform.position.z;
+        minZ -= clampBufferVertical;
+        maxZ -= clampBufferVertical;
+        verticalClamps = new Vector2(minZ, maxZ);
     }
 
     private void KeyBoardMovement()
@@ -58,6 +99,9 @@ public class CameraController : MonoBehaviour
 
     private void MouseMovement()
     {
+        if (!playerCanMove)
+            return;
+
         if (Input.GetMouseButtonDown((int)MouseButton.Middle))
         {
             mouseStartPos = Input.mousePosition;
@@ -83,6 +127,20 @@ public class CameraController : MonoBehaviour
 
             transform.position = newPos;
         }
+    }
+
+    private void ClampCamera()
+    {
+        if (!clampsFound)
+            return;
+
+        float clampedX = Mathf.Clamp(transform.position.x, horizontalClamps.x, horizontalClamps.y);
+        float clampedZ = Mathf.Clamp(transform.position.z, verticalClamps.x, verticalClamps.y);
+        Vector3 clampedPos = transform.position;
+        clampedPos.x = clampedX;
+        clampedPos.z = clampedZ;
+
+        transform.position = clampedPos;
     }
 
     public void MoveToTarget(Vector3 target, float seconds = 0.5f)
@@ -126,39 +184,18 @@ public class CameraController : MonoBehaviour
         yield return null;
     }
 
-    private bool clickedRecently = false;
-    private float doubleClickSpan = 0.5f;
-    float doublClickTimer = 0;
+
     private void DetectDoubleClick()
     {
+        if (TutorialBasic.Instance.IsInTutorial)
+            if(!playerCanMove)
+                return;
+
         if (Input.GetMouseButtonDown((int)MouseButton.Left))
         {
             if (clickedRecently)
             {
-                playerHasMoved = false;
-                clickedRecently = false;
-
-                Vector3 mousePosition = Input.mousePosition;
-                Ray ray = Camera.main.ScreenPointToRay(mousePosition);
-                RaycastHit hit;
-
-                if (Physics.Raycast(ray, out hit))
-                {
-                    if (hit.collider == null)
-                        return;
-
-                    // Check for unit
-                    if (hit.collider.gameObject.TryGetComponent<Unit>(out Unit u))
-                    {
-                        UnitSelector.Instance.UpdateSelectedUnit(u);
-                    }
-                    else if (hit.collider.gameObject.TryGetComponent<Tile>(out Tile t))
-                    {
-                        if(t.occupant != null)
-                            UnitSelector.Instance.UpdateSelectedUnit(t.occupant);
-
-                    }
-                }
+                HoverManager.Instance.CheckHover();
             }
 
             clickedRecently = true;

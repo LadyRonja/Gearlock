@@ -74,7 +74,7 @@ public class UnitSpawner : MonoBehaviour
         _unitStoreage.enemyUnits = new();
 
         // Destroy
-        Object[] tiles = FindObjectsOfTypeAll(typeof(Tile));
+        Object[] tiles = FindObjectsOfType(typeof(Tile));
         foreach(Tile t in tiles)
         {
             if(t.occupant != null)
