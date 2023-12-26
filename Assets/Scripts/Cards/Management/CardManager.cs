@@ -125,10 +125,10 @@ public class CardManager : MonoBehaviour
             drawPile.Add(dig);
             drawPile.Add(dig);
             drawPile.Add(diggerBot);
-            drawPile.Add(dynamite);
-            drawPile.Add(dig);
             drawPile.Add(attack);
-            drawPile.Add(fighterBot);
+            drawPile.Add(attack);
+            drawPile.Add(dynamite);
+            //drawPile.Add(fighterBot);
         }
 
         DealHand();
