@@ -99,7 +99,7 @@ public class Tile : MonoBehaviour, IPointerDownHandler
         }
     }
 
-    public void RemoveDirt()
+    public void RemoveDirt(bool canSpawnCard)
     {
         if(dirt == null)
         {
@@ -123,10 +123,16 @@ public class Tile : MonoBehaviour, IPointerDownHandler
 
         // TODO: See item spawner todo
         //ItemSpawner.Instance.SpawnRandomItem(this);
-        if(ItemSpawner.Instance != null)
-           ItemSpawner.Instance.SpawnRandomCardDelete(this);
+        if(canSpawnCard)
+            if(ItemSpawner.Instance != null)
+               ItemSpawner.Instance.SpawnRandomCardDelete(this);
                            
     }
+    public void RemoveDirt()
+    {
+        RemoveDirt(true);
+    }
+
 
     public void Highlight(Color highlightColor)
     {

@@ -335,6 +335,17 @@ public class HoverManager : MonoBehaviour
                 return;
             }
 
+        if (selectedCard.GetType() == typeof(ProjectileCard))
+            if (!tile.blocked)
+            {
+                if (Pathfinding.GetDistance(selectedUnit.standingOn, tile) <= selectedCard.range)
+                    MouseControl.Instance.SetCursor(Cursors.Dynamite, true);
+                else
+                    MouseControl.Instance.SetCursor(Cursors.Dynamite, false);
+
+                return;
+            }
+
         MouseControl.Instance.SetCursor(Cursors.Default, false);
     }
 
