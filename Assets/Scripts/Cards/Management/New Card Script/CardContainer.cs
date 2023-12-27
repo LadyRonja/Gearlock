@@ -315,7 +315,6 @@ public class CardContainer : MonoBehaviour
             }
             else if (MovementManager.Instance.takingMoveAction)
             {
-
                 CardManager.Instance.ClearActiveCard();
                 CardManager.Instance.siblingIndex = currentDraggedCard.transform.GetSiblingIndex();
                 // Instantiate a copy of the currently dragged card as a child of ActiveCard

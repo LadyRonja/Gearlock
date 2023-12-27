@@ -91,6 +91,8 @@ public class CardManager : MonoBehaviour
         // Do not deal on tutorial
         if (TutorialBasic.Instance.IsInTutorial)
             return;
+        else if (TutorialAdvanced.Instance.IsInTutorial)
+            return;
 
         SetUpStartHand();
     }

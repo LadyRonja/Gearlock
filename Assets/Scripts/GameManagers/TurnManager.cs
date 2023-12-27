@@ -123,29 +123,21 @@ public class TurnManager : MonoBehaviour // classen blir en singleton
 
     public void UpdateUI()
     {
-        
-
         if (tempTurnText == null) return;
 
         if (isPlayerTurn)
         {
             tempTurnText.text = "Player Turn";
             ChangeColorOnTurn();
-            TexAnimationTurnPlayer();
-
-            
-
+            TexAnimationTurnPlayer();        
         }
         else 
         {
             tempTurnText.text = "AI Turn";
             ChangeColorOnTurn();
-            TextAnimationTurnAI();
-
-           
-            
+            TextAnimationTurnAI();        
         }
-  
+
     }
 
 
@@ -174,6 +166,9 @@ public class TurnManager : MonoBehaviour // classen blir en singleton
             {
                 if (TutorialBasic.Instance.IsInTutorial)
                     TutorialBasic.Instance.StartBonusTutorial();
+
+                else if (TutorialAdvanced.Instance.IsInTutorial)
+                    TutorialAdvanced.Instance.StartBonusTutorial();
 
                 keepPhase = true;
                 TurnEnd = !TurnEnd;

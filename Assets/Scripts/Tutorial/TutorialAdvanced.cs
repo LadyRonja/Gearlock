@@ -11,21 +11,24 @@ public class TutorialAdvanced : MonoBehaviour
 
     //[Header("Determine if in tutorial")]
     public bool IsInTutorial { get => isInTutorial; private set => isInTutorial = value; }
-    public int BasicTutorialIndex { get => basicTutorialIndex; private set => basicTutorialIndex = value; }
-    public int[] BasicIndexesToPreventRaycastingOn { get => basicIndexesToPreventRaycastingOn; private set => basicIndexesToPreventRaycastingOn = value; }
+    public int AdvancedTutorialIndex { get => advancedTutorialIndex; private set => advancedTutorialIndex = value; }
+    public int[] AdvancedIndexesToPreventRaycastingOn { get => advancedIndexesToPreventRaycastingOn; private set => advancedIndexesToPreventRaycastingOn = value; }
 
     private bool isInTutorial = true;
 
     [Header("Tutorial Pages")]
-    [SerializeField] List<GameObject> basicTutorialPages = new();
+    [SerializeField] List<GameObject> advancedTutorialPages = new();
     [SerializeField] List<GameObject> bonusTutorialPages = new();
-    int basicTutorialIndex = 0;
-    int[] basicIndexesToPreventRaycastingOn = { 0, 1, 2, 3, 4, 5, /*6, 7, 8, 9, */
-                                                10, 11, 12, 13, 14, 15, 16, 17, 18, /*19,
-                                                20,*/ 21, 22, /*23,*/ 24, 25, 26/*, 27*/ };
+    int advancedTutorialIndex = 0;
+    int[] advancedIndexesToPreventRaycastingOn = { 0, 1, 2, 3, 4, /*5,*/ 6, 7, 8, 9,
+                                                10, 11, /*12,*/ 13, 14, 15, 16/*, 17*/ };
     int bonusTutorialIndex = 0;
-    bool bonusTutorialDone = false;
-    bool bonusTutorialActive = false;
+    public static bool bonusTutorialDone = false;
+    public bool bonusTutorialActive = false; // should only be public getter
+    bool savedCanMoveCam = false;
+
+    bool playerHasEndedTurnOnce = false;
+    bool attackCardsGiven = false;
 
 
     private void Awake()
@@ -56,14 +59,14 @@ public class TutorialAdvanced : MonoBehaviour
 
     public void GoToTutorialPage(int page)
     {
-        if (basicTutorialIndex != page - 1)
+        if (advancedTutorialIndex != page - 1)
         {
-            Debug.Log("Got called to go to: " + page + " while on: " + basicTutorialIndex);
+            Debug.Log("Got called to go to: " + page + " while on: " + advancedTutorialIndex);
             return;
         }
 
-        basicTutorialIndex = page;
-        foreach (GameObject go in basicTutorialPages)
+        advancedTutorialIndex = page;
+        foreach (GameObject go in advancedTutorialPages)
         {
             go.SetActive(false);
         }
@@ -73,8 +76,8 @@ public class TutorialAdvanced : MonoBehaviour
             go.SetActive(false);
         }
 
-        if (basicTutorialIndex <= basicTutorialPages.Count)
-            basicTutorialPages[basicTutorialIndex - 1].SetActive(true);
+        if (advancedTutorialIndex <= advancedTutorialPages.Count)
+            advancedTutorialPages[advancedTutorialIndex - 1].SetActive(true);
     }
 
     private void CheckForTutorialTriggers()
@@ -82,134 +85,79 @@ public class TutorialAdvanced : MonoBehaviour
         if (bonusTutorialActive)
             return;
 
-        // Play a card
-        if (basicTutorialIndex == 5)
+        // Pick up another the Fight Bot
+        if (advancedTutorialIndex == 5)
         {
-            if (ActiveCard.Instance.cardBeingPlayed != null)
+            if (GridManager.Instance.tiles[1, 1].myPickUp == null)
+            {
                 GoToTutorialPage(6);
-        }
-        else if (basicTutorialIndex == 6)
-        {
-            if (UnitSelector.Instance.selectedUnit != null)
-            {
-                GoToTutorialPage(7);
-                GoToTutorialPage(8);
-            }
-        }
-
-        // Select a robot
-        else if (basicTutorialIndex == 7)
-        {
-            if (UnitSelector.Instance.selectedUnit != null)
-            {
-                GoToTutorialPage(8);
-            }
-        }
-
-        // Mine a rock
-        else if (basicTutorialIndex == 8)
-        {
-            if (!GridManager.Instance.tiles[1, 0].containsDirt)
-            {
-                GoToTutorialPage(9);
-            }
-        }
-
-        // Move
-        else if (basicTutorialIndex == 9)
-        {
-            if (!GridManager.Instance.tiles[0, 0].occupied)
-            {
-                GoToTutorialPage(10);
-            }
-        }
-
-        // Open Discard pile
-        else if (basicTutorialIndex == 10)
-        {
-            if (DiscardShow.Instance.hasBeenClosedOnce)
-            {
-                GoToTutorialPage(11);
-                GoToTutorialPage(12);
-            }
-        }
-
-        // Discard pile has been closed, talk about UI
-        else if (basicTutorialIndex == 11)
-        {
-            if (DiscardShow.Instance.hasBeenClosedOnce)
-            {
-                GoToTutorialPage(12);
-            }
-        }
-
-        else if (basicTutorialIndex >= 14 && basicTutorialIndex <= 17)
-        {
-            if (UnitSelector.Instance.selectedUnit == null)
-                UnitSelector.Instance.UpdateSelectedUnit(UnitStorage.Instance.playerUnits[0], false, true);
-        }
-
-        // Once all movepoints are done, explain end of turn
-        else if (basicTutorialIndex == 19)
-        {
-            if (UnitStorage.Instance.playerUnits[0].movePointsCur == 0)
-            {
                 TurnManager.Instance.canEndTurn = true;
-                GoToTutorialPage(20);
             }
         }
 
-        // End Turn
-        else if (basicTutorialIndex == 20)
+        // End the players turn to draw the fight bot
+        if (advancedTutorialIndex == 7)
         {
-            if (!TurnManager.Instance.isPlayerTurn)
+            if (!playerHasEndedTurnOnce)
             {
-                CloseSpecificPage(20);
+                if (!TurnManager.Instance.isPlayerTurn)
+                {
+                    CloseSpecificPage(7);
+                    playerHasEndedTurnOnce = true;
+                }
             }
             else
             {
-                if (TurnManager.Instance.isPlayerTurn && TurnManager.Instance.hasEndedTurnOnce)
+                if (TurnManager.Instance.isPlayerTurn)
                 {
-                    GoToTutorialPage(21);
-                }
-            }
-
-        }
-
-        // Move Camera
-        else if (basicTutorialIndex == 22)
-        {
-            if (CameraController.Instance.playerHasMoved)
-            {
-                GoToTutorialPage(23);
-            }
-        }
-
-        // Select Enemy
-        else if (basicTutorialIndex == 23)
-        {
-            if (UnitSelector.Instance.selectedUnit != null)
-            {
-                if (!UnitSelector.Instance.selectedUnit.playerBot)
-                {
-                    GoToTutorialPage(24);
+                    GoToTutorialPage(8);
+                    CameraController.Instance.playerCanMove = false;
                 }
             }
         }
 
-        // Un select Enemy
-        else if (basicTutorialIndex == 24)
+        // Highlight ghost
+        if (advancedTutorialIndex == 9)
         {
-            if (UnitSelector.Instance.selectedUnit == null)
+            UnitSelector.Instance.UpdateSelectedUnit(UnitStorage.Instance.enemyUnits[0], false, true);
+        }
+
+        // Highlight big bot
+        if (advancedTutorialIndex == 10)
+        {
+            UnitSelector.Instance.UpdateSelectedUnit(UnitStorage.Instance.enemyUnits[1], false, true);
+        }
+
+        // Highlight the dig bot
+        if (advancedTutorialIndex == 11)
+        {
+            UnitSelector.Instance.UpdateSelectedUnit(UnitStorage.Instance.playerUnits[0], false, true);
+        }
+
+        // Assemble the Fight Bot
+        if (advancedTutorialIndex == 12)
+        {
+            if (UnitStorage.Instance.playerUnits.Count == 2)
             {
-                GoToTutorialPage(25);
+                GoToTutorialPage(13);
+            }
+        }
+
+        // Give attack cards
+        if (advancedTutorialIndex == 16)
+        {
+            if (!attackCardsGiven)
+            {
+                DealTutorialHand();
+                CameraController.Instance.playerCanMove = true;
+                attackCardsGiven = true;
             }
         }
     }
 
     public void CloseSpecificPage(int page)
     {
-        int[] allowedPagesToClose = { 11, 19, 20, 27 };
+        int[] allowedPagesToClose = { 5, 7, 17 };
 
         if (!allowedPagesToClose.Contains(page))
         {
@@ -217,12 +165,12 @@ public class TutorialAdvanced : MonoBehaviour
             return;
         }
 
-        basicTutorialPages[basicTutorialIndex - 1].SetActive(false);
+        advancedTutorialPages[advancedTutorialIndex - 1].SetActive(false);
     }
 
     public void GoToNextBonusTutorial()
     {
-        foreach (GameObject go in basicTutorialPages)
+        foreach (GameObject go in advancedTutorialPages)
         {
             go.SetActive(false);
         }
@@ -246,8 +194,11 @@ public class TutorialAdvanced : MonoBehaviour
                 go.SetActive(false);
             }
 
-            if (basicTutorialIndex <= basicTutorialPages.Count)
-                basicTutorialPages[basicTutorialIndex - 1].SetActive(true);
+            if (advancedTutorialIndex <= advancedTutorialPages.Count)
+            {
+                advancedTutorialPages[advancedTutorialIndex - 1].SetActive(true);
+                CameraController.Instance.playerCanMove = savedCanMoveCam;
+            }
         }
 
     }
@@ -258,7 +209,9 @@ public class TutorialAdvanced : MonoBehaviour
         {
             if (!bonusTutorialActive)
             {
+                savedCanMoveCam = CameraController.Instance.playerCanMove;
                 bonusTutorialActive = true;
+                TutorialBasic.bonusTutorialDone = true;
                 GoToNextBonusTutorial();
             }
         }

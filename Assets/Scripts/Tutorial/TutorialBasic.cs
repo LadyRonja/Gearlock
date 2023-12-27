@@ -25,8 +25,8 @@ public class TutorialBasic : MonoBehaviour
                                                 10, 11, 12, 13, 14, 15, 16, 17, 18, /*19,
                                                 20,*/ 21, 22, /*23,*/ 24, 25, 26/*, 27*/ };
     int bonusTutorialIndex = 0;
-    bool bonusTutorialDone = false;
-    bool bonusTutorialActive= false;
+    public static bool bonusTutorialDone = false;
+    public bool bonusTutorialActive = false; // Should only be public getter
 
 
     private void Awake()
@@ -260,6 +260,7 @@ public class TutorialBasic : MonoBehaviour
             if (!bonusTutorialActive)
             {
                 bonusTutorialActive = true;
+                TutorialAdvanced.bonusTutorialDone = true;
                 GoToNextBonusTutorial();
             }
         }

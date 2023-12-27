@@ -229,44 +229,36 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
     /// <param name="path"></param>
     public void StartMovePath(List<Tile> path)
     {
-        
-
-
         MovementManager.Instance.takingMoveAction = false;
         UnitSelector.Instance.UnHighlightAllTilesMoveableTo();
         doneMoving = false;
         StartCoroutine(MovePath(path));
-
-       
-
     }
 
     public virtual IEnumerator MovePath(List<Tile> path)
-    {
-        
-        
+    {    
         if (path == null)
+        {
+            MovementManager.Instance.takingMoveAction = true;
             yield break;
+        }
 
         if (path.Count == 0)
+        {
+            MovementManager.Instance.takingMoveAction = true;
             yield break;
+        }
 
         for (int i = 0; i < path.Count; i++)
         {
             yield return StartCoroutine(MoveStep(path[i]));
         }
-
         doneMoving = true;
         
         MovementManager.Instance.takingMoveAction = true;
-        UnitSelector.Instance.HighlightAllTilesMovableTo();
-       
-        
+        UnitSelector.Instance.HighlightAllTilesMovableTo();      
 
         yield return null;
-
-        
-
     }
 
     protected IEnumerator MoveStep(Tile toTile)
@@ -274,7 +266,6 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
         movePointsCur--;
         //DisableMovePointLights();
        
-
         Vector3 startPos = this.transform.position;
         Vector3 endPos = toTile.transform.position;
         endPos.z -= 0.1f;

@@ -40,6 +40,7 @@ public class AudioHandler : MonoBehaviour
     public static void PlaySoundEffect(AudioClip clipToPlay)
     {
         if (clipToPlay == null) return;
+        if (!Application.isPlaying) return;
 
         // Loop through all effect sources in Instance until a free one plays
         // If no free source is available, make more sources

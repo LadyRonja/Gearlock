@@ -43,17 +43,30 @@ public class HoverManager : MonoBehaviour
 
     public void CheckHover()
     {
+        #region Tutorial Checks and limits
         if (TutorialBasic.Instance.IsInTutorial)
         {
-            if (TutorialBasic.Instance.BasicIndexesToPreventRaycastingOn.Contains(TutorialBasic.Instance.BasicTutorialIndex))
+            if (TutorialBasic.Instance.BasicIndexesToPreventRaycastingOn.Contains(TutorialBasic.Instance.BasicTutorialIndex)
+                || TutorialBasic.Instance.bonusTutorialActive)
             {
                 MouseControl.Instance.SetCursor(Cursors.Default, true); // TODO: Only do this once
                 return;
             }
         }
 
+        if (TutorialAdvanced.Instance.IsInTutorial)
+        {
+            if (TutorialAdvanced.Instance.AdvancedIndexesToPreventRaycastingOn.Contains(TutorialAdvanced.Instance.AdvancedTutorialIndex)
+                || TutorialAdvanced.Instance.bonusTutorialActive)
+            {
+                MouseControl.Instance.SetCursor(Cursors.Default, true); // TODO: Only do this once
+                return;
+            }
+        }
+        #endregion
+
         // Check if the user maybe tried to click a card rather than doing anything else
-        if(Input.GetMouseButtonDown((int)MouseButton.Left))
+        if (Input.GetMouseButtonDown((int)MouseButton.Left))
         {
             if (CheckUIBlocks())
                 return;
