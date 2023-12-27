@@ -88,7 +88,15 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
     {
         //EnableMovePointLights();
 
-        turnManager=GetComponent<TurnManager>();
+        if (highligtherArrow != null)
+        {
+            highlighterStartPos = highligtherArrow.transform.position;
+            highligtherCurve = new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.5f, 1), new Keyframe(1, 0));
+            highligtherCurve.preWrapMode = WrapMode.PingPong;
+            highligtherCurve.postWrapMode = WrapMode.PingPong;
+        }
+
+        turnManager =GetComponent<TurnManager>();
 
         // Initialize health text
         if (healthText != null)
