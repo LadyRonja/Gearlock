@@ -139,6 +139,9 @@ public class AudioHandler : MonoBehaviour
         if(instance != null)
             return instance;
 
+        if (!Application.isPlaying)
+            return null;
+
         GameObject newManager = new GameObject("AudioManager");
         instance = newManager.AddComponent<AudioHandler>();
         return instance;
