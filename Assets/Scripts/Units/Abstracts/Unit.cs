@@ -51,14 +51,23 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
     public SpriteRenderer mySR;
     public SpriteRenderer highligtherArrow;
 
-
-
     [Header("Health Bar")]
     public GameObject healthBar;
     public Image healthFill;
     public TMP_Text healthText;
 
+    [Header("Sounds")]
+    public List<AudioClip> getSelectedSound = new();
+    public List<AudioClip> takeDamageSound = new();
+    public List<AudioClip> deathSound = new();
+    public List<AudioClip> getSpawnedSound = new();
+    public List<AudioClip> startMovingSound = new();
+    public List<AudioClip> finishedStepSound = new();
 
+    [Header("Highlighter Bounce")]
+    protected float highlighterYOffSet = 0;
+    protected Vector3 highlighterStartPos = Vector3.zero;
+    protected AnimationCurve highligtherCurve;
 
     [Header("DoTween")]
     public Ease currentEase;
@@ -79,7 +88,15 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
     {
         //EnableMovePointLights();
 
-        turnManager=GetComponent<TurnManager>();
+        if (highligtherArrow != null)
+        {
+            highlighterStartPos = highligtherArrow.transform.position;
+            highligtherCurve = new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.5f, 1), new Keyframe(1, 0));
+            highligtherCurve.preWrapMode = WrapMode.PingPong;
+            highligtherCurve.postWrapMode = WrapMode.PingPong;
+        }
+
+        turnManager =GetComponent<TurnManager>();
 
         // Initialize health text
         if (healthText != null)
@@ -107,8 +124,20 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
             highligtherArrow.gameObject.SetActive(false);
     }
 
-   
+    protected virtual void Update()
+    {
+        HighlighterBounce();
+    }
 
+    protected void HighlighterBounce()
+    {
+        if (highligtherArrow == null)
+            return;
+
+        highlighterYOffSet = highligtherCurve.Evaluate(Time.time % highligtherCurve.length);
+        Vector3 currentPos = highligtherArrow.transform.position;
+        highligtherArrow.transform.position = new Vector3(currentPos.x, highlighterStartPos.y + highlighterYOffSet, currentPos.z);
+    }
 
 
     public virtual void TakeDamage(int amount)

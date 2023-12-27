@@ -9,7 +9,7 @@ using static UnityEngine.GraphicsBuffer;
 
 public class Scenehandler : MonoBehaviour
 {
-    public static Scenehandler Instance;
+    private static Scenehandler instance;
 
     Transform transitionImage;
 
@@ -25,10 +25,12 @@ public class Scenehandler : MonoBehaviour
 
     bool changingScene = false;
 
+    public static Scenehandler Instance { get => GetInstance(); private set => instance = value; }
+
     private void Awake()
     {
-        if (Instance == null)
-            Instance = this;
+        if (instance == null)
+            instance = this;
         else
             Destroy(this.gameObject);
 
@@ -175,5 +177,17 @@ public class Scenehandler : MonoBehaviour
     public void ToggleCardReposition()
     {
         toggleCardReposition= !toggleCardReposition;
+    }
+
+    private static Scenehandler GetInstance()
+    {
+        if(instance != null)
+            return instance;
+
+        if (!Application.isPlaying)
+            return null;
+
+        GameObject go = new GameObject("SceneHandler");
+        return go.AddComponent<Scenehandler>();
     }
 }
