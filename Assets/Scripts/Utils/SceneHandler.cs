@@ -184,6 +184,9 @@ public class Scenehandler : MonoBehaviour
         if(instance != null)
             return instance;
 
+        if (!Application.isPlaying)
+            return null;
+
         GameObject go = new GameObject("SceneHandler");
         return go.AddComponent<Scenehandler>();
     }
