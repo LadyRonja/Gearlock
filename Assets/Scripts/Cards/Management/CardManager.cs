@@ -110,6 +110,7 @@ public class CardManager : MonoBehaviour
 
         drawPileText.GetComponent<TextMeshProUGUI>().text = drawPile.Count.ToString();
         discardPileText.GetComponent<TextMeshProUGUI>().text = discardPile.Count.ToString();
+        DrawPile.Instance.UpdateDrawDisplay();
     }
 
     public void SetUpStartHand()
