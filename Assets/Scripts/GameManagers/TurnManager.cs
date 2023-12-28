@@ -244,10 +244,10 @@ public class TurnManager : MonoBehaviour // classen blir en singleton
         underlineLeftBlue.GetComponent<UnityEngine.UI.Image>().DOFade(0, 2).SetDelay(0.7f);
 
         // Move the text and lines back to their original positions after a delay
-        DG.Tweening.Sequence returnSequence = DOTween.Sequence();
+       /* DG.Tweening.Sequence returnSequence = DOTween.Sequence();
         returnSequence.Append(tempTurnText.rectTransform.DOAnchorPos(new Vector2(1430, 15), 0.5f).SetEase(currentEase).SetDelay(3f));
         returnSequence.Join(underlineRightBlue.transform.DOLocalMove(new Vector3(2000, -80, 0), 0.5f).SetEase(currentEase).SetDelay(3f));
-        returnSequence.Join(underlineLeftBlue.transform.DOLocalMove(new Vector3(-2000, 90, 0), 0.5f).SetEase(currentEase).SetDelay(3f));
+        returnSequence.Join(underlineLeftBlue.transform.DOLocalMove(new Vector3(-2000, 90, 0), 0.5f).SetEase(currentEase).SetDelay(3f));*/
 
     }
 

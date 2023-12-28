@@ -16,6 +16,18 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -5.58
       objectReference: {fileID: 0}
+    - target: {fileID: 3758918872906089072, guid: 89bc880b93910a34caed231e137919d8, type: 3}
+      propertyPath: m_text
+      value: Dig Bot
+      objectReference: {fileID: 0}
+    - target: {fileID: 3758918872906089072, guid: 89bc880b93910a34caed231e137919d8, type: 3}
+      propertyPath: m_fontSize
+      value: 2.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3758918872906089072, guid: 89bc880b93910a34caed231e137919d8, type: 3}
+      propertyPath: m_margin.w
+      value: 1.202151
+      objectReference: {fileID: 0}
     - target: {fileID: 3856975517133895266, guid: 89bc880b93910a34caed231e137919d8, type: 3}
       propertyPath: m_Size.x
       value: 1.9138484
@@ -32,13 +44,21 @@ PrefabInstance:
       propertyPath: m_Center.y
       value: 0.0821774
       objectReference: {fileID: 0}
+    - target: {fileID: 4364536169812090844, guid: 89bc880b93910a34caed231e137919d8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5765075689593906628, guid: 89bc880b93910a34caed231e137919d8, type: 3}
+      propertyPath: m_text
+      value: Dig Bot
+      objectReference: {fileID: 0}
     - target: {fileID: 6262402697669964395, guid: 89bc880b93910a34caed231e137919d8, type: 3}
       propertyPath: m_text
       value: Diggers can mine rocks, but they are pretty weak when it comes to fighting.
       objectReference: {fileID: 0}
     - target: {fileID: 6262402697669964395, guid: 89bc880b93910a34caed231e137919d8, type: 3}
       propertyPath: m_fontSize
-      value: 1.55
+      value: 1.25
       objectReference: {fileID: 0}
     - target: {fileID: 6783090875490602526, guid: 89bc880b93910a34caed231e137919d8, type: 3}
       propertyPath: m_Name
@@ -82,6 +102,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7409664076847683695, guid: 89bc880b93910a34caed231e137919d8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8004688317746413739, guid: 89bc880b93910a34caed231e137919d8, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -137,9 +161,9 @@ MonoBehaviour:
   myMR: {fileID: 0}
   mySR: {fileID: 8395510307729736016}
   highligtherArrow: {fileID: 1586928922130931889}
-  healthBar: {fileID: 0}
-  healthFill: {fileID: 0}
-  healthText: {fileID: 0}
+  healthBar: {fileID: 7754115847108944401}
+  healthFill: {fileID: 2233698094954221382}
+  healthText: {fileID: 7238986794718047272}
   getSelectedSound:
   - {fileID: 8300000, guid: 4a80f52029eed514bbcca323d7b535b9, type: 3}
   takeDamageSound:
@@ -187,6 +211,33 @@ Transform:
 --- !u!212 &1586928922130931889 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 5733294182543290999, guid: 89bc880b93910a34caed231e137919d8, type: 3}
+  m_PrefabInstance: {fileID: 6455109469304394438}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2233698094954221382 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5146091867050384768, guid: 89bc880b93910a34caed231e137919d8, type: 3}
+  m_PrefabInstance: {fileID: 6455109469304394438}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7238986794718047272 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4459456427170184942, guid: 89bc880b93910a34caed231e137919d8, type: 3}
+  m_PrefabInstance: {fileID: 6455109469304394438}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &7754115847108944401 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3605413643447038167, guid: 89bc880b93910a34caed231e137919d8, type: 3}
   m_PrefabInstance: {fileID: 6455109469304394438}
   m_PrefabAsset: {fileID: 0}
 --- !u!212 &8395510307729736016 stripped

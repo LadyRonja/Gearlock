@@ -16,6 +16,14 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: da2330fda34b2f24295bdcb0db96acaa, type: 3}
+    - target: {fileID: 3758918872906089072, guid: 89bc880b93910a34caed231e137919d8, type: 3}
+      propertyPath: m_text
+      value: Fight Bot
+      objectReference: {fileID: 0}
+    - target: {fileID: 3758918872906089072, guid: 89bc880b93910a34caed231e137919d8, type: 3}
+      propertyPath: m_fontSize
+      value: 2.1
+      objectReference: {fileID: 0}
     - target: {fileID: 3856975517133895266, guid: 89bc880b93910a34caed231e137919d8, type: 3}
       propertyPath: m_Size.x
       value: 2.0867233
@@ -31,6 +39,14 @@ PrefabInstance:
     - target: {fileID: 3856975517133895266, guid: 89bc880b93910a34caed231e137919d8, type: 3}
       propertyPath: m_Center.y
       value: 5.681366
+      objectReference: {fileID: 0}
+    - target: {fileID: 4364536169812090844, guid: 89bc880b93910a34caed231e137919d8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5765075689593906628, guid: 89bc880b93910a34caed231e137919d8, type: 3}
+      propertyPath: m_text
+      value: Fight Bot
       objectReference: {fileID: 0}
     - target: {fileID: 6262402697669964395, guid: 89bc880b93910a34caed231e137919d8, type: 3}
       propertyPath: m_text
@@ -127,6 +143,17 @@ SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 5733294182543290999, guid: 89bc880b93910a34caed231e137919d8, type: 3}
   m_PrefabInstance: {fileID: 7570912098415770892}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &3349516185377431692 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5146091867050384768, guid: 89bc880b93910a34caed231e137919d8, type: 3}
+  m_PrefabInstance: {fileID: 7570912098415770892}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3466748525758150538 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6416808246705326726, guid: 89bc880b93910a34caed231e137919d8, type: 3}
@@ -169,9 +196,9 @@ MonoBehaviour:
   myMR: {fileID: 0}
   mySR: {fileID: 4901807042198367898}
   highligtherArrow: {fileID: 2774649333248233339}
-  healthBar: {fileID: 0}
-  healthFill: {fileID: 0}
-  healthText: {fileID: 0}
+  healthBar: {fileID: 6564076634633571803}
+  healthFill: {fileID: 3349516185377431692}
+  healthText: {fileID: 6121064307821691874}
   getSelectedSound:
   - {fileID: 8300000, guid: 4a80f52029eed514bbcca323d7b535b9, type: 3}
   takeDamageSound:
@@ -324,5 +351,21 @@ Transform:
 --- !u!212 &4901807042198367898 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 3249347098272502678, guid: 89bc880b93910a34caed231e137919d8, type: 3}
+  m_PrefabInstance: {fileID: 7570912098415770892}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6121064307821691874 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4459456427170184942, guid: 89bc880b93910a34caed231e137919d8, type: 3}
+  m_PrefabInstance: {fileID: 7570912098415770892}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &6564076634633571803 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3605413643447038167, guid: 89bc880b93910a34caed231e137919d8, type: 3}
   m_PrefabInstance: {fileID: 7570912098415770892}
   m_PrefabAsset: {fileID: 0}

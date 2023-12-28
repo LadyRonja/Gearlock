@@ -36,6 +36,10 @@ PrefabInstance:
       propertyPath: m_Center.y
       value: 1.4713302
       objectReference: {fileID: 0}
+    - target: {fileID: 5765075689593906628, guid: 89bc880b93910a34caed231e137919d8, type: 3}
+      propertyPath: m_text
+      value: Ghost
+      objectReference: {fileID: 0}
     - target: {fileID: 6262402697669964395, guid: 89bc880b93910a34caed231e137919d8, type: 3}
       propertyPath: m_text
       value: 'A mechanical ghost that can hide inside rocks '
@@ -112,6 +116,33 @@ SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 3249347098272502678, guid: 89bc880b93910a34caed231e137919d8, type: 3}
   m_PrefabInstance: {fileID: 2410177946771884866}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1403905415763229589 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3605413643447038167, guid: 89bc880b93910a34caed231e137919d8, type: 3}
+  m_PrefabInstance: {fileID: 2410177946771884866}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2058575956160689580 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4459456427170184942, guid: 89bc880b93910a34caed231e137919d8, type: 3}
+  m_PrefabInstance: {fileID: 2410177946771884866}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7356695253870515906 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5146091867050384768, guid: 89bc880b93910a34caed231e137919d8, type: 3}
+  m_PrefabInstance: {fileID: 2410177946771884866}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &7990068245457533237 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 5733294182543290999, guid: 89bc880b93910a34caed231e137919d8, type: 3}
@@ -164,9 +195,9 @@ MonoBehaviour:
   myMR: {fileID: 0}
   mySR: {fileID: 893212369661663444}
   highligtherArrow: {fileID: 7990068245457533237}
-  healthBar: {fileID: 0}
-  healthFill: {fileID: 0}
-  healthText: {fileID: 0}
+  healthBar: {fileID: 1403905415763229589}
+  healthFill: {fileID: 7356695253870515906}
+  healthText: {fileID: 2058575956160689580}
   getSelectedSound:
   - {fileID: 8300000, guid: 4a80f52029eed514bbcca323d7b535b9, type: 3}
   takeDamageSound:
