@@ -178,6 +178,11 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
         /* if (myMR == null)
              yield return null;*/
 
+
+        // Delay before starting the flash damage animation
+        float delay = 0.4f;
+        yield return new WaitForSeconds(delay);
+
         Color startColor = mySR.color;
         mySR.material.color = Color.red;
         float timePassed = 0;
@@ -453,7 +458,11 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
     //test elin DoTween shake unit
     public void ShakeUnit()
     {
-        transform.DOShakePosition(duration: 0.5f, strength: new Vector3(2f, 0f, 0f), vibrato: 10, randomness: 0, fadeOut: false);
+        // Delay before starting the shaking animation
+        float delay = 0.4f;
+        //transform.DOShakePosition(duration: 0.5f, strength: new Vector3(2f, 0f, 0f), vibrato: 10, randomness: 0, fadeOut: false);
+        transform.DOShakePosition(duration: 0.5f, strength: new Vector3(2f, 0f, 0f), vibrato: 10, randomness: 0, fadeOut: false)
+        .SetDelay(delay);
     }
     public void OnDisable()
     {
@@ -537,6 +546,7 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
                                 // Move back down to the initial position on the y-axis
                                 transform.DOMove(initialPosition, 0.1f)
                                     .SetEase(actionAnimEase);
+
                             });
                     });
             });
