@@ -21,6 +21,7 @@ public class AttackCard : Card
         {
             onTile.occupant.TakeDamage(byUnit.power * multiplier);
             ConfirmCardExecuted();
+            byUnit.PlayActionAnimation();
         }
     }
 
@@ -29,6 +30,7 @@ public class AttackCard : Card
         FriendlyFirePopUp.Instance.ClosePopUp();
         onTile.occupant.TakeDamage(byUnit.power * multiplier);
         ConfirmCardExecuted();
+        byUnit.PlayActionAnimation();
     }
 
     private void CancelAttack()

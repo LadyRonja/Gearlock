@@ -8,6 +8,7 @@ public class DigCard : Card
     {
         onTile.RemoveDirt();
         ConfirmCardExecuted();
+        byUnit.PlayActionAnimation();
     }
     public override void ConfirmCardExecuted()
     {

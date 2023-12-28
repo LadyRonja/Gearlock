@@ -71,6 +71,7 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
 
     [Header("DoTween")]
     public Ease currentEase;
+    public Ease actionAnimEase;
 
     [Header("SpineAnimation")]
     public bool aktiveSpineAnimation = false; // if a unit has spine this i checked
@@ -127,6 +128,8 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
     protected virtual void Update()
     {
         HighlighterBounce();
+
+        
     }
 
     protected void HighlighterBounce()
@@ -501,6 +504,42 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
         {
             healthText.text = $"HP: {healthCur}/{healthMax}";
         }
+    }
+
+
+    public void PlayActionAnimation()
+    {
+        // Store the initial position for later use
+        Vector3 initialPosition = transform.position;
+
+        // Define the target position for the animation
+        Vector3 targetPosition = new Vector3(initialPosition.x, initialPosition.y + 2f, initialPosition.z);
+
+        // Define tilt angles based on the unit's flip condition
+        float tiltAngle = (gfx.transform.localScale.x < 0) ? -45f : 45f;
+        float resetAngle = 0f;
+
+        // Use DoTween to move the unit up on the y-axis
+        transform.DOMove(targetPosition, 0.1f)
+            .SetEase(actionAnimEase)
+            .OnComplete(() =>
+            {
+                // After reaching the top, tilt on the x-axis
+                transform.DORotate(new Vector3(0f, 0f, tiltAngle), 0.2f)
+                    .SetEase(actionAnimEase)
+                    .OnComplete(() =>
+                    {
+                        // After tilting, tilt back on the x-axis
+                        transform.DORotate(new Vector3(0f, 0f, resetAngle), 0.2f)
+                            .SetEase(actionAnimEase)
+                            .OnComplete(() =>
+                            {
+                                // Finally, move back down to the initial position on the y-axis
+                                transform.DOMove(initialPosition, 0.1f)
+                                    .SetEase(actionAnimEase);
+                            });
+                    });
+            });
     }
 
     /*public void EnableMovePointLights()
