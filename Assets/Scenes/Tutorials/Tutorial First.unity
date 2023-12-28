@@ -1617,6 +1617,11 @@ MonoBehaviour:
   healthFill: {fileID: 0}
   healthText: {fileID: 0}
   getSelectedSound: []
+  takeDamageSound: []
+  deathSound: []
+  getSpawnedSound: []
+  startMovingSound: []
+  finishedStepSound: []
   currentEase: 0
   aktiveSpineAnimation: 0
   idleAnimation: 
@@ -5550,6 +5555,11 @@ MonoBehaviour:
   healthFill: {fileID: 0}
   healthText: {fileID: 0}
   getSelectedSound: []
+  takeDamageSound: []
+  deathSound: []
+  getSpawnedSound: []
+  startMovingSound: []
+  finishedStepSound: []
   currentEase: 0
   aktiveSpineAnimation: 0
   idleAnimation: 
@@ -5897,29 +5907,9 @@ PrefabInstance:
       value: NewHand
       objectReference: {fileID: 0}
     - target: {fileID: 5089259581290941422, guid: bca934adf52f27149866b6e9c1188193, type: 3}
-      propertyPath: yourPanelRectTransform
-      value: 
-      objectReference: {fileID: 1050425075}
-    - target: {fileID: 5089259581290941422, guid: bca934adf52f27149866b6e9c1188193, type: 3}
-      propertyPath: zoomConfig.zoomOnHover
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5089259581290941422, guid: bca934adf52f27149866b6e9c1188193, type: 3}
       propertyPath: cardPlayConfig.playArea
       value: 
       objectReference: {fileID: 1544158785}
-    - target: {fileID: 5089259581290941422, guid: bca934adf52f27149866b6e9c1188193, type: 3}
-      propertyPath: zoomConfig.zoomedSortOrder
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 5089259581290941422, guid: bca934adf52f27149866b6e9c1188193, type: 3}
-      propertyPath: zoomConfig.overrideYPosition
-      value: 6.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6511531275807866220, guid: bca934adf52f27149866b6e9c1188193, type: 3}
-      propertyPath: m_Color.a
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

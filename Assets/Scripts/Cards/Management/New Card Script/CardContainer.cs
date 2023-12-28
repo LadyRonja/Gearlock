@@ -313,9 +313,8 @@ public class CardContainer : MonoBehaviour
                 else
                     return;
             }
-            else if (MovementManager.Instance.takingMoveAction)
+            else if (MovementManager.Instance.takingMoveAction || ActiveCard.Instance.cardBeingPlayed != null)
             {
-
                 CardManager.Instance.ClearActiveCard();
                 CardManager.Instance.siblingIndex = currentDraggedCard.transform.GetSiblingIndex();
                 // Instantiate a copy of the currently dragged card as a child of ActiveCard
@@ -387,10 +386,10 @@ public class CardContainer : MonoBehaviour
             {
                 float panelRectX = gameObject.GetComponent<RectTransform>().anchoredPosition.x;
                 if (TurnManager.Instance.isPlayerTurn)
-                    gameObject.GetComponent<RectTransform>().anchoredPosition = new Vector2(panelRectX, canvas.pixelRect.height / panelPosYHigh);
+                    gameObject.GetComponent<RectTransform>().anchoredPosition = new Vector2(panelRectX, -Screen.height / panelPosYHigh);
 
                 else if (!TurnManager.Instance.isPlayerTurn)
-                    gameObject.GetComponent<RectTransform>().anchoredPosition = new Vector2(panelRectX, canvas.pixelRect.height / panelPosYLow);
+                    gameObject.GetComponent<RectTransform>().anchoredPosition = new Vector2(panelRectX, -Screen.height / panelPosYLow);
             }
             else
             {
