@@ -168,7 +168,6 @@ public class CardManager : MonoBehaviour
             discardPile.Clear();
 
             ShuffleDrawPile();
-
         }
         DiscardPile.Instance.UpdateDiscardDisplay();
     }
