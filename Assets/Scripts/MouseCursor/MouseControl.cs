@@ -10,12 +10,13 @@ public enum Cursors
     Dig,
     Fight,
     Pickup,
-    Construct
+    Construct,
+    Dynamite
 }
 public class MouseControl : MonoBehaviour
 {
-    public Texture2D defaultCursor, walkCursor, digCursor, fightCursor, pickupCursor, constructCursor;
-    public Texture2D defaultCursorRed, walkCursorRed, digCursorRed, fightCursorRed, pickupCursorRed, constructCursorRed;
+    public Texture2D defaultCursor, walkCursor, digCursor, fightCursor, pickupCursor, constructCursor, dynamiteCursor;
+    public Texture2D defaultCursorRed, walkCursorRed, digCursorRed, fightCursorRed, pickupCursorRed, constructCursorRed, dynamiteCursorRed;
 
     public static MouseControl Instance;
 
@@ -30,6 +31,13 @@ public class MouseControl : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        if(dynamiteCursor== null)
+            dynamiteCursor = Resources.Load<Texture2D>("Graphics/dynamite_Cursor");
+
+        if (dynamiteCursorRed == null)
+            dynamiteCursorRed = Resources.Load<Texture2D>("Graphics/dynamite_Cursor_Red");
+
 
         SetCursor(Cursors.Default, true);
     }
@@ -74,7 +82,14 @@ public class MouseControl : MonoBehaviour
                     Cursor.SetCursor(constructCursor, Vector2.zero, CursorMode.Auto);
                 else
                     Cursor.SetCursor(constructCursorRed, Vector2.zero, CursorMode.Auto);
+           break;
+            case Cursors.Dynamite:
+                if(white)
+                    Cursor.SetCursor(dynamiteCursor, Vector2.zero, CursorMode.Auto);
+                else
+                    Cursor.SetCursor(dynamiteCursorRed, Vector2.zero, CursorMode.Auto);
                 break;
+
             default:
                 break;
         }

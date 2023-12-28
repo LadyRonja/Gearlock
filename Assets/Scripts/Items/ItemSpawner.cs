@@ -84,8 +84,8 @@ public class ItemSpawner : MonoBehaviour
 
         int randomCard;
         // Pick random spawnable item
-        if (spawnableCardsFinite.Count > 5)
-            randomCard = Random.Range(0, 5);
+        if (spawnableCardsFinite.Count > 3)
+            randomCard = Random.Range(0, 3);
         else
             randomCard = Random.Range(0, spawnableCardsFinite.Count);
 

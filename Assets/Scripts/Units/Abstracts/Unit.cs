@@ -18,7 +18,7 @@ public enum BotSpecialization
 
 public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
 {
-   public static Unit Instance;
+   //public static Unit Instance;
     
     [Header("Generics")]
     public string unitName = "Unnamed Unit";
@@ -26,6 +26,7 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
     public BotSpecialization mySpecialization = BotSpecialization.None;
     public Sprite portrait;
     public GameObject infoTextUnit;
+
 
     [Header("Stats")]
     public int healthMax = 5;
@@ -63,6 +64,11 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
     public List<AudioClip> startMovingSound = new();
     public List<AudioClip> finishedStepSound = new();
 
+    [Header("Highlighter Bounce")]
+    protected float highlighterYOffSet = 0;
+    protected Vector3 highlighterStartPos = Vector3.zero;
+    protected AnimationCurve highligtherCurve;
+
     [Header("DoTween")]
     public Ease currentEase;
 
@@ -73,12 +79,24 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
 
     private bool isJumping = false;
 
+    private TurnManager turnManager;
+
     public SkeletonAnimation skeletonAnimation;
 
 
     private void Start()
     {
-        EnableMovePointLights();
+        //EnableMovePointLights();
+
+        if (highligtherArrow != null)
+        {
+            highlighterStartPos = highligtherArrow.transform.position;
+            highligtherCurve = new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.5f, 1), new Keyframe(1, 0));
+            highligtherCurve.preWrapMode = WrapMode.PingPong;
+            highligtherCurve.postWrapMode = WrapMode.PingPong;
+        }
+
+        turnManager =GetComponent<TurnManager>();
 
         // Initialize health text
         if (healthText != null)
@@ -106,14 +124,24 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
             highligtherArrow.gameObject.SetActive(false);
     }
 
-  
-    
+    protected virtual void Update()
+    {
+        HighlighterBounce();
+    }
+
+    protected void HighlighterBounce()
+    {
+        if (highligtherArrow == null)
+            return;
+
+        highlighterYOffSet = highligtherCurve.Evaluate(Time.time % highligtherCurve.length);
+        Vector3 currentPos = highligtherArrow.transform.position;
+        highligtherArrow.transform.position = new Vector3(currentPos.x, highlighterStartPos.y + highlighterYOffSet, currentPos.z);
+    }
+
 
     public virtual void TakeDamage(int amount)
     {
-        if (amount == 0)
-            return;
-
         if (UnitSelector.Instance.selectedUnit == this)
             UnitSelector.Instance.UpdateUI();
 
@@ -127,7 +155,6 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
         UpdateHealthBar();
         UpdateHealthText();
 
-        AudioHandler.PlayRandomEffectFromList(takeDamageSound);
 
         if (UnitSelector.Instance.selectedUnit == this)
             UnitSelector.Instance.UpdateUI(true);
@@ -184,7 +211,6 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
 
     public virtual void Die()
     {
-        AudioHandler.PlayRandomEffectFromList(deathSound);
         UnitStorage.Instance.RemoveUnit(this);
         UnitSelector.Instance.UpdateSelectedUnit(null, true);
         standingOn.UpdateOccupant(null);
@@ -203,47 +229,43 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
     /// <param name="path"></param>
     public void StartMovePath(List<Tile> path)
     {
-
-        if (path != null)
-            if (path.Count != 0)
-                AudioHandler.PlayRandomEffectFromList(startMovingSound);
-
         MovementManager.Instance.takingMoveAction = false;
         UnitSelector.Instance.UnHighlightAllTilesMoveableTo();
         doneMoving = false;
         StartCoroutine(MovePath(path));
-
-       
-
     }
 
     public virtual IEnumerator MovePath(List<Tile> path)
-    {
+    {    
         if (path == null)
+        {
+            MovementManager.Instance.takingMoveAction = true;
             yield break;
+        }
 
         if (path.Count == 0)
+        {
+            MovementManager.Instance.takingMoveAction = true;
             yield break;
+        }
 
         for (int i = 0; i < path.Count; i++)
         {
             yield return StartCoroutine(MoveStep(path[i]));
         }
-
         doneMoving = true;
-        MovementManager.Instance.takingMoveAction = true;
-        UnitSelector.Instance.HighlightAllTilesMovableTo();
-        yield return null;
-
         
+        MovementManager.Instance.takingMoveAction = true;
+        UnitSelector.Instance.HighlightAllTilesMovableTo();      
 
+        yield return null;
     }
 
     protected IEnumerator MoveStep(Tile toTile)
     {
         movePointsCur--;
-        DisableMovePointLights();
-
+        //DisableMovePointLights();
+       
         Vector3 startPos = this.transform.position;
         Vector3 endPos = toTile.transform.position;
         endPos.z -= 0.1f;
@@ -304,7 +326,6 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
         gfx.localScale = startSize;
         standingOn.UpdateOccupant(null);
         standingOn = toTile;
-        AudioHandler.PlayRandomEffectFromList(finishedStepSound);
         toTile.UpdateOccupant(this);
 
         
@@ -482,17 +503,15 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
         }
     }
 
-    public void EnableMovePointLights()
+    /*public void EnableMovePointLights()
     {
-       
-            
 
             // Enable all MovePointLight game objects
             foreach (GameObject lightObject in MovePointLight)
             {
                 lightObject.SetActive(true);
             }
-        
+
         
     }
 
@@ -510,7 +529,7 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
 
 
 
-    }
+    }*/
     
     
 

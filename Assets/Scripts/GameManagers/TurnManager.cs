@@ -19,6 +19,10 @@ public class TurnManager : MonoBehaviour // classen blir en singleton
     public TMP_Text endTurnText;
     public GameObject discard;
 
+    // Tutorial
+    public bool hasEndedTurnOnce = false;
+    public bool canEndTurn = true;
+
     //DOTween Player and AI turn text
     public GameObject underlineRightRed; //turn text line enemy
     public GameObject underlineLeftRed;//turn text line enemy
@@ -29,9 +33,10 @@ public class TurnManager : MonoBehaviour // classen blir en singleton
     // public GameObject canvas;//ref to canvas for position 
     public Canvas canvasPos;
 
+    private Unit enableLights;
 
     [SerializeField] TMP_Text tempTurnText;
-
+    
     public void Awake()
     {
         #region Singleton
@@ -46,21 +51,30 @@ public class TurnManager : MonoBehaviour // classen blir en singleton
         UpdateUI();
     }
 
-   
+    public void Start()
+    {
+         enableLights = GetComponent<Unit>();   
+    }
 
 
     public void EndTurn() //when clicked on End Turn Button
     {
+        if (!canEndTurn)
+            return;
+
         if (isPlayerTurn)
         {
             isPlayerTurn = false;
             endTurnText.text = "--";
+            if(!hasEndedTurnOnce)
+                hasEndedTurnOnce= true;
 
             CardManager.Instance.ClearActiveCard();
             CardManager.Instance.EndTurnDiscardHand();
 
             MovementManager.Instance.takingMoveAction = false;
             UnitSelector.Instance.playerCanSelectNewUnit = false;
+            
 
             UpdateUI();
             tempTurnText.DOFade(100, 2);
@@ -84,7 +98,7 @@ public class TurnManager : MonoBehaviour // classen blir en singleton
             return;
         }
 
-
+        
         CardManager.Instance.DealHand();
 
         isPlayerTurn = true;
@@ -94,6 +108,7 @@ public class TurnManager : MonoBehaviour // classen blir en singleton
         foreach (Unit u in UnitStorage.Instance.playerUnits)
         {
             u.movePointsCur = u.movePointsMax;
+           
         }
         endTurnText.text = "End Turn";
         UpdateUI();
@@ -108,28 +123,29 @@ public class TurnManager : MonoBehaviour // classen blir en singleton
 
     public void UpdateUI()
     {
-        
-
         if (tempTurnText == null) return;
 
         if (isPlayerTurn)
         {
             tempTurnText.text = "Player Turn";
             ChangeColorOnTurn();
-            TexAnimationTurnPlayer();
+            TexAnimationTurnPlayer();        
         }
         else 
         {
             tempTurnText.text = "AI Turn";
             ChangeColorOnTurn();
-            TextAnimationTurnAI();
+            TextAnimationTurnAI();        
         }
-  
+
     }
 
 
     public void toggleEnd()
     {
+        if (!canEndTurn)
+            return;
+
         CardManager.Instance.ClearActiveCard();
         DEBUGCardStateUI.Instance.DEBUGUpdateUI(CardState.Inactive, "--");
 
@@ -141,11 +157,19 @@ public class TurnManager : MonoBehaviour // classen blir en singleton
             CardManager.Instance.RetrieveKeptCards();
             TurnEnd = !TurnEnd;
             endTurnText.text = "--";
+
+           
         }
         else
         {
             if (HandPanel.Instance.transform.childCount > 0)
             {
+                if (TutorialBasic.Instance.IsInTutorial)
+                    TutorialBasic.Instance.StartBonusTutorial();
+
+                else if (TutorialAdvanced.Instance.IsInTutorial)
+                    TutorialAdvanced.Instance.StartBonusTutorial();
+
                 keepPhase = true;
                 TurnEnd = !TurnEnd;
                 KeepCardScreen.SetActive(true);
@@ -246,5 +270,18 @@ public class TurnManager : MonoBehaviour // classen blir en singleton
         transform.DOKill();
     }
 
+    //test elin 
+    /*private void EnableMovePointLights()
+    {
+        // Iterate through all units in the MovePointLight list and enable their lights
+        foreach (Unit unit in UnitStorage.Instance.playerUnits)
+        {
+          
+                unit.EnableMovePointLights();
+            
+        }
+    }*/
+
+    
 
 }

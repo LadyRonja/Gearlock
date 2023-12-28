@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class AudioHandler : MonoBehaviour
 {
@@ -23,7 +24,10 @@ public class AudioHandler : MonoBehaviour
         if (instance == null || instance == this)
             instance = this;
         else
-            DestroyImmediate(this.gameObject);
+        {
+            Destroy(this.gameObject);
+            return;
+        }
         #endregion
 
         if(deleteOtherSources)
@@ -36,6 +40,7 @@ public class AudioHandler : MonoBehaviour
     public static void PlaySoundEffect(AudioClip clipToPlay)
     {
         if (clipToPlay == null) return;
+        if (!Application.isPlaying) return;
 
         // Loop through all effect sources in Instance until a free one plays
         // If no free source is available, make more sources
@@ -118,10 +123,15 @@ public class AudioHandler : MonoBehaviour
 
     private void DestroyAllOtherSources()
     {
-         Object[] oldSources = Resources.FindObjectsOfTypeAll(typeof(AudioSource));
-        foreach (Object o in oldSources)
+        AudioSource[] oldSources = Object.FindObjectsOfType(typeof(AudioSource)) as AudioSource[];
+        foreach (AudioSource o in oldSources)
         {
-            Destroy(o.GameObject());
+            AudioHandler thisCheck = o.GetComponent<AudioHandler>();
+            if (thisCheck != null)
+                if (thisCheck == this)
+                    return;
+
+            Destroy(o.transform.gameObject);
         }
     }
 
@@ -129,6 +139,9 @@ public class AudioHandler : MonoBehaviour
     {
         if(instance != null)
             return instance;
+
+        if (!Application.isPlaying)
+            return null;
 
         GameObject newManager = new GameObject("AudioManager");
         instance = newManager.AddComponent<AudioHandler>();
