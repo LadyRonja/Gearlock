@@ -534,7 +534,7 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
                             .SetEase(actionAnimEase)
                             .OnComplete(() =>
                             {
-                                // Finally, move back down to the initial position on the y-axis
+                                // Move back down to the initial position on the y-axis
                                 transform.DOMove(initialPosition, 0.1f)
                                     .SetEase(actionAnimEase);
                             });
