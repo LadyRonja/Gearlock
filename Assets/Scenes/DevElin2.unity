@@ -254,6 +254,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myTile: {fileID: 7389297293007430559}
   gfx: {fileID: 1056009838}
+  highligther: {fileID: 0}
+  getMinedSound: {fileID: 0}
 --- !u!4 &96497531
 Transform:
   m_ObjectHideFlags: 0
@@ -964,6 +966,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myTile: {fileID: 6597606564871663574}
   gfx: {fileID: 791093136}
+  highligther: {fileID: 0}
+  getMinedSound: {fileID: 0}
 --- !u!4 &307467057
 Transform:
   m_ObjectHideFlags: 0
@@ -1001,11 +1005,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 9.424069, y: 9.694086, z: 0.5653987}
   m_Center: {x: 0.1440835, y: -0.11179638, z: 0.054629974}
---- !u!1 &318118673 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8119107506112513421, guid: c17f15c480926b145af724894148cf75, type: 3}
-  m_PrefabInstance: {fileID: 1748727842}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &360184061
 GameObject:
   m_ObjectHideFlags: 0
@@ -1655,6 +1654,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myTile: {fileID: 1563931011869745715}
   gfx: {fileID: 171476628}
+  highligther: {fileID: 0}
+  getMinedSound: {fileID: 0}
 --- !u!4 &575572528
 Transform:
   m_ObjectHideFlags: 0
@@ -1724,6 +1725,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myTile: {fileID: 5108885220810808871}
   gfx: {fileID: 213290939}
+  highligther: {fileID: 0}
+  getMinedSound: {fileID: 0}
 --- !u!4 &577467214
 Transform:
   m_ObjectHideFlags: 0
@@ -1877,6 +1880,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myTile: {fileID: 2453470662850626863}
   gfx: {fileID: 769028239}
+  highligther: {fileID: 0}
+  getMinedSound: {fileID: 0}
 --- !u!4 &675637404
 Transform:
   m_ObjectHideFlags: 0
@@ -2114,6 +2119,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myTile: {fileID: 465055839641552508}
   gfx: {fileID: 199550694}
+  highligther: {fileID: 0}
+  getMinedSound: {fileID: 0}
 --- !u!4 &746346922
 Transform:
   m_ObjectHideFlags: 0
@@ -2314,6 +2321,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myTile: {fileID: 2495270383883785980}
   gfx: {fileID: 771932813}
+  highligther: {fileID: 0}
+  getMinedSound: {fileID: 0}
 --- !u!4 &755007088
 Transform:
   m_ObjectHideFlags: 0
@@ -2952,6 +2961,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myTile: {fileID: 5769307682763150179}
   gfx: {fileID: 264220489}
+  highligther: {fileID: 0}
+  getMinedSound: {fileID: 0}
 --- !u!4 &813898667
 Transform:
   m_ObjectHideFlags: 0
@@ -3175,6 +3186,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myTile: {fileID: 284818098967100619}
   gfx: {fileID: 1720155936}
+  highligther: {fileID: 0}
+  getMinedSound: {fileID: 0}
 --- !u!4 &818841117
 Transform:
   m_ObjectHideFlags: 0
@@ -3296,153 +3309,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &866181131
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 866181134}
-  - component: {fileID: 866181133}
-  - component: {fileID: 866181132}
-  m_Layer: 0
-  m_Name: bulbLight
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!108 &866181132
-Light:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 866181131}
-  m_Enabled: 1
-  serializedVersion: 10
-  m_Type: 2
-  m_Shape: 0
-  m_Color: {r: 0.9339623, g: 0.86788005, b: 0.5154415, a: 1}
-  m_Intensity: 5
-  m_Range: 5
-  m_SpotAngle: 30
-  m_InnerSpotAngle: 21.80208
-  m_CookieSize: 10
-  m_Shadows:
-    m_Type: 2
-    m_Resolution: -1
-    m_CustomResolution: -1
-    m_Strength: 0.73
-    m_Bias: 0.002
-    m_NormalBias: 0.42
-    m_NearPlane: 0.1
-    m_CullingMatrixOverride:
-      e00: 1
-      e01: 0
-      e02: 0
-      e03: 0
-      e10: 0
-      e11: 1
-      e12: 0
-      e13: 0
-      e20: 0
-      e21: 0
-      e22: 1
-      e23: 0
-      e30: 0
-      e31: 0
-      e32: 0
-      e33: 1
-    m_UseCullingMatrixOverride: 0
-  m_Cookie: {fileID: 0}
-  m_DrawHalo: 0
-  m_Flare: {fileID: 0}
-  m_RenderMode: 0
-  m_CullingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RenderingLayerMask: 1
-  m_Lightmapping: 2
-  m_LightShadowCasterMode: 0
-  m_AreaSize: {x: 1, y: 1}
-  m_BounceIntensity: 1
-  m_ColorTemperature: 6570
-  m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
-  m_UseBoundingSphereOverride: 0
-  m_UseViewFrustumForShadowCasterCull: 1
-  m_ShadowRadius: 1
-  m_ShadowAngle: 0
---- !u!212 &866181133
-SpriteRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 866181131}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 0
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0.7830189, g: 0.7733659, b: 0.34349412, a: 0}
-  m_FlipX: 0
-  m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
---- !u!4 &866181134
+--- !u!4 &866181134 stripped
 Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 2437471836138875076, guid: 98b721f3003ff3e4690e7663d7beb0dd, type: 3}
+  m_PrefabInstance: {fileID: 5721361634229758423}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 866181131}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0.003333468, y: -0.72179717, z: 0.6920875, w: 0.0035748738}
-  m_LocalPosition: {x: -0.0075718053, y: 0.5077163, z: 1.3745084}
-  m_LocalScale: {x: 1.4022074, y: 0.88130325, z: 3.6964028}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 2048350025}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &867340704
 GameObject:
   m_ObjectHideFlags: 0
@@ -3475,6 +3346,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myTile: {fileID: 4570398963101970897}
   gfx: {fileID: 1178074213}
+  highligther: {fileID: 0}
+  getMinedSound: {fileID: 0}
 --- !u!4 &867340706
 Transform:
   m_ObjectHideFlags: 0
@@ -3650,6 +3523,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myTile: {fileID: 1443484397687942454}
   gfx: {fileID: 1889698647}
+  highligther: {fileID: 0}
+  getMinedSound: {fileID: 0}
 --- !u!4 &882392329
 Transform:
   m_ObjectHideFlags: 0
@@ -3803,6 +3678,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myTile: {fileID: 7338601059839571467}
   gfx: {fileID: 1570112818}
+  highligther: {fileID: 0}
+  getMinedSound: {fileID: 0}
 --- !u!4 &890260442
 Transform:
   m_ObjectHideFlags: 0
@@ -4718,11 +4595,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c17f15c480926b145af724894148cf75, type: 3}
---- !u!1 &1144989955 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8119107506112513421, guid: c17f15c480926b145af724894148cf75, type: 3}
-  m_PrefabInstance: {fileID: 1144989954}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &1144989956 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5074455202701379535, guid: c17f15c480926b145af724894148cf75, type: 3}
@@ -4760,6 +4632,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myTile: {fileID: 2641520444567201375}
   gfx: {fileID: 1133035488}
+  highligther: {fileID: 0}
+  getMinedSound: {fileID: 0}
 --- !u!4 &1161145202
 Transform:
   m_ObjectHideFlags: 0
@@ -4845,10 +4719,27 @@ MonoBehaviour:
   attackRange: 1
   doneMoving: 1
   standingOn: {fileID: 6795926666492340888}
+  MovePointBase: []
+  MovePointLight: []
+  MovePointDark: []
   gfx: {fileID: 1337562334}
   myMR: {fileID: 0}
   mySR: {fileID: 1337562333}
-  infoTextGhost: {fileID: 1144989955}
+  highligtherArrow: {fileID: 0}
+  healthBar: {fileID: 0}
+  healthFill: {fileID: 0}
+  healthText: {fileID: 0}
+  getSelectedSound: []
+  takeDamageSound: []
+  deathSound: []
+  getSpawnedSound: []
+  startMovingSound: []
+  finishedStepSound: []
+  currentEase: 0
+  aktiveSpineAnimation: 0
+  idleAnimation: 
+  jumpAnimation: 
+  skeletonAnimation: {fileID: 0}
 --- !u!4 &1168254126
 Transform:
   m_ObjectHideFlags: 0
@@ -5776,6 +5667,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameOverScreen: {fileID: 969827543}
   gameOverText: {fileID: 1760186459}
+  firstTutorialSceneName: Tutorial First
+  isFirstTutorial: 0
+  secondTutorialSceneName: Tutorial Second
+  isSecondTutorial: 0
+  levelOneName: DevRonja
 --- !u!1 &1484162064
 GameObject:
   m_ObjectHideFlags: 0
@@ -5897,6 +5793,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myTile: {fileID: 2746268839919200068}
   gfx: {fileID: 869204839}
+  highligther: {fileID: 0}
+  getMinedSound: {fileID: 0}
 --- !u!4 &1525431496
 Transform:
   m_ObjectHideFlags: 0
@@ -5934,17 +5832,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 9.424069, y: 9.694086, z: 0.5653987}
   m_Center: {x: 0.1440835, y: -0.11179638, z: 0.054629974}
---- !u!114 &1529946669 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4959631747595020191, guid: e5ab73d65876392488983ec86be9c290, type: 3}
-  m_PrefabInstance: {fileID: 2102368919}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1530277192
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6153,6 +6040,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myTile: {fileID: 6437816511202206155}
   gfx: {fileID: 1417518085}
+  highligther: {fileID: 0}
+  getMinedSound: {fileID: 0}
 --- !u!4 &1541816279
 Transform:
   m_ObjectHideFlags: 0
@@ -6529,10 +6418,27 @@ MonoBehaviour:
   attackRange: 1
   doneMoving: 1
   standingOn: {fileID: 5302379851731915168}
+  MovePointBase: []
+  MovePointLight: []
+  MovePointDark: []
   gfx: {fileID: 1939594142}
   myMR: {fileID: 0}
   mySR: {fileID: 1939594143}
-  infoTextGhost: {fileID: 318118673}
+  highligtherArrow: {fileID: 0}
+  healthBar: {fileID: 0}
+  healthFill: {fileID: 0}
+  healthText: {fileID: 0}
+  getSelectedSound: []
+  takeDamageSound: []
+  deathSound: []
+  getSpawnedSound: []
+  startMovingSound: []
+  finishedStepSound: []
+  currentEase: 0
+  aktiveSpineAnimation: 0
+  idleAnimation: 
+  jumpAnimation: 
+  skeletonAnimation: {fileID: 0}
 --- !u!1 &1634539128
 GameObject:
   m_ObjectHideFlags: 0
@@ -6744,9 +6650,27 @@ MonoBehaviour:
   attackRange: 1
   doneMoving: 1
   standingOn: {fileID: 2493595305341716067}
+  MovePointBase: []
+  MovePointLight: []
+  MovePointDark: []
   gfx: {fileID: 36759387}
   myMR: {fileID: 0}
   mySR: {fileID: 36759386}
+  highligtherArrow: {fileID: 0}
+  healthBar: {fileID: 0}
+  healthFill: {fileID: 0}
+  healthText: {fileID: 0}
+  getSelectedSound: []
+  takeDamageSound: []
+  deathSound: []
+  getSpawnedSound: []
+  startMovingSound: []
+  finishedStepSound: []
+  currentEase: 0
+  aktiveSpineAnimation: 0
+  idleAnimation: 
+  jumpAnimation: 
+  skeletonAnimation: {fileID: 0}
   brokenFighter: {fileID: 3141665598236762354, guid: a01b1ee6048250e4595d21ee65596a4d, type: 3}
 --- !u!4 &1652492935
 Transform:
@@ -7033,6 +6957,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerUnitParent: {fileID: 4971297747065336438}
   enemyUnitParent: {fileID: 8126368467769436310}
+  unitPrefabsToSpawn: []
+  tilesToSpawnThemOn: []
   unitPrefabToSpawn: {fileID: 7606916860535154931, guid: 4616440f96a366e41be3341e56abf57a, type: 3}
   tileToSpawnOn: {fileID: 2493595305341716067}
   unitToRemove: {fileID: 0}
@@ -7468,6 +7394,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myTile: {fileID: 8636179353595106130}
   gfx: {fileID: 1730118105}
+  highligther: {fileID: 0}
+  getMinedSound: {fileID: 0}
 --- !u!4 &1767619841
 Transform:
   m_ObjectHideFlags: 0
@@ -7973,6 +7901,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myTile: {fileID: 3328293534217257359}
   gfx: {fileID: 1043106895}
+  highligther: {fileID: 0}
+  getMinedSound: {fileID: 0}
 --- !u!4 &1884500796
 Transform:
   m_ObjectHideFlags: 0
@@ -8148,6 +8078,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myTile: {fileID: 7304095214633707530}
   gfx: {fileID: 197198644}
+  highligther: {fileID: 0}
+  getMinedSound: {fileID: 0}
 --- !u!4 &1917448214
 Transform:
   m_ObjectHideFlags: 0
@@ -8648,6 +8580,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myTile: {fileID: 5670280812036503496}
   gfx: {fileID: 1105618691}
+  highligther: {fileID: 0}
+  getMinedSound: {fileID: 0}
 --- !u!4 &1978570631
 Transform:
   m_ObjectHideFlags: 0
@@ -8717,6 +8651,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myTile: {fileID: 1366394439047209296}
   gfx: {fileID: 2003617461}
+  highligther: {fileID: 0}
+  getMinedSound: {fileID: 0}
 --- !u!4 &1992238437
 Transform:
   m_ObjectHideFlags: 0
@@ -8892,6 +8828,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myTile: {fileID: 7796904985782186140}
   gfx: {fileID: 1423665537}
+  highligther: {fileID: 0}
+  getMinedSound: {fileID: 0}
 --- !u!4 &2022679335
 Transform:
   m_ObjectHideFlags: 0
@@ -9825,10 +9763,12 @@ MonoBehaviour:
   - {fileID: 3768376687208267939}
   x: 4
   y: 2
+  highlighted: 0
   occupant: {fileID: 0}
   containsDirt: 1
   dirt: {fileID: 818841116}
   myPickUp: {fileID: 0}
+  highlightedForMovement: 0
   targetable: 1
   blocked: 1
   occupied: 0
@@ -9957,10 +9897,12 @@ MonoBehaviour:
   - {fileID: 5670280812036503496}
   x: 2
   y: 5
+  highlighted: 0
   occupant: {fileID: 0}
   containsDirt: 1
   dirt: {fileID: 746346921}
   myPickUp: {fileID: 0}
+  highlightedForMovement: 0
   targetable: 1
   blocked: 1
   occupied: 0
@@ -10427,6 +10369,7 @@ MonoBehaviour:
   - {fileID: 1310518418}
   - {fileID: 1604632547}
   - {fileID: 1168254125}
+  playerPanels: []
 --- !u!33 &847988158666530575
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -10449,8 +10392,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPlayerTurn: 1
   TurnEnd: 0
+  keepPhase: 0
   KeepCardScreen: {fileID: 0}
   endTurnText: {fileID: 0}
+  discard: {fileID: 0}
+  hasEndedTurnOnce: 0
+  canEndTurn: 1
+  underlineRightRed: {fileID: 0}
+  underlineLeftRed: {fileID: 0}
+  underlineRightBlue: {fileID: 0}
+  underlineLeftBlue: {fileID: 0}
+  currentEase: 0
+  canvasPos: {fileID: 0}
   tempTurnText: {fileID: 221802866}
 --- !u!4 &883605068537394148
 Transform:
@@ -10807,10 +10760,12 @@ MonoBehaviour:
   - {fileID: 3328293534217257359}
   x: 3
   y: 3
+  highlighted: 0
   occupant: {fileID: 0}
   containsDirt: 1
   dirt: {fileID: 1992238436}
   myPickUp: {fileID: 0}
+  highlightedForMovement: 0
   targetable: 1
   blocked: 1
   occupied: 0
@@ -10926,10 +10881,12 @@ MonoBehaviour:
   - {fileID: 2269660461851504779}
   x: 2
   y: 2
+  highlighted: 0
   occupant: {fileID: 0}
   containsDirt: 1
   dirt: {fileID: 882392328}
   myPickUp: {fileID: 0}
+  highlightedForMovement: 0
   targetable: 1
   blocked: 1
   occupied: 0
@@ -11019,10 +10976,12 @@ MonoBehaviour:
   - {fileID: 2453470662850626863}
   x: 5
   y: 1
+  highlighted: 0
   occupant: {fileID: 0}
   containsDirt: 1
   dirt: {fileID: 575572527}
   myPickUp: {fileID: 0}
+  highlightedForMovement: 0
   targetable: 1
   blocked: 1
   occupied: 0
@@ -11075,19 +11034,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c96a475494802a0419083188498f6faa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  discardPile: []
-  drawPile: []
   dig: {fileID: 3861232017947565500, guid: 5e8f3cb1634380744befee5806ee00c9, type: 3}
   attack: {fileID: 898281027607506639, guid: 4b48bcb37e6304e4c866ca4159064d03, type: 3}
   attack2x: {fileID: 6944391597733846485, guid: b1cdf32aae116e84aa826db772b8ca36, type: 3}
   diggerBot: {fileID: 5112470102642997458, guid: b2bd73ee66ac96a408d22f77f4851814, type: 3}
   fighterBot: {fileID: 7085131046943255271, guid: 5e94dfb5f6b36fd44895fffece21eefd, type: 3}
+  dynamite: {fileID: 0}
+  digInDiscard: 0
+  attackInDiscard: 0
+  attack2xInDiscard: 0
+  diggerInDiscard: 0
+  fighterInDiscard: 0
+  dynamiteInDiscard: 0
+  totalCardsInDiscard: 0
   handParent: {fileID: 1411200924}
   discardPileObject: {fileID: 1780038060}
   brokenFighter: {fileID: 0}
   brokenDigger: {fileID: 0}
-  dynamite: {fileID: 0}
+  genericCard: {fileID: 0}
+  drawSpawnPosition: {fileID: 0}
+  drawPileText: {fileID: 0}
+  discardPileText: {fileID: 0}
+  discardIcon: {fileID: 0}
+  drawIcon: {fileID: 0}
+  discardSpawn: {fileID: 0}
   DrawAmount: {fileID: 2102368921}
+  siblingIndex: 0
+  cardEase: 0
+  drawEase: 0
+  isDisplaying: 0
+  useList: 0
+  discardPile: []
+  drawPile: []
+  cards: []
 --- !u!1 &1713682485971117879
 GameObject:
   m_ObjectHideFlags: 0
@@ -11141,10 +11120,12 @@ MonoBehaviour:
   - {fileID: 8636179353595106130}
   x: 5
   y: 3
+  highlighted: 0
   occupant: {fileID: 0}
   containsDirt: 0
   dirt: {fileID: 0}
   myPickUp: {fileID: 0}
+  highlightedForMovement: 0
   targetable: 1
   blocked: 0
   occupied: 0
@@ -11395,10 +11376,12 @@ MonoBehaviour:
   - {fileID: 8997604407667670556}
   x: 0
   y: 1
+  highlighted: 0
   occupant: {fileID: 1310518418}
   containsDirt: 0
   dirt: {fileID: 0}
   myPickUp: {fileID: 0}
+  highlightedForMovement: 0
   targetable: 1
   blocked: 1
   occupied: 1
@@ -11660,10 +11643,12 @@ MonoBehaviour:
   - {fileID: 6597606564871663574}
   x: 2
   y: 3
+  highlighted: 0
   occupant: {fileID: 0}
   containsDirt: 0
   dirt: {fileID: 0}
   myPickUp: {fileID: 0}
+  highlightedForMovement: 0
   targetable: 1
   blocked: 0
   occupied: 0
@@ -11761,10 +11746,12 @@ MonoBehaviour:
   - {fileID: 1770070396784505252}
   x: 5
   y: 2
+  highlighted: 0
   occupant: {fileID: 0}
   containsDirt: 1
   dirt: {fileID: 675637403}
   myPickUp: {fileID: 0}
+  highlightedForMovement: 0
   targetable: 1
   blocked: 1
   occupied: 0
@@ -11796,10 +11783,12 @@ MonoBehaviour:
   - {fileID: 2641520444567201375}
   x: 4
   y: 0
+  highlighted: 0
   occupant: {fileID: 1652492934}
   containsDirt: 0
   dirt: {fileID: 0}
   myPickUp: {fileID: 0}
+  highlightedForMovement: 0
   targetable: 0
   blocked: 1
   occupied: 1
@@ -11833,10 +11822,12 @@ MonoBehaviour:
   - {fileID: 1366394439047209296}
   x: 3
   y: 2
+  highlighted: 0
   occupant: {fileID: 0}
   containsDirt: 1
   dirt: {fileID: 755007087}
   myPickUp: {fileID: 0}
+  highlightedForMovement: 0
   targetable: 1
   blocked: 1
   occupied: 0
@@ -11936,10 +11927,12 @@ MonoBehaviour:
   - {fileID: 284818098967100619}
   x: 4
   y: 1
+  highlighted: 0
   occupant: {fileID: 0}
   containsDirt: 1
   dirt: {fileID: 1161145201}
   myPickUp: {fileID: 0}
+  highlightedForMovement: 0
   targetable: 1
   blocked: 1
   occupied: 0
@@ -12036,10 +12029,12 @@ MonoBehaviour:
   - {fileID: 6795926666492340888}
   x: 4
   y: 5
+  highlighted: 0
   occupant: {fileID: 0}
   containsDirt: 1
   dirt: {fileID: 1525431495}
   myPickUp: {fileID: 0}
+  highlightedForMovement: 0
   targetable: 1
   blocked: 1
   occupied: 0
@@ -12565,10 +12560,12 @@ MonoBehaviour:
   - {fileID: 5670280812036503496}
   x: 3
   y: 4
+  highlighted: 0
   occupant: {fileID: 0}
   containsDirt: 1
   dirt: {fileID: 1884500795}
   myPickUp: {fileID: 0}
+  highlightedForMovement: 0
   targetable: 1
   blocked: 1
   occupied: 0
@@ -12786,10 +12783,12 @@ MonoBehaviour:
   - {fileID: 6918050072285048015}
   x: 4
   y: 3
+  highlighted: 0
   occupant: {fileID: 0}
   containsDirt: 0
   dirt: {fileID: 0}
   myPickUp: {fileID: 0}
+  highlightedForMovement: 0
   targetable: 1
   blocked: 0
   occupied: 0
@@ -13447,10 +13446,12 @@ MonoBehaviour:
   - {fileID: 7389297293007430559}
   x: 1
   y: 3
+  highlighted: 0
   occupant: {fileID: 0}
   containsDirt: 1
   dirt: {fileID: 867340705}
   myPickUp: {fileID: 0}
+  highlightedForMovement: 0
   targetable: 1
   blocked: 1
   occupied: 0
@@ -13965,10 +13966,12 @@ MonoBehaviour:
   - {fileID: 4570398963101970897}
   x: 1
   y: 2
+  highlighted: 0
   occupant: {fileID: 0}
   containsDirt: 1
   dirt: {fileID: 577467213}
   myPickUp: {fileID: 0}
+  highlightedForMovement: 0
   targetable: 1
   blocked: 1
   occupied: 0
@@ -14122,10 +14125,12 @@ MonoBehaviour:
   - {fileID: 7992419455696041446}
   x: 0
   y: 5
+  highlighted: 0
   occupant: {fileID: 1604632547}
   containsDirt: 0
   dirt: {fileID: 0}
   myPickUp: {fileID: 0}
+  highlightedForMovement: 0
   targetable: 0
   blocked: 1
   occupied: 1
@@ -14531,10 +14536,12 @@ MonoBehaviour:
   - {fileID: 2746268839919200068}
   x: 3
   y: 5
+  highlighted: 0
   occupant: {fileID: 0}
   containsDirt: 1
   dirt: {fileID: 1978570630}
   myPickUp: {fileID: 0}
+  highlightedForMovement: 0
   targetable: 1
   blocked: 1
   occupied: 0
@@ -14616,6 +14623,63 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1001 &5721361634229758423
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2048350025}
+    m_Modifications:
+    - target: {fileID: 2437471836138875076, guid: 98b721f3003ff3e4690e7663d7beb0dd, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.0075718053
+      objectReference: {fileID: 0}
+    - target: {fileID: 2437471836138875076, guid: 98b721f3003ff3e4690e7663d7beb0dd, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.5077163
+      objectReference: {fileID: 0}
+    - target: {fileID: 2437471836138875076, guid: 98b721f3003ff3e4690e7663d7beb0dd, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.3745084
+      objectReference: {fileID: 0}
+    - target: {fileID: 2437471836138875076, guid: 98b721f3003ff3e4690e7663d7beb0dd, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.0035748738
+      objectReference: {fileID: 0}
+    - target: {fileID: 2437471836138875076, guid: 98b721f3003ff3e4690e7663d7beb0dd, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.003333468
+      objectReference: {fileID: 0}
+    - target: {fileID: 2437471836138875076, guid: 98b721f3003ff3e4690e7663d7beb0dd, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.72179717
+      objectReference: {fileID: 0}
+    - target: {fileID: 2437471836138875076, guid: 98b721f3003ff3e4690e7663d7beb0dd, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.6920875
+      objectReference: {fileID: 0}
+    - target: {fileID: 2437471836138875076, guid: 98b721f3003ff3e4690e7663d7beb0dd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2437471836138875076, guid: 98b721f3003ff3e4690e7663d7beb0dd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2437471836138875076, guid: 98b721f3003ff3e4690e7663d7beb0dd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3184549031974591198, guid: 98b721f3003ff3e4690e7663d7beb0dd, type: 3}
+      propertyPath: m_Name
+      value: bulbLight
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 98b721f3003ff3e4690e7663d7beb0dd, type: 3}
 --- !u!1 &5748640038334510853
 GameObject:
   m_ObjectHideFlags: 0
@@ -14677,10 +14741,12 @@ MonoBehaviour:
   - {fileID: 2035617440052126264}
   x: 0
   y: 0
+  highlighted: 0
   occupant: {fileID: 0}
   containsDirt: 1
   dirt: {fileID: 813898666}
   myPickUp: {fileID: 0}
+  highlightedForMovement: 0
   targetable: 1
   blocked: 1
   occupied: 0
@@ -14790,10 +14856,12 @@ MonoBehaviour:
   - {fileID: 7304095214633707530}
   x: 0
   y: 3
+  highlighted: 0
   occupant: {fileID: 0}
   containsDirt: 0
   dirt: {fileID: 0}
   myPickUp: {fileID: 0}
+  highlightedForMovement: 0
   targetable: 0
   blocked: 0
   occupied: 0
@@ -15169,10 +15237,12 @@ MonoBehaviour:
   - {fileID: 1443484397687942454}
   x: 2
   y: 1
+  highlighted: 0
   occupant: {fileID: 0}
   containsDirt: 1
   dirt: {fileID: 1541816278}
   myPickUp: {fileID: 0}
+  highlightedForMovement: 0
   targetable: 1
   blocked: 1
   occupied: 0
@@ -15360,10 +15430,12 @@ MonoBehaviour:
   - {fileID: 465055839641552508}
   x: 2
   y: 4
+  highlighted: 0
   occupant: {fileID: 0}
   containsDirt: 1
   dirt: {fileID: 307467056}
   myPickUp: {fileID: 0}
+  highlightedForMovement: 0
   targetable: 1
   blocked: 1
   occupied: 0
@@ -15455,10 +15527,12 @@ MonoBehaviour:
   - {fileID: 8636179353595106130}
   x: 5
   y: 5
+  highlighted: 0
   occupant: {fileID: 1168254125}
   containsDirt: 0
   dirt: {fileID: 0}
   myPickUp: {fileID: 0}
+  highlightedForMovement: 0
   targetable: 0
   blocked: 1
   occupied: 1
@@ -15497,6 +15571,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayingDiscard: 0
   discardPile: {fileID: 3605649230328661142}
+  keepPanel: {fileID: 0}
+  hasBeenClosedOnce: 0
 --- !u!33 &6833613025033922547
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -15662,10 +15738,12 @@ MonoBehaviour:
   - {fileID: 2746268839919200068}
   x: 4
   y: 4
+  highlighted: 0
   occupant: {fileID: 0}
   containsDirt: 0
   dirt: {fileID: 0}
   myPickUp: {fileID: 0}
+  highlightedForMovement: 0
   targetable: 1
   blocked: 0
   occupied: 0
@@ -15985,10 +16063,12 @@ MonoBehaviour:
   - {fileID: 5302379851731915168}
   x: 0
   y: 4
+  highlighted: 0
   occupant: {fileID: 0}
   containsDirt: 1
   dirt: {fileID: 1917448213}
   myPickUp: {fileID: 0}
+  highlightedForMovement: 0
   targetable: 1
   blocked: 1
   occupied: 0
@@ -16022,10 +16102,12 @@ MonoBehaviour:
   - {fileID: 5108885220810808871}
   x: 1
   y: 1
+  highlighted: 0
   occupant: {fileID: 0}
   containsDirt: 1
   dirt: {fileID: 890260441}
   myPickUp: {fileID: 0}
+  highlightedForMovement: 0
   targetable: 1
   blocked: 1
   occupied: 0
@@ -16101,10 +16183,12 @@ MonoBehaviour:
   - {fileID: 7992419455696041446}
   x: 1
   y: 4
+  highlighted: 0
   occupant: {fileID: 0}
   containsDirt: 1
   dirt: {fileID: 96497530}
   myPickUp: {fileID: 0}
+  highlightedForMovement: 0
   targetable: 1
   blocked: 1
   occupied: 0
@@ -16260,6 +16344,9 @@ MonoBehaviour:
   playerCanMove: 1
   playerHasMoved: 0
   movingOnCoroutine: 0
+  inverseMouseControls: 0
+  clampBufferHorizontal: 0
+  clampBufferVertical: 30
 --- !u!1 &7466606577351837692
 GameObject:
   m_ObjectHideFlags: 0
@@ -16327,10 +16414,12 @@ MonoBehaviour:
   - {fileID: 1563931011869745715}
   x: 5
   y: 0
+  highlighted: 0
   occupant: {fileID: 1530277194}
   containsDirt: 0
   dirt: {fileID: 0}
   myPickUp: {fileID: 0}
+  highlightedForMovement: 0
   targetable: 1
   blocked: 1
   occupied: 1
@@ -16511,10 +16600,12 @@ MonoBehaviour:
   - {fileID: 7338601059839571467}
   x: 1
   y: 0
+  highlighted: 0
   occupant: {fileID: 0}
   containsDirt: 1
   dirt: {fileID: 2022679334}
   myPickUp: {fileID: 0}
+  highlightedForMovement: 0
   targetable: 1
   blocked: 1
   occupied: 0
@@ -16574,10 +16665,12 @@ MonoBehaviour:
   tempHealthFill: {fileID: 263892692}
   tempHealthFillWhite: {fileID: 1573451126}
   tempPowerText: {fileID: 1577058551}
-  tempMovePointsText: {fileID: 1529946669}
-  MovePointDark: []
+  MovePointBase: []
   MovePointLight: []
+  MovePointDark: []
   portrait: {fileID: 0}
+  gridParent: {fileID: 0}
+  displayPrefab: {fileID: 0}
 --- !u!114 &7992419455696041446
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16605,10 +16698,12 @@ MonoBehaviour:
   - {fileID: 465055839641552508}
   x: 1
   y: 5
+  highlighted: 0
   occupant: {fileID: 0}
   containsDirt: 0
   dirt: {fileID: 0}
   myPickUp: {fileID: 0}
+  highlightedForMovement: 0
   targetable: 1
   blocked: 0
   occupied: 0
@@ -16728,10 +16823,12 @@ MonoBehaviour:
   - {fileID: 8930467636780421907}
   x: 3
   y: 0
+  highlighted: 0
   occupant: {fileID: 0}
   containsDirt: 0
   dirt: {fileID: 0}
   myPickUp: {fileID: 0}
+  highlightedForMovement: 0
   targetable: 1
   blocked: 0
   occupied: 0
@@ -17063,10 +17160,12 @@ MonoBehaviour:
   - {fileID: 6795926666492340888}
   x: 5
   y: 4
+  highlighted: 0
   occupant: {fileID: 0}
   containsDirt: 1
   dirt: {fileID: 1767619840}
   myPickUp: {fileID: 0}
+  highlightedForMovement: 0
   targetable: 1
   blocked: 1
   occupied: 0
@@ -17083,6 +17182,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 386b8c2adf90cf341a75c707c57f62c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  counterCircle: {fileID: 0}
+  counterText: {fileID: 0}
+  digCards: 0
+  dynamiteCards: 0
+  attackCards: 0
+  attackTwiceCards: 0
+  diggerBotCards: 0
+  fighterBotCards: 0
+  totalCards: 0
 --- !u!4 &8660587316508806172
 Transform:
   m_ObjectHideFlags: 0
@@ -17161,10 +17269,12 @@ MonoBehaviour:
   - {fileID: 6437816511202206155}
   x: 2
   y: 0
+  highlighted: 0
   occupant: {fileID: 0}
   containsDirt: 0
   dirt: {fileID: 0}
   myPickUp: {fileID: 0}
+  highlightedForMovement: 0
   targetable: 1
   blocked: 0
   occupied: 0
@@ -17380,10 +17490,12 @@ MonoBehaviour:
   - {fileID: 2495270383883785980}
   x: 3
   y: 1
+  highlighted: 0
   occupant: {fileID: 0}
   containsDirt: 0
   dirt: {fileID: 0}
   myPickUp: {fileID: 0}
+  highlightedForMovement: 0
   targetable: 1
   blocked: 0
   occupied: 0
@@ -17488,10 +17600,12 @@ MonoBehaviour:
   - {fileID: 6025241019568973945}
   x: 0
   y: 2
+  highlighted: 0
   occupant: {fileID: 0}
   containsDirt: 0
   dirt: {fileID: 0}
   myPickUp: {fileID: 0}
+  highlightedForMovement: 0
   targetable: 1
   blocked: 0
   occupied: 0
