@@ -273,7 +273,7 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
     {
         movePointsCur--;
         //DisableMovePointLights();
-       
+
         Vector3 startPos = this.transform.position;
         Vector3 endPos = toTile.transform.position;
         endPos.z -= 0.1f;
@@ -420,6 +420,9 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
     public void OnPointerDown(PointerEventData eventData)
     {
         TileClicker.Instance.UpdateSelectedUnit(standingOn);
+
+        
+
     }
 
     public virtual void Highlight()
@@ -552,6 +555,15 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
             });
     }
 
+    public void FlipOnXAxis()
+    {
+        // Flip the unit on the x-axis
+        Vector3 newScale = gfx.localScale;
+        newScale.x *= -1;
+        gfx.localScale = newScale;
+    }
+
+
     /*public void EnableMovePointLights()
     {
 
@@ -579,9 +591,9 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
 
 
     }*/
-    
-    
 
 
-   
+
+
+
 }
