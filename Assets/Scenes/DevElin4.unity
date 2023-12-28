@@ -2535,7 +2535,7 @@ MonoBehaviour:
   startMovingSound: []
   finishedStepSound: []
   currentEase: 0
-  actionAnimEase: 35
+  actionAnimEase: 13
   aktiveSpineAnimation: 0
   idleAnimation: 
   jumpAnimation: 
@@ -15904,6 +15904,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3832775451219153045}
     m_Modifications:
+    - target: {fileID: 69703348823769991, guid: 57ca9bb72f2aadd4abfb595c43fd95fd, type: 3}
+      propertyPath: m_Type
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 139338944161536263, guid: 57ca9bb72f2aadd4abfb595c43fd95fd, type: 3}
       propertyPath: m_AnchorMax.x
       value: 1
@@ -15947,6 +15951,10 @@ PrefabInstance:
     - target: {fileID: 4386692466451613926, guid: 57ca9bb72f2aadd4abfb595c43fd95fd, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6374602491833843030, guid: 57ca9bb72f2aadd4abfb595c43fd95fd, type: 3}
+      propertyPath: m_Type
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7445859078354091166, guid: 57ca9bb72f2aadd4abfb595c43fd95fd, type: 3}
       propertyPath: m_Pivot.x
