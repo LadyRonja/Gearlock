@@ -21,7 +21,7 @@ public class TutorialAdvanced : MonoBehaviour
     [SerializeField] List<GameObject> bonusTutorialPages = new();
     int advancedTutorialIndex = 0;
     int[] advancedIndexesToPreventRaycastingOn = { 0, 1, 2, 3, 4, /*5,*/ 6, 7, 8, 9,
-                                                10, 11, /*12,*/ 13, 14, 15, 16/*, 17*/ };
+                                                10, 11, /*12,*/ 13, 14, 15, 16, 17/*, 18*/ };
     int bonusTutorialIndex = 0;
     public static bool bonusTutorialDone = false;
     public bool bonusTutorialActive = false; // should only be public getter
@@ -137,14 +137,23 @@ public class TutorialAdvanced : MonoBehaviour
         // Assemble the Fight Bot
         if (advancedTutorialIndex == 12)
         {
-            if (UnitStorage.Instance.playerUnits.Count == 2)
+            if (ActiveCard.Instance.cardBeingPlayed != null)
             {
                 GoToTutorialPage(13);
             }
         }
 
+        // Assemble the Fight Bot
+        if (advancedTutorialIndex == 13)
+        {
+            if (UnitStorage.Instance.playerUnits.Count == 2)
+            {
+                GoToTutorialPage(14);
+            }
+        }
+
         // Give attack cards
-        if (advancedTutorialIndex == 16)
+        if (advancedTutorialIndex == 17)
         {
             if (!attackCardsGiven)
             {
@@ -157,7 +166,7 @@ public class TutorialAdvanced : MonoBehaviour
 
     public void CloseSpecificPage(int page)
     {
-        int[] allowedPagesToClose = { 5, 7, 17 };
+        int[] allowedPagesToClose = { 5, 7, 18 };
 
         if (!allowedPagesToClose.Contains(page))
         {
