@@ -32,10 +32,18 @@ PrefabInstance:
       propertyPath: m_Center.y
       value: 0.043920517
       objectReference: {fileID: 0}
+    - target: {fileID: 5765075689593906628, guid: 89bc880b93910a34caed231e137919d8, type: 3}
+      propertyPath: m_text
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 6262402697669964395, guid: 89bc880b93910a34caed231e137919d8, type: 3}
       propertyPath: m_text
       value: This enemy can usually dig through rocks, but we've disabled that for
         the tutorial.
+      objectReference: {fileID: 0}
+    - target: {fileID: 6262402697669964395, guid: 89bc880b93910a34caed231e137919d8, type: 3}
+      propertyPath: m_fontSize
+      value: 1.25
       objectReference: {fileID: 0}
     - target: {fileID: 6783090875490602526, guid: 89bc880b93910a34caed231e137919d8, type: 3}
       propertyPath: m_Name
@@ -94,6 +102,33 @@ SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 3249347098272502678, guid: 89bc880b93910a34caed231e137919d8, type: 3}
   m_PrefabInstance: {fileID: 2667585422447922027}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1660748910760901564 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3605413643447038167, guid: 89bc880b93910a34caed231e137919d8, type: 3}
+  m_PrefabInstance: {fileID: 2667585422447922027}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1794122809938244997 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4459456427170184942, guid: 89bc880b93910a34caed231e137919d8, type: 3}
+  m_PrefabInstance: {fileID: 2667585422447922027}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7093096327194892011 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5146091867050384768, guid: 89bc880b93910a34caed231e137919d8, type: 3}
+  m_PrefabInstance: {fileID: 2667585422447922027}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &7680302438364657948 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 5733294182543290999, guid: 89bc880b93910a34caed231e137919d8, type: 3}
@@ -141,9 +176,9 @@ MonoBehaviour:
   myMR: {fileID: 0}
   mySR: {fileID: 581761732767013117}
   highligtherArrow: {fileID: 7680302438364657948}
-  healthBar: {fileID: 0}
-  healthFill: {fileID: 0}
-  healthText: {fileID: 0}
+  healthBar: {fileID: 1660748910760901564}
+  healthFill: {fileID: 7093096327194892011}
+  healthText: {fileID: 1794122809938244997}
   getSelectedSound:
   - {fileID: 8300000, guid: 4a80f52029eed514bbcca323d7b535b9, type: 3}
   takeDamageSound:
