@@ -58,7 +58,7 @@ public class Scenehandler : MonoBehaviour
 
     public void TutorialStart()
     {
-        SceneManager.LoadScene("Tutorial First");
+        SceneManager.LoadScene("Basic Tutorial");
     }
 
     public void menu()
