@@ -5381,6 +5381,7 @@ MonoBehaviour:
   finishedStepSound:
   - {fileID: 8300000, guid: 083cc030827e2ef44bc452281932474b, type: 3}
   currentEase: 0
+  actionAnimEase: 0
   aktiveSpineAnimation: 0
   idleAnimation: 
   jumpAnimation: 
@@ -6366,6 +6367,7 @@ MonoBehaviour:
   finishedStepSound:
   - {fileID: 8300000, guid: 083cc030827e2ef44bc452281932474b, type: 3}
   currentEase: 0
+  actionAnimEase: 0
   aktiveSpineAnimation: 0
   idleAnimation: 
   jumpAnimation: 
@@ -12060,7 +12062,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -17925,7 +17927,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -18632,7 +18634,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -24758,7 +24760,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -29662,6 +29664,7 @@ MonoBehaviour:
   drawEase: 0
   isDisplaying: 0
   useList: 1
+  cardChoice: 0
   discardPile: []
   drawPile: []
   cards:
@@ -30355,6 +30358,7 @@ GameObject:
   - component: {fileID: 1773122780480537576}
   - component: {fileID: 296430004536058838}
   - component: {fileID: 246706536163888470}
+  - component: {fileID: 2043228143652417842}
   m_Layer: 5
   m_Name: DrawPile
   m_TagString: Untagged
@@ -30362,6 +30366,27 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &2043228143652417842
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2043228143652417841}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce45144b8c8f07344a0bd93f523c8f09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  counterCircle: {fileID: 466984558090175650, guid: 2273e7ef12e3fd0459ed5e15ec233c40, type: 3}
+  counterText: {fileID: 220594560389244590, guid: 82d9c4ecd8ffa00488ac6417f00aefeb, type: 3}
+  digCards: 0
+  dynamiteCards: 0
+  attackCards: 0
+  attackTwiceCards: 0
+  diggerBotCards: 0
+  fighterBotCards: 0
+  totalCards: 0
 --- !u!4 &2200119581127173961
 Transform:
   m_ObjectHideFlags: 0

@@ -138,6 +138,20 @@ public class HoverManager : MonoBehaviour
             if(c.sortingOrder == 10)
                 return true; 
         }
+
+        // This also doesn't catch things on other canvi than the main one,
+        // hence the above section too,
+        // still, doesn't catch anything that isn't a card
+        PointerEventData ped = new PointerEventData(GraphicsRayCastAssistance.Instance.eventSystem);
+        ped.position = Input.mousePosition;
+        List<RaycastResult> results = new List<RaycastResult>();
+        GraphicsRayCastAssistance.Instance.caster.Raycast(ped, results);
+        foreach (RaycastResult r in results)
+        {
+            Debug.Log(r);
+            return true;
+        }
+
         return false;
     }
 
