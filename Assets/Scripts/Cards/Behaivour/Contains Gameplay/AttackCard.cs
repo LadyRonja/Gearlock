@@ -30,6 +30,7 @@ public class AttackCard : Card
         FriendlyFirePopUp.Instance.ClosePopUp();
         onTile.occupant.TakeDamage(byUnit.power * multiplier);
         ConfirmCardExecuted();
+        byUnit.FlipOnXAxis();
         byUnit.PlayActionAnimation();
     }
 
