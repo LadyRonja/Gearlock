@@ -188,13 +188,24 @@ public class CameraController : MonoBehaviour
     private void DetectDoubleClick()
     {
         if (TutorialBasic.Instance.IsInTutorial)
-            if(!playerCanMove)
+        {
+            Debug.Log("TutorialBasic.Instance.IsInTutorial");
+            if (!playerCanMove)
                 return;
+        }
+
+        if (TutorialAdvanced.Instance.IsInTutorial)
+        {
+            Debug.Log("TutorialAdvanced.Instance.IsInTutorial");
+            if (!playerCanMove)
+                return;
+        }
 
         if (Input.GetMouseButtonDown((int)MouseButton.Left))
         {
             if (clickedRecently)
             {
+                playerHasMoved = false;
                 HoverManager.Instance.CheckHover();
             }
 

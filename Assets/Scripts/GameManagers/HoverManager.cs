@@ -146,11 +146,8 @@ public class HoverManager : MonoBehaviour
         ped.position = Input.mousePosition;
         List<RaycastResult> results = new List<RaycastResult>();
         GraphicsRayCastAssistance.Instance.caster.Raycast(ped, results);
-        foreach (RaycastResult r in results)
-        {
-            Debug.Log(r);
+        if (results.Any())
             return true;
-        }
 
         return false;
     }

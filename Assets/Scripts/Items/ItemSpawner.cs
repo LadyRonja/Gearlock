@@ -67,7 +67,7 @@ public class ItemSpawner : MonoBehaviour
 
         if (!spawnableCardsFinite.Any())
         {
-            Debug.Log("No items in the item spawner");
+            //Debug.Log("No items in the item spawner");
             SpawnRandomItem(onTile);
             return;
         }
