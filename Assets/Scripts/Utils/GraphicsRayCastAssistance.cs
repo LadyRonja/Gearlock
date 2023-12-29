@@ -19,7 +19,11 @@ public class GraphicsRayCastAssistance : MonoBehaviour
         else
             Destroy(this);
 
-        caster = FindObjectOfType<GraphicRaycaster>();
+        caster = gameObject.GetComponent<GraphicRaycaster>();
+        if(caster == null)
+        {
+            Debug.LogError("No GraphicRaycaster found on GRCA, this will cause issues");
+        }
         eventSystem= FindObjectOfType<EventSystem>();
     }
 
@@ -27,6 +31,7 @@ public class GraphicsRayCastAssistance : MonoBehaviour
     {
         if (instance != null) return instance;
 
+        Debug.LogError("Had to create a new GraphicsRayCastAssistance instance, this might cause problems");
         GameObject newManager = new GameObject();
         instance = newManager.AddComponent<GraphicsRayCastAssistance>();
         newManager.transform.name = "Graphics RayCast Manager";
