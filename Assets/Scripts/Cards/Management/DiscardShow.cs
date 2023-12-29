@@ -7,6 +7,7 @@ public class DiscardShow : MonoBehaviour
 {
     public bool displayingDiscard;
     public GameObject discardPile;
+    public GameObject drawPile;
     public GameObject keepPanel;
     public bool hasBeenClosedOnce = false;
 
@@ -23,11 +24,13 @@ public class DiscardShow : MonoBehaviour
 
     private void Start()
     {
+        
         discardPile.SetActive(false);
     }
 
     public void ToggleDisplay()
     {
+        drawPile.SetActive(false);
         discardPile.SetActive(!discardPile.activeSelf);
         if (TurnManager.Instance.keepPhase)
             keepPanel.SetActive(!keepPanel.activeSelf);

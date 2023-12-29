@@ -5668,7 +5668,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6923118013987543666, guid: dee48f4a3a4e09041a4b8f7c2a99909a, type: 3}
   m_PrefabInstance: {fileID: 458619757}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 258122778}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6111f452700bc2a4981527981ade46e5, type: 3}
@@ -11336,6 +11336,11 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &258122778 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8432236343756479013, guid: dee48f4a3a4e09041a4b8f7c2a99909a, type: 3}
+  m_PrefabInstance: {fileID: 458619757}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &258638876
 GameObject:
   m_ObjectHideFlags: 0
@@ -11669,6 +11674,7 @@ MonoBehaviour:
   finishedStepSound:
   - {fileID: 8300000, guid: 083cc030827e2ef44bc452281932474b, type: 3}
   currentEase: 0
+  actionAnimEase: 0
   aktiveSpineAnimation: 0
   idleAnimation: 
   jumpAnimation: 
@@ -16806,6 +16812,7 @@ MonoBehaviour:
   finishedStepSound:
   - {fileID: 8300000, guid: 083cc030827e2ef44bc452281932474b, type: 3}
   currentEase: 0
+  actionAnimEase: 0
   aktiveSpineAnimation: 0
   idleAnimation: 
   jumpAnimation: 
@@ -17655,6 +17662,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6923118013987543666, guid: dee48f4a3a4e09041a4b8f7c2a99909a, type: 3}
+      propertyPath: keepPanel
+      value: 
+      objectReference: {fileID: 4134084893077386398}
+    - target: {fileID: 6923118013987543666, guid: dee48f4a3a4e09041a4b8f7c2a99909a, type: 3}
+      propertyPath: discardPile
+      value: 
+      objectReference: {fileID: 2517075719975494789}
     - target: {fileID: 8432236343756479013, guid: dee48f4a3a4e09041a4b8f7c2a99909a, type: 3}
       propertyPath: m_Name
       value: DrawParent
@@ -22230,6 +22245,7 @@ MonoBehaviour:
   finishedStepSound:
   - {fileID: 8300000, guid: 083cc030827e2ef44bc452281932474b, type: 3}
   currentEase: 0
+  actionAnimEase: 0
   aktiveSpineAnimation: 0
   idleAnimation: 
   jumpAnimation: 
@@ -41417,6 +41433,7 @@ MonoBehaviour:
   finishedStepSound:
   - {fileID: 8300000, guid: 083cc030827e2ef44bc452281932474b, type: 3}
   currentEase: 0
+  actionAnimEase: 0
   aktiveSpineAnimation: 0
   idleAnimation: 
   jumpAnimation: 
@@ -60120,6 +60137,7 @@ MonoBehaviour:
   finishedStepSound:
   - {fileID: 8300000, guid: 083cc030827e2ef44bc452281932474b, type: 3}
   currentEase: 0
+  actionAnimEase: 0
   aktiveSpineAnimation: 0
   idleAnimation: 
   jumpAnimation: 
@@ -61705,6 +61723,7 @@ MonoBehaviour:
   finishedStepSound:
   - {fileID: 8300000, guid: 083cc030827e2ef44bc452281932474b, type: 3}
   currentEase: 0
+  actionAnimEase: 0
   aktiveSpineAnimation: 0
   idleAnimation: 
   jumpAnimation: 
@@ -74346,6 +74365,7 @@ MonoBehaviour:
   finishedStepSound:
   - {fileID: 8300000, guid: 083cc030827e2ef44bc452281932474b, type: 3}
   currentEase: 0
+  actionAnimEase: 0
   aktiveSpineAnimation: 0
   idleAnimation: 
   jumpAnimation: 
@@ -90078,6 +90098,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DiscardParent
       objectReference: {fileID: 0}
+    - target: {fileID: 4481465943138763069, guid: de60bfa9bb7227f46923fc63ec0ae755, type: 3}
+      propertyPath: drawPile
+      value: 
+      objectReference: {fileID: 258122778}
     - target: {fileID: 4481465943138763069, guid: de60bfa9bb7227f46923fc63ec0ae755, type: 3}
       propertyPath: keepPanel
       value: 

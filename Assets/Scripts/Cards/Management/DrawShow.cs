@@ -6,6 +6,7 @@ using UnityEngine;
 public class DrawShow : MonoBehaviour
 {
     public bool displayingDraw;
+    public GameObject discardPile;
     public GameObject drawPile;
     public GameObject keepPanel;
     public bool hasBeenClosedOnce = false;
@@ -28,6 +29,7 @@ public class DrawShow : MonoBehaviour
 
     public void ToggleDisplay()
     {
+        discardPile.SetActive(false);
         drawPile.SetActive(!drawPile.activeSelf);
         if (TurnManager.Instance.keepPhase)
             keepPanel.SetActive(!keepPanel.activeSelf);
