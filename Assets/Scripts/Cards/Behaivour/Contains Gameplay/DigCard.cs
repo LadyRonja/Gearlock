@@ -8,9 +8,19 @@ public class DigCard : Card
     {
         onTile.RemoveDirt();
         ConfirmCardExecuted();
-        byUnit.FlipOnXAxis();
+        FlipUnitBasedOnClickedTile(byUnit, onTile);
         byUnit.PlayActionAnimation();
     }
+
+    private void FlipUnitBasedOnClickedTile(Unit unit, Tile clickedTile)
+    {
+        if (clickedTile != null)
+        {
+            // Call the corrected FlipOnXAxis method
+            unit.FlipOnXAxis(clickedTile);
+        }
+    }
+
     public override void ConfirmCardExecuted()
     {
         myState = CardState.Finished;

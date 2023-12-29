@@ -421,7 +421,8 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
     {
         TileClicker.Instance.UpdateSelectedUnit(standingOn);
 
-        
+        // Pass the clicked tile to FlipOnXAxis
+        FlipOnXAxis(standingOn);
 
     }
 
@@ -555,13 +556,33 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
             });
     }
 
-    public void FlipOnXAxis()
+
+    public void FlipOnXAxis(Tile clickedTile)
+    {
+        if (clickedTile != null)
+        {
+            // Compare the clicked tile's x position with the unit's standing on tile's x position
+            if (clickedTile.x > standingOn.x)
+            {
+                // Clicked on a tile to the right, flip the unit to face left
+                gfx.localScale = new Vector3(-Mathf.Abs(gfx.localScale.x), gfx.localScale.y, gfx.localScale.z);
+            }
+            else if (clickedTile.x < standingOn.x)
+            {
+                // Clicked on a tile to the left, flip the unit to face right
+                gfx.localScale = new Vector3(Mathf.Abs(gfx.localScale.x), gfx.localScale.y, gfx.localScale.z);
+            }
+            // If clicked on the same tile or vertically, don't change the facing direction
+        }
+    }
+
+    /* public void FlipOnXAxis()
     {
         // Flip the unit on the x-axis
         Vector3 newScale = gfx.localScale;
         newScale.x *= -1;
         gfx.localScale = newScale;
-    }
+    }*/
 
 
     /*public void EnableMovePointLights()
@@ -573,7 +594,7 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
                 lightObject.SetActive(true);
             }
 
-        
+
     }
 
     public void DisableMovePointLights()

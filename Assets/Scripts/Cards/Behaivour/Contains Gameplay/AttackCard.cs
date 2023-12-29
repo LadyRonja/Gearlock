@@ -21,6 +21,7 @@ public class AttackCard : Card
         {
             onTile.occupant.TakeDamage(byUnit.power * multiplier);
             ConfirmCardExecuted();
+            FlipUnitBasedOnClickedTile(byUnit, onTile);
             byUnit.PlayActionAnimation();
         }
     }
@@ -30,7 +31,8 @@ public class AttackCard : Card
         FriendlyFirePopUp.Instance.ClosePopUp();
         onTile.occupant.TakeDamage(byUnit.power * multiplier);
         ConfirmCardExecuted();
-        byUnit.FlipOnXAxis();
+        
+        FlipUnitBasedOnClickedTile(byUnit, onTile);
         byUnit.PlayActionAnimation();
     }
 
@@ -41,6 +43,15 @@ public class AttackCard : Card
         tilesHighligthed = false;
         cardExecutionCalled = false;
         myState = CardState.SelectingTile;
+    }
+
+    private void FlipUnitBasedOnClickedTile(Unit unit, Tile clickedTile)
+    {
+        if (clickedTile != null)
+        {
+            // Call the corrected FlipOnXAxis method
+            unit.FlipOnXAxis(clickedTile);
+        }
     }
 
     public override void ConfirmCardExecuted()
