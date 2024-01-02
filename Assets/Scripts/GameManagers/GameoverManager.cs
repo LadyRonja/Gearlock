@@ -13,7 +13,9 @@ public class GameoverManager : MonoBehaviour
     public bool isFirstTutorial = false;
     [SerializeField] string secondTutorialSceneName = "Tutorial Second";
     public bool isSecondTutorial = false;
-    [SerializeField] string levelOneName = "DevRonja";
+    [SerializeField] string levelOneName = "Last Stand _small";
+
+    GameObject gameOverFade;
 
     private void Awake()
     {
@@ -67,8 +69,23 @@ public class GameoverManager : MonoBehaviour
             else
                 gameOverText.text = "You lost!";
 
-            gameOverScreen.SetActive(true);
+            PlayGameOverAnimation();
         }
+    }
+
+    private void PlayGameOverAnimation()
+    {
+        gameOverScreen.SetActive(true);
+    }
+
+    private IEnumerator GameOverAnimator()
+    {
+
+        yield return null;
+    }
+
+    private void GenerateGameOverScreen()
+    {
 
     }
 }
