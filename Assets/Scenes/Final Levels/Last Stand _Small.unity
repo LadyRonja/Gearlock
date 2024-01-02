@@ -16581,6 +16581,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3832775451219153045}
     m_Modifications:
+    - target: {fileID: 225816657237530709, guid: b89beff8f3d2a6943b58e11783e23be5, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 944465862900738179, guid: b89beff8f3d2a6943b58e11783e23be5, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1292674597571171983, guid: b89beff8f3d2a6943b58e11783e23be5, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1648895400181927175, guid: b89beff8f3d2a6943b58e11783e23be5, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3136537854200564790, guid: b89beff8f3d2a6943b58e11783e23be5, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3990552529304626582, guid: b89beff8f3d2a6943b58e11783e23be5, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -16661,9 +16681,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4659785944668282041, guid: b89beff8f3d2a6943b58e11783e23be5, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5272635446860859223, guid: b89beff8f3d2a6943b58e11783e23be5, type: 3}
       propertyPath: m_Name
       value: GameOver Screen
+      objectReference: {fileID: 0}
+    - target: {fileID: 7363777044413599817, guid: b89beff8f3d2a6943b58e11783e23be5, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8690712037455503085, guid: b89beff8f3d2a6943b58e11783e23be5, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9174203962770995609, guid: b89beff8f3d2a6943b58e11783e23be5, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -41361,7 +41397,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameOverScreen: {fileID: 882225110}
-  gameOverText: {fileID: 0}
   firstTutorialSceneName: Tutorial First
   isFirstTutorial: 0
   secondTutorialSceneName: Tutorial Second

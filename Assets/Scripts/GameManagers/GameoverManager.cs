@@ -10,7 +10,6 @@ public class GameoverManager : MonoBehaviour
 {
     public static GameoverManager Instance;
     [SerializeField] public GameOverScreen gameOverScreen;
-    [SerializeField] TMP_Text gameOverText;
     [SerializeField] string firstTutorialSceneName = "Tutorial First";
     public bool isFirstTutorial = false;
     [SerializeField] string secondTutorialSceneName = "Tutorial Second";
@@ -66,11 +65,6 @@ public class GameoverManager : MonoBehaviour
         }
         else
         {
-            if (playerWon)
-                gameOverText.text = "You won!";
-            else
-                gameOverText.text = "You lost!";
-
             PlayGameOverAnimation(playerWon);
         }
     }
@@ -117,6 +111,21 @@ public class GameoverManager : MonoBehaviour
         }
         fadeImage.color = fadeColor;
         mySource.volume = Scenehandler.Instance.effectVolume * 0.5f;
+
+
+        if (playerWon)
+        {
+            gameOverScreen.winStatusText.text = "You won!";
+            gameOverScreen.winStatusText.color = Color.black;
+            gameOverScreen.statsText.color = Color.black;
+        }
+        else
+        {
+            gameOverScreen.winStatusText.text = "You lost!";
+            gameOverScreen.winStatusText.color = Color.white;
+            gameOverScreen.statsText.color = Color.white;
+        }
+
 
         gameOverScreen.gameObject.SetActive(true);
 
