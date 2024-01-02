@@ -382,7 +382,7 @@ public class CardContainer : MonoBehaviour
     {
         if (gameObject.GetComponent<RectTransform>() != null)
         {
-            if (!GameoverManager.Instance.gameOverScreen.activeSelf)
+            if (!GameoverManager.Instance.gameOverScreen.gameObject.activeSelf)
             {
                 float panelRectX = gameObject.GetComponent<RectTransform>().anchoredPosition.x;
                 if (TurnManager.Instance.isPlayerTurn)
