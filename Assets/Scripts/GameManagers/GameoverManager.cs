@@ -117,6 +117,8 @@ public class GameoverManager : MonoBehaviour
         fadeImage.color = fadeColor;
 
         // Text
+        gameOverScreen.winStatusText.color = new Color(1, 1, 1, 0);
+        gameOverScreen.statsText.color = new Color(1, 1, 1, 0);
 
 
         // Audio
@@ -158,6 +160,8 @@ public class GameoverManager : MonoBehaviour
         }
         gameOverScreen.gameObject.SetActive(true);
         this.StartCoroutine(FadeInAlpha(timeToAnimate/2f, gameOverScreenBackground, 0));
+        this.StartCoroutine(FadeInAlpha(timeToAnimate / 4, gameOverScreen.winStatusText, timeToAnimate / 5)); 
+        this.StartCoroutine(FadeInAlpha(timeToAnimate / 4, gameOverScreen.statsText, timeToAnimate / 4));
 
         this.StartCoroutine(FadeInAlpha(timeToAnimate / 2f, replayImage, timeToAnimate / 2f));
         this.StartCoroutine(FadeInAlpha(timeToAnimate / 2f, replayText, timeToAnimate / 2f));
