@@ -121,6 +121,7 @@ public class Scenehandler : MonoBehaviour
         layerCanvas.overrideSorting = true;
         layerCanvas.sortingOrder = 50;
         Image newTransitionImage = newTransitionScreen.AddComponent<Image>();
+        newTransitionImage.raycastTarget = false;
         newTransitionImage.sprite = Resources.Load<Sprite>("Graphics/transition_Image");
         newTransitionImage.color = Color.black;
 
