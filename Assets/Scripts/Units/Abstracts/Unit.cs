@@ -50,6 +50,7 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
     public MeshRenderer myMR;
     public SpriteRenderer mySR;
     public SpriteRenderer highligtherArrow;
+    
 
     [Header("Health Bar")]
     public GameObject healthBar;
@@ -272,15 +273,18 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
     protected IEnumerator MoveStep(Tile toTile)
     {
         movePointsCur--;
-        //DisableMovePointLights();
+        
 
         Vector3 startPos = this.transform.position;
         Vector3 endPos = toTile.transform.position;
         endPos.z -= 0.1f;
+        
         if (myMR != null)
             endPos.y += myMR.bounds.size.y / 2f;
         else
-            endPos.y += mySR.bounds.size.y / 2f;
+            endPos.y += mySR.bounds.size.y / 2f ; 
+
+        
 
         float timeToMove = 0.5f;
         float timePassed = 0;
@@ -310,8 +314,12 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
             yOffSet = Mathf.Max(0, jumpHeight * Mathf.Sin(timePassed / timeToMove * Mathf.PI));
             gfx.localPosition = new Vector3(gfx.localPosition.x, yOffSet, gfx.localPosition.z);
 
+           
+
             PlayJumpAnimation();
-            
+
+           
+
 
             // After the halfway point, change the highlighted tile
             if (!hasChangedHighlight && timePassed > timeToMove / 2f)
@@ -329,6 +337,9 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
             UnitSelector.Instance.UpdateUI();
             yield return null;
         }
+
+        
+
         gfx.position = transform.position;
         startSize.x = destinationEndX;
         gfx.localScale = startSize;
@@ -336,7 +347,9 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
         standingOn = toTile;
         toTile.UpdateOccupant(this);
 
-        
+       
+
+
 
         yield return null;
     }
@@ -528,12 +541,14 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
         // Define the target position for the animation
         Vector3 targetPosition = new Vector3(initialPosition.x, initialPosition.y + 2f, initialPosition.z);
 
+        
+
         // Define tilt angles based on the unit's flip condition
         float tiltAngle = (gfx.transform.localScale.x < 0) ? -45f : 45f;
         float resetAngle = 0f;
 
         // Use DoTween to move the unit up on the y-axis
-        gfx.transform.DOMove(targetPosition, 0.1f)
+        transform.DOMove(targetPosition, 0.1f)
             .SetEase(actionAnimEase)
             .OnComplete(() =>
             {
@@ -542,6 +557,8 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
                     .SetEase(actionAnimEase)
                     .OnComplete(() =>
                     {
+                        
+
                         // After tilting, tilt back on the x-axis
                         gfx.transform.DORotate(new Vector3(0f, 0f, resetAngle), 0.2f)
                             .SetEase(actionAnimEase)
@@ -550,6 +567,8 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
                                 // Move back down to the initial position on the y-axis
                                 gfx.transform.DOMove(initialPosition, 0.1f)
                                     .SetEase(actionAnimEase);
+
+                                
 
                             });
                     });
@@ -575,46 +594,6 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
             // If clicked on the same tile or vertically, don't change the facing direction
         }
     }
-
-    /* public void FlipOnXAxis()
-    {
-        // Flip the unit on the x-axis
-        Vector3 newScale = gfx.localScale;
-        newScale.x *= -1;
-        gfx.localScale = newScale;
-    }*/
-
-
-    /*public void EnableMovePointLights()
-    {
-
-            // Enable all MovePointLight game objects
-            foreach (GameObject lightObject in MovePointLight)
-            {
-                lightObject.SetActive(true);
-            }
-
-
-    }
-
-    public void DisableMovePointLights()
-    {
-
-
-        // Disable one MovePointLight at a time
-        if (lastDisabledLightIndex < MovePointLight.Count - 1)
-        {
-            int nextLightIndex = lastDisabledLightIndex + 1;
-            MovePointLight[nextLightIndex].SetActive(false);
-            lastDisabledLightIndex = nextLightIndex;
-        }
-
-
-
-    }*/
-
-
-
 
 
 }
