@@ -52,6 +52,9 @@ public class GameoverManager : MonoBehaviour
 
     private void GameIsOver(bool playerWon)
     {
+        if (gameIsOver)
+            return;
+
         gameIsOver = true;
 
         if(isFirstTutorial)
@@ -89,14 +92,20 @@ public class GameoverManager : MonoBehaviour
         Image replayImage = gameOverScreen.replayButton.GetComponent<Image>();
         replayImage.raycastTarget = true;
         replayImage.color = new Color(1, 1, 1, 0);
+        TMP_Text replayText = gameOverScreen.replayButton.GetComponentInChildren<TMP_Text>();
+        replayText.color = new Color(1, 1, 1, 0);
 
         Image menuImage = gameOverScreen.menuButton.GetComponent<Image>();
         menuImage.raycastTarget = true;
         menuImage.color = new Color(1, 1, 1, 0);
+        TMP_Text menuText = gameOverScreen.menuButton.GetComponentInChildren<TMP_Text>();
+        menuText.color = new Color(1, 1, 1, 0);
 
         Image quitImage = gameOverScreen.quitButton.GetComponent<Image>();
         quitImage.raycastTarget = true;
         quitImage.color = new Color(1, 1, 1, 0);
+        TMP_Text quitText = gameOverScreen.quitButton.GetComponentInChildren<TMP_Text>();
+        quitText.color = new Color(1, 1, 1, 0);
 
         // Background
         Image fadeImage = gameOverFade.GetComponent<Image>();
@@ -106,6 +115,9 @@ public class GameoverManager : MonoBehaviour
 
         fadeColor.a = 0;
         fadeImage.color = fadeColor;
+
+        // Text
+
 
         // Audio
         AudioSource mySource = new GameObject("Game Over Noise").AddComponent<AudioSource>();
@@ -128,7 +140,6 @@ public class GameoverManager : MonoBehaviour
             timePassed += Time.deltaTime;
             yield return null;
         }
-        fadeImage.color = fadeColor;
         mySource.volume = Scenehandler.Instance.effectVolume * 0.5f;
         Image gameOverScreenBackground = gameOverScreen.GetComponent<Image>();
         gameOverScreenBackground.color = new Color(1,1,1,0);
@@ -149,8 +160,11 @@ public class GameoverManager : MonoBehaviour
         this.StartCoroutine(FadeInAlpha(timeToAnimate/2f, gameOverScreenBackground, 0));
 
         this.StartCoroutine(FadeInAlpha(timeToAnimate / 2f, replayImage, timeToAnimate / 2f));
+        this.StartCoroutine(FadeInAlpha(timeToAnimate / 2f, replayText, timeToAnimate / 2f));
         this.StartCoroutine(FadeInAlpha(timeToAnimate / 2f, menuImage, timeToAnimate / 2f));
+        this.StartCoroutine(FadeInAlpha(timeToAnimate / 2f, menuText, timeToAnimate / 2f));
         this.StartCoroutine(FadeInAlpha(timeToAnimate / 2f, quitImage, timeToAnimate / 2f));
+        this.StartCoroutine(FadeInAlpha(timeToAnimate / 2f, quitText, timeToAnimate / 2f));
 
 
 
@@ -172,6 +186,27 @@ public class GameoverManager : MonoBehaviour
             timePassed += Time.deltaTime;
             yield return null;
         }
+        imageToFadeIn.color = targetColor;
+        yield return null;
+    }
+
+    private IEnumerator FadeInAlpha(float secToFade, TMP_Text textToFadeIn, float startDelay)
+    {
+        yield return new WaitForSeconds(startDelay);
+        Color startColor = textToFadeIn.color;
+        Color targetColor = startColor;
+        targetColor.a = 1;
+
+        float timePassed = 0;
+        while (timePassed < secToFade)
+        {
+            textToFadeIn.color = Color.Lerp(startColor, targetColor, (timePassed / secToFade));
+
+            timePassed += Time.deltaTime;
+            yield return null;
+        }
+        textToFadeIn.color = targetColor;
+        yield return null;
     }
 
 
