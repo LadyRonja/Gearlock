@@ -18,6 +18,8 @@ public class GameoverManager : MonoBehaviour
 
     [SerializeField] GameObject gameOverFade;
 
+    public bool gameIsOver = false;
+
     private void Awake()
     {
         #region Singleton
@@ -49,6 +51,8 @@ public class GameoverManager : MonoBehaviour
 
     private void GameIsOver(bool playerWon)
     {
+        gameIsOver = true;
+
         if(isFirstTutorial)
         {
             if (playerWon)
