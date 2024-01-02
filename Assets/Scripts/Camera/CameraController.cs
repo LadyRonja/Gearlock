@@ -159,6 +159,14 @@ public class CameraController : MonoBehaviour
 
         Vector3 startPos = transform.position;
 
+        /*float clampedX = Mathf.Clamp(target.x, horizontalClamps.x, horizontalClamps.y);
+        float clampedZ = Mathf.Clamp(target.z, verticalClamps.x, verticalClamps.y);
+        Vector3 clampedPos = target;
+        clampedPos.x = clampedX;
+        clampedPos.z = clampedZ;
+
+        target = clampedPos;*/
+
         // for easier clicking, offset a little to the side
         if (startPos.x - target.x < 0)
             target.x -= xOffSet;
@@ -176,9 +184,11 @@ public class CameraController : MonoBehaviour
             transform.position = Vector3.Lerp(startPos, target, (timePassed / seconds));
             //transform.position = Vector3.SmoothDamp(transform.position, target, ref velocity, seconds);
             timePassed += Time.deltaTime;
+            ClampCamera();
             yield return null;
         }
         transform.position = target;
+        ClampCamera();
 
         movingOnCoroutine = false;
         yield return null;
@@ -189,14 +199,12 @@ public class CameraController : MonoBehaviour
     {
         if (TutorialBasic.Instance.IsInTutorial)
         {
-            Debug.Log("TutorialBasic.Instance.IsInTutorial");
             if (!playerCanMove)
                 return;
         }
 
         if (TutorialAdvanced.Instance.IsInTutorial)
         {
-            Debug.Log("TutorialAdvanced.Instance.IsInTutorial");
             if (!playerCanMove)
                 return;
         }
