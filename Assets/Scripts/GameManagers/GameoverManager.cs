@@ -5,6 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using static Unity.VisualScripting.Member;
 
 public class GameoverManager : MonoBehaviour
 {
@@ -83,6 +84,21 @@ public class GameoverManager : MonoBehaviour
     private IEnumerator GameOverAnimator(bool playerWon)
     {
         GenerateGameOverScreen();
+
+        // Buttons
+        Image replayImage = gameOverScreen.replayButton.GetComponent<Image>();
+        replayImage.raycastTarget = true;
+        replayImage.color = new Color(1, 1, 1, 0);
+
+        Image menuImage = gameOverScreen.menuButton.GetComponent<Image>();
+        menuImage.raycastTarget = true;
+        menuImage.color = new Color(1, 1, 1, 0);
+
+        Image quitImage = gameOverScreen.quitButton.GetComponent<Image>();
+        quitImage.raycastTarget = true;
+        quitImage.color = new Color(1, 1, 1, 0);
+
+        // Background
         Image fadeImage = gameOverFade.GetComponent<Image>();
         Color fadeColor = Color.white;
         if (!playerWon)
@@ -90,9 +106,8 @@ public class GameoverManager : MonoBehaviour
 
         fadeColor.a = 0;
         fadeImage.color = fadeColor;
-        fadeColor.a = 1;
-        Color startColor = fadeImage.color;
 
+        // Audio
         AudioSource mySource = new GameObject("Game Over Noise").AddComponent<AudioSource>();
         mySource.volume = Scenehandler.Instance.effectVolume;
         if(playerWon)
@@ -105,9 +120,9 @@ public class GameoverManager : MonoBehaviour
         float timePassed = 0;
         float timeToAnimate = 5f;
 
+        this.StartCoroutine(FadeInAlpha(timeToAnimate, fadeImage, 0));
         while (timePassed < timeToAnimate)
         {
-            fadeImage.color = Color.Lerp(startColor, fadeColor, (timePassed / timeToAnimate));
             mySource.volume = Mathf.Lerp(0, Scenehandler.Instance.effectVolume * 0.5f, (timePassed / timeToAnimate));
 
             timePassed += Time.deltaTime;
@@ -115,13 +130,14 @@ public class GameoverManager : MonoBehaviour
         }
         fadeImage.color = fadeColor;
         mySource.volume = Scenehandler.Instance.effectVolume * 0.5f;
-
+        Image gameOverScreenBackground = gameOverScreen.GetComponent<Image>();
+        gameOverScreenBackground.color = new Color(1,1,1,0);
 
         if (playerWon)
         {
             gameOverScreen.winStatusText.text = "You won!";
-            gameOverScreen.winStatusText.color = Color.black;
-            gameOverScreen.statsText.color = Color.black;
+            gameOverScreen.winStatusText.color = Color.white;
+            gameOverScreen.statsText.color = Color.white;
         }
         else
         {
@@ -129,12 +145,35 @@ public class GameoverManager : MonoBehaviour
             gameOverScreen.winStatusText.color = Color.white;
             gameOverScreen.statsText.color = Color.white;
         }
-
-
         gameOverScreen.gameObject.SetActive(true);
+        this.StartCoroutine(FadeInAlpha(timeToAnimate/2f, gameOverScreenBackground, 0));
+
+        this.StartCoroutine(FadeInAlpha(timeToAnimate / 2f, replayImage, timeToAnimate / 2f));
+        this.StartCoroutine(FadeInAlpha(timeToAnimate / 2f, menuImage, timeToAnimate / 2f));
+        this.StartCoroutine(FadeInAlpha(timeToAnimate / 2f, quitImage, timeToAnimate / 2f));
+
+
 
         yield return null;
     }
+
+    private IEnumerator FadeInAlpha(float secToFade, Image imageToFadeIn, float startDelay) 
+    {
+        yield return new WaitForSeconds(startDelay);
+        Color startColor = imageToFadeIn.color;
+        Color targetColor = startColor;
+        targetColor.a = 1;
+
+        float timePassed = 0;
+        while (timePassed < secToFade)
+        {
+            imageToFadeIn.color = Color.Lerp(startColor, targetColor, (timePassed / secToFade));
+
+            timePassed += Time.deltaTime;
+            yield return null;
+        }
+    }
+
 
     private void GenerateGameOverScreen()
     {
@@ -162,6 +201,7 @@ public class GameoverManager : MonoBehaviour
         layerCanvas.overrideSorting = true;
         layerCanvas.sortingOrder = 40;
         Image newTransitionImage = newTransitionScreen.AddComponent<Image>();
+        newTransitionImage.raycastTarget = false;
         newTransitionImage.color = new Color(0, 0, 0, 0);
 
         gameOverFade = newTransitionScreen;

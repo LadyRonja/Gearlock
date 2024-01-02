@@ -2535,11 +2535,11 @@ MonoBehaviour:
   startMovingSound: []
   finishedStepSound: []
   currentEase: 0
-  actionAnimEase: 13
-  aktiveSpineAnimation: 0
-  idleAnimation: 
-  jumpAnimation: 
-  skeletonAnimation: {fileID: 0}
+  actionAnimEase: 25
+  aktiveSpineAnimation: 1
+  idleAnimation: Idle
+  jumpAnimation: Jump
+  skeletonAnimation: {fileID: 1890562802}
   brokenDigger: {fileID: 1387611179076426880, guid: d532bd26be33c284297d583c1446e12a, type: 3}
 --- !u!4 &728926364
 Transform:
@@ -2557,7 +2557,6 @@ Transform:
   - {fileID: 1586373677}
   - {fileID: 650604136}
   - {fileID: 1923945224}
-  - {fileID: 1890562800}
   m_Father: {fileID: 4971297747065336438}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &728926365
@@ -7054,7 +7053,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1890562800
 Transform:
   m_ObjectHideFlags: 0
@@ -7063,13 +7062,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1890562799}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -5.54, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -5.5399933, z: 0}
   m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1840423019}
-  m_Father: {fileID: 728926364}
+  m_Father: {fileID: 1923945224}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1890562801
 MeshFilter:
@@ -7385,7 +7384,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1923945222}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -7444,6 +7443,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1998091341}
+  - {fileID: 1890562800}
   m_Father: {fileID: 728926364}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1958923582
@@ -15722,6 +15722,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayingDiscard: 0
   discardPile: {fileID: 2517075719975494789}
+  drawPile: {fileID: 0}
   keepPanel: {fileID: 4134084893077386398}
   hasBeenClosedOnce: 0
 --- !u!222 &3785440739000359685
@@ -17449,12 +17450,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameOverScreen: {fileID: 4371369217328364235}
-  gameOverText: {fileID: 1887471484320622777}
   firstTutorialSceneName: Tutorial First
   isFirstTutorial: 0
   secondTutorialSceneName: Tutorial Second
   isSecondTutorial: 0
   levelOneName: DevRonja
+  gameOverFade: {fileID: 0}
 --- !u!4 &4773412246373571019
 Transform:
   m_ObjectHideFlags: 0

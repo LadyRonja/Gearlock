@@ -539,7 +539,7 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
         Vector3 initialPosition = gfx.transform.position;
 
         // Define the target position for the animation
-        Vector3 targetPosition = new Vector3(initialPosition.x, initialPosition.y + 2f, initialPosition.z);
+        Vector3 targetPosition = new Vector3(initialPosition.x, initialPosition.y + 3f, initialPosition.z);
 
         
 
@@ -548,24 +548,24 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
         float resetAngle = 0f;
 
         // Use DoTween to move the unit up on the y-axis
-        transform.DOMove(targetPosition, 0.1f)
+        transform.DOMove(targetPosition, 0.2f)
             .SetEase(actionAnimEase)
             .OnComplete(() =>
             {
                 // After reaching the top, tilt on the x-axis
-                gfx.transform.DORotate(new Vector3(0f, 0f, tiltAngle), 0.2f)
+                gfx.transform.DORotate(new Vector3(0f, 0f, tiltAngle), 0.3f)
                     .SetEase(actionAnimEase)
                     .OnComplete(() =>
                     {
                         
 
                         // After tilting, tilt back on the x-axis
-                        gfx.transform.DORotate(new Vector3(0f, 0f, resetAngle), 0.2f)
+                        gfx.transform.DORotate(new Vector3(0f, 0f, resetAngle), 0.3f)
                             .SetEase(actionAnimEase)
                             .OnComplete(() =>
                             {
                                 // Move back down to the initial position on the y-axis
-                                gfx.transform.DOMove(initialPosition, 0.1f)
+                                gfx.transform.DOMove(initialPosition, 0.2f)
                                     .SetEase(actionAnimEase);
 
                                 
