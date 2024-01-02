@@ -85,7 +85,6 @@ public class GameoverManager : MonoBehaviour
     {
         GenerateGameOverScreen();
 
-
         // Buttons
         Image replayImage = gameOverScreen.replayButton.GetComponent<Image>();
         replayImage.raycastTarget = true;
@@ -131,7 +130,6 @@ public class GameoverManager : MonoBehaviour
         }
         fadeImage.color = fadeColor;
         mySource.volume = Scenehandler.Instance.effectVolume * 0.5f;
-        
         Image gameOverScreenBackground = gameOverScreen.GetComponent<Image>();
         gameOverScreenBackground.color = new Color(1,1,1,0);
 
@@ -162,7 +160,6 @@ public class GameoverManager : MonoBehaviour
     private IEnumerator FadeInAlpha(float secToFade, Image imageToFadeIn, float startDelay) 
     {
         yield return new WaitForSeconds(startDelay);
-
         Color startColor = imageToFadeIn.color;
         Color targetColor = startColor;
         targetColor.a = 1;
