@@ -18652,18 +18652,14 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 7464352785308617435}
-    - target: {fileID: 1317067988388685059, guid: 5d7375c010324094a91d2ef022d63bdb, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: toggleEnd
-      objectReference: {fileID: 0}
+    - target: {fileID: 1998365981285888221, guid: 5d7375c010324094a91d2ef022d63bdb, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 678530523}
     - target: {fileID: 2804756142435818611, guid: 5d7375c010324094a91d2ef022d63bdb, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 223901474}
-    - target: {fileID: 2804756142435818611, guid: 5d7375c010324094a91d2ef022d63bdb, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ToggleDisplay
-      objectReference: {fileID: 0}
     - target: {fileID: 6385255877727448526, guid: 5d7375c010324094a91d2ef022d63bdb, type: 3}
       propertyPath: m_Name
       value: Deck-Discard-End Turn Panel
@@ -18751,83 +18747,8 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 5598581036884234211, guid: 5d7375c010324094a91d2ef022d63bdb, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1271632228}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5d7375c010324094a91d2ef022d63bdb, type: 3}
---- !u!114 &1271632226 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5538976778286423871, guid: 5d7375c010324094a91d2ef022d63bdb, type: 3}
-  m_PrefabInstance: {fileID: 1271632225}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1271632227}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!1 &1271632227 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5598581036884234211, guid: 5d7375c010324094a91d2ef022d63bdb, type: 3}
-  m_PrefabInstance: {fileID: 1271632225}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1271632228
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1271632227}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Navigation:
-    m_Mode: 3
-    m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
-  m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
-  m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_SelectedTrigger: Selected
-    m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 1271632226}
-  m_OnClick:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 678530523}
-        m_TargetAssemblyTypeName: DrawShow, Assembly-CSharp
-        m_MethodName: ToggleDisplay
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!1 &1273568290 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2565271407308805428, guid: 57ca9bb72f2aadd4abfb595c43fd95fd, type: 3}
@@ -32317,6 +32238,7 @@ MonoBehaviour:
   isSecondTutorial: 0
   levelOneName: Last Stand _Small
   gameOverFade: {fileID: 0}
+  gameIsOver: 0
 --- !u!4 &4773412246373571019
 Transform:
   m_ObjectHideFlags: 0
