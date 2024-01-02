@@ -16,10 +16,14 @@ public class Scenehandler : MonoBehaviour
     public GameObject menuButtons;
     public GameObject tutorialCheckPanel;
     public GameObject optionsBar;
+    public GameObject creditsPanel;
 
     public bool toggleZoomOnHover = false;
     public bool toggleClickToDrag = false;
     public bool toggleCardReposition = false;
+
+    public Slider musicSlider;
+    public Slider effectSlider;
     [Range(0f, 1f)] public float musicVolume = 1f;
     [Range(0f, 1f)] public float effectVolume = 1f;
 
@@ -53,7 +57,7 @@ public class Scenehandler : MonoBehaviour
     }
     public void GameStart()
     {
-        SceneManager.LoadScene("GameTest4");
+        SceneManager.LoadScene("Last Stand _Small");
     }
 
     public void TutorialStart()
@@ -73,6 +77,12 @@ public class Scenehandler : MonoBehaviour
             changingScene = true;
             StartCoroutine(Transition(toScene));
         }
+    }
+
+    public void ToggleCredits()
+    {
+        menuButtons.SetActive(!menuButtons.activeSelf);
+        creditsPanel.SetActive(!creditsPanel.activeSelf);
     }
 
     private void Detransition()
@@ -190,4 +200,17 @@ public class Scenehandler : MonoBehaviour
         GameObject go = new GameObject("SceneHandler");
         return go.AddComponent<Scenehandler>();
     }
+
+    public void MusicVolume()
+    {
+        musicVolume = musicSlider.value / 100;
+        AudioHandler.Instance.UpdateMusicVolume(musicVolume);
+    }
+
+    public void EffectVolume()
+    {
+        effectVolume = effectSlider.value / 100;
+        AudioHandler.Instance.UpdateEffectVolume(effectVolume);
+    }
+
 }
