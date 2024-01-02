@@ -36,7 +36,7 @@ public class DrawPile : MonoBehaviour
             totalCards++;
             Card.CardType cardType = obj.GetComponent<Card>().myType;
 
-            if (cardType == Card.CardType.Dig) digCards++;
+            if      (cardType == Card.CardType.Dig) digCards++;
             else if (cardType == Card.CardType.Dynamite) dynamiteCards++;
             else if (cardType == Card.CardType.Attack) attackCards++;
             else if (cardType == Card.CardType.Attack2x) attackTwiceCards++;

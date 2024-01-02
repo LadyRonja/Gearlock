@@ -29,6 +29,7 @@ public class DrawShow : MonoBehaviour
 
     public void ToggleDisplay()
     {
+        DrawPile.Instance.UpdateDrawDisplay();
         discardPile.SetActive(false);
         drawPile.SetActive(!drawPile.activeSelf);
         if (TurnManager.Instance.keepPhase)

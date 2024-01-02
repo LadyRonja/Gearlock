@@ -37,8 +37,8 @@ public class PauseHandler : MonoBehaviour
 
     private void Start()
     {
-        musicSlider = Scenehandler.Instance.musicSlider;
-        effectSlider = Scenehandler.Instance.effectSlider;
+        musicSlider.value = Scenehandler.Instance.musicVolume * 100;
+        effectSlider.value = Scenehandler.Instance.effectVolume * 100;
         toggleZoomOnHover = Scenehandler.Instance.toggleZoomOnHover;
         toggleClickToDrag = Scenehandler.Instance.toggleClickToDrag;
         toggleCardReposition = Scenehandler.Instance.toggleCardReposition;
@@ -55,7 +55,7 @@ public class PauseHandler : MonoBehaviour
     public void PauseToggle()
     {
         pauseMenu = !pauseMenu;
-        
+
 
         if (pauseMenu)
         {
@@ -86,24 +86,24 @@ public class PauseHandler : MonoBehaviour
 
     public void GameStart()
     {
-        SceneManager.LoadScene("Last Stand _Small");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
 
     public void menu()
     {
-        SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene("Main Menu");
     }
 
 
 
-//    public void QuitGame()
-//    {
-//#if UNITY_EDITOR
-//        UnityEditor.EditorApplication.isPlaying = false;
-//#endif
-//        Application.Quit();
-//    }
+    //    public void QuitGame()
+    //    {
+    //#if UNITY_EDITOR
+    //        UnityEditor.EditorApplication.isPlaying = false;
+    //#endif
+    //        Application.Quit();
+    //    }
 
     public void ToggleZoomOnHover()
     {
