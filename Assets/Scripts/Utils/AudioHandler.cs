@@ -151,6 +151,29 @@ public class AudioHandler : MonoBehaviour
         }
     }
 
+    public void TuneOutMusic()
+    {
+        StartCoroutine(TurnOffMusic());
+    }
+
+    private IEnumerator TurnOffMusic() 
+    {
+        float startVol = musicPlayer.volume;
+        float timePassed = 0;
+        float timeToQuiet = 1f;
+
+        while (timeToQuiet > timePassed)
+        {
+            musicPlayer.volume = Mathf.Lerp(startVol, 0, (timePassed / timeToQuiet));
+            timePassed += Time.deltaTime;
+
+            yield return null;
+        }
+        musicPlayer.volume = 0;
+        yield return null; 
+    }
+
+
     private static AudioHandler GetInstance()
     {
         if(instance != null)
