@@ -135,6 +135,22 @@ public class AudioHandler : MonoBehaviour
         }
     }
 
+    public void UpdateMusicVolume(float volume)
+    {
+        volume = Mathf.Clamp(volume, 0f, 1f);
+
+        musicPlayer.volume = volume;
+    }
+
+    public void UpdateEffectVolume(float volume)
+    {
+        volume = Mathf.Clamp(volume, 0f, 1f);
+        foreach (AudioSource s in effectSources)
+        {
+            s.volume = volume;
+        }
+    }
+
     private static AudioHandler GetInstance()
     {
         if(instance != null)
