@@ -49,6 +49,8 @@ public class AIManager : MonoBehaviour
             UnitSelector.Instance.UpdateSelectedUnit(enemyTarget, true);
             // TODO:    
             // Play Animation Here
+            u.PlayActionAnimation();
+
             yield return new WaitForSeconds(0.5f);
             enemyTarget.TakeDamage(u.power);
             yield return new WaitForSeconds(2f);
