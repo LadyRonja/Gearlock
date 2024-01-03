@@ -5,11 +5,11 @@ using UnityEngine;
 public class Explosion : MonoBehaviour
 {
     [SerializeField] AnimationClip myClip;
-    [SerializeField] AudioClip explosionSound;
+    [SerializeField] List<AudioClip> explosionSounds;
 
     private void Start()
     {
-        AudioHandler.PlaySoundEffect(explosionSound);
+        AudioHandler.PlayRandomEffectFromList(explosionSounds);
         Destroy(this.gameObject, myClip.length);
     }
 }

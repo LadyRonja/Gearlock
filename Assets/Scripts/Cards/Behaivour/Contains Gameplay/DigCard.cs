@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class DigCard : Card
 {
+    [SerializeField] List<AudioClip> miningSounds = new();
+
     public override void ExecuteBehaivour(Tile onTile, Unit byUnit)
     {
+        AudioHandler.PlayRandomEffectFromList(miningSounds);
         onTile.RemoveDirt();
         ConfirmCardExecuted();
         FlipUnitBasedOnClickedTile(byUnit, onTile);
