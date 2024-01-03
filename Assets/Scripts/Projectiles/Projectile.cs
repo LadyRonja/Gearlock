@@ -70,6 +70,9 @@ public abstract class Projectile : MonoBehaviour
             yield return null;
         }
         gfx.transform.position = transform.position;
+        SpriteRenderer gfxSprite = gfx.GetComponent<SpriteRenderer>();
+        if(gfxSprite != null )
+            gfxSprite.color = new Color(1, 1, 1, 0);
 
         OnArrival();
         yield return null;
