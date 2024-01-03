@@ -113,8 +113,9 @@ public class HoverManager : MonoBehaviour
 
             if(myHits.tile != oldTile)
             {
-                if (oldTile != null)
+                if (oldTile != null) { 
                     HoverTileExit(oldTile);
+                }
             }
 
             if (myHits.tile != null) { 
@@ -126,6 +127,15 @@ public class HoverManager : MonoBehaviour
             if (myHits.unit != null)
                 myHits.unit.HoverTextUnit();
         }
+
+        if (myHits.tile != oldTile)
+        {
+            if (oldTile != null)
+            {
+                HoverTileExit(oldTile);
+            }
+        }
+
     }
 
     // Check if the user maybe tried to click a card rather than doing anything else
