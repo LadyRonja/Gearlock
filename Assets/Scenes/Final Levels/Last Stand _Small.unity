@@ -30993,6 +30993,58 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1649061327
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1649061329}
+  - component: {fileID: 1649061328}
+  m_Layer: 0
+  m_Name: Ambient Sounds
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1649061328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1649061327}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46a57707d8b20674d90b08896d72d36c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - {fileID: 8300000, guid: 4fa4e3fc4eaa48440859996917206503, type: 3}
+  - {fileID: 8300000, guid: 6dc6b56d0f1b9d04fb213067cfe86d9e, type: 3}
+  - {fileID: 8300000, guid: 7e74fde517a177a4ab189a4d4d45cc71, type: 3}
+  - {fileID: 8300000, guid: aa100b79577bcff41bae17377f161ca4, type: 3}
+  - {fileID: 8300000, guid: ea09211dd73ad5047abb7298cbd4a2b6, type: 3}
+  minDelaySec: 50
+  maxDelaySec: 140
+--- !u!4 &1649061329
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1649061327}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1653987879
 GameObject:
   m_ObjectHideFlags: 0
@@ -45316,3 +45368,4 @@ SceneRoots:
   - {fileID: 630530301}
   - {fileID: 1689136109}
   - {fileID: 1758577600}
+  - {fileID: 1649061329}
