@@ -35,6 +35,8 @@ public class AIManager : MonoBehaviour
             UnitSelector.Instance.UpdateSelectedUnit(u, true);
             Unit enemyTarget = u.FindTargetUnit();
 
+            
+
             yield return new WaitForSeconds(1.5f); 
 
             // Move Towards Target
@@ -47,7 +49,8 @@ public class AIManager : MonoBehaviour
                 continue;
 
             UnitSelector.Instance.UpdateSelectedUnit(enemyTarget, true);
-            // TODO:    
+            // TODO:
+            
             // Play Animation Here
             u.PlayActionAnimation();
 
@@ -65,4 +68,6 @@ public class AIManager : MonoBehaviour
 
         yield return null;
     }
+
+   
 }
