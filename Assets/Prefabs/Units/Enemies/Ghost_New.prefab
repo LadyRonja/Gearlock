@@ -20,6 +20,14 @@ PrefabInstance:
       propertyPath: m_Color.a
       value: 0.7058824
       objectReference: {fileID: 0}
+    - target: {fileID: 3359812490781302400, guid: 89bc880b93910a34caed231e137919d8, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3359812490781302400, guid: 89bc880b93910a34caed231e137919d8, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -3.3599997
+      objectReference: {fileID: 0}
     - target: {fileID: 3856975517133895266, guid: 89bc880b93910a34caed231e137919d8, type: 3}
       propertyPath: m_Size.x
       value: 1.8015022
@@ -35,6 +43,10 @@ PrefabInstance:
     - target: {fileID: 3856975517133895266, guid: 89bc880b93910a34caed231e137919d8, type: 3}
       propertyPath: m_Center.y
       value: 1.4713302
+      objectReference: {fileID: 0}
+    - target: {fileID: 5146091867050384768, guid: 89bc880b93910a34caed231e137919d8, type: 3}
+      propertyPath: m_FillAmount
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5765075689593906628, guid: 89bc880b93910a34caed231e137919d8, type: 3}
       propertyPath: m_text
@@ -91,6 +103,14 @@ PrefabInstance:
     - target: {fileID: 7409664076847683695, guid: 89bc880b93910a34caed231e137919d8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7965190840036959777, guid: 89bc880b93910a34caed231e137919d8, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7965190840036959777, guid: 89bc880b93910a34caed231e137919d8, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -3.12
       objectReference: {fileID: 0}
     - target: {fileID: 8312511765716456772, guid: 89bc880b93910a34caed231e137919d8, type: 3}
       propertyPath: m_LocalPosition.z
@@ -211,6 +231,7 @@ MonoBehaviour:
   finishedStepSound:
   - {fileID: 8300000, guid: 083cc030827e2ef44bc452281932474b, type: 3}
   currentEase: 0
+  actionAnimEase: 0
   aktiveSpineAnimation: 0
   idleAnimation: 
   jumpAnimation: 
