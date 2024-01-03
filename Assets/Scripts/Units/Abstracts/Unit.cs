@@ -44,7 +44,9 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
     public List<GameObject> MovePointLight;
     public List<GameObject> MovePointDark;
     int maxMovePoints = 4;
+    float animationLiftHeight = 3f;
     private int lastDisabledLightIndex = -1;
+    Vector3 endMovePosition;
 
     [Header("Components")]
     public Transform gfx;
@@ -284,6 +286,7 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
 
         Vector3 startPos = this.transform.position;
         Vector3 endPos = toTile.transform.position;
+        endMovePosition = endPos;
         endPos.z -= 0.1f;
         
         if (myMR != null)
@@ -549,8 +552,8 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
         Vector3 initialPosition = gfx.transform.position;
 
         // Define the target position for the animation
-        Vector3 targetPosition = new Vector3(initialPosition.x, initialPosition.y + 3f, initialPosition.z);
-
+        Vector3 targetPosition = new Vector3(initialPosition.x, initialPosition.y + animationLiftHeight, initialPosition.z);
+        endMovePosition = new Vector3(targetPosition.x, initialPosition.y, targetPosition.z);
         
 
         // Define tilt angles based on the unit's flip condition
@@ -575,7 +578,7 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
                             .OnComplete(() =>
                             {
                                 // Move back down to the initial position on the y-axis
-                                gfx.transform.DOMove(initialPosition, 0.2f)
+                                gfx.transform.DOMove(new Vector3(endMovePosition.x, initialPosition.y, endMovePosition.z), 0.2f)
                                     .SetEase(actionAnimEase);
 
                                 

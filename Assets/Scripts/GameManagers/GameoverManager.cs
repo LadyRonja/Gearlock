@@ -81,7 +81,9 @@ public class GameoverManager : MonoBehaviour
 
     private void PlayGameOverAnimation(bool playerWon)
     {
-        AudioHandler.Instance.TuneOutMusic();
+        if(!playerWon)
+            AudioHandler.Instance.TuneOutMusic();
+
         StartCoroutine(GameOverAnimator(playerWon));
     }
 
@@ -122,18 +124,19 @@ public class GameoverManager : MonoBehaviour
         gameOverScreen.statsText.color = new Color(1, 1, 1, 0);
 
 
-        // Audio
         AudioSource mySource = new GameObject("Game Over Noise").AddComponent<AudioSource>();
-        mySource.volume = Scenehandler.Instance.effectVolume;
-        if(playerWon)
-            mySource.clip = Resources.Load<AudioClip>("Music/Game Over/victory noise");
-        else
+        // Audio
+        if (!playerWon)
+        {
             mySource.clip = Resources.Load<AudioClip>("Music/Game Over/defeat noise");
+            mySource.Play();
+        }
 
-        mySource.Play();
 
         float timePassed = 0;
         float timeToAnimate = 5f;
+        if (playerWon)
+            timeToAnimate = 2f;
 
         this.StartCoroutine(FadeInAlpha(timeToAnimate, fadeImage, 0));
         while (timePassed < timeToAnimate)
