@@ -8,6 +8,7 @@ using UnityEngine.UI;
 using DG.Tweening;
 using Unity.VisualScripting;
 using TMPro;
+using Spine;
 
 public enum BotSpecialization
 {
@@ -504,13 +505,16 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
     // Call this method to play the jump animation
     public void PlayJumpAnimation()
     {
-        if (skeletonAnimation != null)
+      TrackEntry entry = skeletonAnimation.AnimationState.SetAnimation(0, jumpAnimation, false);
+        entry.AnimationStart = 1f;
+        
+        /* if (skeletonAnimation != null)
         {
             skeletonAnimation.AnimationState.SetAnimation(0, jumpAnimation, false);
             // Set a callback to handle the animation completion
             skeletonAnimation.AnimationState.Complete += OnJumpAnimationComplete;
             isJumping = true;
-        }
+        }*/
     }
 
     // Callback for jump animation completion
