@@ -13,6 +13,8 @@ public class GameOverScreen : MonoBehaviour
     public Button replayButton;
     public Button menuButton;
     public Button quitButton;
+    [Space]
+    public Image buttonPanel;
 
     public void PlayAgain() 
     {

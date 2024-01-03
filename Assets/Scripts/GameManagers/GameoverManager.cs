@@ -74,6 +74,7 @@ public class GameoverManager : MonoBehaviour
         else
         {
             PlayGameOverAnimation(playerWon);
+            AIManager.Instance.StopAllCoroutines();
         }
     }
 
@@ -147,22 +148,20 @@ public class GameoverManager : MonoBehaviour
         gameOverScreenBackground.color = new Color(1,1,1,0);
 
         if (playerWon)
-        {
-            gameOverScreen.winStatusText.text = "You won!";
-            gameOverScreen.winStatusText.color = Color.white;
-            gameOverScreen.statsText.color = Color.white;
-        }
+            gameOverScreen.winStatusText.text = "Victory!";
         else
-        {
-            gameOverScreen.winStatusText.text = "You lost!";
-            gameOverScreen.winStatusText.color = Color.white;
-            gameOverScreen.statsText.color = Color.white;
-        }
+            gameOverScreen.winStatusText.text = "Defeat!";
+
+        gameOverScreen.winStatusText.color = new Color(1,1,1,0);
+        gameOverScreen.statsText.color = new Color(1, 1, 1, 0);
+        gameOverScreen.buttonPanel.color = new Color(1,1,1,0);
+
         gameOverScreen.gameObject.SetActive(true);
         this.StartCoroutine(FadeInAlpha(timeToAnimate/2f, gameOverScreenBackground, 0));
-        this.StartCoroutine(FadeInAlpha(timeToAnimate / 4, gameOverScreen.winStatusText, timeToAnimate / 5)); 
-        this.StartCoroutine(FadeInAlpha(timeToAnimate / 4, gameOverScreen.statsText, timeToAnimate / 4));
+        this.StartCoroutine(FadeInAlpha(timeToAnimate / 2f, gameOverScreen.winStatusText, timeToAnimate / 4)); 
+        this.StartCoroutine(FadeInAlpha(timeToAnimate / 2f, gameOverScreen.statsText, timeToAnimate / 4));
 
+        this.StartCoroutine(FadeInAlpha(timeToAnimate / 2f, gameOverScreen.buttonPanel, timeToAnimate / 2f));
         this.StartCoroutine(FadeInAlpha(timeToAnimate / 2f, replayImage, timeToAnimate / 2f));
         this.StartCoroutine(FadeInAlpha(timeToAnimate / 2f, replayText, timeToAnimate / 2f));
         this.StartCoroutine(FadeInAlpha(timeToAnimate / 2f, menuImage, timeToAnimate / 2f));
