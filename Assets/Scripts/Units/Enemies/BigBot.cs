@@ -49,7 +49,7 @@ public class BigBot : Unit
                 yield return new WaitForSeconds(0.5f);
                 PlayActionAnimation();
                 path[i].RemoveDirt(false);
-                yield return new WaitForSeconds(0.3f);
+                yield return new WaitForSeconds(2f);
                 yield return StartCoroutine(MoveStep(path[i]));
                 break;
             }

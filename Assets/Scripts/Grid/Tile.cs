@@ -23,6 +23,8 @@ public class Tile : MonoBehaviour, IPointerDownHandler
 
     public bool highlighted = false;
 
+    public float delay = 0.4f;
+
     // Contents
     public Unit occupant;
     public bool containsDirt;
@@ -112,11 +114,15 @@ public class Tile : MonoBehaviour, IPointerDownHandler
         AudioHandler.PlaySoundEffect(dirt.getMinedSound);
         bool remoevedInEditor = false;
 #if UNITY_EDITOR
-        DestroyImmediate(dirt.gameObject);
+        Destroy(dirt.gameObject, delay);
         remoevedInEditor = true;
 #endif
         if (!remoevedInEditor)
-            Destroy(dirt.gameObject);
+        {
+            
+            Destroy(dirt.gameObject, delay);
+        }
+            
 
         dirt = null;
 
