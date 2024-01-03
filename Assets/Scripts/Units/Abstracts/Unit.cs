@@ -499,6 +499,7 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
 
     public void PlayIdleAnimation()
     {
+        
         if (skeletonAnimation != null && !isJumping)
         {
             skeletonAnimation.AnimationState.SetAnimation(0, idleAnimation, true);
@@ -508,8 +509,13 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
     // Call this method to play the jump animation
     public void PlayJumpAnimation()
     {
-      TrackEntry entry = skeletonAnimation.AnimationState.SetAnimation(0, jumpAnimation, false);
-        entry.AnimationStart = 1f;
+        if (skeletonAnimation != null)
+        {
+            TrackEntry entry = skeletonAnimation.AnimationState.SetAnimation(0, jumpAnimation, false);
+            entry.AnimationStart = 1f;
+        }
+
+            
         
         /* if (skeletonAnimation != null)
         {
@@ -521,12 +527,12 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
     }
 
     // Callback for jump animation completion
-    private void OnJumpAnimationComplete(Spine.TrackEntry trackEntry)
+   /* private void OnJumpAnimationComplete(Spine.TrackEntry trackEntry)
     {
         // Reset the flag and play the idle animation again
         isJumping = false;
         PlayIdleAnimation();
-    }
+    }*/
 
     private void UpdateHealthBar()
     {
