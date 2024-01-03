@@ -75,6 +75,7 @@ public class Scenehandler : MonoBehaviour
         if(!changingScene)
         {
             changingScene = true;
+            GameStats.Instance.ResetStats();
             StartCoroutine(Transition(toScene));
         }
     }

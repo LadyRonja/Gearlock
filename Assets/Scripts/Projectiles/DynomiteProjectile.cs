@@ -43,7 +43,10 @@ public class DynomiteProjectile : Projectile
             GameObject explosion = Instantiate(explosionPrefab, spawnPos, Quaternion.identity);
 
             if (t.containsDirt)
+            {
                 t.RemoveDirt();
+                GameStats.Instance.IncreaseRocksMined();
+            }   
 
             if (t.occupied)
                 t.occupant.TakeDamage(explosionDamage);

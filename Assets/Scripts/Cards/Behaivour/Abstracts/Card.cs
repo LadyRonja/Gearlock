@@ -133,6 +133,7 @@ public abstract class Card : MonoBehaviour
                 CardManager.Instance.CardEffectComplete();
                 MovementManager.Instance.takingMoveAction = true;
                 myState = CardState.Inactive;
+                GameStats.Instance.IncreaseCardsPlayed();
                 CardTargetFinder.UnhighlightAllContent();
                 if (UnitSelector.Instance.selectedUnit != null)
                 {

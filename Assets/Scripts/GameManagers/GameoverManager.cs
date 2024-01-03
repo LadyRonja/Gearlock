@@ -152,6 +152,14 @@ public class GameoverManager : MonoBehaviour
         else
             gameOverScreen.winStatusText.text = "Defeat!";
 
+        GameStats gs = GameStats.Instance;
+        gameOverScreen.statsText.text = $"Turns you took: {gs.GetTurnsTaken()}" +
+                                        $"\r\nCards you played: {gs.GetCardsPlayed()}" +
+                                        $"\r\nRocks you mined: {gs.GetRocksMined()}" +
+                                        $"\r\nDamage you dealt: {gs.GetDamageDealt()}" +
+                                        $"\r\n\r\nDamage you took: {gs.GetDamageTaken()}" +
+                                        $"\r\nRobots you lost: {gs.GetRobotsLost()}";
+
         gameOverScreen.winStatusText.color = new Color(1,1,1,0);
         gameOverScreen.statsText.color = new Color(1, 1, 1, 0);
         gameOverScreen.buttonPanel.color = new Color(1,1,1,0);

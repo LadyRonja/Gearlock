@@ -10,6 +10,7 @@ public class DigCard : Card
     {
         AudioHandler.PlayRandomEffectFromList(miningSounds);
         onTile.RemoveDirt();
+        GameStats.Instance.IncreaseRocksMined();
         ConfirmCardExecuted();
         FlipUnitBasedOnClickedTile(byUnit, onTile);
         byUnit.PlayActionAnimation();

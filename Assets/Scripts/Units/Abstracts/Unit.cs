@@ -159,6 +159,10 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
         UpdateHealthBar();
         UpdateHealthText();
 
+        if (playerBot)
+            GameStats.Instance.IncreaseDamageTaken(amount);
+        else
+            GameStats.Instance.IncreaseDamageDealt(amount);
 
         if (UnitSelector.Instance.selectedUnit == this)
             UnitSelector.Instance.UpdateUI(true);
@@ -227,7 +231,9 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
         {
             GameoverManager.Instance.CheckGameOver();
             UnitSelector.Instance.UpdatePlayerUnitUI();
+            GameStats.Instance.IncreaseRobotsLost();
         }
+
         StartCoroutine(FadeAndDestroy(0.5f));
         //Destroy(this.gameObject);
     }

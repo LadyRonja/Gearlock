@@ -98,7 +98,7 @@ public class TurnManager : MonoBehaviour // classen blir en singleton
             return;
         }
 
-        
+        GameStats.Instance.IncreaseTurnsTaken();
         CardManager.Instance.DealHand();
 
         isPlayerTurn = true;
