@@ -23,11 +23,13 @@ public class Scenehandler : MonoBehaviour
     private void Awake()
     {
         if (instance == null || instance == this)
+        {
             instance = this;
+            DontDestroyOnLoad(this.gameObject);
+        }
         else
             Destroy(this.gameObject);
 
-        DontDestroyOnLoad(this.gameObject);
         //SceneManager.sceneLoaded += delegate { this.StopAllCoroutines(); };
         if(gameObject != null)
             SceneManager.sceneLoaded += delegate { Detransition(); };
@@ -62,16 +64,16 @@ public class Scenehandler : MonoBehaviour
 
     private void Detransition()
     {
-        if (gameObject != null)
-        {
-            GenerateTransitionImage();
+        if (this.gameObject == null)
+            return;
+
+        GenerateTransitionImage();
 
 
-            transitionImage.GetComponent<RectTransform>().localScale = new Vector3(30, 30, 30);
+        transitionImage.GetComponent<RectTransform>().localScale = new Vector3(30, 30, 30);
 
-            StartCoroutine(ScaleTransition(Vector3.zero));
-            changingScene = false;
-        }
+        this.StartCoroutine(ScaleTransition(Vector3.zero));
+        changingScene = false;
     }
 
     private void GenerateTransitionImage()
@@ -119,6 +121,7 @@ public class Scenehandler : MonoBehaviour
         yield return StartCoroutine(ScaleTransition(new Vector3(30, 30, 30)));
 
         SceneManager.LoadScene(toScene);
+        this.StopAllCoroutines();
         yield return null;
     }
 
