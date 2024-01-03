@@ -22,7 +22,7 @@ public class Scenehandler : MonoBehaviour
 
     private void Awake()
     {
-        if (instance == null)
+        if (instance == null || instance == this)
             instance = this;
         else
             Destroy(this.gameObject);
@@ -53,6 +53,7 @@ public class Scenehandler : MonoBehaviour
         if(!changingScene)
         {
             changingScene = true;
+            transitionImage = null;
             GameStats.Instance.ResetStats();
             StartCoroutine(Transition(toScene));
         }
@@ -64,6 +65,7 @@ public class Scenehandler : MonoBehaviour
         if (gameObject != null)
         {
             GenerateTransitionImage();
+
 
             transitionImage.GetComponent<RectTransform>().localScale = new Vector3(30, 30, 30);
 
@@ -103,7 +105,6 @@ public class Scenehandler : MonoBehaviour
         newTransitionImage.color = Color.black;
 
         transitionImage = newTransitionScreen.transform;     
-        DontDestroyOnLoad(transitionImage);
     }
 
     private IEnumerator Transition(string toScene)
