@@ -47,6 +47,7 @@ public class BigBot : Unit
             if (path[i].containsDirt)
             {
                 yield return new WaitForSeconds(0.5f);
+                PlayActionAnimation();
                 path[i].RemoveDirt(false);
                 yield return new WaitForSeconds(0.3f);
                 yield return StartCoroutine(MoveStep(path[i]));
