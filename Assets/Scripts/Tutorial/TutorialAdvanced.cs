@@ -88,11 +88,17 @@ public class TutorialAdvanced : MonoBehaviour
         // Pick up another the Fight Bot
         if (advancedTutorialIndex == 5)
         {
+            if (UnitStorage.Instance.playerUnits[0].movePointsCur == 0)
+            {
+                UnitStorage.Instance.playerUnits[0].movePointsCur = UnitStorage.Instance.playerUnits[0].movePointsMax;
+            }
+
             if (GridManager.Instance.tiles[1, 1].myPickUp == null)
             {
                 GoToTutorialPage(6);
                 TurnManager.Instance.canEndTurn = true;
             }
+
         }
 
         // End the players turn to draw the fight bot
