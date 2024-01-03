@@ -555,9 +555,9 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
         // Define tilt angles based on the unit's flip condition
         float tiltAngle = (gfx.transform.localScale.x < 0) ? -45f : 45f;
         float resetAngle = 0f;
-
+        Debug.Log("playing animation");
         // Use DoTween to move the unit up on the y-axis
-        transform.DOMove(targetPosition, 0.2f)
+        gfx.transform.DOMove(new Vector3(initialPosition.x, initialPosition.y + animationLiftHeight, initialPosition.z), 0.2f)
             .SetEase(actionAnimEase)
             .OnComplete(() =>
             {
