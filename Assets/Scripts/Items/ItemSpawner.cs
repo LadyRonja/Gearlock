@@ -12,6 +12,8 @@ public class ItemSpawner : MonoBehaviour
     [SerializeField] List<GameObject> spawnableCards = new();
     [SerializeField] List<GameObject> spawnableCardsFinite = new();
 
+    public float delay = 0.5f;
+    
     //TODO:
     // Spawn enemies sometimes
     // Weighted spawns
@@ -51,7 +53,7 @@ public class ItemSpawner : MonoBehaviour
         spawnPos.y += spawnYOffset;
         GameObject cardPickUpObject = Instantiate(pickupPrefab, spawnPos, Quaternion.identity);
         CardPickUp cardPickUpScript = cardPickUpObject.GetComponent<CardPickUp>();
-        if(cardPickUpScript == null)
+        if (cardPickUpScript == null)
         {
             Debug.LogError("No pickup script on Card Pick-up");
             return;
@@ -62,19 +64,26 @@ public class ItemSpawner : MonoBehaviour
 
     public void SpawnRandomCardDelete(Tile onTile)
     {
+        SpawnRandomItemWithDelay(onTile, delay);
+    }
+
+    public void SpawnRandomItemWithDelay(Tile onTile, float delay)
+    {
+        StartCoroutine(SpawnItemWithDelay(onTile, delay));
+    }
+
+    private IEnumerator SpawnItemWithDelay(Tile onTile, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
         if (onTile.containsDirt)
-            return;
+            yield break;
 
         if (!spawnableCardsFinite.Any())
         {
-            //Debug.Log("No items in the item spawner");
             SpawnRandomItem(onTile);
-            return;
+            yield break;
         }
-
-        //int randomCheck = Random.Range(0, 3);
-        //if (randomCheck < 2)
-         
 
         if (onTile.myPickUp != null)
         {
@@ -83,7 +92,6 @@ public class ItemSpawner : MonoBehaviour
         }
 
         int randomCard;
-        // Pick random spawnable item
         if (spawnableCardsFinite.Count > 3)
             randomCard = Random.Range(0, 3);
         else
@@ -96,7 +104,7 @@ public class ItemSpawner : MonoBehaviour
         if (cardPickUpScript == null)
         {
             Debug.LogError("No pickup script on Card Pick-up");
-            return;
+            yield break;
         }
         cardPickUpScript.cardToAdd = spawnableCardsFinite[randomCard];
         spawnableCardsFinite.RemoveAt(randomCard);
