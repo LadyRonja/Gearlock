@@ -1,11 +1,7 @@
 using System.Collections;
-using System.Collections.Generic;
-using config;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using static UnityEngine.GraphicsBuffer;
 
 public class Scenehandler : MonoBehaviour
 {
@@ -13,17 +9,10 @@ public class Scenehandler : MonoBehaviour
 
     Transform transitionImage;
 
-    public GameObject menuButtons;
-    public GameObject tutorialCheckPanel;
-    public GameObject optionsBar;
-    public GameObject creditsPanel;
-
     public bool toggleZoomOnHover = false;
     public bool toggleClickToDrag = false;
     public bool toggleCardReposition = false;
 
-    public Slider musicSlider;
-    public Slider effectSlider;
     [Range(0f, 1f)] public float musicVolume = 1f;
     [Range(0f, 1f)] public float effectVolume = 1f;
 
@@ -33,28 +22,17 @@ public class Scenehandler : MonoBehaviour
 
     private void Awake()
     {
-        if (instance == null)
+        if (instance == null || instance == this)
             instance = this;
         else
             Destroy(this.gameObject);
 
         DontDestroyOnLoad(this.gameObject);
-        SceneManager.sceneLoaded += delegate { Detransition(); };
-
-        AudioHandler musicInitializer = AudioHandler.Instance;
+        //SceneManager.sceneLoaded += delegate { this.StopAllCoroutines(); };
+        if(gameObject != null)
+            SceneManager.sceneLoaded += delegate { Detransition(); };
     }
 
-    public void TutorialCheck()
-    {
-        menuButtons.SetActive(false);
-        tutorialCheckPanel.SetActive(true);
-    }
-
-    public void OptionsToggle()
-    {
-        menuButtons.SetActive(!menuButtons.activeSelf);
-        optionsBar.SetActive(!optionsBar.activeSelf);
-    }
     public void GameStart()
     {
         SceneManager.LoadScene("Last Stand _Small");
@@ -75,25 +53,25 @@ public class Scenehandler : MonoBehaviour
         if(!changingScene)
         {
             changingScene = true;
+            transitionImage = null;
             GameStats.Instance.ResetStats();
             StartCoroutine(Transition(toScene));
         }
     }
 
-    public void ToggleCredits()
-    {
-        menuButtons.SetActive(!menuButtons.activeSelf);
-        creditsPanel.SetActive(!creditsPanel.activeSelf);
-    }
 
     private void Detransition()
     {
-        GenerateTransitionImage();
+        if (gameObject != null)
+        {
+            GenerateTransitionImage();
 
-        transitionImage.GetComponent<RectTransform>().localScale = new Vector3(30, 30, 30);
 
-        StartCoroutine(ScaleTransition(Vector3.zero));
-        changingScene = false;
+            transitionImage.GetComponent<RectTransform>().localScale = new Vector3(30, 30, 30);
+
+            StartCoroutine(ScaleTransition(Vector3.zero));
+            changingScene = false;
+        }
     }
 
     private void GenerateTransitionImage()
@@ -127,7 +105,6 @@ public class Scenehandler : MonoBehaviour
         newTransitionImage.color = Color.black;
 
         transitionImage = newTransitionScreen.transform;     
-        DontDestroyOnLoad(transitionImage);
     }
 
     private IEnumerator Transition(string toScene)
@@ -183,12 +160,12 @@ public class Scenehandler : MonoBehaviour
 
     public void ToggleClickToDrag()
     {
-        toggleClickToDrag= !toggleClickToDrag;
+        toggleClickToDrag = !toggleClickToDrag;
     }
 
     public void ToggleCardReposition()
     {
-        toggleCardReposition= !toggleCardReposition;
+        toggleCardReposition = !toggleCardReposition;
     }
 
     private static Scenehandler GetInstance()
@@ -203,13 +180,13 @@ public class Scenehandler : MonoBehaviour
         return go.AddComponent<Scenehandler>();
     }
 
-    public void MusicVolume()
+    public void MusicVolume(Slider musicSlider)
     {
         musicVolume = musicSlider.value / 100;
         AudioHandler.Instance.UpdateMusicVolume(musicVolume);
     }
 
-    public void EffectVolume()
+    public void EffectVolume(Slider effectSlider)
     {
         effectVolume = effectSlider.value / 100;
         AudioHandler.Instance.UpdateEffectVolume(effectVolume);
