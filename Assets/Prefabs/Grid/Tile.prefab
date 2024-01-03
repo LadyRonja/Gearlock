@@ -72,7 +72,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -2
   m_Sprite: {fileID: 21300000, guid: e4f95a3abcc822343863dd0df677f94a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -205,6 +205,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myMR: {fileID: 0}
+  myHighligther: {fileID: 0}
   neighbourN: {fileID: 0}
   neighbourE: {fileID: 0}
   neighbourS: {fileID: 0}
@@ -212,10 +213,12 @@ MonoBehaviour:
   neighbours: []
   x: 0
   y: 0
+  highlighted: 0
   occupant: {fileID: 0}
   containsDirt: 0
   dirt: {fileID: 0}
   myPickUp: {fileID: 0}
+  highlightedForMovement: 0
   targetable: 1
   blocked: 0
   occupied: 0
