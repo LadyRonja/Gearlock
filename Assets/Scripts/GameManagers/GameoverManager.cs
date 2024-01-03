@@ -30,7 +30,8 @@ public class GameoverManager : MonoBehaviour
             Destroy(this.gameObject);
         #endregion
 
-        gameOverScreen.gameObject.SetActive(false);
+        if(gameOverScreen != null)
+            gameOverScreen.gameObject.SetActive(false);
     }
 
 
@@ -80,7 +81,6 @@ public class GameoverManager : MonoBehaviour
 
     private void PlayGameOverAnimation(bool playerWon)
     {
-        //gameOverScreen.SetActive(true);
         AudioHandler.Instance.TuneOutMusic();
         StartCoroutine(GameOverAnimator(playerWon));
     }
