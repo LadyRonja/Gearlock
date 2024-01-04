@@ -2541,6 +2541,7 @@ MonoBehaviour:
   finishedStepSound:
   - {fileID: 8300000, guid: 083cc030827e2ef44bc452281932474b, type: 3}
   currentEase: 0
+  actionAnimEase: 0
   aktiveSpineAnimation: 0
   idleAnimation: 
   jumpAnimation: 
@@ -4420,6 +4421,7 @@ MonoBehaviour:
   finishedStepSound:
   - {fileID: 8300000, guid: 083cc030827e2ef44bc452281932474b, type: 3}
   currentEase: 0
+  actionAnimEase: 0
   aktiveSpineAnimation: 0
   idleAnimation: 
   jumpAnimation: 
@@ -6963,6 +6965,7 @@ MonoBehaviour:
   finishedStepSound:
   - {fileID: 8300000, guid: 083cc030827e2ef44bc452281932474b, type: 3}
   currentEase: 0
+  actionAnimEase: 0
   aktiveSpineAnimation: 0
   idleAnimation: 
   jumpAnimation: 
@@ -7253,6 +7256,7 @@ MonoBehaviour:
   finishedStepSound:
   - {fileID: 8300000, guid: 083cc030827e2ef44bc452281932474b, type: 3}
   currentEase: 0
+  actionAnimEase: 0
   aktiveSpineAnimation: 0
   idleAnimation: 
   jumpAnimation: 
@@ -9228,6 +9232,7 @@ MonoBehaviour:
   x: 4
   y: 2
   highlighted: 0
+  delay: 0.4
   occupant: {fileID: 0}
   containsDirt: 1
   dirt: {fileID: 701225251009265160}
@@ -9525,6 +9530,7 @@ MonoBehaviour:
   x: 2
   y: 5
   highlighted: 0
+  delay: 0.4
   occupant: {fileID: 0}
   containsDirt: 1
   dirt: {fileID: 5109504973180614772}
@@ -10980,10 +10986,13 @@ MonoBehaviour:
   discardSpawn: {fileID: 5740968338852831186}
   DrawAmount: {fileID: 1942902843589467019}
   siblingIndex: 0
+  PlayShuffleSound: {fileID: 0}
+  PlayDrawSound: {fileID: 0}
   cardEase: 0
   drawEase: 0
   isDisplaying: 0
   useList: 0
+  cardChoice: 0
   discardPile: []
   drawPile: []
   cards:
@@ -11181,6 +11190,7 @@ MonoBehaviour:
   x: 3
   y: 3
   highlighted: 0
+  delay: 0.4
   occupant: {fileID: 0}
   containsDirt: 1
   dirt: {fileID: 1083732925243363215}
@@ -11255,6 +11265,7 @@ MonoBehaviour:
   x: 2
   y: 2
   highlighted: 0
+  delay: 0.4
   occupant: {fileID: 0}
   containsDirt: 1
   dirt: {fileID: 5095961440097648452}
@@ -11489,6 +11500,7 @@ MonoBehaviour:
   x: 5
   y: 1
   highlighted: 0
+  delay: 0.4
   occupant: {fileID: 0}
   containsDirt: 1
   dirt: {fileID: 5970962761708913318}
@@ -11957,6 +11969,7 @@ MonoBehaviour:
   x: 5
   y: 3
   highlighted: 0
+  delay: 0.4
   occupant: {fileID: 0}
   containsDirt: 0
   dirt: {fileID: 0}
@@ -12445,6 +12458,7 @@ MonoBehaviour:
   x: 0
   y: 1
   highlighted: 0
+  delay: 0.4
   occupant: {fileID: 1228456135}
   containsDirt: 0
   dirt: {fileID: 0}
@@ -12727,10 +12741,6 @@ MonoBehaviour:
   - {fileID: 1527503260}
   - {fileID: 1161456797}
   portrait: {fileID: 1909408377}
-  tempNameTextMini: {fileID: 0}
-  tempHealthTextMini: {fileID: 0}
-  tempHealthFillMini: {fileID: 0}
-  tempHealthFillWhiteMini: {fileID: 0}
   gridParent: {fileID: 860383801}
   displayPrefab: {fileID: 4982287730161726828, guid: 7d81b1886adca73468c040374bc0fd71, type: 3}
 --- !u!114 &2249082971769067716
@@ -12826,6 +12836,7 @@ MonoBehaviour:
   x: 2
   y: 3
   highlighted: 0
+  delay: 0.4
   occupant: {fileID: 0}
   containsDirt: 0
   dirt: {fileID: 0}
@@ -13022,6 +13033,7 @@ MonoBehaviour:
   x: 5
   y: 2
   highlighted: 0
+  delay: 0.4
   occupant: {fileID: 0}
   containsDirt: 1
   dirt: {fileID: 2423948256951574560}
@@ -13082,6 +13094,7 @@ MonoBehaviour:
   x: 4
   y: 0
   highlighted: 0
+  delay: 0.4
   occupant: {fileID: 0}
   containsDirt: 0
   dirt: {fileID: 0}
@@ -13121,6 +13134,7 @@ MonoBehaviour:
   x: 3
   y: 2
   highlighted: 0
+  delay: 0.4
   occupant: {fileID: 0}
   containsDirt: 1
   dirt: {fileID: 5604160526713028250}
@@ -13351,6 +13365,7 @@ MonoBehaviour:
   x: 4
   y: 1
   highlighted: 0
+  delay: 0.4
   occupant: {fileID: 0}
   containsDirt: 1
   dirt: {fileID: 3633906029475371977}
@@ -13609,6 +13624,7 @@ MonoBehaviour:
   - {fileID: 6944391597733846485, guid: b1cdf32aae116e84aa826db772b8ca36, type: 3}
   - {fileID: 6944391597733846485, guid: b1cdf32aae116e84aa826db772b8ca36, type: 3}
   - {fileID: 3861232017947565500, guid: 5e8f3cb1634380744befee5806ee00c9, type: 3}
+  delay: 0.5
 --- !u!1 &2738659695132123358
 GameObject:
   m_ObjectHideFlags: 0
@@ -13681,6 +13697,7 @@ MonoBehaviour:
   x: 4
   y: 5
   highlighted: 0
+  delay: 0.4
   occupant: {fileID: 0}
   containsDirt: 1
   dirt: {fileID: 8006832745381256636}
@@ -15227,6 +15244,7 @@ MonoBehaviour:
   x: 3
   y: 4
   highlighted: 0
+  delay: 0.4
   occupant: {fileID: 0}
   containsDirt: 1
   dirt: {fileID: 2533476538423251570}
@@ -15722,6 +15740,7 @@ MonoBehaviour:
   x: 4
   y: 3
   highlighted: 0
+  delay: 0.4
   occupant: {fileID: 0}
   containsDirt: 0
   dirt: {fileID: 0}
@@ -15745,6 +15764,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayingDiscard: 0
   discardPile: {fileID: 2517075719975494789}
+  drawPile: {fileID: 0}
   keepPanel: {fileID: 4134084893077386398}
   hasBeenClosedOnce: 0
 --- !u!222 &3785440739000359685
@@ -17066,6 +17086,7 @@ MonoBehaviour:
   x: 1
   y: 3
   highlighted: 0
+  delay: 0.4
   occupant: {fileID: 0}
   containsDirt: 1
   dirt: {fileID: 7617667415196128538}
@@ -17464,12 +17485,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameOverScreen: {fileID: 4371369217328364235}
-  gameOverText: {fileID: 1887471484320622777}
   firstTutorialSceneName: Tutorial First
   isFirstTutorial: 0
   secondTutorialSceneName: Tutorial Second
   isSecondTutorial: 0
   levelOneName: DevRonja
+  gameOverFade: {fileID: 0}
+  gameIsOver: 0
 --- !u!4 &4773412246373571019
 Transform:
   m_ObjectHideFlags: 0
@@ -17932,6 +17954,7 @@ MonoBehaviour:
   x: 1
   y: 2
   highlighted: 0
+  delay: 0.4
   occupant: {fileID: 0}
   containsDirt: 1
   dirt: {fileID: 4016040367166116414}
@@ -18190,6 +18213,7 @@ MonoBehaviour:
   x: 0
   y: 5
   highlighted: 0
+  delay: 0.4
   occupant: {fileID: 0}
   containsDirt: 0
   dirt: {fileID: 0}
@@ -18739,12 +18763,14 @@ MonoBehaviour:
   fightCursor: {fileID: 2800000, guid: e36d7e7d454eb6645830658aee962495, type: 3}
   pickupCursor: {fileID: 2800000, guid: 8eef6b2fe762c27419d883660109f8fc, type: 3}
   constructCursor: {fileID: 2800000, guid: 7e7d0ba2e2f700b48a649809db03cb2f, type: 3}
+  dynamiteCursor: {fileID: 0}
   defaultCursorRed: {fileID: 2800000, guid: 754735ad68605ac4182c5b94e57b5224, type: 3}
   walkCursorRed: {fileID: 2800000, guid: 9ac4db55654231749944beba9e5107ac, type: 3}
   digCursorRed: {fileID: 2800000, guid: 93d96a5fb983b9544a7d78d51ebe2475, type: 3}
   fightCursorRed: {fileID: 2800000, guid: a006066391b5329499b80d1df24fdc5a, type: 3}
   pickupCursorRed: {fileID: 2800000, guid: 9b35b0faba469d74a8cde524f4395f90, type: 3}
   constructCursorRed: {fileID: 2800000, guid: ab1d2c86bce4f4647bc6a32a941ef363, type: 3}
+  dynamiteCursorRed: {fileID: 0}
 --- !u!212 &5572082700174546428
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -18999,6 +19025,7 @@ MonoBehaviour:
   x: 3
   y: 5
   highlighted: 0
+  delay: 0.4
   occupant: {fileID: 0}
   containsDirt: 1
   dirt: {fileID: 2783533789391666726}
@@ -19173,6 +19200,7 @@ MonoBehaviour:
   x: 0
   y: 0
   highlighted: 0
+  delay: 0.4
   occupant: {fileID: 0}
   containsDirt: 1
   dirt: {fileID: 4344213550303842462}
@@ -19604,6 +19632,7 @@ MonoBehaviour:
   x: 0
   y: 3
   highlighted: 0
+  delay: 0.4
   occupant: {fileID: 0}
   containsDirt: 0
   dirt: {fileID: 0}
@@ -20348,6 +20377,7 @@ MonoBehaviour:
   x: 2
   y: 1
   highlighted: 0
+  delay: 0.4
   occupant: {fileID: 0}
   containsDirt: 1
   dirt: {fileID: 4417983478453986338}
@@ -20601,6 +20631,7 @@ MonoBehaviour:
   x: 2
   y: 4
   highlighted: 0
+  delay: 0.4
   occupant: {fileID: 0}
   containsDirt: 1
   dirt: {fileID: 7013737759696296822}
@@ -20859,6 +20890,7 @@ MonoBehaviour:
   x: 5
   y: 5
   highlighted: 0
+  delay: 0.4
   occupant: {fileID: 0}
   containsDirt: 0
   dirt: {fileID: 0}
@@ -21186,6 +21218,7 @@ MonoBehaviour:
   x: 4
   y: 4
   highlighted: 0
+  delay: 0.4
   occupant: {fileID: 1843707132}
   containsDirt: 0
   dirt: {fileID: 0}
@@ -21879,6 +21912,7 @@ MonoBehaviour:
   x: 0
   y: 4
   highlighted: 0
+  delay: 0.4
   occupant: {fileID: 0}
   containsDirt: 1
   dirt: {fileID: 1249606144761359385}
@@ -21953,6 +21987,7 @@ MonoBehaviour:
   x: 1
   y: 1
   highlighted: 0
+  delay: 0.4
   occupant: {fileID: 0}
   containsDirt: 1
   dirt: {fileID: 5186758652489827991}
@@ -22187,6 +22222,7 @@ MonoBehaviour:
   x: 1
   y: 4
   highlighted: 0
+  delay: 0.4
   occupant: {fileID: 0}
   containsDirt: 1
   dirt: {fileID: 6501219213524560749}
@@ -22477,6 +22513,8 @@ MonoBehaviour:
   KeepCardScreen: {fileID: 4134084893077386398}
   endTurnText: {fileID: 1045891518411710160}
   discard: {fileID: 2517075719975494789}
+  playerTurnStartSound: {fileID: 0}
+  enemyTurnStartSound: {fileID: 0}
   hasEndedTurnOnce: 0
   canEndTurn: 1
   underlineRightRed: {fileID: 767074430}
@@ -22660,6 +22698,7 @@ MonoBehaviour:
   x: 5
   y: 0
   highlighted: 0
+  delay: 0.4
   occupant: {fileID: 728926363}
   containsDirt: 0
   dirt: {fileID: 0}
@@ -22841,6 +22880,7 @@ MonoBehaviour:
   x: 1
   y: 0
   highlighted: 0
+  delay: 0.4
   occupant: {fileID: 0}
   containsDirt: 1
   dirt: {fileID: 7751121136685054730}
@@ -23150,6 +23190,7 @@ MonoBehaviour:
   x: 1
   y: 5
   highlighted: 0
+  delay: 0.4
   occupant: {fileID: 1920860077}
   containsDirt: 0
   dirt: {fileID: 0}
@@ -23494,6 +23535,7 @@ MonoBehaviour:
   x: 3
   y: 0
   highlighted: 0
+  delay: 0.4
   occupant: {fileID: 0}
   containsDirt: 0
   dirt: {fileID: 0}
@@ -24033,6 +24075,7 @@ MonoBehaviour:
   x: 5
   y: 4
   highlighted: 0
+  delay: 0.4
   occupant: {fileID: 0}
   containsDirt: 1
   dirt: {fileID: 932299921620726232}
@@ -24124,6 +24167,7 @@ MonoBehaviour:
   x: 2
   y: 0
   highlighted: 0
+  delay: 0.4
   occupant: {fileID: 0}
   containsDirt: 0
   dirt: {fileID: 0}
@@ -24366,6 +24410,7 @@ MonoBehaviour:
   x: 3
   y: 1
   highlighted: 0
+  delay: 0.4
   occupant: {fileID: 0}
   containsDirt: 0
   dirt: {fileID: 0}
@@ -24588,6 +24633,7 @@ MonoBehaviour:
   x: 0
   y: 2
   highlighted: 0
+  delay: 0.4
   occupant: {fileID: 0}
   containsDirt: 0
   dirt: {fileID: 0}
