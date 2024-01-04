@@ -235,7 +235,7 @@ public class CameraController : MonoBehaviour
     public void ExplosionEffect()
     {
         if (myShaker != null)
-            myShaker.Shake(1f, 2f);
+            myShaker.Shake(0.5f, 1f);
 
         if(rockSystem != null)
         {
