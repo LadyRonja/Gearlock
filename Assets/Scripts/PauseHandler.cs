@@ -67,6 +67,7 @@ public class PauseHandler : MonoBehaviour
 
         if (pauseMenu)
         {
+            CardManager.Instance.RetrieveKeptCards();
             hand.SetActive(false);
             pauseButtons.SetActive(true);
             if (optionsMenu)

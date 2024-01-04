@@ -281,7 +281,7 @@ public class CardContainer : MonoBehaviour
     {
         AudioHandler.PlaySoundEffect(PlayCardSound);
 
-        if (IsCursorInPlayArea() || DataHandler.Instance.toggleClick)
+        if (IsCursorInPlayArea() || !DataHandler.Instance.toggleClick)
         {
             if (TurnManager.Instance.TurnEnd)
             {
@@ -340,7 +340,7 @@ public class CardContainer : MonoBehaviour
         Destroy(card.gameObject);
     }
 
-    private bool IsCursorInPlayArea()
+    public bool IsCursorInPlayArea()
     {
         if (cardPlayConfig.playArea == null) return false;
 

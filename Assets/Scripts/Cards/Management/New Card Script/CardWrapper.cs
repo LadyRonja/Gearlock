@@ -180,7 +180,7 @@ public class CardWrapper : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
         eventsConfig?.OnCardUnhover?.Invoke(new CardUnhover(this));
 
         clickedCard = true;
-        Invoke("ResetBoolClick", 0.1f);
+        Invoke("ResetBoolClick", 0.2f);
     }
 
     public void OnPointerUp(PointerEventData eventData)
@@ -188,13 +188,14 @@ public class CardWrapper : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
         if (!TurnManager.Instance.isPlayerTurn)
             return;
 
-        if (!clickedCard && DataHandler.Instance.toggleClick)
+        if (!DataHandler.Instance.toggleClick && !clickedCard && !container.IsCursorInPlayArea())
         {
+            dragging = false;
             isDragged = false;
             return;
         }
 
-        if (clickedCard && DataHandler.Instance.toggleClick)
+        if (clickedCard && !DataHandler.Instance.toggleClick)
         {
             container.OnCardDragEnd();
             dragging = false;
