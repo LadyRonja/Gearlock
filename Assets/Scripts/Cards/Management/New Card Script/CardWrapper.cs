@@ -188,6 +188,12 @@ public class CardWrapper : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
         if (!TurnManager.Instance.isPlayerTurn)
             return;
 
+        if (!clickedCard && DataHandler.Instance.toggleClick)
+        {
+            isDragged = false;
+            return;
+        }
+
         if (clickedCard && DataHandler.Instance.toggleClick)
         {
             container.OnCardDragEnd();

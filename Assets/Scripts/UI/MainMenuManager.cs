@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+
 public class MainMenuManager : MonoBehaviour
 {
     public GameObject menuButtons;
@@ -13,6 +14,20 @@ public class MainMenuManager : MonoBehaviour
 
     public Slider musicSlider;
     public Slider effectSlider;
+
+    public Toggle zoom;
+    public Toggle click;
+    public Toggle invert;
+
+    private void Start()
+    {
+        zoom.isOn = DataHandler.Instance.toggleZoom;
+        DataHandler.Instance.toggleZoom = zoom.isOn;
+        click.isOn = DataHandler.Instance.toggleClick;
+        DataHandler.Instance.toggleClick = click.isOn;
+        invert.isOn = DataHandler.Instance.toggleInverseCamera;
+        DataHandler.Instance.toggleInverseCamera = invert.isOn;
+    }
 
     // Main menu buttons
     public void TutorialCheck()

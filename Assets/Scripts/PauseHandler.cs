@@ -45,8 +45,10 @@ public class PauseHandler : MonoBehaviour
         effectSlider.value = Scenehandler.Instance.effectVolume * 100;
 
         zoom.isOn = DataHandler.Instance.toggleZoom;
+        DataHandler.Instance.toggleZoom = zoom.isOn;
         click.isOn = DataHandler.Instance.toggleClick;
         reposition.isOn = DataHandler.Instance.toggleInverseCamera;
+        DataHandler.Instance.toggleInverseCamera = reposition.isOn;
     }
 
     public void OptionsToggle()
