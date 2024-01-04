@@ -170,6 +170,9 @@ public class CardWrapper : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
 
     public void OnPointerDown(PointerEventData eventData)
     {
+        if (Input.GetMouseButtonDown(1))
+            return;
+
         if (!TurnManager.Instance.isPlayerTurn)
             return;
 
@@ -185,6 +188,9 @@ public class CardWrapper : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
 
     public void OnPointerUp(PointerEventData eventData)
     {
+        if (Input.GetMouseButtonDown(1))
+            return;
+
         if (!TurnManager.Instance.isPlayerTurn)
             return;
 
