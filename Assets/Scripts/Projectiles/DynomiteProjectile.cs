@@ -36,6 +36,7 @@ public class DynomiteProjectile : Projectile
 
     private IEnumerator ExplosionDelays(List<Tile> tilesToExplodeOn)
     {
+        CameraController.Instance.ExplosionEffect();
         foreach (Tile t in tilesToExplodeOn)
         {
             Vector3 spawnPos = t.transform.position;
@@ -54,7 +55,6 @@ public class DynomiteProjectile : Projectile
             yield return new WaitForSeconds(0.2f);
         }
 
-        CameraController.Instance.ExplosionEffect();
         ConfirmArrival();
         Destroy(this.gameObject);
 
