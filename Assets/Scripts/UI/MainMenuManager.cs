@@ -15,6 +15,7 @@ public class MainMenuManager : MonoBehaviour
     public Slider musicSlider;
     public Slider effectSlider;
 
+
     public Toggle zoom;
     public Toggle click;
     public Toggle invert;
@@ -27,6 +28,7 @@ public class MainMenuManager : MonoBehaviour
         DataHandler.Instance.toggleClick = click.isOn;
         invert.isOn = DataHandler.Instance.toggleInverseCamera;
         DataHandler.Instance.toggleInverseCamera = invert.isOn;
+
     }
 
     // Main menu buttons
