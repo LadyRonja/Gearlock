@@ -12,13 +12,14 @@ public class CardManager : MonoBehaviour
 {
     public static CardManager instance;
 
+    [Header("GameObjects")]
     public GameObject dig;
     public GameObject attack;
     public GameObject attack2x;
     public GameObject diggerBot;
     public GameObject fighterBot;
     public GameObject dynamite;
-
+    
     [HideInInspector] public int digInDiscard;
     [HideInInspector] public int attackInDiscard;
     [HideInInspector] public int attack2xInDiscard;
@@ -27,6 +28,7 @@ public class CardManager : MonoBehaviour
     [HideInInspector] public int dynamiteInDiscard;
     [HideInInspector] public int totalCardsInDiscard;
 
+    [Header("References")]
     public GameObject handParent;
     public GameObject discardPileObject;
     public GameObject brokenFighter;
@@ -36,23 +38,32 @@ public class CardManager : MonoBehaviour
     public GameObject drawPileText;
     public GameObject discardPileText;
 
-
+    [Header("Transforms")]
     public Transform discardIcon;
     public Transform drawIcon;
     public Transform discardSpawn;
     public TextMeshProUGUI DrawAmount;
     [HideInInspector] public int siblingIndex;
 
+    [Header("AudioClips")]
+    public AudioClip PlayShuffleSound;
+    public AudioClip PlayDrawSound;
 
+    [Header("Eases")]
     public Ease cardEase;
     public Ease drawEase;
+
+    [Header("Booleans")]
     public bool isDisplaying = false;
     public bool useList = false;
     public bool cardChoice = false;
 
+    [Header("Lists")]
     public List<GameObject> discardPile;
     public List<GameObject> drawPile;
     public List<GameObject> cards;
+
+
 
     private Dictionary<Card.CardType, GameObject> cardTypeToPrefab;
 
@@ -140,6 +151,8 @@ public class CardManager : MonoBehaviour
 
     public void DealHand()
     {
+        AudioHandler.PlaySoundEffect(PlayDrawSound);
+
         for (int i = 0; handParent.transform.childCount < 5 && i < 5; i++)
         {
             if (drawPile.Count == 0 && discardPile.Count > 0)
@@ -203,6 +216,8 @@ public class CardManager : MonoBehaviour
     public void ShuffleDrawPile() // Shuffles draw pile by going randomly switching each card with another.
     {
         System.Random random = new System.Random();
+
+        AudioHandler.PlaySoundEffect(PlayShuffleSound);
 
         for (int i = drawPile.Count - 1; i >= 0; i--)
         {

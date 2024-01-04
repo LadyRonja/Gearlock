@@ -54,7 +54,7 @@ public class CardContainer : MonoBehaviour
     public float panelPosYLow;
     float bigSize = 2.7f;
 
-
+    public AudioClip PlayCardSound;
 
 
     private void Awake()
@@ -69,9 +69,6 @@ public class CardContainer : MonoBehaviour
         canvas = GetComponent<Canvas>();
         rectTransform = GetComponent<RectTransform>();
         InitCards();
-
-
-
     }
 
     public void InitCards()
@@ -282,6 +279,7 @@ public class CardContainer : MonoBehaviour
 
     public void OnCardDragEnd()
     {
+        AudioHandler.PlaySoundEffect(PlayCardSound);
 
         if (IsCursorInPlayArea() || DataHandler.Instance.toggleClick)
         {

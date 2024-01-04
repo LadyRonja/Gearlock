@@ -40865,6 +40865,10 @@ PrefabInstance:
       value: NewHand
       objectReference: {fileID: 0}
     - target: {fileID: 5089259581290941422, guid: bca934adf52f27149866b6e9c1188193, type: 3}
+      propertyPath: PlayCardSound
+      value: 
+      objectReference: {fileID: 8300000, guid: ce05020ae61a05b47b50eb42556525c0, type: 3}
+    - target: {fileID: 5089259581290941422, guid: bca934adf52f27149866b6e9c1188193, type: 3}
       propertyPath: yourPanelRectTransform
       value: 
       objectReference: {fileID: 1050425075}
@@ -41973,6 +41977,8 @@ MonoBehaviour:
   - {fileID: 3861232017947565500, guid: 5e8f3cb1634380744befee5806ee00c9, type: 3}
   - {fileID: 5421826990026163501, guid: ab6e0bc5738517c42b260f76420e9d9e, type: 3}
   - {fileID: 898281027607506639, guid: 4b48bcb37e6304e4c866ca4159064d03, type: 3}
+  PlayShuffleSound: {fileID: 8300000, guid: 4747e03b2b1e470468ac08f4277b7ce0, type: 3}
+  PlayDrawSound: {fileID: 8300000, guid: 554a7049c81e98f42bbe0b5c9bdbaaf2, type: 3}
 --- !u!224 &1301262014929200920
 RectTransform:
   m_ObjectHideFlags: 0
