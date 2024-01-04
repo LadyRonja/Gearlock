@@ -151,7 +151,7 @@ public class CardManager : MonoBehaviour
 
     public void DealHand()
     {
-        AudioHandler.PlaySoundEffect(PlayDrawSound);
+        AudioHandler.PlaySoundEffect(PlayShuffleSound);
 
         for (int i = 0; handParent.transform.childCount < 5 && i < 5; i++)
         {
@@ -217,7 +217,7 @@ public class CardManager : MonoBehaviour
     {
         System.Random random = new System.Random();
 
-        AudioHandler.PlaySoundEffect(PlayShuffleSound);
+        //AudioHandler.PlaySoundEffect(PlayShuffleSound);
 
         for (int i = drawPile.Count - 1; i >= 0; i--)
         {
