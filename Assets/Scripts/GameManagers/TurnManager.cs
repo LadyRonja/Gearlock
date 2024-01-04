@@ -19,6 +19,9 @@ public class TurnManager : MonoBehaviour // classen blir en singleton
     public TMP_Text endTurnText;
     public GameObject discard;
 
+    public AudioClip playerTurnStartSound;
+    public AudioClip enemyTurnStartSound;
+
     // Tutorial
     public bool hasEndedTurnOnce = false;
     public bool canEndTurn = true;
@@ -47,7 +50,6 @@ public class TurnManager : MonoBehaviour // classen blir en singleton
         #endregion
 
 
-        AudioHandler musicInitializer = AudioHandler.Instance;
         UpdateUI();
     }
 
@@ -100,6 +102,7 @@ public class TurnManager : MonoBehaviour // classen blir en singleton
 
         GameStats.Instance.IncreaseTurnsTaken();
         CardManager.Instance.DealHand();
+
 
         isPlayerTurn = true;
         MovementManager.Instance.takingMoveAction = true; // Change later
@@ -191,6 +194,8 @@ public class TurnManager : MonoBehaviour // classen blir en singleton
         if (canvasPos != null)
         {
 
+            AudioHandler.PlaySoundEffect(enemyTurnStartSound);
+
             RectTransform canvasRectTransform = canvasPos.GetComponent<RectTransform>();
             // Calculate the middle position of the canvas
             Vector3 middlePosition = canvasRectTransform.position;
@@ -214,6 +219,8 @@ public class TurnManager : MonoBehaviour // classen blir en singleton
         
         if (canvasPos != null)
         {
+
+            AudioHandler.PlaySoundEffect(playerTurnStartSound);
 
             RectTransform canvasRectTransform = canvasPos.GetComponent<RectTransform>();
             // Calculate the middle position of the canvas

@@ -4,6 +4,7 @@ using config;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System;
 
 public class PauseHandler : MonoBehaviour
 {
@@ -19,6 +20,10 @@ public class PauseHandler : MonoBehaviour
     private bool pauseMenu = false;
     private bool optionsMenu = false;
 
+    public Toggle zoom;
+    public Toggle click;
+    public Toggle reposition;
+
     public Slider musicSlider;
     public Slider effectSlider;
     [Range(0f, 1f)] public float musicVolume = 1f;
@@ -32,16 +37,19 @@ public class PauseHandler : MonoBehaviour
         else
             Destroy(this.gameObject);
 
-        AudioHandler musicInitializer = AudioHandler.Instance;
     }
 
     private void Start()
     {
         musicSlider.value = Scenehandler.Instance.musicVolume * 100;
         effectSlider.value = Scenehandler.Instance.effectVolume * 100;
-        toggleZoomOnHover = Scenehandler.Instance.toggleZoomOnHover;
-        toggleClickToDrag = Scenehandler.Instance.toggleClickToDrag;
-        toggleCardReposition = Scenehandler.Instance.toggleCardReposition;
+
+        zoom.isOn = DataHandler.Instance.toggleZoom;
+        DataHandler.Instance.toggleZoom = zoom.isOn;
+        click.isOn = DataHandler.Instance.toggleClick;
+        DataHandler.Instance.safetyBool = click.isOn;
+        reposition.isOn = DataHandler.Instance.toggleInverseCamera;
+        DataHandler.Instance.toggleInverseCamera = reposition.isOn;
     }
 
     public void OptionsToggle()
@@ -107,17 +115,17 @@ public class PauseHandler : MonoBehaviour
 
     public void ToggleZoomOnHover()
     {
-        Scenehandler.Instance.toggleZoomOnHover = !Scenehandler.Instance.toggleZoomOnHover;
+        DataHandler.Instance.toggleZoom = !DataHandler.Instance.toggleZoom;
     }
 
     public void ToggleClickToDrag()
     {
-        Scenehandler.Instance.toggleClickToDrag = !Scenehandler.Instance.toggleClickToDrag;
+        DataHandler.Instance.toggleClick = !DataHandler.Instance.toggleClick;
     }
 
     public void ToggleCardReposition()
     {
-        Scenehandler.Instance.toggleCardReposition = !Scenehandler.Instance.toggleCardReposition;
+        DataHandler.Instance.toggleInverseCamera = !DataHandler.Instance.toggleInverseCamera;
     }
 
 

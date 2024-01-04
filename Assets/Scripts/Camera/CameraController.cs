@@ -55,9 +55,6 @@ public class CameraController : MonoBehaviour
         KeyBoardMovement();
         MouseMovement();
         ClampCamera();
-
-        if (Input.GetKeyDown(KeyCode.I))
-            inverseMouseControls = !inverseMouseControls;
     }
 
     private void FindClamps()
@@ -112,7 +109,7 @@ public class CameraController : MonoBehaviour
             Vector3 dir = (mouseStartPos - Input.mousePosition);
             //dir.Normalize();
 
-            if(!inverseMouseControls)
+            if(!DataHandler.Instance.toggleInverseCamera)
             {
                 dir *= -1f;
             }

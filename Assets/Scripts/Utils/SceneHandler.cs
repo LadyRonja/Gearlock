@@ -159,16 +159,19 @@ public class Scenehandler : MonoBehaviour
     public void ToggleZoomOnHover()
     {
         toggleZoomOnHover = !toggleZoomOnHover;
+        DataHandler.Instance.toggleZoom = toggleZoomOnHover;
     }
 
     public void ToggleClickToDrag()
     {
-        toggleClickToDrag = !toggleClickToDrag;
+        toggleClickToDrag= !toggleClickToDrag;
+        DataHandler.Instance.toggleClick = toggleClickToDrag;
     }
 
     public void ToggleCardReposition()
     {
-        toggleCardReposition = !toggleCardReposition;
+        toggleCardReposition= !toggleCardReposition;
+        DataHandler.Instance.toggleInverseCamera = toggleCardReposition;
     }
 
     private static Scenehandler GetInstance()

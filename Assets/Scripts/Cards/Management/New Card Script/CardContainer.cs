@@ -54,6 +54,8 @@ public class CardContainer : MonoBehaviour
     public float panelPosYLow;
     float bigSize = 2.7f;
 
+    public AudioClip PlayCardSound;
+
 
     private void Awake()
     {
@@ -67,13 +69,6 @@ public class CardContainer : MonoBehaviour
         canvas = GetComponent<Canvas>();
         rectTransform = GetComponent<RectTransform>();
         InitCards();
-
-        if (Scenehandler.Instance != null)
-        {
-            zoomConfig.zoomOnHover = Scenehandler.Instance.toggleZoomOnHover;
-            clickToPlayToggle = !Scenehandler.Instance.toggleClickToDrag;
-            allowCardRepositioning = Scenehandler.Instance.toggleCardReposition;
-        }
     }
 
     public void InitCards()
@@ -120,7 +115,7 @@ public class CardContainer : MonoBehaviour
             CardManager.Instance.ClearActiveCard();
         }
         if (Input.GetKeyDown(KeyCode.P))
-            clickToPlayToggle = !clickToPlayToggle;
+            DataHandler.Instance.toggleClick = !DataHandler.Instance.toggleClick;
     }
 
     public void SetUpCards()
@@ -191,7 +186,7 @@ public class CardContainer : MonoBehaviour
 
     private void UpdateCardOrder()
     {
-        if (!allowCardRepositioning || currentDraggedCard == null) return;
+        if (!DataHandler.Instance.toggleInverseCamera || currentDraggedCard == null) return;
 
         // Get the index of the dragged card depending on its position
         var newCardIdx = cards.Count(card => currentDraggedCard.transform.position.x > card.transform.position.x);
@@ -284,8 +279,9 @@ public class CardContainer : MonoBehaviour
 
     public void OnCardDragEnd()
     {
+        AudioHandler.PlaySoundEffect(PlayCardSound);
 
-        if (IsCursorInPlayArea() || clickToPlayToggle)
+        if (IsCursorInPlayArea() || DataHandler.Instance.toggleClick)
         {
             if (TurnManager.Instance.TurnEnd)
             {
@@ -380,7 +376,7 @@ public class CardContainer : MonoBehaviour
 
     private void UpdatePanelPosition()
     {
-        
+
 
         if (gameObject.GetComponent<RectTransform>() != null)
         {

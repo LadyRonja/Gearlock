@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+
 public class MainMenuManager : MonoBehaviour
 {
     public GameObject menuButtons;
@@ -13,6 +14,22 @@ public class MainMenuManager : MonoBehaviour
 
     public Slider musicSlider;
     public Slider effectSlider;
+
+
+    public Toggle zoom;
+    public Toggle click;
+    public Toggle invert;
+
+    private void Start()
+    {
+        zoom.isOn = DataHandler.Instance.toggleZoom;
+        DataHandler.Instance.toggleZoom = zoom.isOn;
+        click.isOn = DataHandler.Instance.safetyBool;
+        DataHandler.Instance.toggleClick = click.isOn;
+        invert.isOn = DataHandler.Instance.toggleInverseCamera;
+        DataHandler.Instance.toggleInverseCamera = invert.isOn;
+
+    }
 
     // Main menu buttons
     public void TutorialCheck()
@@ -54,17 +71,17 @@ public class MainMenuManager : MonoBehaviour
     // Options
     public void ToggleZoomOnHover()
     {
-        Scenehandler.Instance.toggleZoomOnHover = !Scenehandler.Instance.toggleZoomOnHover;
+        DataHandler.Instance.toggleZoom = !DataHandler.Instance.toggleZoom;
     }
 
     public void ToggleClickToDrag()
     {
-        Scenehandler.Instance.toggleClickToDrag = !Scenehandler.Instance.toggleClickToDrag;
+        DataHandler.Instance.toggleClick = !DataHandler.Instance.toggleClick;
     }
 
     public void ToggleCardReposition()
     {
-        Scenehandler.Instance.toggleCardReposition = !Scenehandler.Instance.toggleCardReposition;
+        DataHandler.Instance.toggleInverseCamera = !DataHandler.Instance.toggleInverseCamera;
     }
     public void MusicVolume()
     {
