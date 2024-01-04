@@ -40675,6 +40675,9 @@ MonoBehaviour:
   toggleZoomOnHover: 0
   toggleClickToDrag: 0
   toggleCardReposition: 0
+  zoom: {fileID: 4205791616173758942}
+  click: {fileID: 4205791616173758941}
+  reposition: {fileID: 4205791616173758940}
   musicSlider: {fileID: 3475873359944467205}
   effectSlider: {fileID: 2484816888286684196}
   musicVolume: 1
@@ -43414,6 +43417,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 3832775451219153045}
     m_Modifications:
     - target: {fileID: 587797490099332298, guid: 3a6bd51c5719feb4eaca689415d688b4, type: 3}
+      propertyPath: m_IsOn
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 587797490099332298, guid: 3a6bd51c5719feb4eaca689415d688b4, type: 3}
       propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 2082232921}
@@ -43521,6 +43528,14 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 2082232921}
+    - target: {fileID: 4136245355161119775, guid: 3a6bd51c5719feb4eaca689415d688b4, type: 3}
+      propertyPath: m_text
+      value: Inverse Camera Mouse Controls
+      objectReference: {fileID: 0}
+    - target: {fileID: 4138151001236867008, guid: 3a6bd51c5719feb4eaca689415d688b4, type: 3}
+      propertyPath: m_IsOn
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4138151001236867008, guid: 3a6bd51c5719feb4eaca689415d688b4, type: 3}
       propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -43556,6 +43571,10 @@ PrefabInstance:
     - target: {fileID: 4745918247451481725, guid: 3a6bd51c5719feb4eaca689415d688b4, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: PauseHandler, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4924509263874807513, guid: 3a6bd51c5719feb4eaca689415d688b4, type: 3}
+      propertyPath: m_IsOn
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4924509263874807513, guid: 3a6bd51c5719feb4eaca689415d688b4, type: 3}
       propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -43610,6 +43629,39 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3a6bd51c5719feb4eaca689415d688b4, type: 3}
+--- !u!114 &4205791616173758940 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4924509263874807513, guid: 3a6bd51c5719feb4eaca689415d688b4, type: 3}
+  m_PrefabInstance: {fileID: 4205791616173758939}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9085046f02f69544eb97fd06b6048fe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4205791616173758941 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 587797490099332298, guid: 3a6bd51c5719feb4eaca689415d688b4, type: 3}
+  m_PrefabInstance: {fileID: 4205791616173758939}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9085046f02f69544eb97fd06b6048fe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4205791616173758942 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4138151001236867008, guid: 3a6bd51c5719feb4eaca689415d688b4, type: 3}
+  m_PrefabInstance: {fileID: 4205791616173758939}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9085046f02f69544eb97fd06b6048fe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &4328106420367112559
 MonoBehaviour:
   m_ObjectHideFlags: 0
