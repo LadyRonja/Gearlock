@@ -8,12 +8,17 @@ public class DigCard : Card
 
     public override void ExecuteBehaivour(Tile onTile, Unit byUnit)
     {
-        AudioHandler.PlayRandomEffectFromList(miningSounds);
+        Invoke("PlayPickSound", 0.2f);
         onTile.RemoveDirt();
         GameStats.Instance.IncreaseRocksMined();
         ConfirmCardExecuted();
         FlipUnitBasedOnClickedTile(byUnit, onTile);
         byUnit.PlayActionAnimation();
+    }
+
+    private void PlayPickSound()
+    {
+        AudioHandler.PlayRandomEffectFromList(miningSounds);
     }
 
     private void FlipUnitBasedOnClickedTile(Unit unit, Tile clickedTile)
