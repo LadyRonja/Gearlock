@@ -24,7 +24,7 @@ public class MainMenuManager : MonoBehaviour
     {
         zoom.isOn = DataHandler.Instance.toggleZoom;
         DataHandler.Instance.toggleZoom = zoom.isOn;
-        click.isOn = DataHandler.Instance.toggleClick;
+        click.isOn = DataHandler.Instance.safetyBool;
         DataHandler.Instance.toggleClick = click.isOn;
         invert.isOn = DataHandler.Instance.toggleInverseCamera;
         DataHandler.Instance.toggleInverseCamera = invert.isOn;

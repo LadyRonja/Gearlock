@@ -6,6 +6,7 @@ public class DataHandler
     public bool toggleZoom = false;
     public bool toggleClick = false;
     public bool toggleInverseCamera = false;
+    public bool safetyBool = false;
 
     public int musicVolume = 60;
     public int effectVolume = 60;

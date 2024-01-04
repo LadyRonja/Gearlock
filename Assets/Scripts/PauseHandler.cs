@@ -47,6 +47,7 @@ public class PauseHandler : MonoBehaviour
         zoom.isOn = DataHandler.Instance.toggleZoom;
         DataHandler.Instance.toggleZoom = zoom.isOn;
         click.isOn = DataHandler.Instance.toggleClick;
+        DataHandler.Instance.safetyBool = click.isOn;
         reposition.isOn = DataHandler.Instance.toggleInverseCamera;
         DataHandler.Instance.toggleInverseCamera = reposition.isOn;
     }
