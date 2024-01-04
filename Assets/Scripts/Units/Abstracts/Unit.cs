@@ -90,9 +90,17 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
     public SkeletonAnimation skeletonAnimation;
 
 
+    public void Awake()
+    {
+        DOTween.SetTweensCapacity(7812, 50); // takes away warning in unity
+    }
+
     private void Start()
     {
         //EnableMovePointLights();
+        //IdleAnimationSprite();
+        float rand = UnityEngine.Random.Range(0.0f, 0.4f);
+        Invoke("IdleAnimSpriteTwo", rand);
 
         if (highligtherArrow != null)
         {
@@ -134,7 +142,9 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
     {
         HighlighterBounce();
 
-        
+        //IdleAnimationSprite();
+
+
     }
 
     protected void HighlighterBounce()
@@ -614,6 +624,22 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
         }
     }
 
-   
+
+
+    public void IdleAnimSpriteTwo()
+    {
+        float originalYScale = gfx.transform.localScale.y;
+        // Move the target up and down in sync with scaling
+        DG.Tweening.Sequence moveSequence = DOTween.Sequence();
+        moveSequence.Append(gfx.transform.DOMoveY(gfx.transform.position.y + 0.1f, 1f)/*.SetEase(Ease.InOutQuad)*/)
+            .Join(gfx.transform.DOScaleY(originalYScale + 0.05f, 1f)/*.SetEase(Ease.InOutQuad)*/)
+            .Append(gfx.transform.DOMoveY(gfx.transform.position.y - 0.1f, 1f)/*.SetEase(Ease.InOutQuad)*/)
+            .Join(gfx.transform.DOScaleY(originalYScale, 1f)/*.SetEase(Ease.InOutQuad)*/)
+            .SetLoops(-1, LoopType.Yoyo);
+
+    }
+
 
 }
+
+
