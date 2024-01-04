@@ -14,6 +14,19 @@ public class MainMenuManager : MonoBehaviour
     public Slider musicSlider;
     public Slider effectSlider;
 
+
+    public Toggle toggleZoom;
+    public Toggle toggleClick;
+    public Toggle toggleInverseCamera;
+
+
+    private void Start()
+    {
+        toggleZoom.isOn = DataHandler.Instance.toggleZoom;
+        toggleClick.isOn = DataHandler.Instance.toggleClick;
+        toggleInverseCamera.isOn = DataHandler.Instance.toggleInverseCamera;
+    }
+
     // Main menu buttons
     public void TutorialCheck()
     {
