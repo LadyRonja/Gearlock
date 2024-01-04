@@ -171,7 +171,7 @@ public class Scenehandler : MonoBehaviour
     public void ToggleCardReposition()
     {
         toggleCardReposition= !toggleCardReposition;
-        DataHandler.Instance.toggleDrag = toggleCardReposition;
+        DataHandler.Instance.toggleInverseCamera = toggleCardReposition;
     }
 
     private static Scenehandler GetInstance()

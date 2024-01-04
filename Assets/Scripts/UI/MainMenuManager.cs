@@ -64,7 +64,7 @@ public class MainMenuManager : MonoBehaviour
 
     public void ToggleCardReposition()
     {
-        DataHandler.Instance.toggleDrag = !DataHandler.Instance.toggleDrag;
+        DataHandler.Instance.toggleInverseCamera = !DataHandler.Instance.toggleInverseCamera;
     }
     public void MusicVolume()
     {

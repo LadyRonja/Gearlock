@@ -189,7 +189,7 @@ public class CardContainer : MonoBehaviour
 
     private void UpdateCardOrder()
     {
-        if (!DataHandler.Instance.toggleDrag || currentDraggedCard == null) return;
+        if (!DataHandler.Instance.toggleInverseCamera || currentDraggedCard == null) return;
 
         // Get the index of the dragged card depending on its position
         var newCardIdx = cards.Count(card => currentDraggedCard.transform.position.x > card.transform.position.x);

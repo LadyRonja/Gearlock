@@ -37,7 +37,6 @@ public class PauseHandler : MonoBehaviour
         else
             Destroy(this.gameObject);
 
-        AudioHandler musicInitializer = AudioHandler.Instance;
     }
 
     private void Start()
@@ -45,12 +44,9 @@ public class PauseHandler : MonoBehaviour
         musicSlider.value = Scenehandler.Instance.musicVolume * 100;
         effectSlider.value = Scenehandler.Instance.effectVolume * 100;
 
-        if (DataHandler.Instance != null)
-        {
-            zoom.isOn = DataHandler.Instance.toggleZoom;
-            click.isOn = DataHandler.Instance.toggleClick;
-            reposition.isOn = DataHandler.Instance.toggleDrag;
-        }
+        zoom.isOn = DataHandler.Instance.toggleZoom;
+        click.isOn = DataHandler.Instance.toggleClick;
+        reposition.isOn = DataHandler.Instance.toggleInverseCamera;
     }
 
     public void OptionsToggle()
@@ -126,7 +122,7 @@ public class PauseHandler : MonoBehaviour
 
     public void ToggleCardReposition()
     {
-        DataHandler.Instance.toggleDrag = !DataHandler.Instance.toggleDrag;
+        DataHandler.Instance.toggleInverseCamera = !DataHandler.Instance.toggleInverseCamera;
     }
 
 

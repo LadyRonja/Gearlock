@@ -1,15 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.SceneManagement;
 
-public class DataHandler : MonoBehaviour
+public class DataHandler
 {
     private static DataHandler instance;
 
     public bool toggleZoom = false;
     public bool toggleClick = false;
-    public bool toggleDrag = false;
+    public bool toggleInverseCamera = false;
 
     public int musicVolume = 60;
     public int effectVolume = 60;
@@ -17,16 +13,20 @@ public class DataHandler : MonoBehaviour
 
     public static DataHandler Instance
     {
-        get { return instance; }
+        get { return GetInstance(); }
         private set { instance = value; }
     }
-    private void Awake()
+    private DataHandler()
     {
-        if (instance == null)
+        if (instance == null || instance == this)
             instance = this;
-        else
-            Destroy(this.gameObject);
+    }
 
-        DontDestroyOnLoad(this.gameObject);
+    public static DataHandler GetInstance()
+    {
+        if(instance != null)
+            return instance;
+
+        return new DataHandler();
     }
 }
