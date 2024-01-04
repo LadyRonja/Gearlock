@@ -9,11 +9,13 @@ public class ButtonJuice : MonoBehaviour, IPointerEnterHandler, IPointerClickHan
     [Header("Audio")]
     [SerializeField] AudioClip enterSound;
     [SerializeField] AudioClip clickSound;
+    public bool willPlaySoundOnEnter = true;
 
     [Header("Tweening")]
     [SerializeField] bool expandObject = false;
     [SerializeField] Ease expandEase;
     Vector3 startScale = Vector3.one;
+
 
     private void Start()
     {
@@ -48,6 +50,10 @@ public class ButtonJuice : MonoBehaviour, IPointerEnterHandler, IPointerClickHan
 
     private bool GotSoundForEnter()
     {
+
+        if (!willPlaySoundOnEnter)
+            return false;
+
         if (enterSound != null)
             return true;
 

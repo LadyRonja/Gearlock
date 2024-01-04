@@ -116,6 +116,7 @@ public class TutorialAdvanced : MonoBehaviour
             {
                 if (TurnManager.Instance.isPlayerTurn)
                 {
+                    UnitStorage.Instance.playerUnits[0].movePointsCur = 0;
                     GoToTutorialPage(8);
                     CameraController.Instance.playerCanMove = false;
                 }
@@ -143,9 +144,11 @@ public class TutorialAdvanced : MonoBehaviour
         // Assemble the Fight Bot
         if (advancedTutorialIndex == 12)
         {
+            
             if (ActiveCard.Instance.cardBeingPlayed != null)
             {
                 GoToTutorialPage(13);
+                UnitStorage.Instance.playerUnits[0].movePointsCur = 3;
             }
         }
 
