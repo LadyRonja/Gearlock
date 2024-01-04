@@ -46,10 +46,12 @@ public class BigBot : Unit
         {
             if (path[i].containsDirt)
             {
+                FlipEnemyTowardsDirt(path[i]);
                 yield return new WaitForSeconds(0.5f);
+                
                 PlayActionAnimation();
                 path[i].RemoveDirt(false);
-                yield return new WaitForSeconds(0.3f);
+                yield return new WaitForSeconds(2f);
                 yield return StartCoroutine(MoveStep(path[i]));
                 break;
             }
@@ -61,6 +63,27 @@ public class BigBot : Unit
         MovementManager.Instance.takingMoveAction = true;
         UnitSelector.Instance.HighlightAllTilesMovableTo();
         yield return null;
+    }
+
+    private void FlipEnemyTowardsDirt(Tile dirtTile)
+    {
+        // Get the current position of the dirt
+        Vector3 dirtPosition = dirtTile.transform.position;
+
+        // Determine the direction to flip based on the dirt tile's position
+        bool shouldBeRight = transform.position.x - dirtPosition.x > 0;
+        bool shouldBeLeft = transform.position.x - dirtPosition.x < 0;
+        float destinationEndX = gfx.localScale.x;
+
+        if (shouldBeRight)
+            destinationEndX = Mathf.Abs(destinationEndX);
+        else if (shouldBeLeft)
+            destinationEndX = Mathf.Abs(destinationEndX) * -1f;
+
+        // Flip the enemy's direction
+        Vector3 flipScale = gfx.transform.localScale;
+        flipScale.x = destinationEndX;
+        gfx.transform.localScale = flipScale;
     }
 }
 

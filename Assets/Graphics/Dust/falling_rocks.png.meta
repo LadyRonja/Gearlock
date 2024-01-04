@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: adcc50eba48bda14c94b742168ba1283
+guid: 3ad575b7004ccfd4a8a3b799c8c487f9
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,106 +110,43 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: dust_and_stone_0
-      rect:
-        serializedVersion: 2
-        x: 807
-        y: 0
-        width: 64
-        height: 500
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: aefdf267cae297c4680fe36c2f7b5f59
-      internalID: -2004125886
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: dust_and_stone_1
-      rect:
-        serializedVersion: 2
-        x: 915
-        y: 0
-        width: 81
-        height: 500
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1b1ad77e2ef156f4e99b8b1c77b67ea2
-      internalID: 1479875678
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: dust_and_stone_2
-      rect:
-        serializedVersion: 2
-        x: 559
-        y: 0
-        width: 224
-        height: 500
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 97180bfffb273ba45bb49174ab3ecea0
-      internalID: 1391419521
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: dust_and_stone_3
-      rect:
-        serializedVersion: 2
-        x: 264
-        y: 0
-        width: 287
-        height: 500
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1449afb8d9d80734aac0fee2c9a80e09
-      internalID: 1569126382
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: dust_and_stone_4
+      name: falling_rocks_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 258
-        height: 500
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        width: 1000
+        height: 2000
+      alignment: 9
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a557863f0a2352c428d8c8d8a020d312
-      internalID: -431685534
+      spriteID: 926005ab51ba36842bc6841da8544619
+      internalID: 2111045632
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: falling_rocks_1
+      rect:
+        serializedVersion: 2
+        x: 1000
+        y: 0
+        width: 1000
+        height: 2000
+      alignment: 9
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e081349cf6219d143a2a7911f1373144
+      internalID: -1344752399
       vertices: []
       indices: 
       edges: []
@@ -225,11 +162,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      dust_and_stone_0: -2004125886
-      dust_and_stone_1: 1479875678
-      dust_and_stone_2: 1391419521
-      dust_and_stone_3: 1569126382
-      dust_and_stone_4: -431685534
+      falling_rocks_0: 2111045632
+      falling_rocks_1: -1344752399
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
