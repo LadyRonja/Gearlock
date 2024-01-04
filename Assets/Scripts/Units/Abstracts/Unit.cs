@@ -153,6 +153,7 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
         if (UnitSelector.Instance.selectedUnit == this)
             UnitSelector.Instance.UpdateUI();
 
+
         healthCur -= amount;
         StartCoroutine(FlashDamage(0.7f));
 
@@ -197,9 +198,13 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
         float timePassed = 0;
         float timeToFlash = time;
 
+        AudioHandler.PlayRandomEffectFromList(takeDamageSound);
+
         while (timePassed < timeToFlash)
         {
             mySR.material.color = Color.Lerp(Color.red, startColor, (timePassed / timeToFlash));
+
+
 
             timePassed += Time.deltaTime;
             yield return null;
@@ -222,7 +227,7 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
             timePassed += Time.deltaTime;
             yield return null;
         }
-
+        AudioHandler.PlayRandomEffectFromList(deathSound);
         Destroy(this.gameObject);
     }
 
