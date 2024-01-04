@@ -35,6 +35,10 @@ public class AudioHandler : MonoBehaviour
 
         SetUpMusicPlayer();
         ExandSourceCount(initialEffectSourceCount);
+
+
+        if (gameObject != null)
+            SceneManager.sceneLoaded += delegate { PickMusic(); };
     }
 
     public static void PlaySoundEffect(AudioClip clipToPlay)
@@ -85,10 +89,9 @@ public class AudioHandler : MonoBehaviour
 
     private void SetUpMusicPlayer()
     {
-        if (music == null)
-            music = Resources.Load<AudioClip>("Music/Music");
+        PickMusic();
 
-        if(musicPlayer == null)
+        if (musicPlayer == null)
             musicPlayer = this.gameObject.AddComponent<AudioSource>();
 
         musicPlayer.loop = true;
@@ -102,6 +105,14 @@ public class AudioHandler : MonoBehaviour
             musicPlayer.clip = music;
             musicPlayer.Play();
         }
+    }
+
+    private void PickMusic()
+    {
+        if (SceneManager.GetActiveScene().name == "Main Menu")
+            music = Resources.Load<AudioClip>("Music/music_main_menu");
+        else
+            music = Resources.Load<AudioClip>("Music/Music");
     }
 
     private void ExandSourceCount(int amount)
