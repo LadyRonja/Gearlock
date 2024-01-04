@@ -227,7 +227,7 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
             timePassed += Time.deltaTime;
             yield return null;
         }
-        AudioHandler.PlayRandomEffectFromList(deathSound);
+        //AudioHandler.PlayRandomEffectFromList(deathSound);
         Destroy(this.gameObject);
     }
 
