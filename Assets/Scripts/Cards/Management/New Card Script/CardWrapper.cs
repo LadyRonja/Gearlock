@@ -180,7 +180,7 @@ public class CardWrapper : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
         eventsConfig?.OnCardUnhover?.Invoke(new CardUnhover(this));
 
         clickedCard = true;
-        Invoke("ResetBoolClick", 0.2f);
+        Invoke("ResetBoolClick", 0.1f);
     }
 
     public void OnPointerUp(PointerEventData eventData)
