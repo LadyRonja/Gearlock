@@ -23,6 +23,7 @@ public class CameraShake : MonoBehaviour
 
     public void Shake(float duration, float intensity)
     {
+        originalPosition = transform.position;
         StartCoroutine(ShakeCoroutine(duration, intensity));
     }
 
