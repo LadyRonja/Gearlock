@@ -33,6 +33,10 @@ public class CameraController : MonoBehaviour
     Vector2 horizontalClamps = Vector2.zero;
     Vector2 verticalClamps = Vector2.zero;
 
+    [Header("Juice")]
+    public GameObject rockSystem;
+    public CameraShake myShaker;
+
 
     private void Awake()
     {
@@ -226,6 +230,24 @@ public class CameraController : MonoBehaviour
                 clickedRecently = false;
             }
         }
+    }
+
+    public void ExplosionEffect()
+    {
+        if (myShaker != null)
+            myShaker.Shake(1f, 2f);
+
+        if(rockSystem != null)
+        {
+            rockSystem.SetActive(true);
+            Invoke("TurnOffRocks", 2f);
+        }    
+    }
+
+    private void TurnOffRocks()
+    {
+        if (rockSystem != null)
+            rockSystem.SetActive(false);
     }
 
 }

@@ -54,7 +54,7 @@ public class DynomiteProjectile : Projectile
             yield return new WaitForSeconds(0.2f);
         }
 
-
+        CameraController.Instance.ExplosionEffect();
         ConfirmArrival();
         Destroy(this.gameObject);
 
