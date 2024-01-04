@@ -54,17 +54,17 @@ public class MainMenuManager : MonoBehaviour
     // Options
     public void ToggleZoomOnHover()
     {
-        Scenehandler.Instance.toggleZoomOnHover = !Scenehandler.Instance.toggleZoomOnHover;
+        DataHandler.Instance.toggleZoom = !DataHandler.Instance.toggleZoom;
     }
 
     public void ToggleClickToDrag()
     {
-        Scenehandler.Instance.toggleClickToDrag = !Scenehandler.Instance.toggleClickToDrag;
+        DataHandler.Instance.toggleClick = !DataHandler.Instance.toggleClick;
     }
 
     public void ToggleCardReposition()
     {
-        Scenehandler.Instance.toggleCardReposition = !Scenehandler.Instance.toggleCardReposition;
+        DataHandler.Instance.toggleDrag = !DataHandler.Instance.toggleDrag;
     }
     public void MusicVolume()
     {

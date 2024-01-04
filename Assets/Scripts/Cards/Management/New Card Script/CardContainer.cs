@@ -55,6 +55,8 @@ public class CardContainer : MonoBehaviour
     float bigSize = 2.7f;
 
 
+
+
     private void Awake()
     {
         if (Instance == null)
@@ -68,12 +70,8 @@ public class CardContainer : MonoBehaviour
         rectTransform = GetComponent<RectTransform>();
         InitCards();
 
-        if (Scenehandler.Instance != null)
-        {
-            zoomConfig.zoomOnHover = Scenehandler.Instance.toggleZoomOnHover;
-            clickToPlayToggle = !Scenehandler.Instance.toggleClickToDrag;
-            allowCardRepositioning = Scenehandler.Instance.toggleCardReposition;
-        }
+
+
     }
 
     public void InitCards()
@@ -120,7 +118,7 @@ public class CardContainer : MonoBehaviour
             CardManager.Instance.ClearActiveCard();
         }
         if (Input.GetKeyDown(KeyCode.P))
-            clickToPlayToggle = !clickToPlayToggle;
+            DataHandler.Instance.toggleClick = !DataHandler.Instance.toggleClick;
     }
 
     public void SetUpCards()
@@ -191,7 +189,7 @@ public class CardContainer : MonoBehaviour
 
     private void UpdateCardOrder()
     {
-        if (!allowCardRepositioning || currentDraggedCard == null) return;
+        if (!DataHandler.Instance.toggleDrag || currentDraggedCard == null) return;
 
         // Get the index of the dragged card depending on its position
         var newCardIdx = cards.Count(card => currentDraggedCard.transform.position.x > card.transform.position.x);
@@ -285,7 +283,7 @@ public class CardContainer : MonoBehaviour
     public void OnCardDragEnd()
     {
 
-        if (IsCursorInPlayArea() || clickToPlayToggle)
+        if (IsCursorInPlayArea() || DataHandler.Instance.toggleClick)
         {
             if (TurnManager.Instance.TurnEnd)
             {
@@ -380,7 +378,7 @@ public class CardContainer : MonoBehaviour
 
     private void UpdatePanelPosition()
     {
-        
+
 
         if (gameObject.GetComponent<RectTransform>() != null)
         {

@@ -89,7 +89,7 @@ public class CardWrapper : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
 
     private void UpdateScale()
     {
-        var targetZoom = (isDragged || isHovered) && zoomConfig.zoomOnHover ? zoomConfig.multiplier : 2;
+        var targetZoom = (isDragged || isHovered) && DataHandler.Instance.toggleZoom ? zoomConfig.multiplier : 2;
         var delta = Mathf.Abs(rectTransform.localScale.x - targetZoom);
         var newZoom = Mathf.Lerp(rectTransform.localScale.x, targetZoom,
             animationSpeedConfig.zoom / delta * Time.deltaTime);
@@ -188,7 +188,7 @@ public class CardWrapper : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
         if (!TurnManager.Instance.isPlayerTurn)
             return;
 
-        if (clickedCard && CardContainer.clickToPlayToggle)
+        if (clickedCard && DataHandler.Instance.toggleClick)
         {
             container.OnCardDragEnd();
             dragging = false;

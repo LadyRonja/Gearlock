@@ -20,6 +20,10 @@ public class PauseHandler : MonoBehaviour
     private bool pauseMenu = false;
     private bool optionsMenu = false;
 
+    public Toggle zoom;
+    public Toggle click;
+    public Toggle reposition;
+
     public Slider musicSlider;
     public Slider effectSlider;
     [Range(0f, 1f)] public float musicVolume = 1f;
@@ -40,9 +44,13 @@ public class PauseHandler : MonoBehaviour
     {
         musicSlider.value = Scenehandler.Instance.musicVolume * 100;
         effectSlider.value = Scenehandler.Instance.effectVolume * 100;
-        toggleZoomOnHover = DataHandler.Instance.toggleZoom;
-        toggleClickToDrag = DataHandler.Instance.toggleClick;
-        toggleCardReposition = DataHandler.Instance.toggleDrag;
+
+        if (DataHandler.Instance != null)
+        {
+            zoom.isOn = DataHandler.Instance.toggleZoom;
+            click.isOn = DataHandler.Instance.toggleClick;
+            reposition.isOn = DataHandler.Instance.toggleDrag;
+        }
     }
 
     public void OptionsToggle()
