@@ -133,13 +133,15 @@ public class PauseHandler : MonoBehaviour
 
     public void MusicVolume()
     {
-        musicVolume = musicSlider.value / 100;
+        musicVolume = musicSlider.value / 100f;
+        Scenehandler.Instance.musicVolume = musicVolume;
         AudioHandler.Instance.UpdateMusicVolume(musicVolume);
     }
 
     public void EffectVolume()
     {
-        effectVolume = effectSlider.value / 100;
+        effectVolume = effectSlider.value / 100f;
+        Scenehandler.Instance.effectVolume = effectVolume;
         AudioHandler.Instance.UpdateEffectVolume(effectVolume);
     }
 }
