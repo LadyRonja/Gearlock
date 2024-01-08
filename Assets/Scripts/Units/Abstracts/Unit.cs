@@ -220,6 +220,8 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
             yield return null;
         }
         //AudioHandler.PlayRandomEffectFromList(deathSound);
+
+        transform.DOKill();
         Destroy(this.gameObject);
     }
 
@@ -473,7 +475,10 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
     {
         transform.DOKill();
     }
-
+    public void OnDestroy()
+    {
+        transform.DOKill();
+    }
     public void PlayIdleAnimation()
     {
         

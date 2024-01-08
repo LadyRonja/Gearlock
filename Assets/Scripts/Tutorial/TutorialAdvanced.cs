@@ -123,6 +123,12 @@ public class TutorialAdvanced : MonoBehaviour
             }
         }
 
+        // Prevent playing cards
+        if (advancedTutorialIndex == 8)
+        {
+            MovementManager.Instance.takingMoveAction = false;
+        }
+
         // Highlight ghost
         if (advancedTutorialIndex == 9)
         {
@@ -144,11 +150,14 @@ public class TutorialAdvanced : MonoBehaviour
         // Assemble the Fight Bot
         if (advancedTutorialIndex == 12)
         {
-            
             if (ActiveCard.Instance.cardBeingPlayed != null)
             {
                 GoToTutorialPage(13);
                 UnitStorage.Instance.playerUnits[0].movePointsCur = 3;
+            }
+            else
+            {
+                MovementManager.Instance.takingMoveAction = true; // allow playing cards
             }
         }
 

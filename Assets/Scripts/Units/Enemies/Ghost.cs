@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Ghost : Unit
 {
-    
     public override Unit FindTargetUnit()
     {
         return FindNearestPlayerUnit(true);
