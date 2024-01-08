@@ -19,16 +19,13 @@ public enum BotSpecialization
 }
 
 public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
-{
-   //public static Unit Instance;
-    
+{ 
     [Header("Generics")]
     public string unitName = "Unnamed Unit";
     public bool playerBot = false;
     public BotSpecialization mySpecialization = BotSpecialization.None;
     public Sprite portrait;
     public GameObject infoTextUnit;
-
 
     [Header("Stats")]
     public int healthMax = 5;
@@ -53,8 +50,7 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
     public Transform gfx;
     public MeshRenderer myMR;
     public SpriteRenderer mySR;
-    public SpriteRenderer highligtherArrow;
-    
+    public SpriteRenderer highligtherArrow;    
 
     [Header("Health Bar")]
     public GameObject healthBar;
@@ -88,7 +84,6 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
     private TurnManager turnManager;
 
     public SkeletonAnimation skeletonAnimation;
-
 
     public void Awake()
     {
@@ -141,10 +136,6 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
     protected virtual void Update()
     {
         HighlighterBounce();
-
-        //IdleAnimationSprite();
-
-
     }
 
     protected void HighlighterBounce()
@@ -157,12 +148,10 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
         highligtherArrow.transform.position = new Vector3(currentPos.x, highlighterStartPos.y + highlighterYOffSet, currentPos.z);
     }
 
-
     public virtual void TakeDamage(int amount)
     {
         if (UnitSelector.Instance.selectedUnit == this)
             UnitSelector.Instance.UpdateUI();
-
 
         healthCur -= amount;
         StartCoroutine(FlashDamage(0.7f));
@@ -195,10 +184,6 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
 
     protected IEnumerator FlashDamage(float time)
     {
-        /* if (myMR == null)
-             yield return null;*/
-
-
         // Delay before starting the flash damage animation
         float delay = 0.4f;
         yield return new WaitForSeconds(delay);
@@ -214,12 +199,9 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
         {
             mySR.material.color = Color.Lerp(Color.red, startColor, (timePassed / timeToFlash));
 
-
-
             timePassed += Time.deltaTime;
             yield return null;
         }
-
 
         yield return null;
     }
@@ -299,7 +281,6 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
     {
         movePointsCur--;
         
-
         Vector3 startPos = this.transform.position;
         Vector3 endPos = toTile.transform.position;
         endMovePosition = endPos;
@@ -308,9 +289,7 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
         if (myMR != null)
             endPos.y += myMR.bounds.size.y / 2f;
         else
-            endPos.y += mySR.bounds.size.y / 2f ; 
-
-        
+            endPos.y += mySR.bounds.size.y / 2f ;         
 
         float timeToMove = 0.5f;
         float timePassed = 0;
@@ -339,14 +318,9 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
             float yOffSet = gfx.localPosition.y;
             yOffSet = Mathf.Max(0, jumpHeight * Mathf.Sin(timePassed / timeToMove * Mathf.PI));
             gfx.localPosition = new Vector3(gfx.localPosition.x, yOffSet, gfx.localPosition.z);
-
-           
-
+          
             PlayJumpAnimation();
-
-           
-
-
+       
             // After the halfway point, change the highlighted tile
             if (!hasChangedHighlight && timePassed > timeToMove / 2f)
             {
@@ -362,9 +336,7 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
             timePassed += Time.deltaTime;
             UnitSelector.Instance.UpdateUI();
             yield return null;
-        }
-
-        
+        }      
 
         gfx.position = transform.position;
         startSize.x = destinationEndX;
@@ -372,11 +344,7 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
         standingOn.UpdateOccupant(null);
         standingOn = toTile;
         toTile.UpdateOccupant(this);
-
-       
-
-
-
+     
         yield return null;
     }
 
@@ -462,14 +430,12 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
 
         // Pass the clicked tile to FlipOnXAxis
         FlipOnXAxis(standingOn);
-
     }
 
     public virtual void Highlight()
     {
         if (highligtherArrow != null)
             highligtherArrow.gameObject.SetActive(true);
-
     }
 
     public virtual void UnHighlight()
@@ -483,10 +449,7 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
         if (infoTextUnit != null)
         {
             infoTextUnit.SetActive(true);
-
         }
-
-
     }
 
     public virtual void HoverTextUnitExit()
@@ -495,7 +458,6 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
         {
             infoTextUnit.SetActive(false);
         }
-
     }
 
     //test elin DoTween shake unit
@@ -511,7 +473,6 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
     {
         transform.DOKill();
     }
-
 
     public void PlayIdleAnimation()
     {
@@ -530,25 +491,7 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
             TrackEntry entry = skeletonAnimation.AnimationState.SetAnimation(0, jumpAnimation, false);
             entry.AnimationStart = 1f;
         }
-
-            
-        
-        /* if (skeletonAnimation != null)
-        {
-            skeletonAnimation.AnimationState.SetAnimation(0, jumpAnimation, false);
-            // Set a callback to handle the animation completion
-            skeletonAnimation.AnimationState.Complete += OnJumpAnimationComplete;
-            isJumping = true;
-        }*/
     }
-
-    // Callback for jump animation completion
-   /* private void OnJumpAnimationComplete(Spine.TrackEntry trackEntry)
-    {
-        // Reset the flag and play the idle animation again
-        isJumping = false;
-        PlayIdleAnimation();
-    }*/
 
     private void UpdateHealthBar()
     {
@@ -567,7 +510,6 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
             healthText.text = $"HP: {healthClamp}/{healthMax}";
         }
     }
-
 
     public void PlayActionAnimation()
     {
@@ -591,9 +533,7 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
                 gfx.transform.DORotate(new Vector3(0f, 0f, tiltAngle), 0.3f)
                     .SetEase(actionAnimEase)
                     .OnComplete(() =>
-                    {
-                        
-
+                    {                  
                         // After tilting, tilt back on the x-axis
                         gfx.transform.DORotate(new Vector3(0f, 0f, resetAngle), 0.3f)
                             .SetEase(actionAnimEase)
@@ -601,15 +541,11 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
                             {
                                 // Move back down to the initial position on the y-axis
                                 gfx.transform.DOMove(new Vector3(endMovePosition.x, initialPosition.y, endMovePosition.z), 0.2f)
-                                    .SetEase(actionAnimEase);
-
-                                
-
+                                    .SetEase(actionAnimEase);                            
                             });
                     });
             });
     }
-
 
     public void FlipOnXAxis(Tile clickedTile)
     {
@@ -630,8 +566,6 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
         }
     }
 
-
-
     public void IdleAnimSpriteTwo()
     {
         float originalYScale = gfx.transform.localScale.y;
@@ -644,8 +578,6 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
             .SetLoops(-1, LoopType.Yoyo);
 
     }
-
-
 }
 
 

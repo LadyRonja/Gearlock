@@ -4,6 +4,7 @@ using events;
 using config;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using DG.Tweening;
 
 public class CollectKeptCard : MonoBehaviour, IPointerDownHandler
 {
@@ -29,5 +30,10 @@ public class CollectKeptCard : MonoBehaviour, IPointerDownHandler
         }
         else
             return;
+    }
+
+    public void OnDestroy()
+    {
+        transform.DOKill();
     }
 }
