@@ -10094,6 +10094,10 @@ PrefabInstance:
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: PauseHandler, Assembly-CSharp
       objectReference: {fileID: 0}
+    - target: {fileID: 2286931308832151918, guid: 3a6bd51c5719feb4eaca689415d688b4, type: 3}
+      propertyPath: m_text
+      value: Effects Volume
+      objectReference: {fileID: 0}
     - target: {fileID: 2617215216345495183, guid: 3a6bd51c5719feb4eaca689415d688b4, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -11492,7 +11496,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 34
+  m_fontSize: 29.1
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -20871,7 +20875,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 34
+  m_fontSize: 31.9
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -30699,6 +30703,7 @@ MonoBehaviour:
   spawnableCardsFinite:
   - {fileID: 898281027607506639, guid: 4b48bcb37e6304e4c866ca4159064d03, type: 3}
   - {fileID: 898281027607506639, guid: 4b48bcb37e6304e4c866ca4159064d03, type: 3}
+  useBadLuckProtection: 0
   delay: 0.5
 --- !u!1 &2738659695132123358
 GameObject:
