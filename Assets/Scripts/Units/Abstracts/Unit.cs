@@ -554,7 +554,7 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
     {
         if (healthBar != null && healthFill != null)
         {
-            float healthPercentage = (float)healthCur / healthMax;
+            float healthPercentage = (float)healthCur / (float)healthMax;
             healthFill.fillAmount = healthPercentage;
         }
     }
@@ -563,7 +563,8 @@ public abstract class Unit : MonoBehaviour, IDamagable, IPointerDownHandler
     {
         if (healthText != null)
         {
-            healthText.text = $"HP: {healthCur}/{healthMax}";
+            int healthClamp = (int)Mathf.Clamp(healthCur, 0, 10000);
+            healthText.text = $"HP: {healthClamp}/{healthMax}";
         }
     }
 
