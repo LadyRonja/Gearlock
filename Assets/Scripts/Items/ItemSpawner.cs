@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class ItemSpawner : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class ItemSpawner : MonoBehaviour
     [SerializeField] GameObject pickupPrefab;
     [SerializeField] List<GameObject> spawnableCards = new();
     [SerializeField] List<GameObject> spawnableCardsFinite = new();
+    public bool useBadLuckProtection = false; // TODO: Make more flexible
 
     public float delay = 0.5f;
     
@@ -41,6 +43,12 @@ public class ItemSpawner : MonoBehaviour
             return;
         }
 
+        if (useBadLuckProtection)
+        {
+            if (BadLuckProtectionInjection(onTile))
+                return;
+        }
+
         if (onTile.myPickUp != null)
         {
             Destroy(onTile.myPickUp);
@@ -62,33 +70,27 @@ public class ItemSpawner : MonoBehaviour
         onTile.myPickUp = cardPickUpScript;
     }
 
-    public void SpawnRandomCardDelete(Tile onTile)
+    public void SpawnFiniteCard(Tile onTile)
     {
-        SpawnRandomItemWithDelay(onTile, delay);
-    }
-
-    public void SpawnRandomItemWithDelay(Tile onTile, float delay)
-    {
-        StartCoroutine(SpawnItemWithDelay(onTile, delay));
-    }
-
-    private IEnumerator SpawnItemWithDelay(Tile onTile, float delay)
-    {
-        yield return new WaitForSeconds(delay);
-
         if (onTile.containsDirt)
-            yield break;
+            return;
 
         if (!spawnableCardsFinite.Any())
         {
             SpawnRandomItem(onTile);
-            yield break;
+            return;
         }
 
         if (onTile.myPickUp != null)
         {
             Destroy(onTile.myPickUp);
             onTile.myPickUp = null;
+        }
+
+        if (useBadLuckProtection)
+        {
+            if (BadLuckProtectionInjection(onTile))
+                return;
         }
 
         int randomCard;
@@ -104,10 +106,50 @@ public class ItemSpawner : MonoBehaviour
         if (cardPickUpScript == null)
         {
             Debug.LogError("No pickup script on Card Pick-up");
-            yield break;
+            return;
         }
         cardPickUpScript.cardToAdd = spawnableCardsFinite[randomCard];
         spawnableCardsFinite.RemoveAt(randomCard);
         onTile.myPickUp = cardPickUpScript;
+        return;
     }
+
+
+    private bool BadLuckProtectionInjection(Tile onTile)
+    {
+        if (GameStats.Instance.GetRocksMined() != 2)
+            return false;
+
+        // Check if any of the top 3 cards at this point is a fighter bot
+        if (spawnableCardsFinite.Count < 3)
+            return false;
+
+        List<GameObject> topThreeSpawnables = new() { spawnableCardsFinite[0], spawnableCardsFinite[1], spawnableCardsFinite[2] };
+        for(int i = 0; i < topThreeSpawnables.Count; i++)
+        {
+            if (topThreeSpawnables[i].GetComponent<Card>().GetType() == typeof(SpawnUnitCard))
+            {
+                if (topThreeSpawnables[i].GetComponent<SpawnUnitCard>().myType == Card.CardType.FighterBot)
+                {
+                    // Spawn that fightbot
+                    Vector3 spawnPos = onTile.transform.position;
+                    spawnPos.y += spawnYOffset;
+                    GameObject cardPickUpObject = Instantiate(pickupPrefab, spawnPos, Quaternion.identity);
+                    CardPickUp cardPickUpScript = cardPickUpObject.GetComponent<CardPickUp>();
+                    if (cardPickUpScript == null)
+                    {
+                        Debug.LogError("No pickup script on Card Pick-up");
+                        return false;
+                    }
+                    cardPickUpScript.cardToAdd = topThreeSpawnables[i];
+                    spawnableCardsFinite.RemoveAt(i);
+                    onTile.myPickUp = cardPickUpScript;
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
 }

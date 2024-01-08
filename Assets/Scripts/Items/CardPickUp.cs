@@ -16,7 +16,13 @@ public class CardPickUp : MonoBehaviour
     private void Start()
     {
         startPos = transform.position;
-       
+       if(frameSR != null)
+       {
+            frameSR.gameObject.SetActive(false);
+            illustrationSR.gameObject.SetActive(false);
+            Invoke("EnableGFX", 0.5f);
+       }
+
     }
 
     void Update()
@@ -42,6 +48,15 @@ public class CardPickUp : MonoBehaviour
         if(illustrationSR != null) illustrationSR.sprite = cardLayout.illustration;
 
         fixedGFX = true;
+    }
+
+    private void EnableGFX()
+    {
+        if (frameSR != null)
+        {
+            frameSR.gameObject.SetActive(true);
+            illustrationSR.gameObject.SetActive(true);
+        }
     }
     
 }

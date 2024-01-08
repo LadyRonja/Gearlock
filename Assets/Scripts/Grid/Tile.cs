@@ -131,7 +131,7 @@ public class Tile : MonoBehaviour, IPointerDownHandler
         //ItemSpawner.Instance.SpawnRandomItem(this);
         if(canSpawnCard)
             if(ItemSpawner.Instance != null)
-               ItemSpawner.Instance.SpawnRandomCardDelete(this);
+               ItemSpawner.Instance.SpawnFiniteCard(this);
                            
     }
     public void RemoveDirt()

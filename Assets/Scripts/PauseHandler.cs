@@ -95,6 +95,7 @@ public class PauseHandler : MonoBehaviour
 
     public void GameStart()
     {
+        GameStats.Instance.ResetStats();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
