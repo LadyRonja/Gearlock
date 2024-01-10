@@ -7,7 +7,7 @@ using UnityEngine;
 
 public class Pathfinding : MonoBehaviour
 {
-    public static List<Tile> FindPath(Tile start, Tile end, int range, bool ignoreBlocks)
+    public static List<Tile> FindPath(Tile start, Tile end, int range, bool ignoreBlocks, bool ignoreWalls)
     {
         // Keep list of tiles to search and tiles already searched
         List<Tile> toSearch = new List<Tile>() { start };
@@ -68,7 +68,11 @@ public class Pathfinding : MonoBehaviour
             List<Tile> investigateNeighbours;
             if (ignoreBlocks)
             {
-                investigateNeighbours = current.neighbours.Where(t => !t.occupied && !processed.Contains(t)).ToList();
+                if(ignoreWalls)
+                    investigateNeighbours = current.neighbours.Where(t => !t.occupied && !processed.Contains(t)).ToList();
+                else
+                    investigateNeighbours = current.neighbours.Where(t => !t.occupied && !processed.Contains(t) && !t.walled).ToList();
+
                 // AI will look for a path where a unit is standing, make sure to find that tile
                 foreach (Tile t in current.neighbours)
                 {
@@ -80,7 +84,11 @@ public class Pathfinding : MonoBehaviour
             }
             else
             {
-                investigateNeighbours = current.neighbours.Where(t => !t.occupied && !processed.Contains(t) && !t.blocked).ToList();
+                if(ignoreWalls)
+                    investigateNeighbours = current.neighbours.Where(t => !t.occupied && !processed.Contains(t) && !t.blocked).ToList();
+                else
+                    investigateNeighbours = current.neighbours.Where(t => !t.occupied && !processed.Contains(t) && !t.blocked && !t.walled).ToList();
+
                 // AI will look for a path where a unit is standing, make sure to find that tile
                 foreach (Tile t in current.neighbours)
                 {
@@ -121,12 +129,12 @@ public class Pathfinding : MonoBehaviour
 
     public static List<Tile> FindPath(Tile start, Tile end)
     {
-        return FindPath(start, end, -1, false);
+        return FindPath(start, end, -1, false, false);
     }
 
     public static List<Tile> FindPath(Tile start, Tile end, int range)
     {
-        return FindPath(start, end, range, false);
+        return FindPath(start, end, range, false, false);
     }
 
     public static int GetDistance(Tile a, Tile b)

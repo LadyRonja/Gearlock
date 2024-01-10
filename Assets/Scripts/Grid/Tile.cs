@@ -31,6 +31,7 @@ public class Tile : MonoBehaviour, IPointerDownHandler
     public Dirt dirt;
     public CardPickUp myPickUp;
     public bool highlightedForMovement = false;
+    public bool walled = false;
 
     // Pathfinding
     public bool targetable = true;
@@ -60,7 +61,7 @@ public class Tile : MonoBehaviour, IPointerDownHandler
 
         if (newOccupant == null)
         {
-            blocked = containsDirt;
+            blocked = (containsDirt || walled);
             occupied = false;
             targetable = true;
         }
@@ -110,22 +111,19 @@ public class Tile : MonoBehaviour, IPointerDownHandler
         }
 
         containsDirt = false;
-        blocked = occupied;
+        blocked = (occupied || walled);
         AudioHandler.PlaySoundEffect(dirt.getMinedSound);
         bool remoevedInEditor = false;
 #if UNITY_EDITOR
-        Destroy(dirt.gameObject, delay);
+        DestroyImmediate(dirt.gameObject);
         remoevedInEditor = true;
 #endif
         if (!remoevedInEditor)
         {
-            
             Destroy(dirt.gameObject, delay);
         }
             
-
         dirt = null;
-
 
         // TODO: See item spawner todo
         //ItemSpawner.Instance.SpawnRandomItem(this);
@@ -137,6 +135,23 @@ public class Tile : MonoBehaviour, IPointerDownHandler
     public void RemoveDirt()
     {
         RemoveDirt(true);
+    }
+
+    public void RemoveWall()
+    {
+        if (walled)
+        {
+            blocked = false;
+            targetable = true;
+            walled = false;
+        }
+    }
+
+    public void SetWalled()
+    {
+        walled = true;
+        blocked = true;
+        targetable = false;
     }
 
 

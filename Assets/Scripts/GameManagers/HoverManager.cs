@@ -169,7 +169,7 @@ public class HoverManager : MonoBehaviour
 
         if (tile.highlightedForMovement)
         {
-            List<Tile> pathable = Pathfinding.FindPath(tile, UnitSelector.Instance.selectedUnit.standingOn, UnitSelector.Instance.selectedUnit.movePointsCur, false);
+            List<Tile> pathable = Pathfinding.FindPath(tile, UnitSelector.Instance.selectedUnit.standingOn, UnitSelector.Instance.selectedUnit.movePointsCur, false, false);
 
             if (tile.myHighligther.color == Color.blue || tile.myHighligther.color == Color.yellow)
             { }// Do nothings

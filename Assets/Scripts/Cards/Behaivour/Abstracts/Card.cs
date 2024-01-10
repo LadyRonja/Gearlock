@@ -44,6 +44,7 @@ public abstract class Card : MonoBehaviour
     public bool canNotTargetDirtTiles = false;
     public bool hasToTargetOccupiedTiles = true;
     public bool canNotTargetOccupiedTiles = false;
+    public bool canNotTargetWalls = true;
     public bool goesToDiscardAfterPlay = true;
 
     protected bool unitsHighligthed = false;

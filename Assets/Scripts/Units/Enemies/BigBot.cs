@@ -15,10 +15,10 @@ public class BigBot : Unit
 
     public override List<Tile> CalculatePathToTarget(Tile targetTile)
     {
-        List<Tile> output = Pathfinding.FindPath(standingOn, targetTile, movePointsCur, false);
+        List<Tile> output = Pathfinding.FindPath(standingOn, targetTile, movePointsCur, false, false);
         if (output == null)
         {
-            output = Pathfinding.FindPath(standingOn, targetTile, movePointsCur, true);
+            output = Pathfinding.FindPath(standingOn, targetTile, movePointsCur, true, false);
             if (output == null)
                 return null;
         }

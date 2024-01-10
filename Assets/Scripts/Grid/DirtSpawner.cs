@@ -126,10 +126,4 @@ public class DirtSpawner : MonoBehaviour
             o.GetComponent<Tile>().RemoveDirt();
         }
     }
-
-    [ContextMenu("Remove Selected Dirt")]
-    private void RemoveOnDirt()
-    {
-
-    }
 }

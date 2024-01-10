@@ -11,7 +11,7 @@ public class Ghost : Unit
 
     public override List<Tile> CalculatePathToTarget(Tile targetTile)
     {
-        List<Tile> output = Pathfinding.FindPath(standingOn, targetTile, movePointsCur, true);
+        List<Tile> output = Pathfinding.FindPath(standingOn, targetTile, movePointsCur, true, true);
         if (output == null)
         {
             //Debug.Log("No path found");

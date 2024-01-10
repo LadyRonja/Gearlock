@@ -42,6 +42,10 @@ public static class CardTargetFinder
         // Remove illegal tiles
         foreach (Tile t in legalTiles)
         {
+            // Wall check
+            if(forCard.canNotTargetWalls && t.walled)
+                tilesToRemove.Add(t);
+
             // Dirt Check
             if (forCard.hasToTargetDirtTiles && !t.containsDirt)
                 tilesToRemove.Add(t);
